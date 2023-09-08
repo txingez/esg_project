@@ -51,9 +51,9 @@ const handleLoginFailed = message => {
 </script>
 
 <template>
-    <div class="h-screen flex justify-center items-center bg-no-repeat bg-center
+    <div class="h-screen flex justify-center items-center bg-no-repeat bg-center p-2
     bg-[url(https://lh3.googleusercontent.com/pw/AIL4fc8FipnJBP4X34b1Jo99vqn3NHhyO8lkotbcTohZnoTAxdjrZMnmEEiRQr8dJVe0NlI3MN3DeeqharYGDAzl7wjV__lvZagawffSGjhf43M1Ytb66XlA5rZeSIdiMLK7wnftNtGVLOyxKOZvPYiQusc=w2930-h1956-s-no?authuser=0)]">
-        <div class="flex flex-col border p-5 min-w-[450px] rounded-[8px] text-white bg-black bg-opacity-30">
+        <div class="flex flex-col border md:p-5 p-2 md:min-w-[450px] rounded-[8px] text-white bg-black bg-opacity-30">
             <div class="space-y-5 mb-5">
                 <div class="font-bold text-3xl text-[#2563eb]">Đăng nhập tài khoản</div>
                 <div>Đăng nhập để trải nghiệm đầy đủ tính năng của sản phẩm</div>

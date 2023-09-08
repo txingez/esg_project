@@ -61,20 +61,20 @@ const router = createRouter({
                     path: '/evaluate/nec/form',
                     name: 'EvaluateNECForm',
                     component: () => import('./pages/EvaluateFormNECPage.vue')
+                },
+                {
+                    id: 9,
+                    path: '/register',
+                    name: 'Register',
+                    component: () => import('./pages/RegisterPage.vue')
+                },
+                {
+                    id: 10,
+                    path: '/login',
+                    name: 'Login',
+                    component: () => import('./pages/LoginPage.vue')
                 }
             ]
-        },
-        {
-            id: 9,
-            path: '/register',
-            name: 'Register',
-            component: () => import('./pages/RegisterPage.vue')
-        },
-        {
-            id: 10,
-            path: '/login',
-            name: 'Login',
-            component: () => import('./pages/LoginPage.vue')
         }
     ],
     scrollBehavior(to, from, savedPosition) {
@@ -113,6 +113,7 @@ router.beforeEach((to, from) => {
                 console.log(response)
                 return true
             }).catch((err) => {
+                console.log(err)
                 return {name: 'Home'}
             })
         }

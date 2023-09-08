@@ -72,10 +72,10 @@ const passwordCheck = (rule, value) => {
 </script>
 
 <template>
-    <div class="h-screen flex justify-center items-center
+    <div class="h-screen flex justify-center items-center p-2
     bg-no-repeat bg-center
     bg-[url(https://lh3.googleusercontent.com/pw/AIL4fc-RSoSKp0th5coF0QDkiJ5CETvqdl86Edy5wb9dbNWjNxZywzep8YG8x_fgde8ASbaOF_lrccZI6MKWqg13QYPbsK42oTdypA9cMY6255hewGnmB7hzpcg2Awd9G7gcEZfaCwIR5JlRxQLltSoQ_wM=w2934-h1956-s-no?authuser=0)]">
-        <div class="flex flex-col border p-5 min-w-[450px] rounded-[8px] text-white bg-black bg-opacity-30">
+        <div class="flex flex-col border md:p-5 p-2 md:min-w-[450px] rounded-[8px] text-white bg-black bg-opacity-30">
             <div class="space-y-5 mb-5">
                 <div class="font-bold text-3xl text-[#2563eb]">Đăng ký tài khoản</div>
                 <div>Đăng ký là thành viên để trải nghiệm đầy đủ tính năng của sản phẩm</div>
