@@ -56,7 +56,7 @@ onMounted(() => {
             console.log(response)
             if (response.data.organization !== null) {
                 const {header, payload} = useJwt(response.data.organization)
-                profileNECStore.update(payload)
+                profileNECStore.update(payload.organization)
             }
         })
         .catch((err) => {

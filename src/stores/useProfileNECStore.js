@@ -34,35 +34,35 @@ export const useProfileNECStore = defineStore('ProfileNEC', () => {
         phoneNumber: ''
     })
 
-    const update = payload => {
-        formData.companyName = payload.companyName
-        formData.taxCode = payload.taxCode
-        formData.foundedYear = payload.foundedYear
-        formData.addressCompany = payload.addressCompany
-        formData.firstManufactureFactory = payload.firstManufactureFactory
-        formData.secondManufactureFactory = payload.secondManufactureFactory
-        formData.registrationType = payload.registrationType
-        formData.insuranceEmployees = payload.insuranceEmployees
-        formData.numberManagers = payload.numberManagers
-        formData.numberFemaleManagers = payload.numberFemaleManagers
-        formData.equalFifteenAndUnderEighteenEmployees = payload.equalFifteenAndUnderEighteenEmployees
-        formData.businessModel = payload.businessModel
-        formData.businessModelOtherInput = payload.businessModel === 'other' ? payload.businessModelOtherInput : ''
-        formData.address = payload.address
-        formData.manufactureAddress = payload.manufactureAddress
-        formData.websiteCompany = payload.websiteCompany
-        formData.fullNameManager = payload.fullNameManager
-        formData.sexManager = payload.sexManager
-        formData.nationManager = payload.nationManager
-        formData.workPlaceManager = payload.workPlaceManager
-        formData.emailManager = payload.emailManager
-        formData.phoneNumberManager = payload.phoneNumberManager
-        formData.evaluatedDate = dayjs(payload.evaluatedDate)
-        formData.fullName = payload.fullName
-        formData.workPlace = payload.workPlace
-        formData.workUnit = payload.workUnit
-        formData.email = payload.email
-        formData.phoneNumber = payload.phoneNumber
+    const update = organizationProfile => {
+        formData.companyName = organizationProfile.companyName
+        formData.taxCode = organizationProfile.taxCode
+        formData.foundedYear = organizationProfile.foundedYear
+        formData.addressCompany = organizationProfile.addressCompany
+        formData.firstManufactureFactory = organizationProfile.firstManufactureFactory
+        formData.secondManufactureFactory = organizationProfile.secondManufactureFactory
+        formData.registrationType = organizationProfile.registrationType
+        formData.insuranceEmployees = organizationProfile.insuranceEmployees
+        formData.numberManagers = organizationProfile.numberManagers
+        formData.numberFemaleManagers = organizationProfile.numberFemaleManagers
+        formData.equalFifteenAndUnderEighteenEmployees = organizationProfile.equalFifteenAndUnderEighteenEmployees
+        formData.businessModel = organizationProfile.businessModel
+        formData.businessModelOtherInput = organizationProfile.businessModel === 'other' ? organizationProfile.businessModelOtherInput : ''
+        formData.address = organizationProfile.address
+        formData.manufactureAddress = organizationProfile.manufactureAddress
+        formData.websiteCompany = organizationProfile.websiteCompany
+        formData.fullNameManager = organizationProfile.fullNameManager
+        formData.sexManager = organizationProfile.sexManager
+        formData.nationManager = organizationProfile.nationManager
+        formData.workPlaceManager = organizationProfile.workPlaceManager
+        formData.emailManager = organizationProfile.emailManager
+        formData.phoneNumberManager = organizationProfile.phoneNumberManager
+        formData.evaluatedDate = dayjs(organizationProfile.evaluatedDate)
+        formData.fullName = organizationProfile.fullName
+        formData.workPlace = organizationProfile.workPlace
+        formData.workUnit = organizationProfile.workUnit
+        formData.email = organizationProfile.email
+        formData.phoneNumber = organizationProfile.phoneNumber
     }
 
     return {formData, update}
