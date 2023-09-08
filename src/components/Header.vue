@@ -34,7 +34,7 @@ const handleChangeRoute = () => {
 }
 
 const handleLogout = () => {
-    logout().then((response) => {
+    logout().then(() => {
         sessionStorage.clear()
         userInfo.token = null
         userInfo.email = null
@@ -73,8 +73,8 @@ onMounted(() => {
         </div>
         <div v-else
              class="h-[50px] bg-[#072608] flex justify-end gap-1.5 items-center xl:px-[25px] px-[25px] text-white">
-            <a-dropdown>
-                <a-avatar size="default" class="bg-[#d1d5db] flex justify-center items-center">
+            <a-dropdown trigger="['click']">
+                <a-avatar size="default" class="bg-[#d1d5db] flex justify-center items-center hover:cursor-pointer">
                     <template #icon>
                         <UserOutlined/>
                     </template>

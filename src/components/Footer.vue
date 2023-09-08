@@ -16,7 +16,10 @@ const links = [
         </div>
         <div class="flex md:flex-row flex-col justify-between gap-5 md:p-[20px_40px] lg:p-[50px_100px] p-[15px_30px]">
             <div class="md:w-1/4 flex justify-center">
-                <img class="xl:h-[120px] xl:w-[220px] lg:h-[60%] lg:w-[70%] md:h-[50%] md:w-[80%] w-1/2" src="../assets/logo.png" alt="logo_footer">
+                <router-link to="/">
+                    <img class="xl:h-[120px] xl:w-[220px] lg:h-[60%] lg:w-[70%] md:h-[50%] md:w-[80%] w-1/2"
+                         src="../assets/logo.png" alt="logo_footer">
+                </router-link>
             </div>
             <div class="flex flex-col md:items-start gap-5">
                 <div class="flex gap-5 items-center">
