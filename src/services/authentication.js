@@ -14,6 +14,14 @@ export const validateToken = token => {
     return axios.post(`${URL}/auth/verify_token?token=${token}`)
 }
 
-export const logout = () => {
-    return axios.post(`${URL}/auth/sign_out`)
+export const logout = body => {
+    return axios.post(`${URL}/auth/sign_out`, body)
+}
+
+export const getResetCode = body => {
+    return axios.post(`${URL}/auth/password_reset/get_code`, body)
+}
+
+export const verifyCode = body => {
+    return axios.post(`${URL}/auth/password_reset/verify_code`, body)
 }

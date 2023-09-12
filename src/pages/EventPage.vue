@@ -189,7 +189,7 @@ const showMore = isEvent => {
 
 <template>
     <Banner label="tin tức và sự kiện"
-            img-src="https://lh3.googleusercontent.com/pw/AIL4fc9mMay8KiUbjJOYkuB-zwa8WPcnYJ6gv3X-Tev2ea3-tvvGq3AnSa7heOck6Sk-8YgZgzl2d8enbP6yxA7elyDlS3vut4fHXR5VpHPt1Dbuo9Ss7d_wLd3DTY8XhJj5hSMZ6gw2-QQnLAOtMaIGgGI=w2934-h1956-s-no?authuser=0"/>
+            img-src="https://lh3.googleusercontent.com/pw/AIL4fc_hYi5ZP_Q3Uq-sw5CBb0c123bFv0FIn-bK8GLtWKiMtbmBWA3BxFS6HSgGNATY4wk6se2X_UfuwlpclwceK46GQFc431_bh2DRT1yNPVOIcP6kt1PECKl8L2cIXNYjr51qjncyRLpJF32ohX4oG0yY=w1280-h800-s-no?authuser=0"/>
 
     <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10">
         <div class="flex flex-col gap-10">

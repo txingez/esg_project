@@ -73,6 +73,18 @@ const router = createRouter({
                     path: '/login',
                     name: 'Login',
                     component: () => import('./pages/LoginPage.vue')
+                },
+                {
+                    id: 11,
+                    path: '/search-result/:searchValue',
+                    name: 'SearchResult',
+                    component: () => import('./pages/SearchResultPage.vue')
+                },
+                {
+                    id: 12,
+                    path: '/reset-password',
+                    name: 'ResetPassword',
+                    component: () => import('./pages/ResetPasswordPage.vue')
                 }
             ]
         }

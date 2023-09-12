@@ -380,8 +380,6 @@ onMounted(() => {
             </a-form-item>
         </a-form>
     </div>
-
-    <div>{{ evaluatedResultStore.industryCode }}</div>
 </template>
 
 <style scoped>

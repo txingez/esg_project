@@ -5,9 +5,13 @@ import {register} from "../services/authentication.js";
 import {ModalError} from "../components/ModalError.js";
 import {ModalSuccess} from "../components/ModalSuccess.js";
 import router from "../router.js";
+import {passwordCheck} from "../utils/validator.js";
+import {handleRegisterFailed} from "../utils/handleErrorMessage.js";
 
 const formState = reactive({})
 const loading = ref(false)
+
+const ROLE = 'USER'
 
 const handleSubmit = () => {
     loading.value = true
@@ -15,7 +19,8 @@ const handleSubmit = () => {
         first_name: formState.firstName,
         last_name: formState.lastName,
         email: formState.email,
-        password: formState.password
+        password: formState.password,
+        role: ROLE
     }
 
     register(body).then((response) => {
@@ -38,33 +43,9 @@ const handleSubmit = () => {
     })
 }
 
-const handleRegisterFailed = message => {
-    switch (message) {
-        case 'Email address has invalid format':
-            return 'Địa chỉ email không đúng định dạng'
-        case 'User already exists':
-            return 'Email đã được sử dụng'
-        default:
-            return 'Có lỗi xảy ra. Vui lòng kỹ thuật để hỗ trợ'
-    }
-}
 const compareTwoPassword = (rule, value) => {
     if (value && value !== formState.password) {
         return Promise.reject('Mật khẩu xác nhận không khớp')
-    } else {
-        return Promise.resolve()
-    }
-}
-
-const passwordCheck = (rule, value) => {
-    if (value && !/\d/.test(value)) {
-        return Promise.reject('Mật khẩu có ít nhất 1 số')
-    } else if (value && !/[A-Z]{1}/.test(value)) {
-        return Promise.reject('Mật khẩu có ít nhất 1 chữ in hoa')
-    } else if (value && !/[^A-Za-z0-9]/.test(value)) {
-        return Promise.reject('Mật khẩu có ít nhất 1 kí tự đặc biệt')
-    } else if (value && !/[a-z]{1}/.test(value)) {
-        return Promise.reject('Mật khẩu phải bao gồm cả chữ thường')
     } else {
         return Promise.resolve()
     }
@@ -74,8 +55,8 @@ const passwordCheck = (rule, value) => {
 <template>
     <div class="h-screen flex justify-center items-center p-2
     bg-no-repeat bg-center
-    bg-[url(https://lh3.googleusercontent.com/pw/AIL4fc-RSoSKp0th5coF0QDkiJ5CETvqdl86Edy5wb9dbNWjNxZywzep8YG8x_fgde8ASbaOF_lrccZI6MKWqg13QYPbsK42oTdypA9cMY6255hewGnmB7hzpcg2Awd9G7gcEZfaCwIR5JlRxQLltSoQ_wM=w2934-h1956-s-no?authuser=0)]">
-        <div class="flex flex-col border md:p-5 p-2 md:min-w-[450px] rounded-[8px] text-white bg-black bg-opacity-30">
+    bg-[url(https://lh3.googleusercontent.com/pw/AIL4fc-u6Jc8vOx8geXIC8FTAq4w8uQjUyQx2ms9KsOOZ95jHQ96wjsNAxRZwtPByLshZtUHMyWXba3BKynlB-ya_led25NoyG2wW6pXKysPhaEjhOs_Dv5kPpuS3yj8yw4MTcA9ytxJhjG5jwvhwReMGaEy=w1800-h1200-s-no?authuser=0)]">
+        <div class="flex flex-col border md:p-5 p-2 md:min-w-[450px] rounded-[8px] text-white bg-black bg-opacity-10">
             <div class="space-y-5 mb-5">
                 <div class="font-bold text-3xl text-[#2563eb]">Đăng ký tài khoản</div>
                 <div>Đăng ký là thành viên để trải nghiệm đầy đủ tính năng của sản phẩm</div>
@@ -133,7 +114,7 @@ const passwordCheck = (rule, value) => {
             </a-form>
             <div class="space-x-2.5">
                 <span>Bạn đã có tài khoản?</span>
-                <router-link to="/login" class="text-[#2563eb] underline">Đăng nhập</router-link>
+                <router-link to="/login" class="text-[#60a5fa] underline">Đăng nhập</router-link>
             </div>
         </div>
     </div>

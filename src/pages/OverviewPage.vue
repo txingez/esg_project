@@ -4,6 +4,7 @@ import Banner from "../components/Banner.vue";
 import {computed} from "vue";
 import {useRouter} from "vue-router";
 import {handleAccessForm} from "../utils/handleClickEvaluate.js";
+import DividerWithName from "../components/DividerWithName.vue";
 
 const router = useRouter()
 const isAuth = computed(() => {
@@ -14,9 +15,10 @@ const isAuth = computed(() => {
 
 <template>
     <Banner label="Tổng quan về ESG"
-            img-src="https://lh3.googleusercontent.com/pw/AIL4fc8n68X2EL_7ci4BtLsWK-DbgMqsNW9oxh7C3GtU_cpDOkSt-MwEy6ADnCS1QYLAV0TEkG-IXqF8oxw4LoJ0GX66fFSod36j-MaTL-KXIMNVtFkyH0IFardEJxAFVwjyi8UvhkYHzrCc9WSrtBRdXJsr=w612-h318-s-no?authuser=0"/>
+            img-src="https://lh3.googleusercontent.com/pw/AIL4fc9qLXI6LSp4XjSrqXtMh-Tsjv7_hr9SPyon12xUHVR7VR1zyDtJ1l9oFX5TKzLaqT8m9LeembG5V7th4hMqusvb6lVOCn20cIPd4g2p6-kJGyLRwFUo-aqE9JviuY3Wk7xjHQV1r7i62Wj529OMZsbL=w2762-h1842-s-no?authuser=0"/>
 
-    <div class="flex flex-col md:px-10 lg:px-[150px] xl:px-[200px] px-5 gap-2 py-10 text-justify">
+    <DividerWithName label="Tổng quan"/>
+    <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 text-justify">
         <p>
             Trong bối cảnh các quốc gia thành viên của Liên Hợp Quốc, trong đó có Việt Nam, đang tích cực tham gia tiến
             trình hiện thực hóa 17 Mục tiêu Phát triển Bền vững (SDGs), đồng thời hướng đến nền kinh tế xanh, tăng
@@ -55,6 +57,10 @@ const isAuth = computed(() => {
                 </div>
             </li>
         </ul>
+    </div>
+
+    <DividerWithName label="Mục tiêu của chúng tôi"/>
+    <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 text-justify">
         <p class="text-3xl font-bold">
             Các Mục tiêu Phát triển Bền vững tại Việt Nam
         </p>
@@ -130,13 +136,17 @@ const isAuth = computed(() => {
             về các mặt kinh tế, bảo vệ môi trường, ứng phó biến đổi khí hậu và giải quyết các vấn đề an sinh xã hội.
         </p>
         <p class="font-bold italic m-0">→ Có thể bạn quan tâm: </p>
-        <router-link to="/library/detail/14" class="font-bold italic underline">Tổng quan về mô hình kinh doanh áp dụng
-            kinh tế tuần hoàn
-        </router-link>
-        <router-link to="/library/detail/11" class="font-bold italic underline">Tổng quan về mô hình kinh doanh bao
-            trùm
-        </router-link>
-
+        <div>
+            <router-link to="/library/detail/14" class="font-bold italic underline">Tổng quan về mô hình kinh doanh áp
+                dụng
+                kinh tế tuần hoàn
+            </router-link>
+        </div>
+        <div>
+            <router-link to="/library/detail/11" class="font-bold italic underline">Tổng quan về mô hình kinh doanh bao
+                trùm
+            </router-link>
+        </div>
         <p>
             ESG (Environmental - Môi trường, Social - Xã hội và Governance - Quản trị) là 3 trụ cột trong xu thế kinh
             doanh mới, gắn bó chặt chẽ với nhau. Thực hiện ESG cũng chính là sản xuất và kinh doanh bền vững, như tinh

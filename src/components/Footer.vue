@@ -1,5 +1,10 @@
 <script setup>
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {useRouter} from "vue-router";
+import {onMounted, ref, watch} from "vue";
+
+const router = useRouter()
+const isRenderDivider = ref(true)
 
 const links = [
     {label: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
@@ -7,11 +12,20 @@ const links = [
     {label: 'Thư viện', to: '/library'},
     {label: 'Hoạt động', to: '/events'}
 ]
+
+watch(router.currentRoute, (currentValue) => {
+    isRenderDivider.value = !(currentValue.name === 'Register' || currentValue.name === 'Login');
+})
+
+onMounted(() => {
+    isRenderDivider.value = !(router.currentRoute.value.name === 'Register' || router.currentRoute.value.name === 'Login');
+})
 </script>
 
 <template>
     <div class="xl:text-xl flex flex-col gap-5">
-        <div class="lg:w-[70%] w-[90%] m-[0_auto]">
+        <div v-if="isRenderDivider"
+             class="lg:w-[70%] w-[90%] m-[0_auto]">
             <a-divider class="bg-black"/>
         </div>
         <div class="flex md:flex-row flex-col justify-between gap-5 md:p-[20px_40px] lg:p-[50px_100px] p-[15px_30px]">

@@ -2,7 +2,7 @@
 
 const banners = [
     {
-        src: 'https://lh3.googleusercontent.com/pw/AIL4fc_oECM0I_B7HzrXlMmuG9WIcVN6K6P6zmw68wlvmU_MgyQ7XHqM5s30dcubvS-dhTi265b2F8Lqt_4FfNDgFCV7b_8YVkS6Cjyhw_f4aLGOynMka1FucOq1wXHi-8Y488BVGJuWJijulzhmyooSJ1to=w612-h344-s-no?authuser=0',
+        src: 'https://lh3.googleusercontent.com/pw/AIL4fc8vIa--vG8DQ21stjv7qP-G8crd-K8d5WLX_WGM9Vf75890hVvKKVOSX4iXjUYWXq-2w0PqybeJ-eJ_LUC5CodrfQRcdpjkw365Uc9ocOUVTY_n2tF76groDfqL5cc1xaJo-Kg6zHeR76O_skgFdD53=w1800-h1200-s-no?authuser=0',
         label: 'HỖ TRỢ DOANH NGHIỆP KINH DOANH BỀN VỮNG'
     },
     {
@@ -12,7 +12,7 @@ const banners = [
         to: '/evaluate'
     },
     {
-        src: 'https://lh3.googleusercontent.com/pw/AIL4fc9jWmNmPGjP0PpfCmSjZO1NJEcAMES0rErWfvxeqnzs6n7coypU2d7YJlwGZmC46SqM3IZjf-wJv6s2PLsAWMR2a8_wRq5zMc3SJLMxcYHkvD0oBTEHt7KVKL8zuDKLmIekLHxz27Mh7_IWdsPQC5iI=w612-h408-s-no?authuser=0',
+        src: 'https://lh3.googleusercontent.com/pw/AIL4fc-UEd_hX9HRnyMIpVYeZLAWP8gbeVsJ_6dLFrHkyU6FiRSzzh4KyiSyJXOVgpV4NK_KSCrU3SofXv5fFkWy3QZ5ZhZ9XC1Owng-rT6DWzCJKu2qRiFLi33cha-JfAKze8yxBM6TLa-vxiUxxzaNPLwS=w1380-h1380-s-no?authuser=0',
         label: 'SÁNG KIẾN ESG VIỆT NAM 2023',
         labelBtn: 'Thông tin chi tiết',
         to: '/events'
