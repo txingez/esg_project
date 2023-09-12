@@ -64,7 +64,7 @@ onMounted(() => {
         .then((response) => {
             console.log(response)
             if (response.data.organization !== null) {
-                const {header, payload} = useJwt(response.data.organization)
+                const {payload} = useJwt(response.data.organization)
                 profileESGStore.update(payload.value.organization)
             }
         })
