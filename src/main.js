@@ -16,7 +16,9 @@ import {
     faShieldDog,
     faTree,
     faWater,
-    faRightFromBracket
+    faRightFromBracket,
+    faArrowUp,
+    faMountainSun
 } from '@fortawesome/free-solid-svg-icons'
 import {faFacebookSquare, faXTwitter, faYoutube} from '@fortawesome/free-brands-svg-icons'
 import {faBuilding} from "@fortawesome/free-regular-svg-icons";
@@ -36,7 +38,9 @@ library.add(faLocationDot,
     faShieldDog,
     faWater,
     faTree,
-    faRightFromBracket)
+    faRightFromBracket,
+    faArrowUp,
+    faMountainSun)
 
 createApp(App)
     .use(pinia)

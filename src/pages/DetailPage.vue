@@ -1,45 +1,43 @@
 <script setup>
 
 import Banner from "../components/Banner.vue";
-import {useContentStore} from "../stores/useContentStore.js";
 import BreadCrumb from "../components/BreadCrumb.vue";
-import {onMounted, ref} from "vue";
-import {getPosts} from "../services/posts.js";
+import {computed, onMounted, ref} from "vue";
+import {getPost, getPosts} from "../services/posts.js";
 import axios from "axios";
 import {useRouter} from "vue-router";
 
-const contentStore = useContentStore()
 const router = useRouter()
 
 const popularArticles = ref([])
 const relatedNews = ref([])
+const detailContent = ref(null)
 
-const routes = [
+const routes = computed(() => [
     {name: 'Home', to: '/'},
-    {name: 'Thư viện', to: '/library'}
-]
+    {name: 'Thư viện', to: '/library'},
+    {name: detailContent ? detailContent.value.title : 'Bài viết', to: `/library/detail/${router.currentRoute.value.params.id}`}
+])
 
 onMounted(() => {
-    const getPopularArticles = getPosts(contentStore.state.pageId, 5, 0)
-    const getRelatedNews = getPosts(contentStore.state.pageId, 5, 5)
-    axios.all([getPopularArticles, getRelatedNews]).then((responses) => {
-        popularArticles.value = responses[0].data
-        relatedNews.value = responses[1].data
+    const id = router.currentRoute.value.params.id
+    getPost(id).then((response) => {
+        const pageId = response.data.page_id
+        detailContent.value = response.data
+        const getPopularArticles = getPosts(pageId, 5, 0)
+        const getRelatedNews = getPosts(pageId, 5, 5)
+        axios.all([getPopularArticles, getRelatedNews]).then((responses) => {
+            popularArticles.value = responses[0].data
+            relatedNews.value = responses[1].data
+        }).catch((err) => {
+            console.log(err)
+        })
     }).catch((err) => {
         console.log(err)
     })
 })
 
 const handleSeeDetail = document => {
-    const newState = {
-        pageId: contentStore.state.pageId,
-        title: document.title,
-        content: document.content,
-        image: document.image,
-        source: document.source,
-        releaseDate: document.release_date
-    }
-    contentStore.update(newState)
     router.push(`/library/detail/${document.id}`)
 }
 </script>
@@ -47,17 +45,17 @@ const handleSeeDetail = document => {
 <template>
     <div class="flex xl:gap-16 lg:gap-10 md:gap-5 md:flex-row flex-col md:px-10 lg:px-[50px] xl:px-[50px] px-5 py-10">
         <div class="basis-2/3">
-            <div class="space-y-5" v-if="contentStore.state.content">
-                <Banner :img-src="contentStore.state.image" label=""/>
+            <div class="space-y-5" v-if="detailContent">
+                <Banner :img-src="detailContent.image" label=""/>
                 <BreadCrumb :routes="routes"/>
                 <div class="font-bold xl:text-4xl md:text-3xl text-2xl text-[#15B9A0]">
-                    {{ contentStore.state.title.toUpperCase() }}
+                    {{ detailContent.title.toUpperCase() }}
                 </div>
                 <div class="flex md:gap-5 gap-2 mb-2 italic md:flex-row flex-col text-[#9ca3af]">
-                    <div>Nguồn: <span>{{ contentStore.state.source }}</span></div>
-                    <div>Ngày phát hành: <span>{{ contentStore.state.releaseDate }}</span></div>
+                    <div>Nguồn: <span>{{ detailContent.source }}</span></div>
+                    <div>Ngày phát hành: <span>{{ detailContent.releaseDate }}</span></div>
                 </div>
-                <div v-html="contentStore.state.content"/>
+                <div v-html="detailContent.content"/>
             </div>
 
             <div>
@@ -69,10 +67,12 @@ const handleSeeDetail = document => {
                         <div class="xl:basis-1/3 md:basis-1/2">
                             <a v-if="popularArticle.content_type === 'LINK'" :href="popularArticle.content"
                                target="_blank">
-                                <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full" :src="popularArticle.image" alt="">
+                                <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full" :src="popularArticle.image"
+                                     alt="">
                             </a>
                             <a v-else @click.prevent="handleSeeDetail(popularArticle)">
-                                <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full" :src="popularArticle.image" alt="">
+                                <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full" :src="popularArticle.image"
+                                     alt="">
                             </a>
                         </div>
                         <div class="xl:basis-2/3 md:basis-1/2">

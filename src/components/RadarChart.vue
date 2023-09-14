@@ -50,7 +50,7 @@ onMounted(() => {
                     {
                         label: 'Vùng đánh giá',
                         data: props.data,
-                        fill: false,
+                        fill: true,
                         borderColor: props.color,
                         backgroundColor: 'rgba(160, 210, 109, 0.1)',
                         pointBackgroundColor: props.color,

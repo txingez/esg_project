@@ -2,7 +2,7 @@
 
 const banners = [
     {
-        src: 'https://lh3.googleusercontent.com/pw/AIL4fc8vIa--vG8DQ21stjv7qP-G8crd-K8d5WLX_WGM9Vf75890hVvKKVOSX4iXjUYWXq-2w0PqybeJ-eJ_LUC5CodrfQRcdpjkw365Uc9ocOUVTY_n2tF76groDfqL5cc1xaJo-Kg6zHeR76O_skgFdD53=w1800-h1200-s-no?authuser=0',
+        src: 'https://lh3.googleusercontent.com/pw/AIL4fc8MJrXteGvUq3nL5re_zOlLkC_GUyjXld8Pl09oofcsmuZ9g_WB3Y8RaYNujUr-Pz2Pd_GhZDOURz_uTlFbTOXSK6mGH9ydefucEW-oJDh7spdydNVs3nmJBW8zL2c4nDwVwoLQWgdQBE4ooR7tzJlp=w1600-h900-s-no?authuser=0',
         label: 'HỖ TRỢ DOANH NGHIỆP KINH DOANH BỀN VỮNG'
     },
     {

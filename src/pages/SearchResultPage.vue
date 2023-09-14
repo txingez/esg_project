@@ -6,11 +6,9 @@ import {SearchOutlined} from "@ant-design/icons-vue";
 import {useSearchStore} from "../stores/useSearchStore.js";
 import {onMounted, ref, watch} from "vue";
 import {searchPosts} from "../services/posts.js";
-import {useContentStore} from "../stores/useContentStore.js";
 
 const router = useRouter()
 const searchStore = useSearchStore()
-const contentStore = useContentStore()
 
 const searchValue = ref('')
 const searchValueInResult = ref('')
@@ -57,16 +55,6 @@ const getData = (query, offset, limit = 8) => {
 }
 
 const handleSeeDetail = document => {
-
-    const newState = {
-        pageId: document.page_id,
-        title: document.title,
-        content: document.content,
-        image: document.image,
-        source: document.source,
-        releaseDate: document.release_date
-    }
-    contentStore.update(newState)
     router.push(`/library/detail/${document.id}`)
 }
 

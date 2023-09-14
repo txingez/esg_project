@@ -5,18 +5,27 @@ import {computed} from "vue";
 import {useRouter} from "vue-router";
 import {handleAccessForm} from "../utils/handleClickEvaluate.js";
 import DividerWithName from "../components/DividerWithName.vue";
+import BreadCrumb from "../components/BreadCrumb.vue";
 
 const router = useRouter()
 const isAuth = computed(() => {
     const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
     return !!token
 })
+
+const routes = [
+    {name: 'Home', to: '/'},
+    {name: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
+]
 </script>
 
 <template>
-    <Banner label="Tổng quan về ESG"
+    <Banner label="TỔNG QUAN VỀ KINH DOANH BỀN VỮNG"
             img-src="https://lh3.googleusercontent.com/pw/AIL4fc9qLXI6LSp4XjSrqXtMh-Tsjv7_hr9SPyon12xUHVR7VR1zyDtJ1l9oFX5TKzLaqT8m9LeembG5V7th4hMqusvb6lVOCn20cIPd4g2p6-kJGyLRwFUo-aqE9JviuY3Wk7xjHQV1r7i62Wj529OMZsbL=w2762-h1842-s-no?authuser=0"/>
 
+    <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 mt-2.5">
+        <BreadCrumb :routes="routes"/>
+    </div>
     <DividerWithName label="Tổng quan"/>
     <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 text-justify">
         <p>
@@ -59,7 +68,6 @@ const isAuth = computed(() => {
         </ul>
     </div>
 
-    <DividerWithName label="Mục tiêu của chúng tôi"/>
     <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 text-justify">
         <p class="text-3xl font-bold">
             Các Mục tiêu Phát triển Bền vững tại Việt Nam
@@ -137,14 +145,13 @@ const isAuth = computed(() => {
         </p>
         <p class="font-bold italic m-0">→ Có thể bạn quan tâm: </p>
         <div>
-            <router-link to="/library/detail/14" class="font-bold italic underline">Tổng quan về mô hình kinh doanh áp
-                dụng
-                kinh tế tuần hoàn
+            <router-link to="/library/detail/16" class="font-bold italic underline">
+                Tổng quan về mô hình kinh doanh áp dụng kinh tế tuần hoàn
             </router-link>
         </div>
         <div>
-            <router-link to="/library/detail/11" class="font-bold italic underline">Tổng quan về mô hình kinh doanh bao
-                trùm
+            <router-link to="/library/detail/17" class="font-bold italic underline">
+                Tổng quan về mô hình kinh doanh bao trùm
             </router-link>
         </div>
         <p>

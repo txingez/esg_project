@@ -1,5 +1,5 @@
 <template>
-    <a-breadcrumb :routes="routes" class="md:text-xl xl:text-2xl text-lg">
+    <a-breadcrumb :routes="routes" separator=">" class="md:text-xl xl:text-2xl text-base">
         <template #itemRender="{ route, path }">
             <span v-if="routes.indexOf(route) === routes.length - 1">
                 {{ route.name }}
@@ -22,3 +22,9 @@ defineProps({
     }
 })
 </script>
+
+<style scoped>
+:deep(.ant-breadcrumb-link a) {
+    height: 100%;
+}
+</style>

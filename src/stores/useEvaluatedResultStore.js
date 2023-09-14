@@ -22,15 +22,10 @@ export const useEvaluatedResultStore = defineStore('evaluatedResult', () => {
     const updateIndustryCode = businessModel => industryCode.value = IndustryCode[businessModel]
 
     const getIndustryWeighting = () => {
-
         return {
             E: IndustryWeighting[industryCode.value].E,
             S: IndustryWeighting[industryCode.value].S,
-            G: IndustryWeighting[industryCode.value].G,
-            //todo: sua lai sau
-            FC: IndustryWeighting[industryCode.value].E,
-            SC: IndustryWeighting[industryCode.value].S,
-            TC: IndustryWeighting[industryCode.value].G,
+            G: IndustryWeighting[industryCode.value].G
         }
     }
 
@@ -51,8 +46,7 @@ export const useEvaluatedResultStore = defineStore('evaluatedResult', () => {
     }
 
     const getSummaryNEC = () => {
-        const industryWeighting = getIndustryWeighting()
-        return ((resultPoint.firstCriteria.point * (industryWeighting.FC / 100)) + (resultPoint.secondCriteria.point * (industryWeighting.SC / 100)) + (resultPoint.thirdCriteria.point * (industryWeighting.TC / 100))).toFixed(2)
+        return (resultPoint.firstCriteria.sum + resultPoint.secondCriteria.sum + resultPoint.thirdCriteria.sum)
     }
 
     const getRateInfoNEC = () => {

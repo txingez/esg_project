@@ -1,7 +1,6 @@
 <script setup>
 import DividerWithName from "../components/DividerWithName.vue";
 import Carousel from "../components/Carousel.vue";
-import RadarChart from "../components/RadarChart.vue";
 import {handleAccessForm} from "../utils/handleClickEvaluate.js";
 import {computed} from "vue";
 
@@ -9,6 +8,10 @@ const isAuth = computed(() => {
     const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
     return !!token
 })
+
+const routes = [
+    {name: 'Home', to: '/'}
+]
 
 const newsArray = [
     {
@@ -18,97 +21,104 @@ const newsArray = [
         thumbnail: 'https://cafefcdn.com/thumb_w/640/203337114487263232/2023/5/8/photo1683281633115-1683281633210361616685-1683534888047591735700.png'
     },
     {
-        title: 'Sắp đưa ra bộ công cụ đánh giá ESG tại doanh nghiệp',
-        href: 'https://vneconomy.vn/sap-dua-ra-bo-cong-cu-danh-gia-esg-tai-doanh-nghiep.htm',
+        title: 'Bộ Kế hoạch và Đầu tư và USAID tổ chức Vòng chung kết Sáng kiến ESG Việt Nam 2023',
+        href: 'https://baodauthau.vn/bo-ke-hoach-va-dau-tu-va-usaid-to-chuc-vong-chung-ket-sang-kien-esg-viet-nam-2023-post143384.html',
         description: 'Bộ Kế hoạch và Đầu tư dự kiến sẽ đưa ra bộ công cụ đánh giá thực hành ESG tại doanh nghiệp trong quý 3/2022 và sẽ cung cấp các gói hỗ trợ kỹ thuật chuyên sâu cho các doanh nghiệp có mức độ sẵn sàng thực hành ESG cao.',
         thumbnail: 'https://img.freepik.com/premium-vector/background-01cicle_851394-23.jpg?w=2000'
     },
     {
         title: 'Kinh doanh bền vững: Chìa khoá tạo lợi thế cạnh tranh cho các doanh nghiệp Việt',
         href: 'https://vov.vn/kinh-te/kinh-doanh-ben-vung-chia-khoa-tao-loi-the-canh-tranh-cho-cac-doanh-nghiep-viet-post1013624.vov',
-        description: 'VOV.VN - Doanh nghiệp Việt cần theo xu hướng kinh doanh bền vững để nâng cao khả năng cạnh tranh và trở thành một mắt xích quan trọng trong chuỗi cung ứng bền vững toàn cầu.',
+        description: '(BĐT) - Ngày 7/9/2023, tại Hà Nội, Bộ Kế hoạch và Đầu tư phối hợp với Cơ quan Phát triển Quốc tế Hoa Kỳ (USAID) tổ chức Vòng chung kết Sáng kiến ESG Việt Nam 2023. Top 3 doanh nghiệp giành chiến thắng chung cuộc sẽ được nhận các hỗ trợ kỹ thuật và tư vấn chuyên sâu có trị giá lên tới 2 tỷ đồng để thí điểm, triển khai hoặc nhân rộng các sáng kiến kinh doanh bền vững.',
         thumbnail: 'https://img.freepik.com/free-photo/millennial-group-young-businesspeople-asia-businessman-businesswoman-celebrate-giving-five-after-dealing-feeling-happy-signing-contract-agreement-meeting-room-small-modern-office_7861-2498.jpg?w=2000&t=st=1693468290~exp=1693468890~hmac=001d9e6eb00d981ccab6bd7d53a0cc1e08dcc72817319ab60c1a9561a7530ff2'
     }
 ]
 
-const evaluatedForms = [
-    {
-        title: 'Bộ công cụ đánh giá tổng quan về thực hành ESG',
-        formName: 'ESG'
-    },
-    {
-        title: 'Bộ công cụ đánh giá về thực hành kinh tế tuần hoàn',
-        formName: 'NEC'
-    },
-    // {
-    //     title: 'Bộ công cụ đánh giá về thực hành kinh doanh bao trùm',
-    //     image: '',
-    //     to: ''
-    // }
-]
 </script>
 
 <template>
     <Carousel/>
 
     <div>
-        <DividerWithName label="HIỂU THÊM VỀ CHÚNG TÔI"/>
-        <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 space-y-5 mb-10">
-            <div class="md:text-4xl xl:text-5xl text-2xl font-bold">
-                CHƯƠNG TRÌNH 167 VÀ TRANG WEB
-            </div>
-            <div class="text-justify">
-                Chương trình 167 là một chương trình quan trọng trong chuỗi hỗ trợ doanh nghiệp khu vực tư nhân thúc đẩy
-                kinh doanh bền vững từ năm 2022 đến 2025, dựa trên Quyết định số 167/QĐ-TTg ngày 08 tháng 02 năm 2022
-                của Thủ tướng Chính phủ. Đây là chương trình tiên phong của Chính phủ, hướng tới đem lại phát triển bền
-                vững trong lĩnh vực tư nhân. Chương trình này tạo sự hòa hợp giữa hiệu quả kinh tế và trách nhiệm xã
-                hội, bảo vệ tài nguyên và môi trường. Đồng thời, chương trình cũng thúc đẩy sự đóng góp của doanh nghiệp
-                khu vực tư nhân vào việc đạt được 17 mục tiêu phát triển bền vững của Việt Nam vào năm 2030.
-            </div>
-            <div class="text-justify">
-                Trang web về kinh doanh bền vững và ESG là kênh thông tin chính thức do Cục Phát triển Doanh nghiệp xây
-                dựng, được hỗ trợ kỹ thuật bởi Cơ quan Phát triển quốc tế Hoa Kỳ thông qua Dự án Tăng cường năng lực
-                cạnh tranh khu vực tư nhân Việt Nam. Nhiệm vụ của trang web này là cung cấp một môi trường trực tuyến để
-                kết nối thông tin và chia sẻ dữ liệu về việc áp dụng kinh doanh bền vững tại Việt Nam. Đây là một nỗ lực
-                nhằm góp phần vào việc thực hiện Chiến lược Tăng trưởng xanh của Việt Nam giai đoạn 2021-2030 và Chương
-                trình Hỗ trợ doanh nghiệp khu vực tư nhân kinh doanh bền vững giai đoạn 2022-2025.
-            </div>
-            <div>
-                <img class="w-full" src="../assets/overview_homepage.jpeg" alt="overview_homepage">
-            </div>
+        <DividerWithName label="GIỚI THIỆU"/>
+        <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 mb-10">
+            <p class="text-justify">
+                Phát triển bền vững đã trở thành xu thế chung trên toàn cầu. Đối với Việt Nam, phát triển nhanh và bền
+                vững là mục tiêu cốt lõi trên con đường trở thành nước phát triển vào năm 2050. Và đối với khu vực kinh
+                tế tư nhân, kinh doanh bền vững cũng đã trở thành một xu hướng để vừa đóng góp cho mục tiêu phát triển
+                bền vững của quốc gia và đồng thời đáp ứng nhu cầu của nhà đầu tư và thị trường.
+            </p>
+            <p class="text-justify">
+                Với vai trò là cơ quan đồng hành cùng doanh nghiệp, Cục Phát triển doanh nghiệp luôn chủ động nắm bắt
+                các xu hướng kinh doanh mới, phương thức hỗ trợ doanh nghiệp phù hợp với bối cảnh và tình hình mới. Đầu
+                năm 2022, Cục đã tham mưu lãnh đạo Bộ Kế hoạch và Đầu tư trình Thủ tướng Chính phủ ban hành Quyết định
+                số 167/QĐ-TTg phê duyệt Chương trình hỗ trợ doanh nghiệp khu vực tư nhân kinh doanh bền vững giai đoạn
+                2022-2025 (sau đây gọi là Chương trình 167). Chương trình này được kỳ vọng sẽ thúc đẩy phát triển bền
+                vững trong doanh nghiệp khu vực tư nhân, đảm bảo kết hợp chặt chẽ, hợp lý và hài hòa giữa hiệu quả kinh
+                tế với trách nhiệm xã hội, bảo vệ tài nguyên và môi trường; huy động nguồn lực của khu vực tư nhân góp
+                phần hoàn thành 17 mục tiêu phát triển bền vững của Việt Nam vào năm 2030.
+            </p>
+            <p class="text-justify">
+                rang web về kinh doanh bền vững và ESG là kênh thông tin chính thức được xây dựng bởi Cục Phát triển
+                Doanh nghiệp, thông qua sự hỗ trợ kỹ thuật của Cơ quan Phát triển quốc tế Hoa Kỳ (USAID). Đây là một
+                trong những nỗ lực góp phần vào thực hiện Chương trình 167 của Thủ tướng Chính phủ. Trang web đóng vai
+                trò là nền tảng trực tuyến để kết nối và chia sẻ thông tin dữ liệu về việc áp dụng kinh doanh bền vững
+                tại Việt Nam; giúp nâng cao nhận thức của cộng đồng doanh nghiệp khu vực tư nhân về vai trò, ý nghĩa và
+                tầm quan trọng của kinh doanh bền vững; và phát triển hệ sinh thái hỗ trợ doanh nghiệp kinh doanh bền
+                vững.
+            </p>
         </div>
     </div>
 
     <div class="bg-[#15B9A0]">
         <DividerWithName label="mục tiêu"/>
         <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 space-y-5 mb-10">
-            <div class="flex gap-5 flex-row md:flex-nowrap flex-wrap">
-                <div class="md:text-3xl xl:text-4xl text-2xl font-bold md:basis-1/2">
-                    HƯỚNG TỚI HOÀN THÀNH CAM KẾT CỦA VIỆT NAM TRONG VIỆC ỨNG PHÓ VỚI BIẾN ĐỔI KHÍ HẬU
+            <div class="flex gap-5 xl:flex-row flex-col">
+                <div class="md:text-2xl xl:text-3xl text-2xl font-bold md:basis-1/2">
+                    CHƯƠNG TRÌNH HỖ TRỢ DOANH NGHIỆP KHU VỰC TƯ NHÂN KINH DOANH BỀN VỮNG GIAI ĐOẠN 2022-2025 (Quyết định
+                    167/QĐ-TTg 2022)
                 </div>
                 <div class="md:basis-1/2 basis-full">
                     <div class="flex gap-5 flex-col">
                         <div class="flex gap-5 items-center">
-                            <div class="w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-regular fa-building"/>
                             </div>
-                            <div class="text-lg ">Hỗ trợ 10.000 doanh nghiệp thực hành kinh doanh bền vững</div>
+                            <div class="text-lg basis-[95%]">
+                                Nâng cao nhận thức của cộng đồng doanh nghiệp khu vực tư nhân về kinh doanh bền vững.
+                            </div>
                         </div>
 
                         <div class="flex gap-5 items-center">
-                            <div class="w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-tree"/>
                             </div>
-                            <div class="text-lg">Góp phần tiết kiệm năng lượng 5,0-7,0% tổng tiêu thụ năng lượng quốc
-                                gia
+                            <div class="text-lg basis-[95%]">
+                                Hỗ trợ khoảng 10.000 doanh nghiệp khu vực tư nhân thực hành kinh doanh bền vững.
                             </div>
                         </div>
 
                         <div class="flex gap-5 items-center">
-                            <div class="w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-water"/>
                             </div>
-                            <div class="text-lg">Tăng năng suất lao động bình quân khoảng 7%/năm</div>
+                            <div class="text-lg basis-[95%]">
+                                Góp phần đạt mức tiết kiệm năng lượng 5,0-7,0% tổng tiêu thụ năng lượng toàn quốc.
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5 items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                                <font-awesome-icon icon="fa-solid fa-arrow-up"/>
+                            </div>
+                            <div class="text-lg basis-[95%]">Tăng năng suất lao động bình quân khoảng 7%/năm.</div>
+                        </div>
+
+                        <div class="flex gap-5 items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                                <font-awesome-icon icon="fa-solid fa-mountain-sun"/>
+                            </div>
+                            <div class="text-lg basis-[95%]">Và một số mục tiêu cụ thể khác.</div>
                         </div>
                     </div>
                 </div>
@@ -117,89 +127,85 @@ const evaluatedForms = [
     </div>
 
     <div>
-        <DividerWithName label="công cụ đánh giá"/>
-        <div class="flex flex-col md:px-10 lg:px-[150px] xl:px-[200px] px-5 space-y-10 mb-10">
+        <DividerWithName label="CÔNG CỤ ĐÁNH GIÁ KINH DOANH BỀN VỮNG"/>
+        <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 space-y-10 mb-10">
             <div class="flex flex-col gap-5">
-                <div class="md:text-3xl xl:text-4xl text-2xl font-bold">
-                    CÔNG CỤ ĐÁNH GIÁ KINH DOANH BỀN VỮNG.
-                </div>
                 <div class="text-justify">
                     Bộ công cụ đánh giá mô hình kinh doanh bền vững được phát triển bởi Cục Phát triển doanh nghiệp, Bộ
-                    Kế hoạch và đầu tư nhằm hỗ trợ và khuyến khích các doanh nghiệp tại Việt Nam áp dụng kinh doanh bền
-                    vững. Bộ công cụ này không chỉ là một bước đột phá trong việc hướng dẫn và định hình mô hình kinh
-                    doanh bền vững, mà còn là tập hợp thông tin cụ thể và khả năng lượng hóa theo thang điểm, trọng số.
-                    Với các tiêu chí cụ thể, bộ công cụ này sẽ giúp doanh nghiệp tự đánh giá mức độ phù hợp với nguyên
-                    tắc kinh doanh bền vững, định rõ điểm mạnh và điểm yếu; giúp nâng cao nhận thức, tạo cơ hội cho việc
-                    điều chỉnh và cải thiện mô hình kinh doanh có lợi cho xã hội và môi trường.
+                    Kế hoạch và đầu tư, là các bộ công cụ tự đánh giá, cho phép doanh nghiệp đo lường hiệu quả việc cân
+                    bằng lợi ích của các chỉ tiêu về kinh tế, xã hội, môi trường và quản trị của tổ chức, doanh nghiệp.
+                    Bộ công cụ đánh giá mô hình kinh doanh bền vững sẽ bao gồm các nhóm tiêu chí cụ thể hóa theo từng mô
+                    hình kinh doanh bền vững ESG (E - Môi trường, S - Xã hội và G - Quản trị), mô hình kinh doanh áp
+                    dụng nguyên tắc kinh tế tuần hoàn và mô hình kinh doanh bao trùm.
                 </div>
-            </div>
-            <div class="flex md:flex-row flex-col gap-10">
-                <div class="basis-1/2 flex justify-center items-center flex-col">
-                    <div class="xl:w-[500px] xl:h-[500px] md:h-[300px] md:w-[300px]">
-                        <RadarChart id="chartESG"
-                                    :labels="['E-Môi trường', 'S-Xã hội', 'G-Quản trị']"
-                                    :data="[43.75, 57.50, 79.31]"
-                                    :circular="true"/>
-                    </div>
-                    <div class="italic font-normal text-center lg:text-base text-sm">Kết quả đánh giá thực hành ESG
-                    </div>
-                </div>
-                <div class="basis-1/2 lex justify-center items-center flex-col">
-                    <div class="xl:w-[500px] xl:h-[500px] md:h-[300px] md:w-[300px]">
-                        <RadarChart id="chartNEC"
-                                    :labels="['Nhóm tiêu chí 1', 'Nhóm tiêu chí 2', 'Nhóm tiêu chí 3']"
-                                    :data="[20, 20, 15]"
-                                    :suggested-max="30"
-                                    :step-size="10"
-                                    color="#f97316"
-                                    :circular="true"/>
-                    </div>
+                <div class="">
+                    <a-carousel class="carousel-container" id="overview" arrows>
+                        <template #prevArrow>
+                            <div class="custom-slick-arrow" style="left: 10px">
+                                <font-awesome-icon icon="fa-solid fa-chevron-left"/>
+                            </div>
+                        </template>
+                        <template #nextArrow>
+                            <div class="custom-slick-arrow" style="right: 10px">
+                                <font-awesome-icon icon="fa-solid fa-chevron-right"/>
+                            </div>
+                        </template>
+                        <div class="relative overview-block h-full text-black px-10">
+                            <div class="bg-black">
+                                <img src="../assets/chart_esg.png" alt="chart_esg">
+                            </div>
+                            <a-button
+                                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-fit min-h-[50px] md:text-base xl:text-lg"
+                                    @click.prevent="handleAccessForm(isAuth, 'ESG')">
+                                Đánh giá ngay
+                            </a-button>
+                        </div>
 
-                    <div class="italic font-normal text-center lg:text-base text-sm">
-                        Kết quả đánh giá thực hành kinh tế tuần hoàn
-                    </div>
+                        <div class="relative overview-block h-full text-black px-10">
+                            <div>
+                                <img src="../assets/chart_nec.png" alt="chart_nec">
+                            </div>
+                            <a-button
+                                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-fit min-h-[50px] md:text-base xl:text-lg"
+                                    @click.prevent="handleAccessForm(isAuth, 'NEC')">
+                                Đánh giá ngay
+                            </a-button>
+                        </div>
+                    </a-carousel>
                 </div>
             </div>
-            <a-carousel class="carousel-container" id="overview" arrows>
-                <template #prevArrow>
-                    <div class="custom-slick-arrow" style="left: 10px">
-                        <font-awesome-icon icon="fa-solid fa-chevron-left"/>
-                    </div>
-                </template>
-                <template #nextArrow>
-                    <div class="custom-slick-arrow" style="right: 10px">
-                        <font-awesome-icon icon="fa-solid fa-chevron-right"/>
-                    </div>
-                </template>
-                <div v-for="form in evaluatedForms"
-                     class="overview-block flex-col items-start md:gap-5 gap-2 h-full text-black px-10">
-                    <div class="evaluated-title md:text-2xl xl:text-3xl text-xl h-fit">
-                        {{ form.title }}
-                    </div>
-                    <a-button class="h-fit min-h-[50px] md:text-base xl:text-lg"
-                              @click.prevent="handleAccessForm(isAuth, form.formName)">
-                        Đánh giá ngay
-                    </a-button>
-                </div>
-            </a-carousel>
         </div>
     </div>
 
     <div class="bg-[#15B9A0]">
         <DividerWithName label="tin tức và sự kiện"/>
         <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 space-y-5 mb-10">
-            <div class="flex flex-wrap gap-5">
-                <div v-for="news in newsArray" class="relative md:w-[48%] xl:w-[32%] w-full">
-                    <div class="absolute xl:p-5 md:p-8 p-10 text-white space-y-2.5 z-50 bg-black h-full bg-opacity-60 rounded-[5px]">
-                        <a :href="news.href" target="_blank" class="text-xl font-bold">{{ news.title }}</a>
-                        <div class="text-[14px] text-justify">{{ news.description }}</div>
+            <div class="flex gap-5 md:flex-row flex-col">
+                <a-card v-for="news in newsArray" class="basis-1/3">
+                    <template #cover>
+                        <a :href="news.href" target="_blank">
+                            <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full" :src="news.thumbnail" alt="">
+                        </a>
+                    </template>
+                    <div class="space-y-2">
+                        <a :href="news.href" target="_blank"
+                           class="font-bold line-clamp-2 text-ellipsis text-base">
+                            {{ news.title }}
+                        </a>
+                        <div class="text-[14px] line-clamp-4 text-ellipsis text-justify">{{ news.description }}</div>
                     </div>
-                    <div>
-                        <img :src="news.thumbnail"
-                             class="rounded-[5px] min-h-[300px]"
-                             :alt="`News_Image_${news.id}`">
-                    </div>
-                </div>
+                </a-card>
+                <!--                <div v-for="news in newsArray" class="relative md:w-[48%] xl:w-[32%] w-full">-->
+                <!--                    <div class="absolute xl:p-5 md:p-8 p-10 text-white space-y-2.5 z-50 bg-black h-full bg-opacity-60 rounded-[5px]">-->
+                <!--                        <a :href="news.href" target="_blank" class="text-xl font-bold">{{ news.title }}</a>-->
+                <!--                        <div class="text-[14px] text-justify">{{ news.description }}</div>-->
+                <!--                    </div>-->
+                <!--                    <div>-->
+                <!--                        <img :src="news.thumbnail"-->
+                <!--                             class="rounded-[5px] min-h-[300px]"-->
+                <!--                             :alt="`News_Image_${news.id}`">-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
         </div>
     </div>
@@ -209,7 +215,8 @@ const evaluatedForms = [
 
 <style scoped>
 :deep(.carousel-container .slick-slide) {
-    height: 170px;
+//height: 170px;
+    width: 100px;
 }
 
 :deep(.carousel-container .slick-slide div) {
@@ -221,7 +228,7 @@ const evaluatedForms = [
 }
 
 :deep(.carousel-container .slick-slide .overview-block .evaluated-title) {
-    height: fit-content;
+    //height: fit-content;
 }
 
 :deep(.ant-carousel .slick-dots li button) {

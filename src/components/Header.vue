@@ -13,11 +13,11 @@ const language = ref('VIE')
 const userInfo = reactive({})
 
 const links = [
-    {label: 'Trang chủ', to: '/'},
-    {label: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
-    {label: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
-    {label: 'Thư viện', to: '/library'},
-    {label: 'Hoạt động', to: '/events'}
+    {label: 'Trang chủ', name: ['Home'], to: '/'},
+    {label: 'Tổng quan về kinh doanh bền vững', name: ['Overview'], to: '/overview'},
+    {label: 'Đánh giá kinh doanh bền vững', name: ['Evaluate', 'EvaluateESGForm', 'EvaluateNECForm'], to: '/evaluate'},
+    {label: 'Thư viện', name: ['Library', 'Detail'], to: '/library'},
+    {label: 'Hoạt động', name: ['Events'], to: '/events'}
 ]
 
 const handleClickMenu = () => {
@@ -139,6 +139,7 @@ const onSearch = (e) => {
                 :class="[open ? 'left-0' : 'left-[-100%]']">
                 <li v-for="link in links" class="my-3 flex items-center md:px-2 xl:px-5 px-5">
                     <router-link :to="link.to" class="text-center md:text-xs lg:text-base xl:text-lg text-sm"
+                                 :class="link.name.includes(router.currentRoute.value.name) ? 'activated' : ''"
                                  @click.prevent="handleChangeRoute">
                         {{ link.label }}
                     </router-link>
@@ -151,5 +152,50 @@ const onSearch = (e) => {
 <style scoped>
 :deep(.ant-input-group-addon) {
     background: #15B9A0;
+}
+
+a {
+    background-image: linear-gradient(
+            to right,
+            #15B9A0,
+            #15B9A0 50%,
+            #000 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+a:before {
+    content: '';
+    background: #15B9A0;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    background-position: 0;
+}
+
+a:hover::before {
+    width: 100%;
+}
+
+.activated {
+    background-position: 0;
+}
+
+.activated::before {
+    width: 100%;
 }
 </style>

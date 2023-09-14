@@ -133,7 +133,7 @@ export const ThirdCriteria = [
                 answers: [
                     {key: 'A', answer: 'Không', point: 0},
                     {key: 'B', answer: 'Có, doanh nghiệp đang xây dựng biện pháp', point: 2},
-                    {key: 'B', answer: 'Có, doanh nghiệp có biện pháp được công bố', point: 4}
+                    {key: 'C', answer: 'Có, doanh nghiệp có biện pháp được công bố', point: 4}
                 ]
             }
         ]

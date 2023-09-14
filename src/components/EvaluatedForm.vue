@@ -17,6 +17,8 @@ import ProhibitedChemicalsModal from "./ProhibitedChemicalsModal.vue";
 import RareMaterialsModal from "./RareMaterialsModal.vue";
 import {useProfileESGStore} from "../stores/useProfileESGStore.js";
 import {saveResult} from "../services/evaluatedForm.js";
+import jsPDF from "jspdf";
+import * as htmlToImage from "html-to-image";
 
 const businessTypeStore = useBusinessTypeStore()
 const stepStore = useStepStore()
