@@ -16,13 +16,16 @@ import {useModalStore} from "../stores/useModalStore.js";
 import ProhibitedChemicalsModal from "./ProhibitedChemicalsModal.vue";
 import RareMaterialsModal from "./RareMaterialsModal.vue";
 import {useProfileESGStore} from "../stores/useProfileESGStore.js";
+import {useProfileNECStore} from "../stores/useProfileNECStore.js";
 import {saveResult} from "../services/evaluatedForm.js";
+import {ENUM} from "../constants/enumValues.js";
 
 const businessTypeStore = useBusinessTypeStore()
 const stepStore = useStepStore()
 const evaluatedFormStore = useEvaluatedFormStore()
 const evaluatedResultStore = useEvaluatedResultStore()
 const profileESGStore = useProfileESGStore()
+const profileNECStore = useProfileNECStore()
 const modalStore = useModalStore()
 const router = useRouter()
 const routeName = router.currentRoute.value.name
@@ -30,23 +33,23 @@ const routeName = router.currentRoute.value.name
 const loading = ref(false)
 
 const renderWithGroup = computed(() => {
-    return routeName === 'EvaluateNECForm' && [2, 3].includes(stepStore.currentStepState)
+    return routeName === ENUM.FORM_NAME.EvaluateNECForm && [2, 3].includes(stepStore.currentStepState)
 })
 
 const questions = computed(() => {
     return (() => {
         switch (true) {
-            case (routeName === 'EvaluateESGForm' && stepStore.currentStepState === 1):
+            case (routeName === ENUM.FORM_NAME.EvaluateESGForm && stepStore.currentStepState === 1):
                 return EnvironmentQuestions
-            case (routeName === 'EvaluateESGForm' && stepStore.currentStepState === 2):
+            case (routeName === ENUM.FORM_NAME.EvaluateESGForm && stepStore.currentStepState === 2):
                 return SocialQuestions
-            case (routeName === 'EvaluateESGForm' && stepStore.currentStepState === 3):
+            case (routeName === ENUM.FORM_NAME.EvaluateESGForm && stepStore.currentStepState === 3):
                 return GovernanceQuestions
-            case (routeName === 'EvaluateNECForm' && stepStore.currentStepState === 1):
+            case (routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 1):
                 return FirstCriteria
-            case(routeName === 'EvaluateNECForm' && stepStore.currentStepState === 2):
+            case(routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 2):
                 return SecondCriteria
-            case(routeName === 'EvaluateNECForm' && stepStore.currentStepState === 3):
+            case(routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 3):
                 return ThirdCriteria
             default:
                 return []
@@ -109,7 +112,7 @@ const finishEvaluated = async () => {
                     return {question: k, answer: evaluatedFormStore.evaluatedFormState[k].split('-')[0]}
                 }),
                 result: {
-                    ...(routeName === 'EvaluateESGForm' && {
+                    ...(routeName === ENUM.FORM_NAME.EvaluateESGForm && {
                         environment: {
                             point: evaluatedResultStore.resultPoint.environment.point,
                             distribution: evaluatedResultStore.getIndustryWeighting().E
@@ -125,7 +128,7 @@ const finishEvaluated = async () => {
                         total: evaluatedResultStore.getSummaryESG(),
                         rate: evaluatedResultStore.getRateInfoESG().rate
                     }),
-                    ...(routeName === 'EvaluateNECForm' && {
+                    ...(routeName === ENUM.FORM_NAME.EvaluateNECForm && {
                         first_criteria: {
                             max: evaluatedResultStore.resultPoint.firstCriteria.max,
                             sum: evaluatedResultStore.resultPoint.firstCriteria.sum,
@@ -158,9 +161,9 @@ const finishEvaluated = async () => {
 
 const formId = () => {
     switch (routeName) {
-        case 'EvaluateESGForm':
+        case ENUM.FORM_NAME.EvaluateESGForm:
             return 'ESG'
-        case 'EvaluateNECForm':
+        case ENUM.FORM_NAME.EvaluateNECForm:
             return 'NEC'
         default:
             return 'other'
@@ -169,10 +172,10 @@ const formId = () => {
 
 const getProfile = () => {
     switch (routeName) {
-        case 'EvaluateESGForm':
+        case ENUM.FORM_NAME.EvaluateESGForm:
             return profileESGStore.formData
-        case 'EvaluateNECForm':
-            return {}
+        case ENUM.FORM_NAME.EvaluateNECForm:
+            return profileNECStore.formData
     }
 }
 
@@ -186,7 +189,7 @@ const openAppendix4 = () => {
 </script>
 
 <template>
-    <div v-if="routeName === 'EvaluateNECForm' && stepStore.currentStepState === 2"
+    <div v-if="routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 2"
          class="text-right space-x-2.5 mb-2.5">
         <a-button @click="openAppendix3">Phụ lục 3</a-button>
         <a-button @click="openAppendix4">Phụ lục 4</a-button>

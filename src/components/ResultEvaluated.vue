@@ -5,6 +5,7 @@ import RadarChart from "./RadarChart.vue";
 import {useRouter} from "vue-router";
 import jsPDF from "jspdf";
 import * as htmlToImage from "html-to-image";
+import {ENUM} from "../constants/enumValues.js";
 
 const evaluatedResultStore = useEvaluatedResultStore()
 const router = useRouter()
@@ -12,7 +13,7 @@ const routeName = computed(() => router.currentRoute.value.name)
 
 const config = computed(() => {
     switch (routeName.value) {
-        case 'EvaluateESGForm':
+        case ENUM.FORM_NAME.EvaluateESGForm:
             return {
                 columns: [
                     {
@@ -58,7 +59,7 @@ const config = computed(() => {
                 chartData: [evaluatedResultStore.resultPoint.environment.point, evaluatedResultStore.resultPoint.social.point, evaluatedResultStore.resultPoint.governance.point],
                 chartTitle: 'ĐÁNH GIÁ THỰC HÀNH ESG'
             }
-        case 'EvaluateNECForm':
+        case ENUM.FORM_NAME.EvaluateNECForm:
             return {
                 columns: [
                     {
@@ -128,7 +129,7 @@ const exportHTMLToPDF = async () => {
     const elements = document.getElementsByClassName("result-container")
     await createPdf({doc, elements})
 
-    doc.save(`ket_qua_danh_gia.pdf`)
+    doc.save(`${ENUM.FILE_NAME_EXPORT[routeName.value]}.pdf`)
 }
 
 const createPdf = async ({doc, elements}) => {
@@ -183,7 +184,7 @@ const createPdf = async ({doc, elements}) => {
         <template #summary>
             <a-table-summary-row class="bg-[#FAFAFA]">
                 <a-table-summary-cell :col-span="config.summaryTableConfig.title" class="font-bold">
-                    Tổng điểm ESG
+                    Tổng điểm
                 </a-table-summary-cell>
                 <a-table-summary-cell :col-span="config.summaryTableConfig.value" class="text-right font-bold">
                     {{ config.summaryPoint }}

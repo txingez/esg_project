@@ -34,6 +34,17 @@ const newsArray = [
     }
 ]
 
+const evaluateSlides = [
+    {
+        image: 'https://lh3.googleusercontent.com/pw/AIL4fc836mXERsuKuX1xyqweyQY0iqHji-W0TU2uEJn65qcAXuBH_W1rGTLMoLvPEs0YximvA7uitb6Tjlb8LhaEfH6mQx5mU2G1hha7rjIWKyqA21Or0jSW5km_PsWM6R9HlnwZW2-lHhK8ak9nzH_dDJrw=w1600-h900-s-no?authuser=0',
+        formId: 'ESG'
+    },
+    {
+        image: 'https://lh3.googleusercontent.com/pw/AIL4fc_8t_bhSyN3BuzqMBpLjh8t1Ne5MqEJ70GgiQiOV5OtKYfkEbXLloWN1WC32ScIGijh3_B9mWE7MzTte6zM_EukhuNFQZXbr3nIPot6uq3c52oLzuzULBEIoUuPqj49llz6C9JjBWplsIZrClvxm7jX=w1600-h900-s-no?authuser=0',
+        formId: 'NEC'
+    }
+]
+
 </script>
 
 <template>
@@ -41,7 +52,7 @@ const newsArray = [
 
     <div>
         <DividerWithName label="GIỚI THIỆU"/>
-        <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 mb-10">
+        <div class="md:px-10 lg:px-[100px] px-5 mb-10">
             <p class="text-justify">
                 Phát triển bền vững đã trở thành xu thế chung trên toàn cầu. Đối với Việt Nam, phát triển nhanh và bền
                 vững là mục tiêu cốt lõi trên con đường trở thành nước phát triển vào năm 2050. Và đối với khu vực kinh
@@ -72,7 +83,7 @@ const newsArray = [
 
     <div class="bg-[#15B9A0]">
         <DividerWithName label="mục tiêu"/>
-        <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 space-y-5 mb-10">
+        <div class="md:px-10 lg:px-[100px] px-5 space-y-5 mb-10">
             <div class="flex gap-5 xl:flex-row flex-col">
                 <div class="md:text-2xl xl:text-3xl text-2xl font-bold md:basis-1/2">
                     CHƯƠNG TRÌNH HỖ TRỢ DOANH NGHIỆP KHU VỰC TƯ NHÂN KINH DOANH BỀN VỮNG GIAI ĐOẠN 2022-2025 (Quyết định
@@ -128,8 +139,8 @@ const newsArray = [
 
     <div>
         <DividerWithName label="CÔNG CỤ ĐÁNH GIÁ KINH DOANH BỀN VỮNG"/>
-        <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 space-y-10 mb-10">
-            <div class="flex flex-col gap-5">
+        <div class="md:px-10 lg:px-[100px] px-5 space-y-10 mb-10">
+            <div class="grid md:grid-cols-2 grid-cols-1 xl:gap-20 gap-5 items-center">
                 <div class="text-justify">
                     Bộ công cụ đánh giá mô hình kinh doanh bền vững được phát triển bởi Cục Phát triển doanh nghiệp, Bộ
                     Kế hoạch và đầu tư, là các bộ công cụ tự đánh giá, cho phép doanh nghiệp đo lường hiệu quả việc cân
@@ -150,26 +161,18 @@ const newsArray = [
                                 <font-awesome-icon icon="fa-solid fa-chevron-right"/>
                             </div>
                         </template>
-                        <div class="relative overview-block h-full text-black px-10">
-                            <div class="bg-black">
-                                <img src="../assets/chart_esg.png" alt="chart_esg">
+                        <div v-for="slide in evaluateSlides" class="relative overview-block h-full w-full text-black">
+                            <div class="w-full">
+                                <img :src="slide.image"
+                                     class="object-cover h-full w-full rounded-[10px]"
+                                     :alt="slide.image">
                             </div>
-                            <a-button
-                                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-fit min-h-[50px] md:text-base xl:text-lg"
-                                    @click.prevent="handleAccessForm(isAuth, 'ESG')">
-                                Đánh giá ngay
-                            </a-button>
-                        </div>
-
-                        <div class="relative overview-block h-full text-black px-10">
-                            <div>
-                                <img src="../assets/chart_nec.png" alt="chart_nec">
+                            <div class="rounded-[10px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-[rgba(0,0,0,0.4)] flex justify-center items-center">
+                                <a-button class="text-white h-fit min-h-[50px] md:text-base xl:text-lg"
+                                          @click.prevent="handleAccessForm(isAuth, slide.formId)">
+                                    Đánh giá ngay
+                                </a-button>
                             </div>
-                            <a-button
-                                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-fit min-h-[50px] md:text-base xl:text-lg"
-                                    @click.prevent="handleAccessForm(isAuth, 'NEC')">
-                                Đánh giá ngay
-                            </a-button>
                         </div>
                     </a-carousel>
                 </div>
@@ -179,7 +182,7 @@ const newsArray = [
 
     <div class="bg-[#15B9A0]">
         <DividerWithName label="tin tức và sự kiện"/>
-        <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 space-y-5 mb-10">
+        <div class="md:px-10 lg:px-[100px] px-5 space-y-5 mb-10">
             <div class="flex gap-5 md:flex-row flex-col">
                 <a-card v-for="news in newsArray" class="basis-1/3">
                     <template #cover>
@@ -195,17 +198,6 @@ const newsArray = [
                         <div class="text-[14px] line-clamp-4 text-ellipsis text-justify">{{ news.description }}</div>
                     </div>
                 </a-card>
-                <!--                <div v-for="news in newsArray" class="relative md:w-[48%] xl:w-[32%] w-full">-->
-                <!--                    <div class="absolute xl:p-5 md:p-8 p-10 text-white space-y-2.5 z-50 bg-black h-full bg-opacity-60 rounded-[5px]">-->
-                <!--                        <a :href="news.href" target="_blank" class="text-xl font-bold">{{ news.title }}</a>-->
-                <!--                        <div class="text-[14px] text-justify">{{ news.description }}</div>-->
-                <!--                    </div>-->
-                <!--                    <div>-->
-                <!--                        <img :src="news.thumbnail"-->
-                <!--                             class="rounded-[5px] min-h-[300px]"-->
-                <!--                             :alt="`News_Image_${news.id}`">-->
-                <!--                    </div>-->
-                <!--                </div>-->
             </div>
         </div>
     </div>
@@ -213,44 +205,40 @@ const newsArray = [
   <!--    <ContactForm/>-->
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 :deep(.carousel-container .slick-slide) {
-//height: 170px;
-    width: 100px;
+  height: 250px;
+  width: 100%;
 }
 
 :deep(.carousel-container .slick-slide div) {
-    height: 100%;
+  height: 100%;
 }
 
 :deep(.carousel-container .slick-slide .overview-block) {
-    display: flex !important;
-}
-
-:deep(.carousel-container .slick-slide .overview-block .evaluated-title) {
-    //height: fit-content;
+  display: flex !important;
 }
 
 :deep(.ant-carousel .slick-dots li button) {
-    background: #94a3b8;
+  background: #94a3b8;
 }
 
 :deep(.carousel-container .slick-arrow.custom-slick-arrow) {
-    width: 15px;
-    height: 15px;
-    font-size: 15px;
-    color: #94a3b8;
-    transition: ease all 0.3s;
-    opacity: 0.7;
-    z-index: 1;
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  color: #e5e7eb;
+  transition: ease all 0.3s;
+  opacity: 0.7;
+  z-index: 1;
 }
 
 :deep(.carousel-container .slick-arrow.custom-slick-arrow:before) {
-    display: none;
+  display: none;
 }
 
 :deep(.carousel-container .slick-arrow.custom-slick-arrow:hover) {
-    color: #94a3b8;
-    opacity: 0.5;
+  color: #e5e7eb;
+  opacity: 0.5;
 }
 </style>

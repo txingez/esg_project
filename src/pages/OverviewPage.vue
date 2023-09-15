@@ -23,11 +23,11 @@ const routes = [
     <Banner label="TỔNG QUAN VỀ KINH DOANH BỀN VỮNG"
             img-src="https://lh3.googleusercontent.com/pw/AIL4fc9qLXI6LSp4XjSrqXtMh-Tsjv7_hr9SPyon12xUHVR7VR1zyDtJ1l9oFX5TKzLaqT8m9LeembG5V7th4hMqusvb6lVOCn20cIPd4g2p6-kJGyLRwFUo-aqE9JviuY3Wk7xjHQV1r7i62Wj529OMZsbL=w2762-h1842-s-no?authuser=0"/>
 
-    <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 mt-2.5">
+    <div class="md:px-10 lg:px-[100px] px-5 mt-2.5">
         <BreadCrumb :routes="routes"/>
     </div>
     <DividerWithName label="Tổng quan"/>
-    <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 text-justify">
+    <div class="md:px-10 lg:px-[100px] px-5 text-justify">
         <p>
             Trong bối cảnh các quốc gia thành viên của Liên Hợp Quốc, trong đó có Việt Nam, đang tích cực tham gia tiến
             trình hiện thực hóa 17 Mục tiêu Phát triển Bền vững (SDGs), đồng thời hướng đến nền kinh tế xanh, tăng
@@ -66,9 +66,7 @@ const routes = [
                 </div>
             </li>
         </ul>
-    </div>
 
-    <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 text-justify">
         <p class="md:text-3xl text-xl font-bold">
             Các Mục tiêu Phát triển Bền vững tại Việt Nam
         </p>

@@ -6,7 +6,7 @@ const banners = [
         label: 'HỖ TRỢ DOANH NGHIỆP KINH DOANH BỀN VỮNG'
     },
     {
-        src: 'https://lh3.googleusercontent.com/pw/AIL4fc-RSoSKp0th5coF0QDkiJ5CETvqdl86Edy5wb9dbNWjNxZywzep8YG8x_fgde8ASbaOF_lrccZI6MKWqg13QYPbsK42oTdypA9cMY6255hewGnmB7hzpcg2Awd9G7gcEZfaCwIR5JlRxQLltSoQ_wM=w2934-h1956-s-no?authuser=0',
+        src: 'https://lh3.googleusercontent.com/pw/AIL4fc-GwZfUdcjitjBF5X94w3lsFtbG5fPdCvpNLYraoML0JyiP1Fha75Ylx8AvLrJBcJMcOiIJAHiWrBzAaaxGj-jAr4DkS4wAQsUEIrf3NWN-8HikZ7m5Pd8qE8X8Om20ma9QMe3LXCPIWsdEAfLSHThK=w1600-h900-s-no?authuser=0',
         label: 'CÔNG CỤ ĐÁNH GIÁ KINH DOANH BỀN VỮNG',
         labelBtn: 'Thông tin chi tiết',
         to: '/evaluate'
@@ -42,7 +42,7 @@ const banners = [
                 </a-button>
             </div>
             <div class="h-full">
-                <img class="w-full h-full" :src="banner.src" alt="carousel">
+                <img class="w-full h-full object-cover" :src="banner.src" alt="carousel">
             </div>
         </div>
     </a-carousel>

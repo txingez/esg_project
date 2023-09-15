@@ -18,13 +18,13 @@ const routes = [
 
 <template>
     <Banner label="ĐÁNH GIÁ KINH DOANH BỀN VỮNG"
-            img-src="https://lh3.googleusercontent.com/pw/AIL4fc_VQDd_W2ks8kXDx0k5pCwRJ2pFmInZ_6qRMBElgwMD8XiPYNg_kvgNMsCldDwOGvHqKahWlTfUdagJze_csPt9nm0SJDWTXTkrN8LHT49-5We7WhKK6IdrMOsRHPwjB8dG7lwEFGeLLP3Y4TYDAU43=w1440-h535-s-no?authuser=0"/>
+            img-src="https://lh3.googleusercontent.com/pw/AIL4fc_qg1NVcz14qsYlrpMY5UffnjUqfCn4jDD9Nq5VDJLRrVKOr3iU_iPABueBSeFYjblIky3gdl3Mjkynozo69okGHceaK_8kTEfOhQ1xnjuJTog9_YMuYLObKP1zN098KdwQZneAkIF4BnFvytA-ONlN=w1600-h900-s-no?authuser=0"/>
 
-    <div class="md:px-10 lg:px-[50px] xl:px-[200px] px-5 mt-2.5">
+    <div class="md:px-10 lg:px-[100px] px-5 mt-2.5">
         <BreadCrumb :routes="routes"/>
     </div>
 
-    <div class="md:px-10 lg:px-[50px] xl:px-[200px] px-5 py-10 flex md:gap-10 gap-5 flex-col">
+    <div class="md:px-10 lg:px-[100px] px-5 py-10 flex md:gap-10 gap-5 flex-col">
         <div>
             <div class="font-bold text-2xl">Bộ công cụ đánh giá kinh doanh bền vững là gì?</div>
             <p class="text-justify">
