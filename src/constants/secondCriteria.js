@@ -102,7 +102,7 @@ export const SecondCriteria = [
                 key: 'SC10',
                 question: 'Doanh nghiệp có lựa chọn các nguyên vật liệu có khả năng tái chế/tái sử dụng được không?',
                 answers: [
-                    {key: 'A', answer: 'Có', point: 1},
+                    {key: 'A', answer: 'Có', point: 2},
                     {key: 'B', answer: 'Không', point: 0}
                 ]
             },
@@ -121,9 +121,9 @@ export const SecondCriteria = [
                 question: 'Tỷ trọng vật liệu (tính theo khối lượng) cấu thành sản phẩm có thể tái sử dụng',
                 answers: [
                     {key: 'A', answer: 'Dưới 25%', point: 0},
-                    {key: 'B', answer: 'Trong khoảng 25%-49%', point: 1},
-                    {key: 'C', answer: 'Trong khoảng 50%-74%', point: 2},
-                    {key: 'D', answer: 'Từ 75% trở lên', point: 3}
+                    {key: 'B', answer: 'Trong khoảng 25%-49%', point: 2},
+                    {key: 'C', answer: 'Trong khoảng 50%-74%', point: 4},
+                    {key: 'D', answer: 'Từ 75% trở lên', point: 6}
                 ]
             },
             {

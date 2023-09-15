@@ -87,19 +87,19 @@ const config = computed(() => {
                 ],
                 dataSource: [
                     {
-                        name: 'Nhóm tiêu chí 1: Tầm nhìn và năng lực của doanh nghiệp',
+                        name: 'Nhóm tiêu chí 1: Tầm nhìn và chiến lược của doanh nghiệp',
                         max: evaluatedResultStore.resultPoint.firstCriteria.max,
                         sum: evaluatedResultStore.resultPoint.firstCriteria.sum,
                         point: evaluatedResultStore.resultPoint.firstCriteria.point
                     },
                     {
-                        name: 'Nhóm tiêu chí 2: Áp dụng nguyên tắc tuần hoàn trong sản xuất và tiền sản xuất',
+                        name: 'Nhóm tiêu chí 2: Áp dụng nguyên tắc tuần hoàn trong công đoạn sản xuất và tiền sản xuất',
                         max: evaluatedResultStore.resultPoint.secondCriteria.max,
                         sum: evaluatedResultStore.resultPoint.secondCriteria.sum,
                         point: evaluatedResultStore.resultPoint.secondCriteria.point
                     },
                     {
-                        name: 'Nhóm tiêu chí 3: Áp dụng nguyên tắc tuần hoàn trong dịch vụ sau bán hàng',
+                        name: 'Nhóm tiêu chí 3: Áp dụng nguyên tắc tuần hoàn trong công đoạn sau bán hàng',
                         max: evaluatedResultStore.resultPoint.thirdCriteria.max,
                         sum: evaluatedResultStore.resultPoint.thirdCriteria.sum,
                         point: evaluatedResultStore.resultPoint.thirdCriteria.point
