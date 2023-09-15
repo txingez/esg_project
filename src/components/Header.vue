@@ -154,7 +154,7 @@ const onSearch = (e) => {
     background: #15B9A0;
 }
 
-a {
+ul li a {
     background-image: linear-gradient(
             to right,
             #15B9A0,
@@ -171,7 +171,7 @@ a {
     transition: all 0.3s ease-in-out;
 }
 
-a:before {
+ul li a:before {
     content: '';
     background: #15B9A0;
     display: block;
@@ -183,11 +183,11 @@ a:before {
     transition: all 0.3s ease-in-out;
 }
 
-a:hover {
+ul li a:hover {
     background-position: 0;
 }
 
-a:hover::before {
+ul li a:hover::before {
     width: 100%;
 }
 

@@ -17,8 +17,6 @@ import ProhibitedChemicalsModal from "./ProhibitedChemicalsModal.vue";
 import RareMaterialsModal from "./RareMaterialsModal.vue";
 import {useProfileESGStore} from "../stores/useProfileESGStore.js";
 import {saveResult} from "../services/evaluatedForm.js";
-import jsPDF from "jspdf";
-import * as htmlToImage from "html-to-image";
 
 const businessTypeStore = useBusinessTypeStore()
 const stepStore = useStepStore()
@@ -129,16 +127,19 @@ const finishEvaluated = async () => {
                     }),
                     ...(routeName === 'EvaluateNECForm' && {
                         first_criteria: {
-                            point: evaluatedResultStore.resultPoint.firstCriteria.point,
-                            distribution: evaluatedResultStore.getIndustryWeighting().FC
+                            max: evaluatedResultStore.resultPoint.firstCriteria.max,
+                            sum: evaluatedResultStore.resultPoint.firstCriteria.sum,
+                            point: evaluatedResultStore.resultPoint.firstCriteria.point
                         },
                         second_criteria: {
-                            point: evaluatedResultStore.resultPoint.secondCriteria.point,
-                            distribution: evaluatedResultStore.getIndustryWeighting().SC
+                            max: evaluatedResultStore.resultPoint.secondCriteria.max,
+                            sum: evaluatedResultStore.resultPoint.secondCriteria.sum,
+                            point: evaluatedResultStore.resultPoint.secondCriteria.point
                         },
                         third_criteria: {
-                            point: evaluatedResultStore.resultPoint.thirdCriteria.point,
-                            distribution: evaluatedResultStore.getIndustryWeighting().TC
+                            max: evaluatedResultStore.resultPoint.thirdCriteria.max,
+                            sum: evaluatedResultStore.resultPoint.thirdCriteria.sum,
+                            point: evaluatedResultStore.resultPoint.thirdCriteria.point
                         },
                         total: evaluatedResultStore.getSummaryNEC(),
                         rate: evaluatedResultStore.getRateInfoNEC().rate

@@ -47,7 +47,7 @@ const handleSeeDetail = document => {
 
 <template>
     <Banner label="thư viện"
-            img-src="https://lh3.googleusercontent.com/pw/AIL4fc-oqkvJWEb4WgEDyAobLkR6yB0L5cAStpAty8JqS6J1FI3ODOm7EUg68vsyVfEuN6FYs149-E-W5v4IeW1hlmFkooz1rKzpOxRZ4E8UQr7Fg--xOo5q90g3B76yKIderS_n0ZsClhvd0arKq0wOuDRb=w1800-h1201-s-no?authuser=0"/>
+            img-src="https://lh3.googleusercontent.com/pw/AIL4fc_PqbQO56-LlJ-7nKZiMuISmfiro1soJFDFpM2EEbO393mVAu0UNSErXdsp2exJPIHK1V3knwYd6j2GN075UzYNrdfvkZ0kbxRY7eCMYjt5VMclIFAUbf5oVc7aoSbxA3c-DWp0c1GZS9JglAxgmrVu=w1262-h300-s-no?authuser=0"/>
 
     <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 mt-2.5">
         <BreadCrumb :routes="routes"/>
@@ -84,7 +84,6 @@ const handleSeeDetail = document => {
             <div class="text-center" v-if="!isAll">
                 <a-button @click.prevent="showMore" class="min-h-[50px] min-w-[150px]">Xem thêm</a-button>
             </div>
-            <div v-else class="text-center italic">Đã xem hết tài liệu</div>
         </div>
     </a-spin>
 </template>

@@ -98,7 +98,6 @@ const getNewsData = (offset, limit = 8) => {
             <div class="text-center" v-if="!isAllNews">
                 <a-button @click.prevent="showMore(false)" class="min-h-[50px] min-w-[150px]">Xem thêm</a-button>
             </div>
-            <div v-else class="text-center italic">Đã xem hết tin tức</div>
         </div>
     </div>
 
@@ -131,7 +130,6 @@ const getNewsData = (offset, limit = 8) => {
             <div class="text-center" v-if="!isAllEvent">
                 <a-button @click.prevent="showMore(true)" class="min-h-[50px] min-w-[150px]">Xem thêm</a-button>
             </div>
-            <div v-else class="text-center italic">Đã xem hết sự kiện</div>
         </div>
     </div>
 

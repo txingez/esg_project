@@ -7,8 +7,8 @@ export const ThirdCriteria = [
                 question: 'Doanh nghiệp sử dụng bao nhiêu % năng lượng là năng lượng tái tạo trong hoạt động giao hàng?',
                 answers: [
                     {key: 'A', answer: 'Dưới 25%', point: 0},
-                    {key: 'B', answer: 'Trong khoảng 25% - 49%', point: 1},
-                    {key: 'C', answer: 'Trong khoảng 50% -74%', point: 2},
+                    {key: 'B', answer: 'Trong khoảng 25%-49%', point: 1},
+                    {key: 'C', answer: 'Trong khoảng 50%-74%', point: 2},
                     {key: 'D', answer: 'Từ 75% trở lên', point: 3}
                 ]
             },
@@ -17,8 +17,8 @@ export const ThirdCriteria = [
                 question: 'Trong năm ngay trước năm đánh giá, doanh nghiệp đã tái chế/tái sử dụng bao nhiêu % các vật liệu tiêu hao, công cụ để phục vụ vận chuyển và giao hàng?',
                 answers: [
                     {key: 'A', answer: 'Dưới 25%', point: 0},
-                    {key: 'B', answer: 'Trong khoảng 25% - 49%', point: 1},
-                    {key: 'C', answer: 'Trong khoảng 50% -74%', point: 2},
+                    {key: 'B', answer: 'Trong khoảng 25%-49%', point: 1},
+                    {key: 'C', answer: 'Trong khoảng 50%-74%', point: 2},
                     {key: 'D', answer: 'Từ 75% trở lên', point: 3}
                 ]
             }
@@ -29,11 +29,11 @@ export const ThirdCriteria = [
         questions: [
             {
                 key: 'TC3',
-                question: 'Doanh nghiệp có cung cấp/hỗ trợ dịch vụ sửa hoặc bảo trì sản phẩm sau khi bán hàng không? ',
+                question: 'Doanh nghiệp có cung cấp/hỗ trợ dịch vụ sửa hoặc bảo trì sản phẩm sau khi bán hàng không?',
                 answers: [
                     {
                         key: 'A',
-                        answer: 'Không,không có dịch vụ bảo trì sản phẩm/dịch vụ vì chúng vốn có tuổi thọ ngắn (sản phẩm tiêu dùng nhanh, dùng một lần)',
+                        answer: 'Không, không có dịch vụ bảo trì sản phẩm/dịch vụ vì chúng vốn có tuổi thọ ngắn (sản phẩm tiêu dùng nhanh, dùng một lần)',
                         point: 0
                     },
                     {
@@ -50,7 +50,7 @@ export const ThirdCriteria = [
             },
             {
                 key: 'TC4',
-                question: 'Doanh nghiệp có cung cấp thông tin chi tiết về sản phẩm/bao bì trên nhãn mác sản phẩm theo quy định tại Nghị định 111/2021/NĐ-CP  và Nghị định 43/2017/NĐ-CP không?',
+                question: 'Doanh nghiệp có cung cấp thông tin chi tiết về sản phẩm/bao bì trên nhãn mác sản phẩm theo quy định tại Nghị định 111/2021/NĐ-CP và Nghị định 43/2017/NĐ-CP không?',
                 answers: [
                     {key: 'A', answer: 'Có', point: 0},
                     {key: 'B', answer: 'Không', point: 1}
@@ -63,7 +63,7 @@ export const ThirdCriteria = [
         questions: [
             {
                 key: 'TC5',
-                question: 'Doanh nghiệp có kế hoạch để tái chế sản phẩm được thu hồi sau khi khách hàng sử dụng không?',
+                question: 'DDoanh nghiệp có kế hoạch để tái chế sản phẩm được thu hồi sau khi khách hàng sử dụng không?',
                 answers: [
                     {key: 'A', answer: 'Có', point: 1},
                     {key: 'B', answer: 'Không', point: 0}
@@ -87,7 +87,7 @@ export const ThirdCriteria = [
             },
             {
                 key: 'TC8',
-                question: 'Doanh nghiệp có số liệu thống kê theo dõi tỷ lệ tái chế sản phẩm của mình không? ',
+                question: 'Doanh nghiệp có số liệu thống kê theo dõi tỷ lệ tái chế sản phẩm của mình không?',
                 answers: [
                     {key: 'A', answer: 'Có', point: 1},
                     {key: 'B', answer: 'Không', point: 0}
@@ -106,7 +106,7 @@ export const ThirdCriteria = [
                 question: 'Trong năm ngay trước năm đánh giá, doanh nghiệp thu hồi bao nhiêu % sản phẩm và bao bì (để tái chế, tái sử dụng, sửa chữa, tái sản xuất, bán lại để tái chế, trực tiếp xử lý bằng biện pháp sinh học như hẩm ủ khí sinh học hoặc làm phân bón vi sinh compost...)?',
                 answers: [
                     {key: 'A', answer: 'Dưới 10%', point: 0},
-                    {key: 'B', answer: 'Trong khoảng 10% - 30%', point: 1},
+                    {key: 'B', answer: 'Trong khoảng 10%-30%', point: 1},
                     {key: 'C', answer: 'Trong khoảng 30%-50%', point: 2},
                     {key: 'D', answer: 'Từ 50% trở lên', point: 3}
                 ]

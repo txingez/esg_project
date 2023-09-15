@@ -69,7 +69,7 @@ const routes = [
     </div>
 
     <div class="md:px-10 lg:px-[150px] xl:px-[200px] px-5 text-justify">
-        <p class="text-3xl font-bold">
+        <p class="md:text-3xl text-xl font-bold">
             Các Mục tiêu Phát triển Bền vững tại Việt Nam
         </p>
         <p>
@@ -144,16 +144,16 @@ const routes = [
             về các mặt kinh tế, bảo vệ môi trường, ứng phó biến đổi khí hậu và giải quyết các vấn đề an sinh xã hội.
         </p>
         <p class="font-bold italic m-0">→ Có thể bạn quan tâm: </p>
-        <div>
+        <p>
             <router-link to="/library/detail/16" class="font-bold italic underline">
                 Tổng quan về mô hình kinh doanh áp dụng kinh tế tuần hoàn
             </router-link>
-        </div>
-        <div>
+        </p>
+        <p>
             <router-link to="/library/detail/17" class="font-bold italic underline">
                 Tổng quan về mô hình kinh doanh bao trùm
             </router-link>
-        </div>
+        </p>
         <p>
             ESG (Environmental - Môi trường, Social - Xã hội và Governance - Quản trị) là 3 trụ cột trong xu thế kinh
             doanh mới, gắn bó chặt chẽ với nhau. Thực hiện ESG cũng chính là sản xuất và kinh doanh bền vững, như tinh
