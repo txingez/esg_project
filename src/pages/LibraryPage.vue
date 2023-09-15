@@ -47,7 +47,7 @@ const handleSeeDetail = document => {
 
 <template>
     <Banner label="thư viện"
-            img-src="https://lh3.googleusercontent.com/pw/AIL4fc_PqbQO56-LlJ-7nKZiMuISmfiro1soJFDFpM2EEbO393mVAu0UNSErXdsp2exJPIHK1V3knwYd6j2GN075UzYNrdfvkZ0kbxRY7eCMYjt5VMclIFAUbf5oVc7aoSbxA3c-DWp0c1GZS9JglAxgmrVu=w1262-h300-s-no?authuser=0"/>
+            img-src="https://lh3.googleusercontent.com/pw/AIL4fc8umb00bUiyApY-CNIJOr9b77DQzeMuLO9zjlr1ic3v3eFInBuv4rFiEU9FljLSplY8PWFkyMZ51bmJ8er16Q56UrCA1gmXA1d2U3iSDGC2FCCmxIva-fsyf1rphoIyBhVG3FNbXrg6ZESxBxbn2AGG=w1600-h900-s-no?authuser=0"/>
 
     <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 mt-2.5">
         <BreadCrumb :routes="routes"/>

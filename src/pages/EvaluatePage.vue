@@ -18,7 +18,7 @@ const routes = [
 
 <template>
     <Banner label="ĐÁNH GIÁ KINH DOANH BỀN VỮNG"
-            img-src="https://lh3.googleusercontent.com/pw/AIL4fc_qg1NVcz14qsYlrpMY5UffnjUqfCn4jDD9Nq5VDJLRrVKOr3iU_iPABueBSeFYjblIky3gdl3Mjkynozo69okGHceaK_8kTEfOhQ1xnjuJTog9_YMuYLObKP1zN098KdwQZneAkIF4BnFvytA-ONlN=w1600-h900-s-no?authuser=0"/>
+            img-src="https://lh3.googleusercontent.com/pw/AIL4fc9ZceHAFiHOWTxrrxinjHqpovV6-fzGgEYNqFKy4ErwJfaUdekISojkjwx7QHwk-v5ylDXToGH7l5FXEuymJBxNgB1_XnE9JEW7-zYjE-XZcMVHPGScDdScSx6g2gbfTQpAEW24He_NGStitA4QCmun=w1600-h900-s-no?authuser=0"/>
 
     <div class="md:px-10 lg:px-[100px] px-5 mt-2.5">
         <BreadCrumb :routes="routes"/>

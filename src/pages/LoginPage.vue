@@ -60,7 +60,7 @@ const signIn = () => {
                                       {required: true, message: 'Hãy nhập thông tin'}]">
                     <a-input v-model:value="formState.email" placeholder="Email"/>
                 </a-form-item>
-                <a-form-item label="Mật khẩu" name="password" required>
+                <a-form-item label="Mật khẩu" name="password" :rules="[{required: true, message: 'Hãy nhập mật khẩu'}]">
                     <a-input-password v-model:value="formState.password" placeholder="Mật khẩu"/>
                 </a-form-item>
                 <div class="flex justify-end mb-2">
