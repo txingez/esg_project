@@ -19,6 +19,8 @@ import {useProfileESGStore} from "../stores/useProfileESGStore.js";
 import {useProfileNECStore} from "../stores/useProfileNECStore.js";
 import {saveResult} from "../services/evaluatedForm.js";
 import {ENUM} from "../constants/enumValues.js";
+import {ModalError} from "./ModalError.js";
+import {ModalWarning} from "./ModalWarning.js";
 
 const businessTypeStore = useBusinessTypeStore()
 const stepStore = useStepStore()
@@ -151,8 +153,17 @@ const finishEvaluated = async () => {
             }
         }
 
-        await saveResult(body)
-        loading.value = false
+        saveResult(body).then((res) => {
+            console.log(res)
+            loading.value = false
+        }).catch((err) => {
+            console.log(err)
+            loading.value = false
+            const callback = () => {
+                router.push('/login')
+            }
+            ModalWarning('Hết phiên đăng nhập', 'Phiên đăng nhập của bạn đã hết, vui lòng đăng nhập lại', 'Đăng nhập', callback)
+        })
     }
 
     loading.value = false
