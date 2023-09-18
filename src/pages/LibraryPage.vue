@@ -57,11 +57,17 @@ const handleSeeDetail = document => {
         <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10 space-y-5">
             <div class="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
                 <a-card hoverable v-for="document in documentToShow">
-                    <template #cover>
-                        <a v-if="document.content_type === 'LINK'" :href="document.content" target="_blank">
-                            <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full" :src="document.image" alt=""></a>
-                        <a v-else @click.prevent="handleSeeDetail(document)">
-                            <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full" :src="document.image" alt="">
+                    <template #cover class="overflow-hidden">
+                        <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
+                           v-if="document.content_type === 'LINK'"
+                           :href="document.content" target="_blank">
+                            <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
+                                 :src="document.image" alt="">
+                        </a>
+                        <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
+                           v-else @click.prevent="handleSeeDetail(document)">
+                            <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
+                                 :src="document.image" alt="">
                         </a>
                     </template>
                     <div class="space-y-2">

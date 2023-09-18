@@ -79,8 +79,13 @@ const getNewsData = (offset, limit = 8) => {
                 <div class="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
                     <a-card hoverable v-for="news in newsToShow">
                         <template #cover>
-                            <a :href="news.content" target="_blank"><img class="h-[200px] w-full" :src="news.image"
-                                                                         alt=""></a>
+                            <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
+                               :href="news.content"
+                               target="_blank">
+                                <img class="h-[200px] w-full hover:scale-110 transition-all"
+                                     :src="news.image"
+                                     :alt="news.image">
+                            </a>
                         </template>
                         <div class="space-y-2">
                             <a :href="news.content" target="_blank"
@@ -110,8 +115,10 @@ const getNewsData = (offset, limit = 8) => {
                 <div class="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
                     <a-card hoverable v-for="event in eventsToShow">
                         <template #cover>
-                            <a :href="event.content" target="_blank">
-                                <img class="h-[200px] w-full" :src="event.image" alt="">
+                            <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
+                               :href="event.content"
+                               target="_blank">
+                                <img class="h-[200px] w-full hover:scale-110 transition-all" :src="event.image" alt="">
                             </a>
                         </template>
                         <div class="space-y-2">

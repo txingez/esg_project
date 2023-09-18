@@ -5,6 +5,7 @@ import {useBusinessTypeStore} from "./stores/useBusinessTypeStore.js";
 import {useEvaluatedFormStore} from "./stores/useEvaluatedFormStore.js";
 import {useEvaluatedResultStore} from "./stores/useEvaluatedResultStore.js";
 import {validateToken} from "./services/authentication.js";
+import {ModalWarning} from "./components/ModalWarning.js";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,11 +13,12 @@ const router = createRouter({
         {
             path: '/',
             name: 'Default',
+            redirect: '/home',
             component: Default,
             children: [
                 {
                     id: 1,
-                    path: '/',
+                    path: '/home',
                     name: 'Home',
                     component: () => import('./pages/HomePage.vue')
                 },
@@ -126,6 +128,7 @@ router.beforeEach((to, from) => {
                 return true
             }).catch((err) => {
                 console.log(err)
+                ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callback)
                 return {name: 'Home'}
             })
         }

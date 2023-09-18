@@ -53,7 +53,7 @@ const routes = [
                 kinh doanh bền vững trong doanh nghiệp; điểm thành phần của từng nhóm tiêu chí tùy theo từng mô hình.
                 Mức độ
                 áp dụng mô hình kinh doanh bền vững của doanh nghiệp được phân loại theo ba nhóm: Loại C (tổng điểm
-                $lt;50/100
+                &lt;50/100
                 điểm); Loại B (tổng điểm từ 50 đến 80/100 điểm), và Loại A (tổng điểm trên 80/100 điểm). Ngoài ra, các
                 doanh
                 nghiệp sẽ nhận được các đề xuất về biện pháp nhằm kiểm soát hoặc cải thiện những tiêu chí có điểm chưa

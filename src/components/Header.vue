@@ -125,7 +125,7 @@ const onSearch = (e) => {
         </div>
         <div class="md:flex md:p-[20px_10px] xl:p-[20px_100px] p-[15px] items-center justify-between bg-white">
             <div class="md:w-[70px] lg:w-[100px] xl:w-[130px] w-[100px] ">
-                <router-link to="/">
+                <router-link to="/home">
                     <img src="../assets/logo.png" alt="Logo">
                 </router-link>
             </div>

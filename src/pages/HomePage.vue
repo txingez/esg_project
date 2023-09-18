@@ -37,11 +37,13 @@ const newsArray = [
 const evaluateSlides = [
     {
         image: 'https://lh3.googleusercontent.com/pw/AIL4fc836mXERsuKuX1xyqweyQY0iqHji-W0TU2uEJn65qcAXuBH_W1rGTLMoLvPEs0YximvA7uitb6Tjlb8LhaEfH6mQx5mU2G1hha7rjIWKyqA21Or0jSW5km_PsWM6R9HlnwZW2-lHhK8ak9nzH_dDJrw=w1600-h900-s-no?authuser=0',
-        formId: 'ESG'
+        formId: 'ESG',
+        name: 'CÔNG CỤ ĐÁNH GIÁ THỰC HÀNH ESG'
     },
     {
         image: 'https://lh3.googleusercontent.com/pw/AIL4fc_8t_bhSyN3BuzqMBpLjh8t1Ne5MqEJ70GgiQiOV5OtKYfkEbXLloWN1WC32ScIGijh3_B9mWE7MzTte6zM_EukhuNFQZXbr3nIPot6uq3c52oLzuzULBEIoUuPqj49llz6C9JjBWplsIZrClvxm7jX=w1600-h900-s-no?authuser=0',
-        formId: 'NEC'
+        formId: 'NEC',
+        name: 'CÔNG CỤ ĐÁNH GIÁ ÁP DỤNG KINH TẾ TUẦN HOÀN'
     }
 ]
 
@@ -70,7 +72,7 @@ const evaluateSlides = [
                 phần hoàn thành 17 mục tiêu phát triển bền vững của Việt Nam vào năm 2030.
             </p>
             <p class="text-justify">
-                rang web về kinh doanh bền vững và ESG là kênh thông tin chính thức được xây dựng bởi Cục Phát triển
+                Trang web về kinh doanh bền vững và ESG là kênh thông tin chính thức được xây dựng bởi Cục Phát triển
                 Doanh nghiệp, thông qua sự hỗ trợ kỹ thuật của Cơ quan Phát triển quốc tế Hoa Kỳ (USAID). Đây là một
                 trong những nỗ lực góp phần vào thực hiện Chương trình 167 của Thủ tướng Chính phủ. Trang web đóng vai
                 trò là nền tảng trực tuyến để kết nối và chia sẻ thông tin dữ liệu về việc áp dụng kinh doanh bền vững
@@ -81,7 +83,7 @@ const evaluateSlides = [
         </div>
     </div>
 
-    <div class="bg-[#15B9A0]">
+    <div class="bg-[#46c585]">
         <DividerWithName label="mục tiêu"/>
         <div class="md:px-10 lg:px-[100px] px-5 space-y-5 mb-10">
             <div class="flex gap-5 xl:flex-row flex-col">
@@ -92,7 +94,7 @@ const evaluateSlides = [
                 <div class="md:basis-1/2 basis-full">
                     <div class="flex gap-5 flex-col">
                         <div class="flex gap-5 items-center">
-                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-regular fa-building"/>
                             </div>
                             <div class="text-lg basis-[95%]">
@@ -101,7 +103,7 @@ const evaluateSlides = [
                         </div>
 
                         <div class="flex gap-5 items-center">
-                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-tree"/>
                             </div>
                             <div class="text-lg basis-[95%]">
@@ -110,7 +112,7 @@ const evaluateSlides = [
                         </div>
 
                         <div class="flex gap-5 items-center">
-                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-water"/>
                             </div>
                             <div class="text-lg basis-[95%]">
@@ -119,14 +121,14 @@ const evaluateSlides = [
                         </div>
 
                         <div class="flex gap-5 items-center">
-                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-arrow-up"/>
                             </div>
                             <div class="text-lg basis-[95%]">Tăng năng suất lao động bình quân khoảng 7%/năm.</div>
                         </div>
 
                         <div class="flex gap-5 items-center">
-                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-green-400 text-base text-white font-medium flex justify-center items-center">
+                            <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-mountain-sun"/>
                             </div>
                             <div class="text-lg basis-[95%]">Và một số mục tiêu cụ thể khác.</div>
@@ -167,7 +169,11 @@ const evaluateSlides = [
                                      class="object-cover h-full w-full rounded-[10px]"
                                      :alt="slide.image">
                             </div>
-                            <div class="rounded-[10px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-[rgba(0,0,0,0.4)] flex justify-center items-center">
+
+                            <div class="rounded-[10px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-[rgba(0,0,0,0.4)] flex flex-col gap-5 justify-center items-center">
+                                <div class="text-white slide-name xl:text-2xl lg:text-xl text-lg text-center">
+                                    {{slide.name}}
+                                </div>
                                 <a-button class="text-white h-fit min-h-[50px] md:text-base xl:text-lg"
                                           @click.prevent="handleAccessForm(isAuth, slide.formId)">
                                     Đánh giá ngay
@@ -180,14 +186,17 @@ const evaluateSlides = [
         </div>
     </div>
 
-    <div class="bg-[#15B9A0]">
+    <div class="bg-[#46c585]">
         <DividerWithName label="tin tức và sự kiện"/>
         <div class="md:px-10 lg:px-[100px] px-5 space-y-5 mb-10">
             <div class="flex gap-5 md:flex-row flex-col">
                 <a-card v-for="news in newsArray" class="basis-1/3">
                     <template #cover>
-                        <a :href="news.href" target="_blank">
-                            <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full" :src="news.thumbnail" alt="">
+                        <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
+                            :href="news.href" target="_blank">
+                            <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
+                                 :src="news.thumbnail"
+                                 alt="">
                         </a>
                     </template>
                     <div class="space-y-2">
@@ -240,5 +249,9 @@ const evaluateSlides = [
 :deep(.carousel-container .slick-arrow.custom-slick-arrow:hover) {
   color: #e5e7eb;
   opacity: 0.5;
+}
+
+.slide-name {
+    height: fit-content !important;
 }
 </style>
