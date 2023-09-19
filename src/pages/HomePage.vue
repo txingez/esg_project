@@ -2,7 +2,8 @@
 import DividerWithName from "../components/DividerWithName.vue";
 import Carousel from "../components/Carousel.vue";
 import {handleAccessForm} from "../utils/handleClickEvaluate.js";
-import {computed} from "vue";
+import {computed, onMounted} from "vue";
+import AOS from 'aos'
 
 const isAuth = computed(() => {
     const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
@@ -47,6 +48,9 @@ const evaluateSlides = [
     }
 ]
 
+onMounted(() => {
+    AOS.init()
+})
 </script>
 
 <template>
@@ -93,7 +97,10 @@ const evaluateSlides = [
                 </div>
                 <div class="md:basis-1/2 basis-full">
                     <div class="flex gap-5 flex-col">
-                        <div class="flex gap-5 items-center">
+                        <div class="flex gap-5 items-center"
+                             data-aos="fade-left"
+                             data-aos-easing="ease-in-out"
+                             data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-regular fa-building"/>
                             </div>
@@ -102,7 +109,10 @@ const evaluateSlides = [
                             </div>
                         </div>
 
-                        <div class="flex gap-5 items-center">
+                        <div class="flex gap-5 items-center"
+                             data-aos="fade-right"
+                             data-aos-easing="ease-in-out"
+                             data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-tree"/>
                             </div>
@@ -111,7 +121,10 @@ const evaluateSlides = [
                             </div>
                         </div>
 
-                        <div class="flex gap-5 items-center">
+                        <div class="flex gap-5 items-center"
+                             data-aos="fade-left"
+                             data-aos-easing="ease-in-out"
+                             data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-water"/>
                             </div>
@@ -120,14 +133,20 @@ const evaluateSlides = [
                             </div>
                         </div>
 
-                        <div class="flex gap-5 items-center">
+                        <div class="flex gap-5 items-center"
+                             data-aos="fade-right"
+                             data-aos-easing="ease-in-out"
+                             data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-arrow-up"/>
                             </div>
                             <div class="text-lg basis-[95%]">Tăng năng suất lao động bình quân khoảng 7%/năm.</div>
                         </div>
 
-                        <div class="flex gap-5 items-center">
+                        <div class="flex gap-5 items-center"
+                             data-aos="fade-left"
+                             data-aos-easing="ease-in-out"
+                             data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
                                 <font-awesome-icon icon="fa-solid fa-mountain-sun"/>
                             </div>
@@ -143,7 +162,10 @@ const evaluateSlides = [
         <DividerWithName label="CÔNG CỤ ĐÁNH GIÁ KINH DOANH BỀN VỮNG"/>
         <div class="md:px-10 lg:px-[100px] px-5 space-y-10 mb-10">
             <div class="grid md:grid-cols-2 grid-cols-1 xl:gap-20 gap-5 items-center">
-                <div class="text-justify">
+                <div class="text-justify"
+                     data-aos="fade-down"
+                     data-aos-easing="ease-in-out"
+                     data-aos-duration="500">
                     Bộ công cụ đánh giá mô hình kinh doanh bền vững được phát triển bởi Cục Phát triển doanh nghiệp, Bộ
                     Kế hoạch và đầu tư, là các bộ công cụ tự đánh giá, cho phép doanh nghiệp đo lường hiệu quả việc cân
                     bằng lợi ích của các chỉ tiêu về kinh tế, xã hội, môi trường và quản trị của tổ chức, doanh nghiệp.
@@ -151,8 +173,11 @@ const evaluateSlides = [
                     hình kinh doanh bền vững ESG (E - Môi trường, S - Xã hội và G - Quản trị), mô hình kinh doanh áp
                     dụng nguyên tắc kinh tế tuần hoàn và mô hình kinh doanh bao trùm.
                 </div>
-                <div class="">
-                    <a-carousel class="carousel-container" id="overview" arrows>
+                <div class="rounded-[10px]"
+                     data-aos="fade-up"
+                     data-aos-easing="ease-in-out"
+                     data-aos-duration="500">
+                    <a-carousel class="carousel-container rounded-[10px]" id="overview" arrows>
                         <template #prevArrow>
                             <div class="custom-slick-arrow" style="left: 10px">
                                 <font-awesome-icon icon="fa-solid fa-chevron-left"/>
@@ -163,8 +188,9 @@ const evaluateSlides = [
                                 <font-awesome-icon icon="fa-solid fa-chevron-right"/>
                             </div>
                         </template>
-                        <div v-for="slide in evaluateSlides" class="relative overview-block h-full w-full text-black">
-                            <div class="w-full">
+                        <div v-for="slide in evaluateSlides"
+                             class="relative overview-block h-full w-full text-black rounded-[10px]">
+                            <div class="w-full rounded-[10px]">
                                 <img :src="slide.image"
                                      class="object-cover h-full w-full rounded-[10px]"
                                      :alt="slide.image">
@@ -172,7 +198,7 @@ const evaluateSlides = [
 
                             <div class="rounded-[10px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full bg-[rgba(0,0,0,0.4)] flex flex-col gap-5 justify-center items-center">
                                 <div class="text-white slide-name xl:text-2xl lg:text-xl text-lg text-center">
-                                    {{slide.name}}
+                                    {{ slide.name }}
                                 </div>
                                 <a-button class="text-white h-fit min-h-[50px] md:text-base xl:text-lg"
                                           @click.prevent="handleAccessForm(isAuth, slide.formId)">
@@ -190,10 +216,14 @@ const evaluateSlides = [
         <DividerWithName label="tin tức và sự kiện"/>
         <div class="md:px-10 lg:px-[100px] px-5 space-y-5 mb-10">
             <div class="flex gap-5 md:flex-row flex-col">
-                <a-card v-for="news in newsArray" class="basis-1/3">
+                <a-card v-for="news in newsArray"
+                        class="basis-1/3"
+                        data-aos="fade-down"
+                        data-aos-easing="ease-in-out"
+                        data-aos-duration="500">
                     <template #cover>
                         <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
-                            :href="news.href" target="_blank">
+                           :href="news.href" target="_blank">
                             <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
                                  :src="news.thumbnail"
                                  alt="">
@@ -218,10 +248,12 @@ const evaluateSlides = [
 :deep(.carousel-container .slick-slide) {
   height: 250px;
   width: 100%;
+  border-radius: 10px;
 }
 
 :deep(.carousel-container .slick-slide div) {
   height: 100%;
+  border-radius: 10px;
 }
 
 :deep(.carousel-container .slick-slide .overview-block) {
@@ -252,6 +284,6 @@ const evaluateSlides = [
 }
 
 .slide-name {
-    height: fit-content !important;
+  height: fit-content !important;
 }
 </style>

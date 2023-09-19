@@ -4,6 +4,7 @@ import {onMounted, ref} from "vue";
 import {getPosts} from "../services/posts.js";
 import {useRouter} from "vue-router";
 import BreadCrumb from "../components/BreadCrumb.vue";
+import AOS from 'aos'
 
 const router = useRouter()
 
@@ -18,6 +19,7 @@ const routes = [
 ]
 
 onMounted(() => {
+    AOS.init()
     getData(currentOffset.value)
 })
 
@@ -56,7 +58,10 @@ const handleSeeDetail = document => {
     <a-spin :spinning="spinning">
         <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10 space-y-5">
             <div class="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
-                <a-card hoverable v-for="document in documentToShow">
+                <a-card hoverable v-for="document in documentToShow"
+                        data-aos="fade-right"
+                        data-aos-easing="ease-in-out"
+                        data-aos-duration="500">
                     <template #cover class="overflow-hidden">
                         <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                            v-if="document.content_type === 'LINK'"

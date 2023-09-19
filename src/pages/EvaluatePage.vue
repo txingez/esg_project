@@ -1,9 +1,10 @@
 <script setup>
 
 import Banner from "../components/Banner.vue";
-import {computed} from "vue";
+import {computed, onMounted} from "vue";
 import {handleAccessForm} from "../utils/handleClickEvaluate.js";
 import BreadCrumb from "../components/BreadCrumb.vue";
+import AOS from 'aos'
 
 const isAuth = computed(() => {
     const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
@@ -14,6 +15,10 @@ const routes = [
     {name: 'Home', to: '/'},
     {name: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
 ]
+
+onMounted(() => {
+    AOS.init()
+})
 </script>
 
 <template>
@@ -86,12 +91,18 @@ const routes = [
         </div>
 
         <div class="grid grid-cols-4 gap-10">
-            <div class="lg:col-span-2 col-span-4">
+            <div class="lg:col-span-2 col-span-4"
+                 data-aos="fade-down"
+                 data-aos-easing="ease-in-out"
+                 data-aos-duration="500">
                 <img class="rounded-[10px] w-full"
                      src="https://lh3.googleusercontent.com/pw/AIL4fc_LohterWxqt79IJu9IfyYTm9IXthqHuzPu_2aWJjvyjcgmaX4AkD1R7ro7dfjNY1poanZgcJC_DGIkyLK-R2TDHCywlohkf8JW9vmIEU5g9BEuKiM3ztzV3aCDCT2qfcl4UmDG6ZHioKb9baGt325u=w612-h344-s-no?authuser=0"
                      alt="business7">
             </div>
-            <div class="flex flex-col gap-3 lg:col-span-2 col-span-4">
+            <div class="flex flex-col gap-3 lg:col-span-2 col-span-4"
+                 data-aos="fade-up"
+                 data-aos-easing="ease-in-out"
+                 data-aos-duration="500">
                 <div class="md:text-xl xl:text-2xl text-xl font-bold">
                     Công cụ đánh giá mức độ thực hành Môi trường, Xã hội và Quản trị (ESG) của doanh nghiệp
                 </div>
@@ -112,12 +123,18 @@ const routes = [
         </div>
 
         <div class="grid grid-cols-4 gap-10">
-            <div class="lg:col-span-2 col-span-4 lg:order-last">
+            <div class="lg:col-span-2 col-span-4 lg:order-last"
+                 data-aos="fade-left"
+                 data-aos-easing="ease-in-out"
+                 data-aos-duration="500">
                 <img class="rounded-[10px] w-full"
                      src="https://lh3.googleusercontent.com/pw/AIL4fc8NKdE1jEh_MnYPO_VBPdKBzfI0rbNT9ndmpdoyDZwhreCz1h4NBlkYmR2SU7dhs9AKDkLZd97Tkx-XnX28NeInnjvRIaV98pTCCkAxo5TX2CgBdsVvjj-_1gdKyp0gUNxdWtfzhAOMaOuYxdX4-ich=w900-h506-s-no?authuser=0"
                      alt="manufacture_evaluate">
             </div>
-            <div class="flex flex-col gap-3 lg:col-span-2 col-span-4">
+            <div class="flex flex-col gap-3 lg:col-span-2 col-span-4"
+                 data-aos="fade-right"
+                 data-aos-easing="ease-in-out"
+                 data-aos-duration="500">
                 <div class="md:text-xl xl:text-2xl text-xl font-bold">
                     Công cụ đánh giá mức độ áp dụng nguyên tắc kinh tế tuần hoàn (KTTH) của doanh nghiệp
                 </div>

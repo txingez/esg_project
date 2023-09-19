@@ -23,6 +23,7 @@ import {
 import {faFacebookSquare, faXTwitter, faYoutube} from '@fortawesome/free-brands-svg-icons'
 import {faBuilding} from "@fortawesome/free-regular-svg-icons";
 import {createPinia} from 'pinia'
+import 'aos/dist/aos.css'
 
 const pinia = createPinia()
 library.add(faLocationDot,

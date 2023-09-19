@@ -4,6 +4,7 @@ import Banner from "../components/Banner.vue";
 import {onMounted, ref} from "vue";
 import {getPosts} from "../services/posts.js";
 import BreadCrumb from "../components/BreadCrumb.vue";
+import AOS from 'aos'
 
 const eventsToShow = ref([])
 const newsToShow = ref([])
@@ -20,6 +21,7 @@ const routes = [
 ]
 
 onMounted(() => {
+    AOS.init()
     getEventData(currentOffsetEvents.value)
     getNewsData(currentOffsetNews.value)
 })
@@ -77,7 +79,10 @@ const getNewsData = (offset, limit = 8) => {
             </div>
             <a-spin :spinning="loadingNews">
                 <div class="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
-                    <a-card hoverable v-for="news in newsToShow">
+                    <a-card hoverable v-for="news in newsToShow"
+                            data-aos="fade-right"
+                            data-aos-easing="ease-in-out"
+                            data-aos-duration="500">
                         <template #cover>
                             <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                                :href="news.content"
@@ -113,7 +118,10 @@ const getNewsData = (offset, limit = 8) => {
             </div>
             <a-spin :spinning="loadingEvent">
                 <div class="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
-                    <a-card hoverable v-for="event in eventsToShow">
+                    <a-card hoverable v-for="event in eventsToShow"
+                            data-aos="fade-left"
+                            data-aos-easing="ease-in-out"
+                            data-aos-duration="500">
                         <template #cover>
                             <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                                :href="event.content"
