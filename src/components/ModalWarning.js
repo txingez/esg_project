@@ -1,6 +1,6 @@
 import {Modal} from "ant-design-vue";
 
-export const ModalWarning = (title, content, okText, callback) => {
+export const ModalWarning = (title, content, okText, callbackOk, callbackCancel) => {
     Modal.warning({
         title: title,
         content: content,
@@ -8,7 +8,8 @@ export const ModalWarning = (title, content, okText, callback) => {
         maskClosable: true,
         closable: true,
         okText: okText,
-        onOk: callback,
+        onOk: callbackOk,
+        onCancel: callbackCancel,
         okButtonProps: {
             class: 'bg-[#2563eb]'
         }

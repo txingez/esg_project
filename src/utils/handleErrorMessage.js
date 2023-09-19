@@ -1,3 +1,6 @@
+import {ModalWarning} from "../components/ModalWarning.js";
+import router from '../router.js'
+
 const DEFAULT_MESSAGE = 'Có lỗi xảy ra. Vui lòng kỹ thuật để hỗ trợ'
 
 export const handleLoginFailed = message => {
@@ -39,5 +42,17 @@ export const handleGetCodeFailed = message => {
             return 'Email chưa được đăng ký'
         default:
             return DEFAULT_MESSAGE
+    }
+}
+
+export const handleError = responseError => {
+    switch (responseError.response.status) {
+        case 401:
+            const callbackOk = () => router.push("/login")
+            const callbackCancel = () => router.push('/')
+            ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
+            return;
+        default:
+            return;
     }
 }

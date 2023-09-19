@@ -1,5 +1,5 @@
 <script setup>
-import {CloseOutlined, MenuOutlined, SearchOutlined, UserOutlined} from '@ant-design/icons-vue'
+import {CloseOutlined, MenuOutlined, SearchOutlined, UserOutlined, DownOutlined} from '@ant-design/icons-vue'
 import {onMounted, reactive, ref, watch} from 'vue'
 import {logout} from "../services/authentication.js";
 import {useRouter} from "vue-router";
@@ -15,7 +15,10 @@ const userInfo = reactive({})
 const links = [
     {label: 'Trang chủ', name: ['Home'], to: '/'},
     {label: 'Tổng quan về kinh doanh bền vững', name: ['Overview'], to: '/overview'},
-    {label: 'Đánh giá kinh doanh bền vững', name: ['Evaluate', 'EvaluateESGForm', 'EvaluateNECForm'], to: '/evaluate'},
+    {label: 'Đánh giá kinh doanh bền vững', name: ['Evaluate', 'EvaluateESGForm', 'EvaluateNECForm'], to: '/evaluate', children: [
+            {label: 'Công cụ đánh giá ESG', to: '/evaluate/esg/form'},
+            {label: 'Công cụ đánh giá kinh tế tuần hoàn', to: '/evaluate/nec/form'}
+        ]},
     {label: 'Thư viện', name: ['Library', 'Detail'], to: '/library'},
     {label: 'Hoạt động', name: ['Events'], to: '/events'}
 ]
@@ -138,7 +141,25 @@ const onSearch = (e) => {
             <ul class="md:transition-none transition-all ease-linear duration-500 md:flex md:justify-center md:static m-0 absolute top-[163px] md:w-auto w-full z-10 bg-white"
                 :class="[open ? 'left-0' : 'left-[-100%]']">
                 <li v-for="link in links" class="my-3 flex items-center md:px-2 xl:px-5 px-5">
-                    <router-link :to="link.to" class="text-center md:text-xs lg:text-base xl:text-lg text-sm"
+                    <a-dropdown v-if="link.children" @click.prevent :trigger="['hover']">
+                        <div class="flex gap-1 items-center text-center md:text-xs lg:text-base xl:text-lg text-sm">
+                            <router-link :to="link.to" class="text-center md:text-xs lg:text-base xl:text-lg text-sm"
+                                         :class="link.name.includes(router.currentRoute.value.name) ? 'activated' : ''"
+                                         @click.prevent="handleChangeRoute">
+                                {{ link.label }}
+                            </router-link>
+                        </div>
+                        <template #overlay>
+                            <a-menu>
+                                <a-menu-item v-for="child in link.children" :key="child.key">
+                                    <router-link :to="child.to" class="md:text-base lg:text-base xl:text-lg text-sm">
+                                        {{ child.label }}
+                                    </router-link>
+                                </a-menu-item>
+                            </a-menu>
+                        </template>
+                    </a-dropdown>
+                    <router-link v-else :to="link.to" class="text-center md:text-xs lg:text-base xl:text-lg text-sm"
                                  :class="link.name.includes(router.currentRoute.value.name) ? 'activated' : ''"
                                  @click.prevent="handleChangeRoute">
                         {{ link.label }}

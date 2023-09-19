@@ -1,8 +1,16 @@
 <script setup>
-import {defineAsyncComponent} from "vue";
+import {computed, defineAsyncComponent, onMounted} from "vue";
 import {useStepStore} from "../stores/useStepStore.js";
+import {ModalWarning} from "../components/ModalWarning.js";
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const stepStore = useStepStore()
+
+const isAuth = computed(() => {
+    const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
+    return !!token
+})
 
 const stepItems = [
     {key: 'first', title: 'Hồ sơ doanh nghiệp'},
@@ -20,10 +28,18 @@ const steps = [
     {title: 'Kết quả và đánh giá', content: 'ResultEvaluated'}
 ];
 
+
+onMounted(() => {
+    if (!isAuth.value) {
+        const callbackOk = () => router.push('/login')
+        const callbackCancel = () => router.push('/')
+        ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
+    }
+})
 </script>
 
 <template>
-    <div class="flex gap-10 flex-col py-10">
+    <div v-if="isAuth" class="flex gap-10 flex-col py-10">
         <div class="result-container">
             <div class="text-center font-bold md:text-2xl lg:text-3xl xl:text-4xl text-xl">
                 CÔNG CỤ ĐÁNH GIÁ MỨC ĐỘ ÁP DỤNG NGUYÊN TẮC KINH TẾ TUẦN HOÀN CỦA DOANH NGHIỆP TẠI VIỆT NAM

@@ -9,7 +9,10 @@ import {getNewestProfile} from "../services/evaluatedForm.js";
 import {useJwt} from '@vueuse/integrations/useJwt'
 import {useProfileESGStore} from "../stores/useProfileESGStore.js";
 import dayjs from "dayjs";
+import {useRouter} from "vue-router";
+import {handleError} from "../utils/handleErrorMessage.js";
 
+const router = useRouter()
 const profileESGStore = useProfileESGStore()
 const businessTypeStore = useBusinessTypeStore()
 const stepStore = useStepStore()
@@ -51,11 +54,8 @@ const yearFormat = 'YYYY'
 
 const handleFinishProfile = () => {
     businessTypeStore.update(profileESGStore.formData.businessType)
+    evaluatedResultStore.updateIndustryCode(profileESGStore.formData.businessModel)
     stepStore.updateCurrentStep(1)
-}
-
-const handleChangeBusinessModel = (value) => {
-    evaluatedResultStore.updateIndustryCode(value)
 }
 
 onMounted(() => {
@@ -70,6 +70,7 @@ onMounted(() => {
         })
         .catch((err) => {
             console.log(err)
+            handleError(err)
         })
 })
 </script>
@@ -258,8 +259,8 @@ onMounted(() => {
             <a-form-item label="Mô hình kinh doanh thuộc Lĩnh vực kinh doanh nào:" name="businessModel"
                          :rules="[{required: true, message: 'Hãy chọn Lĩnh vực kinh doanh'}]">
                 <div class="space-y-2">
-                    <a-select v-model:value="profileESGStore.formData.businessModel" :options="businessModels"
-                              @change="handleChangeBusinessModel"
+                    <a-select v-model:value="profileESGStore.formData.businessModel"
+                              :options="businessModels"
                               placeholder="Mô hình kinh doanh thuộc Lĩnh vực kinh doanh nào"/>
                 </div>
             </a-form-item>

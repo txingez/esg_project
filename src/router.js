@@ -1,10 +1,9 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import {createRouter, createWebHistory, useRouter} from 'vue-router'
 import Default from './layouts/Default.vue'
 import {useStepStore} from "./stores/useStepStore.js";
 import {useBusinessTypeStore} from "./stores/useBusinessTypeStore.js";
 import {useEvaluatedFormStore} from "./stores/useEvaluatedFormStore.js";
 import {useEvaluatedResultStore} from "./stores/useEvaluatedResultStore.js";
-import {validateToken} from "./services/authentication.js";
 import {ModalWarning} from "./components/ModalWarning.js";
 
 const router = createRouter({
@@ -103,7 +102,17 @@ const router = createRouter({
 router.beforeEach((to, from) => {
     if (((from.name === 'EvaluateESGForm' || from.name === undefined) && to.name === 'EvaluateESGForm') ||
         ((from.name === 'EvaluateNECForm' || from.name === undefined) && to.name === 'EvaluateNECForm')) {
-        return true
+        const router = useRouter()
+        const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
+        const callbackOk = () => router.push('/login')
+        const callbackCancel = () => router.push('/')
+
+        if (token === null || token === undefined) {
+            ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
+            return false
+        } else {
+            return true
+        }
     } else {
         const stepStore = useStepStore()
         stepStore.reset()
@@ -116,22 +125,6 @@ router.beforeEach((to, from) => {
 
         const evaluatedResult = useEvaluatedResultStore()
         evaluatedResult.reset()
-    }
-
-    if (['EvaluateESGForm', 'EvaluateNECForm'].includes(to.name)) {
-        const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
-        if (token === null || token === undefined) {
-            return {name: 'Home'}
-        } else {
-            validateToken(token).then((response) => {
-                console.log(response)
-                return true
-            }).catch((err) => {
-                console.log(err)
-                ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callback)
-                return {name: 'Home'}
-            })
-        }
     }
 })
 

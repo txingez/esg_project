@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import {onMounted} from "vue";
 import {getNewestProfile} from "../services/evaluatedForm.js";
 import {useJwt} from '@vueuse/integrations/useJwt'
+import {handleError} from "../utils/handleErrorMessage.js";
 
 const profileNECStore = useProfileNECStore()
 const businessTypeStore = useBusinessTypeStore()
@@ -61,6 +62,7 @@ onMounted(() => {
         })
         .catch((err) => {
             console.log(err)
+            handleError(err)
         })
 })
 </script>
