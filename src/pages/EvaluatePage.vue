@@ -96,6 +96,7 @@ onMounted(() => {
                  data-aos-easing="ease-in-out"
                  data-aos-duration="500">
                 <img class="rounded-[10px] w-full"
+                     loading="lazy"
                      src="https://lh3.googleusercontent.com/pw/AIL4fc_LohterWxqt79IJu9IfyYTm9IXthqHuzPu_2aWJjvyjcgmaX4AkD1R7ro7dfjNY1poanZgcJC_DGIkyLK-R2TDHCywlohkf8JW9vmIEU5g9BEuKiM3ztzV3aCDCT2qfcl4UmDG6ZHioKb9baGt325u=w612-h344-s-no?authuser=0"
                      alt="business7">
             </div>
@@ -128,6 +129,7 @@ onMounted(() => {
                  data-aos-easing="ease-in-out"
                  data-aos-duration="500">
                 <img class="rounded-[10px] w-full"
+                     loading="lazy"
                      src="https://lh3.googleusercontent.com/pw/AIL4fc8NKdE1jEh_MnYPO_VBPdKBzfI0rbNT9ndmpdoyDZwhreCz1h4NBlkYmR2SU7dhs9AKDkLZd97Tkx-XnX28NeInnjvRIaV98pTCCkAxo5TX2CgBdsVvjj-_1gdKyp0gUNxdWtfzhAOMaOuYxdX4-ich=w900-h506-s-no?authuser=0"
                      alt="manufacture_evaluate">
             </div>

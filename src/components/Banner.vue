@@ -13,6 +13,9 @@ defineProps({
                 {{ label.toUpperCase() }}
             </div>
         </div>
-        <img class="object-cover aspect-auto h-full w-full" :src="imgSrc" alt="banner">
+        <img class="object-cover aspect-auto h-full w-full"
+             loading="eager"
+             :src="imgSrc"
+             alt="banner">
     </div>
 </template>

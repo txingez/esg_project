@@ -88,6 +88,7 @@ const getNewsData = (offset, limit = 8) => {
                                :href="news.content"
                                target="_blank">
                                 <img class="h-[200px] w-full hover:scale-110 transition-all"
+                                     loading="lazy"
                                      :src="news.image"
                                      :alt="news.image">
                             </a>
@@ -126,7 +127,10 @@ const getNewsData = (offset, limit = 8) => {
                             <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                                :href="event.content"
                                target="_blank">
-                                <img class="h-[200px] w-full hover:scale-110 transition-all" :src="event.image" alt="">
+                                <img class="h-[200px] w-full hover:scale-110 transition-all"
+                                     loading="lazy"
+                                     :src="event.image"
+                                     :alt="event.image">
                             </a>
                         </template>
                         <div class="space-y-2">

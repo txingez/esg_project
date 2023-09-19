@@ -67,12 +67,16 @@ const handleSeeDetail = document => {
                            v-if="document.content_type === 'LINK'"
                            :href="document.content" target="_blank">
                             <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
-                                 :src="document.image" alt="">
+                                 :src="document.image"
+                                 loading="lazy"
+                                 :alt="document.image">
                         </a>
                         <a class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                            v-else @click.prevent="handleSeeDetail(document)">
                             <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
-                                 :src="document.image" alt="">
+                                 loading="lazy"
+                                 :src="document.image"
+                                 :alt="document.image">
                         </a>
                     </template>
                     <div class="space-y-2">

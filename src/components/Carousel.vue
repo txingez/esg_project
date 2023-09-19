@@ -42,7 +42,10 @@ const banners = [
                 </a-button>
             </div>
             <div class="h-full">
-                <img class="w-full h-full object-cover" :src="banner.src" alt="carousel">
+                <img class="w-full h-full object-cover"
+                     loading="lazy"
+                     :src="banner.src"
+                     alt="carousel">
             </div>
         </div>
     </a-carousel>

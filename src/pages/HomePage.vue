@@ -193,6 +193,7 @@ onMounted(() => {
                             <div class="w-full rounded-[10px]">
                                 <img :src="slide.image"
                                      class="object-cover h-full w-full rounded-[10px]"
+                                     loading="lazy"
                                      :alt="slide.image">
                             </div>
 
@@ -226,7 +227,8 @@ onMounted(() => {
                            :href="news.href" target="_blank">
                             <img class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
                                  :src="news.thumbnail"
-                                 alt="">
+                                 loading="lazy"
+                                 :alt="news.thumbnail">
                         </a>
                     </template>
                     <div class="space-y-2">
