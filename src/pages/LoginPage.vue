@@ -1,7 +1,6 @@
 <script setup>
 import {reactive, ref} from "vue";
 import {login} from "../services/authentication.js";
-import {ModalSuccess} from "../components/ModalSuccess.js";
 import {useRouter} from "vue-router";
 import {ModalError} from "../components/ModalError.js";
 import {handleLoginFailed} from "../utils/handleErrorMessage.js";
@@ -22,23 +21,20 @@ const signIn = () => {
     }
 
     login(body).then((response) => {
-        loading.value = false
         const user = response.data.data.user
-        const callback = () => {
-            localStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
-            localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
-            localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.first_name} ${user.last_name}`)
-            localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
-            const routeBack = router.options.history.state.back
-            router.push(`${routeBack === '/register' || routeBack === '/reset-password' ? '/' : routeBack}`)
-        }
-        ModalSuccess('Bạn đã đăng nhập thành công', callback)
+        localStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
+        localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
+        localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.first_name} ${user.last_name}`)
+        localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
+        const routeBack = router.options.history.state.back
+        router.push(`${routeBack === '/register' || routeBack === '/reset-password' ? '/' : routeBack}`)
     }).catch((err) => {
         console.log(err)
-        loading.value = false
         const data = err.response.data
         const message = data.message
         ModalError('Đăng nhập thất bại', handleLoginFailed(message))
+    }).finally(() => {
+        loading.value = false
     })
 }
 </script>
@@ -63,7 +59,12 @@ const signIn = () => {
                 <a-form-item label="Mật khẩu" name="password" :rules="[{required: true, message: 'Hãy nhập mật khẩu'}]">
                     <a-input-password v-model:value="formState.password" placeholder="Mật khẩu"/>
                 </a-form-item>
-                <div class="flex justify-end mb-2">
+                <div class="flex justify-between mb-2">
+                    <div>
+                        <a-checkbox class="text-white">
+                            Lưu thông tin đăng nhập
+                        </a-checkbox>
+                    </div>
                     <router-link to="/reset-password" class="text-[#60a5fa] underline">Quên mật khẩu?</router-link>
                 </div>
                 <a-form-item>

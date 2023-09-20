@@ -40,11 +40,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-if="isAuth" class="flex gap-10 flex-col py-10">
+    <div v-if="isAuth" class="flex gap-10 flex-col py-5">
         <div class="result-container">
-            <div class="text-center font-bold md:text-2xl lg:text-3xl xl:text-4xl text-xl">CÔNG CỤ ĐÁNH GIÁ ESG</div>
+            <div class="text-center font-bold md:text-xl lg:text-2xl xl:text-3xl text-xs mb-5">
+                <div>CÔNG CỤ ĐÁNH GIÁ MỨC ĐỘ THỰC HÀNH KINH DOANH BỀN VỮNG</div>
+                <div>CỦA DOANH NGHIỆP THEO KHUNG MÔI TRƯỜNG-XÃ HỘI-QUẢN TRỊ (ESG)</div>
+            </div>
 
-            <div class="md:px-10 lg:px-[50px] xl:px-[200px] px-5 space-y-5">
+            <div class="md:px-10 lg:px-[50px] xl:px-[100px] px-5 space-y-5">
                 <a-steps :current="stepStore.currentStepState" :items="stepItems"/>
                 <div class="steps-content">
                     <component

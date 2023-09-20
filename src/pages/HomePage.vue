@@ -4,6 +4,7 @@ import Carousel from "../components/Carousel.vue";
 import {handleAccessForm} from "../utils/handleClickEvaluate.js";
 import {computed, onMounted} from "vue";
 import AOS from 'aos'
+import ContactForm from "../components/ContactForm.vue";
 
 const isAuth = computed(() => {
     const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
@@ -243,7 +244,7 @@ onMounted(() => {
         </div>
     </div>
 
-  <!--    <ContactForm/>-->
+    <ContactForm/>
 </template>
 
 <style scoped lang="scss">

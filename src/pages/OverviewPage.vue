@@ -3,7 +3,6 @@
 import Banner from "../components/Banner.vue";
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
-import DividerWithName from "../components/DividerWithName.vue";
 import BreadCrumb from "../components/BreadCrumb.vue";
 import {getPosts} from "../services/posts.js";
 
@@ -33,10 +32,9 @@ onMounted(() => {
     <Banner label="TỔNG QUAN VỀ KINH DOANH BỀN VỮNG"
             img-src="https://lh3.googleusercontent.com/pw/AIL4fc9qLXI6LSp4XjSrqXtMh-Tsjv7_hr9SPyon12xUHVR7VR1zyDtJ1l9oFX5TKzLaqT8m9LeembG5V7th4hMqusvb6lVOCn20cIPd4g2p6-kJGyLRwFUo-aqE9JviuY3Wk7xjHQV1r7i62Wj529OMZsbL=w2762-h1842-s-no?authuser=0"/>
 
-    <div class="md:px-10 lg:px-[100px] px-5 mt-2.5">
+    <div class="md:px-10 lg:px-[100px] px-5 my-5">
         <BreadCrumb :routes="routes"/>
     </div>
-    <DividerWithName label="Tổng quan"/>
     <a-skeleton class="md:px-10 lg:px-[100px] px-5"
                 active
                 :loading="loading"

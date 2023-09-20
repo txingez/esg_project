@@ -63,7 +63,7 @@ export const ThirdCriteria = [
         questions: [
             {
                 key: 'TC5',
-                question: 'DDoanh nghiệp có kế hoạch để tái chế sản phẩm được thu hồi sau khi khách hàng sử dụng không?',
+                question: 'Doanh nghiệp có kế hoạch để tái chế sản phẩm được thu hồi sau khi khách hàng sử dụng không?',
                 answers: [
                     {key: 'A', answer: 'Có', point: 1},
                     {key: 'B', answer: 'Không', point: 0}

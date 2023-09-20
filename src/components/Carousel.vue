@@ -53,20 +53,28 @@ const banners = [
 
 <style scoped>
 :deep(.slick-slide) {
-    height: 500px;
+    height: calc(100vh - 152px);
 }
 
 :deep(.slick-slide>div) {
-    height: 500px;
+    height: 100%;
 }
 
 @media screen and (max-width: 430px) {
     :deep(.slick-slide) {
         height: 300px;
     }
+}
 
-    :deep(.slick-slide>div) {
-        height: 300px;
+@media screen and (min-width: 431px) and (max-width: 768px) {
+    :deep(.slick-slide) {
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    :deep(.slick-slide) {
+        height: 600px;
     }
 }
 

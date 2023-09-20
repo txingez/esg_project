@@ -212,8 +212,12 @@ const createPdf = async ({doc, elements}) => {
         </template>
     </a-table>
 
-    <div class="flex justify-center">
-        <div class="xl:w-1/2 xl:h-1/2 md:w-2/3 md:h-2/3 w-full h-full">
+    <div class="flex xl:flex-row flex-col-reverse justify-between items-center">
+        <div class="flex gap-5 flex-col py-5 xl:basis-1/2">
+            <div class="font-bold text-xl">Đề xuất cho doanh nghiệp</div>
+            <div v-html="config.rateInfo.suggest"/>
+        </div>
+        <div class="xl:basis-1/2 xl:w-1/2 xl:h-1/2 md:w-2/3 md:h-2/3 w-full h-full flex justify-end">
             <RadarChart id="chart_result"
                         :labels="config.chartLabels"
                         :data="config.chartData"
@@ -221,11 +225,6 @@ const createPdf = async ({doc, elements}) => {
                         :title-label="config.chartTitle"
                         :circular="true"/>
         </div>
-    </div>
-
-    <div class="flex gap-5 flex-col py-5">
-        <div class="font-bold text-xl">Đề xuất cho doanh nghiệp</div>
-        <div v-html="config.rateInfo.suggest"/>
     </div>
 
     <div>

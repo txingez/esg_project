@@ -5,7 +5,7 @@ export const RatingClassificationNEC = [
         rate: 'C',
         suggest: `<div style="font-weight: bolder">Doanh nghiệp chưa có tầm nhìn và kế hoạch áp dụng nguyên tắc tuần hoàn</div>
                   <div>(1) Để cải thiện, doanh nghiệp cần điều chỉnh mô hình kinh doanh, quy trình sản xuất, lồng ghép nhiều thực hành áp dụng nguyên tắc tuần hoàn hơn.</div>
-                  <div>(2) Doanh nghiệp nên tham gia các chương trình tư vấn đổi mới sáng tạo, đổi mới sáng tạo ... để nâng cao năng lực </div>`
+                  <div>(2) Doanh nghiệp nên tham gia các chương trình tư vấn đổi mới sáng tạo để nâng cao năng lực </div>`
     },
     {
         min: 50,

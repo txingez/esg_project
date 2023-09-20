@@ -8,7 +8,7 @@ const isRenderDivider = ref(true)
 
 const links = [
     {label: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
-    {label: 'Đánh giá kinh doanh', to: '/evaluate'},
+    {label: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
     {label: 'Thư viện', to: '/library'},
     {label: 'Hoạt động', to: '/events'}
 ]
@@ -50,9 +50,12 @@ onMounted(() => {
                     <span>https://business.gov.vn/</span>
                 </div>
                 <div class="flex gap-5 text-4xl">
-                    <font-awesome-icon icon="fa-brands fa-facebook-square"/>
-                    <font-awesome-icon icon="fa-brands fa-x-twitter"/>
-                    <font-awesome-icon icon="fa-brands fa-youtube"/>
+                    <a href="https://www.facebook.com/CongThongTinDoanhNghiep" target="_blank">
+                        <font-awesome-icon icon="fa-brands fa-facebook-square"/>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCmBien8d7q9jdBDHT6RCKqw/featured" target="_blank">
+                        <font-awesome-icon icon="fa-brands fa-youtube"/>
+                    </a>
                 </div>
             </div>
             <ul class="flex flex-col md:items-start gap-5 m-0">

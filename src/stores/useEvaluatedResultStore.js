@@ -7,21 +7,22 @@ import {RatingClassificationNEC} from "../constants/ratingClassificationNEC.js";
 
 export const useEvaluatedResultStore = defineStore('evaluatedResult', () => {
     const initialState = {
-        environment: {max: 0, sum: 0, point: 0},
-        social: {max: 0, sum: 0, point: 0},
-        governance: {max: 0, sum: 0, point: 0},
+        environment: {max: 50, sum: 30, point: 50},
+        social: {max: 50, sum: 30, point: 50},
+        governance: {max: 50, sum: 30, point: 50},
         firstCriteria: {max: 0, sum: 0, point: 0},
         secondCriteria: {max: 0, sum: 0, point: 0},
         thirdCriteria: {max: 0, sum: 0, point: 0}
     }
     const resultPoint = reactive(initialState)
-    const industryCode = ref('')
+    const industryCode = ref('A')
 
     const update = (key, newVal) => resultPoint[key] = newVal
 
     const updateIndustryCode = businessModel => industryCode.value = IndustryCode[businessModel]
 
     const getIndustryWeighting = () => {
+        console.log(industryCode.value)
         return {
             E: IndustryWeighting[industryCode.value].E,
             S: IndustryWeighting[industryCode.value].S,
@@ -61,7 +62,7 @@ export const useEvaluatedResultStore = defineStore('evaluatedResult', () => {
     }
 
     const reset = () => {
-        industryCode.value = ''
+        industryCode.value = 'A'
         Object.assign(resultPoint, initialState)
     }
 

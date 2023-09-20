@@ -72,7 +72,7 @@ const onSearch = (e) => {
 
 <template>
     <div class="sticky top-0 left-0 right-0 z-[100]">
-        <div class="md:h-[50px] bg-[#072608] flex md:flex-row flex-col-reverse md:items-center items-end py-2 md:gap-5 gap-2 justify-end xl:px-[25px] px-[10px] text-white">
+        <div class="md:h-[50px] h-[40px] bg-[#072608] flex flex-row items-center py-2 md:gap-5 gap-2 justify-end xl:px-[25px] px-[10px] text-white">
             <!--            <div class="flex items-center gap-1">-->
             <!--                <div class="flex items-center gap-1.5">-->
             <!--                    <img class="md:w-[24px] w-[18px]" src="../assets/vietnam.png" alt="vietnam">-->
@@ -87,15 +87,15 @@ const onSearch = (e) => {
 
             <a-input v-model:value="searchStore.searchValue"
                      placeholder="Tìm kiếm ..."
-                     class="md:w-1/3 w-full"
+                     class="md:w-[25%] xl:w-[20%] w-full"
                      @pressEnter="onSearch">
                 <template #addonAfter>
                     <SearchOutlined/>
                 </template>
             </a-input>
-            <div v-if="!userInfo.token && !userInfo.fullName" class="space-x-2.5">
-                <router-link to="/register">Đăng ký</router-link>
-                <router-link to="/login">Đăng nhập</router-link>
+            <div v-if="!userInfo.token && !userInfo.fullName" class="flex md:space-x-2 xl:text-sm text-xs">
+                <router-link class="w-[60px]" to="/register">Đăng ký</router-link>
+                <router-link class="xl:w-[80px] w-[65px]" to="/login">Đăng nhập</router-link>
             </div>
             <a-dropdown v-else trigger="['click']">
                 <a-avatar size="default" class="bg-[#d1d5db] flex justify-center items-center hover:cursor-pointer">
@@ -126,21 +126,21 @@ const onSearch = (e) => {
                 </template>
             </a-dropdown>
         </div>
-        <div class="md:flex md:p-[20px_10px] xl:p-[20px_100px] p-[15px] items-center justify-between bg-white">
-            <div class="md:w-[70px] lg:w-[100px] xl:w-[130px] w-[100px] ">
+        <div class="md:flex md:p-[20px_30px] xl:p-[20px_50px] p-[15px] items-center justify-between bg-white">
+            <div class="xl:w-[250px] lg:w-[150px] w-[200px] lg:h-[25px] xl:h-[30px] h-[30px]">
                 <router-link to="/home">
-                    <img src="../assets/logo.png" alt="Logo">
+                    <img class="h-full w-full" src="../assets/logo.jpg" alt="Logo">
                 </router-link>
             </div>
 
-            <MenuOutlined v-if="!open" class="absolute md:hidden right-6 top-[100px] cursor-pointer text-2xl"
+            <MenuOutlined v-if="!open" class="absolute lg:hidden right-6 md:top-[74px] top-[51px] cursor-pointer text-2xl"
                           @click.prevent="handleClickMenu"/>
-            <CloseOutlined v-else class="absolute md:hidden right-6 top-[100px] cursor-pointer text-2xl"
+            <CloseOutlined v-else class="absolute lg:hidden right-6 md:top-[74px] top-[51px] cursor-pointer text-2xl"
                            @click.prevent="handleClickMenu"/>
 
-            <ul class="md:transition-none transition-all ease-linear duration-500 md:flex md:justify-center md:static m-0 absolute top-[163px] md:w-auto w-full z-10 bg-white"
+            <ul class="lg:transition-none transition-all ease-linear duration-500 lg:flex lg:gap-3.5 xl:gap-5 lg:justify-center lg:static m-0 absolute md:top-[120px] top-[100px] lg:w-auto w-full z-10 bg-white"
                 :class="[open ? 'left-0' : 'left-[-100%]']">
-                <li v-for="link in links" class="my-3 flex items-center md:px-2 xl:px-5 px-5">
+                <li v-for="link in links" class="my-3 flex items-center md:px-7 lg:px-0 px-5">
                     <a-dropdown v-if="link.children" @click.prevent :trigger="['hover']">
                         <div class="flex gap-1 items-center text-center md:text-xs lg:text-base xl:text-lg text-sm">
                             <router-link :to="link.to" class="text-center md:text-xs lg:text-base xl:text-lg text-sm"

@@ -1,5 +1,5 @@
 <template>
-    <a-breadcrumb :routes="routes" separator=">" class="md:text-xl xl:text-2xl text-base">
+    <a-breadcrumb :routes="routes" separator=">" class="md:text-sm xl:text-base text-xs">
         <template #itemRender="{ route, path }">
             <span v-if="routes.indexOf(route) === routes.length - 1">
                 {{ route.name }}
