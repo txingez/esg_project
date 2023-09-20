@@ -25,7 +25,7 @@ const newsArray = [
         title: 'Bộ Kế hoạch và Đầu tư và USAID tổ chức Vòng chung kết Sáng kiến ESG Việt Nam 2023',
         href: 'https://baodauthau.vn/bo-ke-hoach-va-dau-tu-va-usaid-to-chuc-vong-chung-ket-sang-kien-esg-viet-nam-2023-post143384.html',
         description: 'Bộ Kế hoạch và Đầu tư dự kiến sẽ đưa ra bộ công cụ đánh giá thực hành ESG tại doanh nghiệp trong quý 3/2022 và sẽ cung cấp các gói hỗ trợ kỹ thuật chuyên sâu cho các doanh nghiệp có mức độ sẵn sàng thực hành ESG cao.',
-        thumbnail: 'https://img.freepik.com/premium-vector/background-01cicle_851394-23.jpg?w=2000'
+        thumbnail: 'https://lh3.googleusercontent.com/pw/AIL4fc9mKCf1GEIxkSuM9U1Wf2iQSGqEr2Pr4Kt-ka4J6fdqyXX3gUjPpCIYBd0aqunDTV1oVS3bfzfTiX_kSlF9mQtCrmOmh-TvdnCaxtAeRgPV_O_WAAdNZq7KP2yJNSxAFnVJslyDFzi585dOPpJCq2Fl=w1600-h900-s-no?authuser=0'
     },
     {
         title: 'Kinh doanh bền vững: Chìa khoá tạo lợi thế cạnh tranh cho các doanh nghiệp Việt',
