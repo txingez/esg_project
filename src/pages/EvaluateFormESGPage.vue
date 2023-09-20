@@ -8,7 +8,7 @@ const router = useRouter()
 const stepStore = useStepStore()
 
 const isAuth = computed(() => {
-    const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
+    const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
     return !!token
 })
 

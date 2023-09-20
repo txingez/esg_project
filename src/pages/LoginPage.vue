@@ -25,10 +25,10 @@ const signIn = () => {
         loading.value = false
         const user = response.data.data.user
         const callback = () => {
-            sessionStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
-            sessionStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
-            sessionStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.first_name} ${user.last_name}`)
-            sessionStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
+            localStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
+            localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
+            localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.first_name} ${user.last_name}`)
+            localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
             const routeBack = router.options.history.state.back
             router.push(`${routeBack === '/register' || routeBack === '/reset-password' ? '/' : routeBack}`)
         }

@@ -7,7 +7,7 @@ import BreadCrumb from "../components/BreadCrumb.vue";
 import AOS from 'aos'
 
 const isAuth = computed(() => {
-    const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
+    const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
     return !!token
 })
 

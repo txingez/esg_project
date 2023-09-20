@@ -33,10 +33,10 @@ const handleChangeRoute = () => {
 
 const handleLogout = () => {
     const body = {
-        email: sessionStorage.getItem(import.meta.env.ENV_EMAIL_KEY)
+        email: localStorage.getItem(import.meta.env.ENV_EMAIL_KEY)
     }
     logout(body).then(() => {
-        sessionStorage.clear()
+        localStorage.clear()
         userInfo.token = null
         userInfo.email = null
         userInfo.fullName = null
@@ -47,9 +47,9 @@ const handleLogout = () => {
 }
 
 const updateUserInfo = () => {
-    userInfo.fullName = sessionStorage.getItem(import.meta.env.ENV_FULL_NAME_KEY)
-    userInfo.email = sessionStorage.getItem(import.meta.env.ENV_EMAIL_KEY)
-    userInfo.token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
+    userInfo.fullName = localStorage.getItem(import.meta.env.ENV_FULL_NAME_KEY)
+    userInfo.email = localStorage.getItem(import.meta.env.ENV_EMAIL_KEY)
+    userInfo.token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
 }
 
 onMounted(() => {

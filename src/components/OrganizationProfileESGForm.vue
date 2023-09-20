@@ -59,7 +59,7 @@ const handleFinishProfile = () => {
 }
 
 onMounted(() => {
-    const userId = sessionStorage.getItem(import.meta.env.ENV_USER_ID_KEY)
+    const userId = localStorage.getItem(import.meta.env.ENV_USER_ID_KEY)
     getNewestProfile(userId, 'ESG')
         .then((response) => {
             console.log(response)

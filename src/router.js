@@ -103,7 +103,7 @@ router.beforeEach((to, from) => {
     if (((from.name === 'EvaluateESGForm' || from.name === undefined) && to.name === 'EvaluateESGForm') ||
         ((from.name === 'EvaluateNECForm' || from.name === undefined) && to.name === 'EvaluateNECForm')) {
         const router = useRouter()
-        const token = sessionStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
+        const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
         const callbackOk = () => router.push('/login')
         const callbackCancel = () => router.push('/')
 

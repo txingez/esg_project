@@ -106,7 +106,7 @@ const finishEvaluated = async () => {
 
     if (currentStep === 3) {
         const body = {
-            user_id: sessionStorage.getItem(import.meta.env.ENV_USER_ID_KEY),
+            user_id: localStorage.getItem(import.meta.env.ENV_USER_ID_KEY),
             form_id: formId(),
             data: {
                 organizationProfile: getProfile(),
