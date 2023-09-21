@@ -5,6 +5,7 @@ import {ModalWarning} from "../components/ModalWarning.js";
 import {useRouter} from "vue-router";
 import {exportHTMLToPDF} from "../utils/exportHTMLToPDF.js";
 import {ENUM} from "../constants/enumValues.js";
+import {PrinterOutlined} from "@ant-design/icons-vue"
 
 const router = useRouter()
 const stepStore = useStepStore()
@@ -57,11 +58,12 @@ onMounted(() => {
             </div>
         </div>
 
-        <div v-if="stepStore.currentStepState === stepItems.length - 1">
+        <div v-if="stepStore.currentStepState === stepItems.length - 1"
+             class="md:px-10 lg:px-[50px] xl:px-[100px]">
             <a-button type="primary"
-                      class="bg-[#1677ff] h-[50px] w-[150px]"
+                      class="bg-[#1677ff] h-[50px] w-[150px] flex items-center justify-center"
                       @click.prevent="exportHTMLToPDF(ENUM.FORM_NAME.EvaluateNECForm)">
-                Lấy kết quả
+                <PrinterOutlined /> In kết quả
             </a-button>
         </div>
     </div>

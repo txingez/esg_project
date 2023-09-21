@@ -10,12 +10,12 @@ export const useEvaluatedResultStore = defineStore('evaluatedResult', () => {
         environment: {max: 0, sum: 0, point: 0},
         social: {max: 0, sum: 0, point: 0},
         governance: {max: 0, sum: 0, point: 0},
-        firstCriteria: {max: 0, sum: 0, point: 0},
-        secondCriteria: {max: 0, sum: 0, point: 0},
-        thirdCriteria: {max: 0, sum: 0, point: 0}
+        firstCriteria: {max: 20, sum: 20, point: 20},
+        secondCriteria: {max: 20, sum: 20, point: 20},
+        thirdCriteria: {max: 20, sum: 20, point: 20}
     }
     const resultPoint = reactive(initialState)
-    const industryCode = ref('')
+    const industryCode = ref('A')
 
     const update = (key, newVal) => resultPoint[key] = newVal
 
