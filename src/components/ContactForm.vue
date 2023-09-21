@@ -1,7 +1,8 @@
 <script setup>
 import DividerWithName from "./DividerWithName.vue";
-import {reactive} from "vue";
+import {reactive, ref} from "vue";
 import {sendMessage} from "../services/contact.js";
+import {Notification} from "./Notification.js";
 
 const formState = reactive({
     fullName: '',
@@ -10,7 +11,10 @@ const formState = reactive({
     message: ''
 })
 
+const loading = ref(false)
+
 const handleSubmit = () => {
+    loading.value = true
     const body = {
         full_name: formState.fullName,
         email: formState.email,
@@ -19,10 +23,23 @@ const handleSubmit = () => {
     }
     sendMessage(body)
         .then(() => {
+            Notification('success', 'Thành công', 'Xin cám ơn. Chúng tôi đã nhận được tin nhắn của bạn!')
         })
         .catch((err) => {
             console.log(err)
+            Notification('error', 'Thất bại', 'Xin lỗi. Hệ thống đang có lỗi, vui lòng thử lại sau!')
         })
+        .finally(() => {
+            loading.value = false
+            resetForm()
+        })
+}
+
+const resetForm = () => {
+    formState.fullName = '';
+    formState.email = '';
+    formState.phoneNumber = '';
+    formState.message = '';
 }
 </script>
 
@@ -53,7 +70,8 @@ const handleSubmit = () => {
                 </a-form-item>
 
                 <a-form-item>
-                    <a-button type="primary" class="bg-[#1677ff] md:h-[50px] h-[40px] px-10" html-type="submit">
+                    <a-button type="primary" class="bg-[#1677ff] md:h-[50px] h-[40px] px-10" html-type="submit"
+                              :loading="loading">
                         Gửi đi
                     </a-button>
                 </a-form-item>

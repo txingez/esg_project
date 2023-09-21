@@ -3,6 +3,8 @@ import {computed, defineAsyncComponent, onMounted} from "vue";
 import {useStepStore} from "../stores/useStepStore.js";
 import {ModalWarning} from "../components/ModalWarning.js";
 import {useRouter} from "vue-router";
+import {exportHTMLToPDF} from "../utils/exportHTMLToPDF.js";
+import {ENUM} from "../constants/enumValues.js";
 
 const router = useRouter()
 const stepStore = useStepStore()
@@ -36,7 +38,6 @@ onMounted(() => {
         ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
     }
 })
-
 </script>
 
 <template>
@@ -56,5 +57,13 @@ onMounted(() => {
             </div>
         </div>
 
+        <div v-if="stepStore.currentStepState === stepItems.length - 1"
+             class="md:px-10 lg:px-[50px] xl:px-[100px]">
+            <a-button type="primary"
+                      class="bg-[#1677ff] h-[50px] w-[150px]"
+                      @click.prevent="exportHTMLToPDF(ENUM.FORM_NAME.EvaluateESGForm)">
+                Lấy kết quả
+            </a-button>
+        </div>
     </div>
 </template>

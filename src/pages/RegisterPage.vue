@@ -3,10 +3,10 @@ import {reactive, ref} from "vue";
 import {QuestionCircleOutlined} from "@ant-design/icons-vue";
 import {register} from "../services/authentication.js";
 import {ModalError} from "../components/ModalError.js";
-import {ModalSuccess} from "../components/ModalSuccess.js";
-import router from "../router.js";
 import {passwordCheck} from "../utils/validator.js";
 import {handleRegisterFailed} from "../utils/handleErrorMessage.js";
+import {Notification} from "../components/Notification.js";
+import router from "../router.js";
 
 const formState = reactive({})
 const loading = ref(false)
@@ -23,24 +23,25 @@ const handleSubmit = () => {
         role: ROLE
     }
 
-    register(body).then((response) => {
-        loading.value = false
-        const user = response.data.data.user
-        const callback = () => {
+    register(body)
+        .then((response) => {
+            const user = response.data.data.user
             localStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
             localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
             localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.first_name} ${user.last_name}`)
             localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
+            Notification('success', 'Thành công', 'Bạn đã đăng ký tài khoản thành công!')
             router.push('/')
-        }
-        ModalSuccess('Bạn đã đăng ký thành công', callback)
-    }).catch((err) => {
-        loading.value = false
-        console.log(err)
-        const data = err.response.data
-        const message = data.message
-        ModalError('Đăng ký không thành công', handleRegisterFailed(message))
-    })
+        })
+        .catch((err) => {
+            console.log(err)
+            const data = err.response.data
+            const message = data.message
+            ModalError('Đăng ký không thành công', handleRegisterFailed(message))
+        })
+        .finally(() => {
+            loading.value = false
+        })
 }
 
 const compareTwoPassword = (rule, value) => {

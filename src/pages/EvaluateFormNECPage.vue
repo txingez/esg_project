@@ -3,6 +3,8 @@ import {computed, defineAsyncComponent, onMounted} from "vue";
 import {useStepStore} from "../stores/useStepStore.js";
 import {ModalWarning} from "../components/ModalWarning.js";
 import {useRouter} from "vue-router";
+import {exportHTMLToPDF} from "../utils/exportHTMLToPDF.js";
+import {ENUM} from "../constants/enumValues.js";
 
 const router = useRouter()
 const stepStore = useStepStore()
@@ -53,6 +55,14 @@ onMounted(() => {
                             :is="defineAsyncComponent(() => import(`../components/${steps[stepStore.currentStepState].content}.vue`))"/>
                 </div>
             </div>
+        </div>
+
+        <div v-if="stepStore.currentStepState === stepItems.length - 1">
+            <a-button type="primary"
+                      class="bg-[#1677ff] h-[50px] w-[150px]"
+                      @click.prevent="exportHTMLToPDF(ENUM.FORM_NAME.EvaluateNECForm)">
+                Lấy kết quả
+            </a-button>
         </div>
     </div>
 </template>

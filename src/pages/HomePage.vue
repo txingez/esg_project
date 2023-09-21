@@ -99,7 +99,7 @@ onMounted(() => {
                 <div class="md:basis-1/2 basis-full">
                     <div class="flex gap-5 flex-col">
                         <div class="flex gap-5 items-center"
-                             data-aos="fade-left"
+                             data-aos="flip-left"
                              data-aos-easing="ease-in-out"
                              data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
@@ -111,7 +111,7 @@ onMounted(() => {
                         </div>
 
                         <div class="flex gap-5 items-center"
-                             data-aos="fade-right"
+                             data-aos="flip-left"
                              data-aos-easing="ease-in-out"
                              data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
@@ -123,7 +123,7 @@ onMounted(() => {
                         </div>
 
                         <div class="flex gap-5 items-center"
-                             data-aos="fade-left"
+                             data-aos="flip-left"
                              data-aos-easing="ease-in-out"
                              data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
@@ -135,7 +135,7 @@ onMounted(() => {
                         </div>
 
                         <div class="flex gap-5 items-center"
-                             data-aos="fade-right"
+                             data-aos="flip-left"
                              data-aos-easing="ease-in-out"
                              data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">
@@ -145,7 +145,7 @@ onMounted(() => {
                         </div>
 
                         <div class="flex gap-5 items-center"
-                             data-aos="fade-left"
+                             data-aos="flip-left"
                              data-aos-easing="ease-in-out"
                              data-aos-duration="500">
                             <div class="basis-[5%] w-[25px] h-[30px] rounded-[5px] bg-emerald-700 text-base text-white font-medium flex justify-center items-center">

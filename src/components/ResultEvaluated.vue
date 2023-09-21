@@ -3,8 +3,6 @@ import {computed} from "vue";
 import {useEvaluatedResultStore} from "../stores/useEvaluatedResultStore.js";
 import RadarChart from "./RadarChart.vue";
 import {useRouter} from "vue-router";
-import jsPDF from "jspdf";
-import * as htmlToImage from "html-to-image";
 import {ENUM} from "../constants/enumValues.js";
 
 const evaluatedResultStore = useEvaluatedResultStore()
@@ -117,52 +115,6 @@ const config = computed(() => {
     }
 })
 const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighting())
-
-const exportHTMLToPDF = async () => {
-    const doc = new jsPDF({
-        orientation: 'p',
-        unit: 'px',
-        format: 'a4',
-        putOnlyUsedFonts: true,
-        floatPrecision: 16 // or "smart", default is 16
-    })
-    const elements = document.getElementsByClassName("result-container")
-    await createPdf({doc, elements})
-
-    doc.save(`${ENUM.FILE_NAME_EXPORT[routeName.value]}.pdf`)
-}
-
-const createPdf = async ({doc, elements}) => {
-    let top = 20;
-    const padding = 30;
-    for (let i = 0; i < elements.length; i++) {
-        const el = elements.item(i);
-        const imgData = await htmlToImage.toPng(el);
-
-        let elHeight = el.offsetHeight;
-        let elWidth = el.offsetWidth;
-
-        const pageWidth = doc.internal.pageSize.getWidth();
-
-        if (elWidth > pageWidth) {
-            const ratio = pageWidth / elWidth;
-            //resize chart width and height proportionally
-            elHeight = elHeight * ratio - padding;
-            elWidth = elWidth * ratio - padding;
-        }
-
-        const pageHeight = doc.internal.pageSize.getHeight();
-        //if chart do not fit to the page height
-        if (top + elHeight > pageHeight) {
-            doc.addPage(); // add new page
-            top = 20; // reset height counter
-        }
-
-        doc.addImage(imgData, "PNG", padding - 15, top, elWidth, elHeight, `image${i}`, 'FAST');
-        top += elHeight;
-    }
-}
-
 </script>
 
 <template>
@@ -225,11 +177,5 @@ const createPdf = async ({doc, elements}) => {
                         :title-label="config.chartTitle"
                         :circular="true"/>
         </div>
-    </div>
-
-    <div>
-        <a-button type="primary" class="bg-[#1677ff] h-[50px] w-[150px]" @click.prevent="exportHTMLToPDF">
-            Lấy kết quả
-        </a-button>
     </div>
 </template>

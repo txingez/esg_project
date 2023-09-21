@@ -4,6 +4,7 @@ import {login} from "../services/authentication.js";
 import {useRouter} from "vue-router";
 import {ModalError} from "../components/ModalError.js";
 import {handleLoginFailed} from "../utils/handleErrorMessage.js";
+import {Notification} from "../components/Notification.js";
 
 const router = useRouter()
 
@@ -26,6 +27,7 @@ const signIn = () => {
         localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
         localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.first_name} ${user.last_name}`)
         localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
+        Notification('success', 'Thành công', 'Bạn đã đăng nhập thành công!')
         const routeBack = router.options.history.state.back
         router.push(`${routeBack === '/register' || routeBack === '/reset-password' ? '/' : routeBack}`)
     }).catch((err) => {
