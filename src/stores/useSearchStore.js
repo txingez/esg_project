@@ -6,5 +6,7 @@ export const useSearchStore = defineStore('searchStore', () => {
 
     const update = newSearchValue => searchValue.value = newSearchValue
 
-    return {searchValue, update}
+    const reset = () => searchValue.value = ''
+
+    return {searchValue, update, reset}
 })

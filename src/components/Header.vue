@@ -63,10 +63,9 @@ watch(router.currentRoute, (route) => {
     updateUserInfo()
 })
 
-const onSearch = (e) => {
-    e.preventDefault()
-    searchStore.update(e.target.value)
-    router.push(`/search-result/${e.target.value}`)
+const onSearch = (value) => {
+    searchStore.update(value)
+    router.push(`/search-result/${value}`)
 }
 </script>
 
@@ -85,14 +84,10 @@ const onSearch = (e) => {
             <!--                </div>-->
             <!--            </div>-->
 
-            <a-input v-model:value="searchStore.searchValue"
+            <a-input-search v-model:value="searchStore.searchValue"
                      placeholder="Tìm kiếm ..."
                      class="md:w-[25%] xl:w-[20%] w-full"
-                     @pressEnter="onSearch">
-                <template #addonAfter>
-                    <SearchOutlined/>
-                </template>
-            </a-input>
+                     @search="onSearch"/>
             <div v-if="!userInfo.token && !userInfo.fullName" class="flex md:space-x-2 xl:text-sm text-xs">
                 <router-link class="w-[60px]" to="/register">Đăng ký</router-link>
                 <router-link class="xl:w-[80px] w-[65px]" to="/login">Đăng nhập</router-link>
@@ -218,5 +213,11 @@ ul li a:hover::before {
 
 .activated::before {
     width: 100%;
+}
+
+:deep(.ant-input-search-button) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

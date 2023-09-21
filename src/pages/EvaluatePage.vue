@@ -130,7 +130,7 @@ onMounted(() => {
                  data-aos-duration="500">
                 <img class="rounded-[10px] w-full"
                      loading="lazy"
-                     src="https://lh3.googleusercontent.com/pw/AIL4fc8NKdE1jEh_MnYPO_VBPdKBzfI0rbNT9ndmpdoyDZwhreCz1h4NBlkYmR2SU7dhs9AKDkLZd97Tkx-XnX28NeInnjvRIaV98pTCCkAxo5TX2CgBdsVvjj-_1gdKyp0gUNxdWtfzhAOMaOuYxdX4-ich=w900-h506-s-no?authuser=0"
+                     src="https://lh3.googleusercontent.com/pw/AIL4fc_8YF-ygztu40tgN8xEo-cvFpMPs3A6PmYxhuIVVNPzregPaYvS5SK8x_yJd5HPhzTtXvdWgLLoIu_waBBWvnhnsL_wK91C0aV7VOm_dI85TjYu5aN_PAzuY12rg14eQMZLXoqrKp1LuHEu2ts2Mmae=w1600-h902-s-no?authuser=0"
                      alt="manufacture_evaluate">
             </div>
             <div class="flex flex-col gap-3 lg:col-span-2 col-span-4"

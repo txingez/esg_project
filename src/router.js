@@ -4,6 +4,7 @@ import {useStepStore} from "./stores/useStepStore.js";
 import {useBusinessTypeStore} from "./stores/useBusinessTypeStore.js";
 import {useEvaluatedFormStore} from "./stores/useEvaluatedFormStore.js";
 import {useEvaluatedResultStore} from "./stores/useEvaluatedResultStore.js";
+import {useSearchStore} from "./stores/useSearchStore.js";
 import {ModalWarning} from "./components/ModalWarning.js";
 
 const router = createRouter({
@@ -125,6 +126,11 @@ router.beforeEach((to, from) => {
 
         const evaluatedResult = useEvaluatedResultStore()
         evaluatedResult.reset()
+
+        if (to.name !== 'SearchResult') {
+            const searchStore = useSearchStore()
+            searchStore.reset()
+        }
     }
 })
 
