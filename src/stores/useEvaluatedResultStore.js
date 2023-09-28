@@ -22,7 +22,6 @@ export const useEvaluatedResultStore = defineStore('evaluatedResult', () => {
     const updateIndustryCode = businessModel => industryCode.value = IndustryCode[businessModel]
 
     const getIndustryWeighting = () => {
-        console.log(industryCode.value)
         return {
             E: IndustryWeighting[industryCode.value].E,
             S: IndustryWeighting[industryCode.value].S,

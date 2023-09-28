@@ -5,6 +5,7 @@ import {computed, onMounted} from "vue";
 import {handleAccessForm} from "../utils/handleClickEvaluate.js";
 import BreadCrumb from "../components/BreadCrumb.vue";
 import AOS from 'aos'
+import {DownloadOutlined} from '@ant-design/icons-vue'
 
 const isAuth = computed(() => {
     const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
@@ -22,8 +23,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <Banner label="ĐÁNH GIÁ KINH DOANH BỀN VỮNG"
-            img-src="https://lh3.googleusercontent.com/pw/AIL4fc9ZceHAFiHOWTxrrxinjHqpovV6-fzGgEYNqFKy4ErwJfaUdekISojkjwx7QHwk-v5ylDXToGH7l5FXEuymJBxNgB1_XnE9JEW7-zYjE-XZcMVHPGScDdScSx6g2gbfTQpAEW24He_NGStitA4QCmun=w1600-h900-s-no?authuser=0"/>
+    <Banner img-src="https://lh3.googleusercontent.com/pw/AIL4fc9ZceHAFiHOWTxrrxinjHqpovV6-fzGgEYNqFKy4ErwJfaUdekISojkjwx7QHwk-v5ylDXToGH7l5FXEuymJBxNgB1_XnE9JEW7-zYjE-XZcMVHPGScDdScSx6g2gbfTQpAEW24He_NGStitA4QCmun=w1600-h900-s-no?authuser=0">
+        <div>ĐÁNH GIÁ</div>
+        <div>KINH DOANH BỀN VỮNG</div>
+    </Banner>
 
     <div class="md:px-10 lg:px-[100px] px-5 mt-2.5">
         <BreadCrumb :routes="routes"/>
@@ -31,125 +34,98 @@ onMounted(() => {
 
     <div class="md:px-10 lg:px-[100px] px-5 py-10 flex md:gap-10 gap-5 flex-col">
         <div>
-            <div class="font-bold text-2xl">Bộ công cụ đánh giá kinh doanh bền vững là gì?</div>
+            <h1 class="font-bold text-2xl">Giới thiệu chung về Bộ công cụ đánh giá kinh doanh bền vững</h1>
             <p class="text-justify">
-                Bộ công cụ đánh giá mô hình kinh doanh bền vững được phát triển bởi Cục Phát triển doanh nghiệp, Bộ Kế
-                hoạch
-                và đầu tư, là các bộ công cụ tự đánh giá, cho phép doanh nghiệp đo lường hiệu quả việc cân bằng lợi ích
-                của
-                các chỉ tiêu về kinh tế, xã hội, môi trường và quản trị của tổ chức, doanh nghiệp.
+                Bộ công cụ đánh giá kinh doanh bền vững cho phép doanh nghiệp tự đánh giá để đo lường hiệu quả mô hình
+                kinh doanh theo các tiêu chí bền vững, hướng tới mục tiêu cân bằng lợi ích kinh tế với bảo vệ môi
+                trường, phát triển con người và xã hội một cách tổng hòa và bao trùm.
             </p>
             <p class="text-justify">
-                Các bộ công cụ này được phát triển dựa trên các tiêu chuẩn toàn cầu và trong nước như Sáng kiến Báo cáo
-                Toàn
-                cầu (GRI), Chỉ số MSCI, Tiêu chuẩn của Tập đoàn Tài chính Quốc tế (IFC), Chỉ số Phát triển bền vững Việt
-                Nam
-                (VNSI), Bộ chỉ số doanh nghiệp bền vững (CSI), Circulytics, Circularity Check, và đồng thời được điều
-                chỉnh
-                cho phù hợp với bối cảnh cụ thể của các doanh nghiệp ở Việt Nam.
-            </p>
-            <p class="text-justify">
-                Bộ công cụ đánh giá mô hình kinh doanh bền vững sẽ bao gồm các nhóm tiêu chí cụ thể hóa theo từng mô
-                hình
-                kinh doanh bền vững ESG, mô hinh kinh doanh áp dụng kinh tế tuần hoàn và mô hình kinh doanh bao trùm.
-            </p>
-            <p class="text-justify">
-                Sau khi hoàn thành đánh giá, doanh nghiệp sẽ nhận được kết quả về mức độ áp dụng các nguyên tắc, mô hình
-                kinh doanh bền vững trong doanh nghiệp; điểm thành phần của từng nhóm tiêu chí tùy theo từng mô hình.
-                Mức độ
-                áp dụng mô hình kinh doanh bền vững của doanh nghiệp được phân loại theo ba nhóm: Loại C (tổng điểm
-                &lt;50/100
-                điểm); Loại B (tổng điểm từ 50 đến 80/100 điểm), và Loại A (tổng điểm trên 80/100 điểm). Ngoài ra, các
-                doanh
-                nghiệp sẽ nhận được các đề xuất về biện pháp nhằm kiểm soát hoặc cải thiện những tiêu chí có điểm chưa
-                tốt.
-            </p>
-            <div class="font-bold text-2xl">Tại sao phải thực hiện đánh giá kinh doanh bền vững?</div>
-            <p class="text-justify">
-                Thông qua việc thực hành đánh giá kinh doanh bền vững, các doanh nghiệp sẽ được cung cấp một khung tham
-                chiếu để hiểu rõ hơn về mức độ áp dụng các nguyên tắc, mô hình kinh doanh bền vững trong doanh nghiệp
-                của
-                mình, nắm được các điểm mạnh, điểm yếu và các điểm cần cải thiện để cân bằng được các lợi ích về kinh
-                tế, xã
-                hội và môi trường. Ngoài ra, đánh giá và thực hiện tốt việc phát triển chiến lược kinh doanh gắn liền
-                với
-                các nguyên tắc kinh doanh bền vững sẽ trở thành một lợi thế cạnh tranh, giá trị gia tăng cho doanh
-                nghiệp,
-                mở rộng cơ hội tiếp cận các nguồn tài chính xanh.
-            </p>
-            <div class="font-bold text-2xl">Cách sử dụng kết quả đánh giá kinh doanh bền vững?</div>
-            <p class="text-justify">
-                Doanh nghiệp có thể sử dụng kết quả đánh giá kinh doanh bền vững của mình để xác định rủi ro và cơ hội
-                liên
-                quan đến môi trường và xã hội. Từ đó, doanh nghiệp sẽ phát triển các chiến lược kinh doanh áp dụng các
-                nguyên tắc kinh doanh bền vững một cách hiệu quả hơn. Ngoài ra, doanh nghiệp còn có thể chia sẻ kết quả
-                đánh
-                giá này với các bên liên quan như một cách để khẳng định mức độ áp dụng tốt các nguyên tắc kinh doanh
-                bền
-                vững trong doanh nghiệp mình.
+                Bộ công cụ bao gồm Công cụ đánh giá mức độ thực hành kinh doanh bền vững theo khung Môi trường – Xã hội
+                – Quản trị (ESG) và Công cụ đánh giá mức độ thực hành kinh doanh bền vững theo nguyên tắc kinh tế tuần
+                hoàn. Trong thời gian tới, Cục Phát triển doanh nghiệp sẽ tiếp tục xây dựng các công cụ khác, nhằm đáp
+                ứng nhu cầu tự đánh giá cho các mục tiêu ưu tiên về bền vững khác nhau của doanh nghiệp. Các công cụ này
+                được phát triển dựa trên các tiêu chuẩn được công nhận phổ biến, có điều chỉnh cho phù hợp với bối cảnh
+                cụ thể của các doanh nghiệp Việt Nam, đặc biệt là các doanh nghiệp nhỏ và vừa.
             </p>
         </div>
 
         <div class="grid grid-cols-4 gap-10">
-            <div class="lg:col-span-2 col-span-4"
+            <div class="lg:col-span-2 col-span-4 border rounded-[10px] max-h-[340px]"
                  data-aos="fade-down"
                  data-aos-easing="ease-in-out"
                  data-aos-duration="500">
-                <img class="rounded-[10px] w-full"
+                <img class="rounded-[10px] w-full h-full"
                      loading="lazy"
                      src="https://lh3.googleusercontent.com/pw/AIL4fc_LohterWxqt79IJu9IfyYTm9IXthqHuzPu_2aWJjvyjcgmaX4AkD1R7ro7dfjNY1poanZgcJC_DGIkyLK-R2TDHCywlohkf8JW9vmIEU5g9BEuKiM3ztzV3aCDCT2qfcl4UmDG6ZHioKb9baGt325u=w612-h344-s-no?authuser=0"
                      alt="business7">
             </div>
-            <div class="flex flex-col gap-3 lg:col-span-2 col-span-4"
+            <div class="flex flex-col gap-3 lg:col-span-2 col-span-4 justify-center"
                  data-aos="fade-up"
                  data-aos-easing="ease-in-out"
                  data-aos-duration="500">
                 <div class="md:text-xl xl:text-2xl text-xl font-bold">
-                    Công cụ đánh giá mức độ thực hành Môi trường, Xã hội và Quản trị (ESG) của doanh nghiệp
+                    Công cụ đánh giá mức độ thực hành kinh doanh bền vững theo khung ESG
                 </div>
-                <div class="text-justify">
-                    Công cụ tự đánh giá mức độ thực hành ESG của doanh nghiệp có 30 câu hỏi tập trung vào đánh giá ba
-                    trụ cột chính là môi trường, xã hội và quản trị trong doanh nghiệp với tổng điểm tối đa là 100.
-                    Doanh nghiệp được phân loại theo ngành. Tổng điểm ESG được tính dựa trên tỷ trọng môi trường (E), xã
-                    hội (S) và quản trị (G). Mỗi nhóm ngành có tỷ trọng môi trường (E), xã hội (S) và quản trị (G) khác
-                    nhau, nhưng tổng tỷ trọng luôn là 100%.
-                </div>
-                <div>
+                <!--                <div class="text-justify">-->
+                <!--                    Công cụ tự đánh giá mức độ thực hành ESG của doanh nghiệp có 30 câu hỏi tập trung vào đánh giá ba-->
+                <!--                    trụ cột chính là môi trường, xã hội và quản trị trong doanh nghiệp với tổng điểm tối đa là 100.-->
+                <!--                    Doanh nghiệp được phân loại theo ngành. Tổng điểm ESG được tính dựa trên tỷ trọng môi trường (E), xã-->
+                <!--                    hội (S) và quản trị (G). Mỗi nhóm ngành có tỷ trọng môi trường (E), xã hội (S) và quản trị (G) khác-->
+                <!--                    nhau, nhưng tổng tỷ trọng luôn là 100%.-->
+                <!--                </div>-->
+                <div class="flex gap-2.5 xl:flex-row flex-col">
                     <a-button class="min-h-[50px] md:text-base xl:text-lg"
                               @click.prevent="handleAccessForm(isAuth, 'ESG')">
                         Thực hiện đánh giá
+                    </a-button>
+                    <a-button class="min-h-[50px] md:text-base xl:text-lg bg-blue-500"
+                              type="primary">
+                        <a class="flex items-center justify-center gap-2 w-full h-full"
+                           href="/Sổ%20tay%20công%20cụ%20ESG.pdf" download>
+                            <DownloadOutlined/>
+                            <span>Tài liệu giới thiệu và hướng dẫn</span>
+                        </a>
                     </a-button>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-4 gap-10">
-            <div class="lg:col-span-2 col-span-4 lg:order-last"
+            <div class="lg:col-span-2 col-span-4 lg:order-last border rounded-[10px] max-h-[340px]"
                  data-aos="fade-left"
                  data-aos-easing="ease-in-out"
                  data-aos-duration="500">
-                <img class="rounded-[10px] w-full"
+                <img class="rounded-[10px] w-full h-full"
                      loading="lazy"
-                     src="https://lh3.googleusercontent.com/pw/AIL4fc_8YF-ygztu40tgN8xEo-cvFpMPs3A6PmYxhuIVVNPzregPaYvS5SK8x_yJd5HPhzTtXvdWgLLoIu_waBBWvnhnsL_wK91C0aV7VOm_dI85TjYu5aN_PAzuY12rg14eQMZLXoqrKp1LuHEu2ts2Mmae=w1600-h902-s-no?authuser=0"
+                     src="https://lh3.googleusercontent.com/pw/ADCreHcMYu5RULAW84DmTFWa6PVdTGU_JTi6ajUMryYxYFNWm0cZ4t_nlEl7bw9fFUHnlOL06j7VQTq5f9qSHSWGI_lbBQoJ-ENRro-eErO9NxpyaB0mxRgs3gCxAoJcoMbAel5IzXUt0zUJ3bhdk6__0tkw=w2364-h1576-s-no?authuser=0"
                      alt="manufacture_evaluate">
             </div>
-            <div class="flex flex-col gap-3 lg:col-span-2 col-span-4"
+            <div class="flex flex-col gap-3 lg:col-span-2 col-span-4 justify-center"
                  data-aos="fade-right"
                  data-aos-easing="ease-in-out"
                  data-aos-duration="500">
                 <div class="md:text-xl xl:text-2xl text-xl font-bold">
-                    Công cụ đánh giá mức độ áp dụng nguyên tắc kinh tế tuần hoàn (KTTH) của doanh nghiệp
+                    Công cụ đánh giá mức độ thực hành kinh doanh bền vững theo nguyên tắc KTTH
                 </div>
-                <div class="text-justify">
-                    Công cụ tự đánh giá mức độ áp dụng nguyên tắc KTTH của doanh nghiệp có 38 câu hỏi tập trung vào ba
-                    nhóm tiêu chí về: (1) tầm nhìn và chiến lược áp dụng KTTH của doanh nghiệp, (2) áp dụng nguyên tắc
-                    KTTH trong sản xuất và tiền sản xuất, và (3) áp dụng nguyên tắc KTTH trong công đoạn sau bán hàng.
-                    Tổng điểm đánh giá tối đa là 100.
-                </div>
-                <div>
+                <!--                <div class="text-justify">-->
+                <!--                    Công cụ tự đánh giá mức độ áp dụng nguyên tắc KTTH của doanh nghiệp có 38 câu hỏi tập trung vào ba-->
+                <!--                    nhóm tiêu chí về: (1) tầm nhìn và chiến lược áp dụng KTTH của doanh nghiệp, (2) áp dụng nguyên tắc-->
+                <!--                    KTTH trong sản xuất và tiền sản xuất, và (3) áp dụng nguyên tắc KTTH trong công đoạn sau bán hàng.-->
+                <!--                    Tổng điểm đánh giá tối đa là 100.-->
+                <!--                </div>-->
+                <div class="flex gap-2.5 xl:flex-row flex-col">
                     <a-button class="min-h-[50px] md:text-base xl:text-lg"
                               @click.prevent="handleAccessForm(isAuth, 'NEC')">
                         Thực hiện đánh giá
+                    </a-button>
+                    <a-button class="min-h-[50px] md:text-base xl:text-lg bg-blue-500"
+                              type="primary">
+                        <a class="flex items-center justify-center gap-2"
+                           href="/Sổ%20tay%20công%20cụ%20CE.pdf" download>
+                            <DownloadOutlined/>
+                            <span>Tài liệu giới thiệu và hướng dẫn</span>
+                        </a>
                     </a-button>
                 </div>
             </div>

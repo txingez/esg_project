@@ -7,6 +7,14 @@ export const getNewestProfile = (userId, formId) => {
     return axios.get(`${URL}/profile?user_id=${userId}&form_id=${formId}`, commonConfig())
 }
 
-export const saveResult = (body) => {
+export const saveResult = body => {
     return axios.post(`${URL}/save_form`, body, commonConfig())
+}
+
+export const getHistories = body => {
+    return axios.post(`${URL}/form_history`, body, commonConfig())
+}
+
+export const getDetailForm = id => {
+    return axios.get(`${URL}/form_detail?id=${id}`, commonConfig())
 }

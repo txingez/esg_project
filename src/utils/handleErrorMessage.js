@@ -48,7 +48,10 @@ export const handleGetCodeFailed = message => {
 export const handleError = responseError => {
     switch (responseError.response.status) {
         case 401:
-            const callbackOk = () => router.push("/login")
+            const callbackOk = () => {
+                localStorage.clear()
+                router.push("/login")
+            }
             const callbackCancel = () => router.push('/')
             ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
             return;

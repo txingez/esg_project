@@ -9,16 +9,23 @@ export const useProfileNECStore = defineStore('ProfileNEC', () => {
         foundedYear: '',
         addressCompany: '',
         firstManufactureFactory: '',
-        secondManufactureFactory: '',
         registrationType: null,
-        insuranceEmployees: '',
+        registrationTypeOtherInput: '',
+        businessType: null,
+        fullTimeEmployees: '',
+        femaleFullTimeEmployees: '',
+        partTimeEmployees: '',
+        femalePartTimeEmployees: '',
+        seasonalEmployees: '',
+        femaleSeasonalEmployees: '',
         numberManagers: '',
         numberFemaleManagers: '',
         equalFifteenAndUnderEighteenEmployees: '',
+        b6Value: null,
+        b7Value: null,
         businessModel: null,
         businessModelOtherInput: '',
-        address: '',
-        manufactureAddress: '',
+        startedNECYear: '',
         websiteCompany: '',
         fullNameManager: '',
         sexManager: null,
@@ -40,16 +47,23 @@ export const useProfileNECStore = defineStore('ProfileNEC', () => {
         formData.foundedYear = organizationProfile.foundedYear
         formData.addressCompany = organizationProfile.addressCompany
         formData.firstManufactureFactory = organizationProfile.firstManufactureFactory
-        formData.secondManufactureFactory = organizationProfile.secondManufactureFactory
         formData.registrationType = organizationProfile.registrationType
-        formData.insuranceEmployees = organizationProfile.insuranceEmployees
+        formData.registrationTypeOtherInput = organizationProfile.registrationType === 'other' ? organizationProfile.registrationTypeOtherInput : ''
+        formData.businessType = organizationProfile.businessType
+        formData.fullTimeEmployees = organizationProfile.fullTimeEmployees
+        formData.femaleFullTimeEmployees = organizationProfile.femaleFullTimeEmployees
+        formData.partTimeEmployees = organizationProfile.partTimeEmployees
+        formData.femalePartTimeEmployees = organizationProfile.femalePartTimeEmployees
+        formData.seasonalEmployees = organizationProfile.seasonalEmployees
+        formData.femaleSeasonalEmployees = organizationProfile.femaleSeasonalEmployees
         formData.numberManagers = organizationProfile.numberManagers
         formData.numberFemaleManagers = organizationProfile.numberFemaleManagers
         formData.equalFifteenAndUnderEighteenEmployees = organizationProfile.equalFifteenAndUnderEighteenEmployees
+        formData.b6Value = organizationProfile.b6Value
+        formData.b7Value = organizationProfile.b7Value
         formData.businessModel = organizationProfile.businessModel
         formData.businessModelOtherInput = organizationProfile.businessModel === 'other' ? organizationProfile.businessModelOtherInput : ''
-        formData.address = organizationProfile.address
-        formData.manufactureAddress = organizationProfile.manufactureAddress
+        formData.startedNECYear = organizationProfile.startedNECYear
         formData.websiteCompany = organizationProfile.websiteCompany
         formData.fullNameManager = organizationProfile.fullNameManager
         formData.sexManager = organizationProfile.sexManager
@@ -57,7 +71,6 @@ export const useProfileNECStore = defineStore('ProfileNEC', () => {
         formData.workPlaceManager = organizationProfile.workPlaceManager
         formData.emailManager = organizationProfile.emailManager
         formData.phoneNumberManager = organizationProfile.phoneNumberManager
-        formData.evaluatedDate = dayjs(organizationProfile.evaluatedDate)
         formData.fullName = organizationProfile.fullName
         formData.workPlace = organizationProfile.workPlace
         formData.workUnit = organizationProfile.workUnit
@@ -65,5 +78,9 @@ export const useProfileNECStore = defineStore('ProfileNEC', () => {
         formData.phoneNumber = organizationProfile.phoneNumber
     }
 
-    return {formData, update}
+    const updateByField = (field, newVal) => {
+        formData[field] = newVal
+    }
+
+    return {formData, update, updateByField}
 })

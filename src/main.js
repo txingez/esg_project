@@ -18,7 +18,8 @@ import {
     faWater,
     faRightFromBracket,
     faArrowUp,
-    faMountainSun
+    faMountainSun,
+    faChartSimple
 } from '@fortawesome/free-solid-svg-icons'
 import {faFacebookSquare, faXTwitter, faYoutube} from '@fortawesome/free-brands-svg-icons'
 import {faBuilding} from "@fortawesome/free-regular-svg-icons";
@@ -41,7 +42,8 @@ library.add(faLocationDot,
     faTree,
     faRightFromBracket,
     faArrowUp,
-    faMountainSun)
+    faMountainSun,
+    faChartSimple)
 
 createApp(App)
     .use(pinia)

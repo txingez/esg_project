@@ -1,5 +1,5 @@
 <script setup>
-import {computed, defineAsyncComponent, onMounted} from "vue";
+import {computed, defineAsyncComponent, onMounted, ref} from "vue";
 import {useStepStore} from "../stores/useStepStore.js";
 import {ModalWarning} from "../components/ModalWarning.js";
 import {useRouter} from "vue-router";
@@ -15,12 +15,14 @@ const isAuth = computed(() => {
     return !!token
 })
 
+const screenWidth = ref(0)
+
 const stepItems = [
-    {key: 'first', title: 'Hồ sơ doanh nghiệp'},
-    {key: 'second', title: 'Tầm nhìn của doanh nghiệp'},
-    {key: 'third', title: 'Sản xuất và tiền sản xuất'},
-    {key: 'forth', title: 'Sau sản xuất'},
-    {key: 'fifth', title: 'Kết quả và đánh giá'}
+    {key: 'first', title: 'Thông tin doanh nghiệp', disabled: true},
+    {key: 'second', title: 'Tầm nhìn của doanh nghiệp', disabled: true},
+    {key: 'third', title: 'Sản xuất và tiền sản xuất', disabled: true},
+    {key: 'forth', title: 'Sau sản xuất', disabled: true},
+    {key: 'fifth', title: 'Kết quả đánh giá', disabled: true}
 ];
 
 const steps = [
@@ -31,10 +33,23 @@ const steps = [
     {title: 'Kết quả và đánh giá', content: 'ResultEvaluated'}
 ];
 
+const updateScreenWidth = () => {
+    screenWidth.value = window.innerWidth;
+}
+const onScreenResize = () => {
+    window.addEventListener("resize", () => {
+        updateScreenWidth();
+    });
+}
 
 onMounted(() => {
+    updateScreenWidth()
+    onScreenResize()
     if (!isAuth.value) {
-        const callbackOk = () => router.push('/login')
+        const callbackOk = () => {
+            localStorage.clear()
+            router.push('/login')
+        }
         const callbackCancel = () => router.push('/')
         ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
     }
@@ -45,12 +60,14 @@ onMounted(() => {
     <div v-if="isAuth" class="flex gap-10 flex-col py-5">
         <div class="result-container">
             <div class="text-center font-bold md:text-xl lg:text-2xl xl:text-3xl text-sm mb-5">
-                <div>CÔNG CỤ ĐÁNH GIÁ MỨC ĐỘ ÁP DỤNG</div>
-                <div>NGUYÊN TẮC KINH TẾ TUẦN HOÀN CỦA DOANH NGHIỆP TẠI VIỆT NAM</div>
+                <div>CÔNG CỤ ĐÁNH GIÁ MỨC ĐỘ THỰC HÀNH</div>
+                <div>KINH DOANH BỀN VỮNG CỦA DOANH NGHIỆP THEO NGUYÊN TẮC KINH TẾ TUẦN HOÀN</div>
             </div>
 
             <div class="md:px-10 lg:px-[50px] xl:px-[100px] px-5 space-y-5">
-                <a-steps :current="stepStore.currentStepState" :items="stepItems"/>
+                <a-steps :current="stepStore.currentStepState"
+                         :items="stepItems"
+                         :direction="screenWidth <= 1024 ? 'vertical' : 'horizontal'"/>
                 <div class="steps-content">
                     <component
                             :is="defineAsyncComponent(() => import(`../components/${steps[stepStore.currentStepState].content}.vue`))"/>
@@ -59,12 +76,19 @@ onMounted(() => {
         </div>
 
         <div v-if="stepStore.currentStepState === stepItems.length - 1"
-             class="md:px-10 lg:px-[50px] xl:px-[100px]">
+             class="md:px-10 lg:px-[50px] xl:px-[100px] px-5">
             <a-button type="primary"
                       class="bg-[#1677ff] h-[50px] w-[150px] flex items-center justify-center"
                       @click.prevent="exportHTMLToPDF(ENUM.FORM_NAME.EvaluateNECForm)">
-                <PrinterOutlined /> In kết quả
+                <PrinterOutlined/>
+                In kết quả
             </a-button>
         </div>
     </div>
 </template>
+
+<style scoped>
+:deep(.ant-steps-item-title) {
+    font-size: 14px;
+}
+</style>

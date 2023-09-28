@@ -9,7 +9,6 @@ export const useProfileESGStore = defineStore('ProfileESG', () => {
         foundedYear: '',
         addressCompany: '',
         firstManufactureFactory: '',
-        secondManufactureFactory: '',
         registrationType: null,
         registrationTypeOtherInput: '',
         businessType: null,
@@ -48,7 +47,6 @@ export const useProfileESGStore = defineStore('ProfileESG', () => {
         formData.foundedYear = organizationProfile.foundedYear
         formData.addressCompany = organizationProfile.addressCompany
         formData.firstManufactureFactory = organizationProfile.firstManufactureFactory
-        formData.secondManufactureFactory = organizationProfile.secondManufactureFactory
         formData.registrationType = organizationProfile.registrationType
         formData.registrationTypeOtherInput = organizationProfile.registrationType === 'other' ? organizationProfile.registrationTypeOtherInput : ''
         formData.businessType = organizationProfile.businessType
@@ -73,7 +71,6 @@ export const useProfileESGStore = defineStore('ProfileESG', () => {
         formData.workPlaceManager = organizationProfile.workPlaceManager
         formData.emailManager = organizationProfile.emailManager
         formData.phoneNumberManager = organizationProfile.phoneNumberManager
-        formData.evaluatedDate = dayjs(organizationProfile.evaluatedDate)
         formData.fullName = organizationProfile.fullName
         formData.workPlace = organizationProfile.workPlace
         formData.workUnit = organizationProfile.workUnit
@@ -81,5 +78,9 @@ export const useProfileESGStore = defineStore('ProfileESG', () => {
         formData.phoneNumber = organizationProfile.phoneNumber
     }
 
-    return {formData, update}
+    const updateByField = (field, newValue) => {
+        formData[field] = newValue
+    }
+
+    return {formData, update, updateByField}
 })

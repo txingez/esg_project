@@ -1,6 +1,5 @@
 <script setup>
-import {onMounted} from "vue";
-import {QuestionCircleOutlined} from "@ant-design/icons-vue";
+import {onMounted, ref} from "vue";
 import {businessModels} from "../constants/businessModels.js";
 import {useBusinessTypeStore} from '../stores/useBusinessTypeStore.js'
 import {useStepStore} from "../stores/useStepStore.js";
@@ -11,6 +10,8 @@ import {useProfileESGStore} from "../stores/useProfileESGStore.js";
 import dayjs from "dayjs";
 import {useRouter} from "vue-router";
 import {handleError} from "../utils/handleErrorMessage.js";
+import {QuestionCircleOutlined} from '@ant-design/icons-vue'
+import {OPTIONS} from "../constants/options.js";
 
 const router = useRouter()
 const profileESGStore = useProfileESGStore()
@@ -18,38 +19,12 @@ const businessTypeStore = useBusinessTypeStore()
 const stepStore = useStepStore()
 const evaluatedResultStore = useEvaluatedResultStore()
 
-const registrationTypeOpts = [
-    {label: 'Doanh nghiệp tư nhân', value: 'Doanh nghiệp tư nhân'},
-    {label: 'Công ty trách nhiệm hữu hạn một thành viên', value: 'Công ty trách nhiệm hữu hạn một thành viên'},
-    {
-        label: 'Công ty trách nhiệm hữu hạn từ hai thành viên trở lên',
-        value: 'Công ty trách nhiệm hữu hạn từ hai thành viên trở lên'
-    },
-    {label: 'Công ty cổ phần', value: 'Công ty cổ phần'},
-    {label: 'Công ty hợp danh', value: 'Công ty hợp danh'},
-    {label: 'Loại hình khác (ghi cụ thể)', value: 'other'}
-]
-
-const businessTypeOpts = [
-    {label: 'Doanh nghiệp niêm yết', value: 'Doanh nghiệp niêm yết'},
-    {label: 'Doanh nghiệp không niêm yết', value: 'Doanh nghiệp không niêm yết'}
-]
-
-const yesOrNoOptions = [
-    {label: 'Có', value: 'Có'},
-    {label: 'Không', value: 'Không'}
-]
-
-const sexOpts = [
-    {label: 'Nam', value: 'Nam'},
-    {label: 'Nữ', value: 'Nữ'}
-]
+const isPeopleMakeEvaluate = ref(false)
 
 const disabledDate = (current) => {
     // Can not select days before today and today
     return current && current > dayjs().endOf('day');
 };
-const dateFormat = 'DD/MM/YYYY'
 const yearFormat = 'YYYY'
 
 const handleFinishProfile = () => {
@@ -73,314 +48,477 @@ onMounted(() => {
             handleError(err)
         })
 })
+
+const handlePeopleMakeEvaluate = () => {
+    if (isPeopleMakeEvaluate.value) {
+        profileESGStore.updateByField('fullName', profileESGStore.formData.fullNameManager)
+        profileESGStore.updateByField('workPlace', profileESGStore.formData.workPlaceManager)
+        profileESGStore.updateByField('email', profileESGStore.formData.emailManager)
+        profileESGStore.updateByField('phoneNumber', profileESGStore.formData.phoneNumberManager)
+    } else {
+        profileESGStore.updateByField('fullName', '')
+        profileESGStore.updateByField('workPlace', '')
+        profileESGStore.updateByField('email', '')
+        profileESGStore.updateByField('phoneNumber', '')
+    }
+}
 </script>
 
 <template>
-    <div>
-        <a-form layout="vertical"
-                :labelWrap="true"
-                labelAlign="left"
-                :colon="false"
-                v-model:model="profileESGStore.formData"
-                @finish="handleFinishProfile">
-            <a-form-item name="companyName" :rules="[{required: true, message: 'Hãy nhập tên công ty'}]">
+    <a-form layout="vertical"
+            :labelWrap="true"
+            labelAlign="left"
+            :colon="false"
+            size="large"
+            v-model:model="profileESGStore.formData"
+            @finish="handleFinishProfile">
+        <a-form-item name="companyName" :rules="[{required: true, message: 'Hãy nhập tên doanh nghiệp'}]">
+            <template #label>
+                <div class="flex justify-center items-center gap-1 text-lg">
+                    Tên doanh nghiệp:
+                </div>
+            </template>
+            <a-input v-model:value="profileESGStore.formData.companyName"
+                     placeholder="Tên doanh nghiệp"/>
+        </a-form-item>
+
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full" name="taxCode"
+                         :rules="[{pattern: new RegExp(/^\d+$/), message: 'Mã số doanh nghiệp không đúng'},
+                                      {required: true, message: 'Hãy nhập Mã số thuế'}]">
                 <template #label>
-                    <div class="flex justify-center items-center gap-1">
-                        <span>Tên doanh nghiệp/tổ chức:</span>
-                        <a-tooltip>
-                            <template #title>
-                                <span>prompt text</span>
-                            </template>
-                            <QuestionCircleOutlined/>
-                        </a-tooltip>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Mã số doanh nghiệp:
                     </div>
                 </template>
-                <a-input v-model:value="profileESGStore.formData.companyName" placeholder="Tên doanh nghiệp/tổ chức"/>
+                <a-input v-model:value="profileESGStore.formData.taxCode" placeholder="Mã số doanh nghiệp"/>
             </a-form-item>
-
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Mã số thuế:" name="taxCode"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Mã số thuế không đúng'},
-                                      {required: true, message: 'Hãy nhập Mã số thuế'}]">
-                    <a-input v-model:value="profileESGStore.formData.taxCode" placeholder="Mã số thuế"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="Năm thành lập:" name="foundedYear"
-                             :rules="[{required: true, message: 'Hãy chọn năm thành lập'}]">
-                    <a-date-picker class="w-full"
-                                   v-model:value="profileESGStore.formData.foundedYear"
-                                   picker="year"
-                                   :disabled-date="disabledDate"
-                                   :valueFormat="yearFormat"
-                                   placeholder="Năm thành lập"/>
-                </a-form-item>
-            </div>
-
-            <a-form-item class="md:basis-[48%] w-full" label="Địa điểm trụ sở chính:" name="addressCompany"
-                         :rules="[{required: true, message: 'Hãy nhập Đia điểm trụ sở chính'}]">
-                <a-input v-model:value="profileESGStore.formData.addressCompany" placeholder="Địa điểm trụ sở chính"/>
+            <a-form-item class="md:basis-[48%] w-full" name="foundedYear"
+                         :rules="[{required: true, message: 'Hãy chọn năm thành lập'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Năm thành lập:
+                    </div>
+                </template>
+                <a-date-picker class="w-full"
+                               v-model:value="profileESGStore.formData.foundedYear"
+                               picker="year"
+                               :disabled-date="disabledDate"
+                               :valueFormat="yearFormat"
+                               placeholder="Năm thành lập"/>
             </a-form-item>
+        </div>
 
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Địa điểm cơ sở sản xuất chính thứ nhất:"
-                             name="firstManufactureFactory"
-                             :rules="[{required: true, message: 'Hãy nhập Địa điểm cơ sở sản xuất chính thứ nhất'}]">
-                    <a-input v-model:value="profileESGStore.formData.firstManufactureFactory"
-                             placeholder="Địa điểm cơ sở sản xuất chính thứ nhất"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full"
-                             label="Địa điểm cơ sở sản xuất chính thứ hai (nếu có):"
-                             name="secondManufactureFactory">
-                    <a-input v-model:value="profileESGStore.formData.secondManufactureFactory"
-                             placeholder="Địa điểm cơ sở sản xuất chính thứ hai (nếu có)"/>
-                </a-form-item>
-            </div>
-
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <div class="md:basis-[48%] w-full">
-                    <a-form-item label="Loại hình đăng ký:" name="registrationType"
-                                 :rules="[{required: true, message: 'Hãy chọn loại hình đăng ký'}]">
-                        <div class="space-y-2">
-                            <a-select v-model:value="profileESGStore.formData.registrationType"
-                                      placeholder="Loại hình đăng ký">
-                                <a-select-option v-for="opt in registrationTypeOpts" :value="opt.value">
-                                    {{ opt.label }}
-                                </a-select-option>
-                            </a-select>
-                        </div>
-                    </a-form-item>
-                    <a-form-item name="registrationTypeOtherInput"
-                                 v-if="profileESGStore.formData.registrationType === 'other'"
-                                 :rules="[{required: true, message: 'Hãy nhập loại hình đăng ký khác'}]">
-                        <a-input v-model:value="profileESGStore.formData.registrationTypeOtherInput"/>
-                    </a-form-item>
+        <a-form-item name="addressCompany"
+                     :rules="[{required: true, message: 'Hãy nhập Địa chỉ đăng ký kinh doanh'}]">
+            <template #label>
+                <div class="flex justify-center items-center gap-1 text-lg">
+                    <span>Địa chỉ đăng ký kinh doanh:</span>
                 </div>
-                <a-form-item class="md:basis-[48%] w-full" label="Loại hình Doanh nghiệp:" name="businessType"
-                             :rules="[{required: true, message: 'Hãy chọn loại hình Doanh nghiệp'}]">
-                    <a-select v-model:value="profileESGStore.formData.businessType"
-                              placeholder="Loại hình Doanh nghiệp">
-                        <a-select-option v-for="opt in businessTypeOpts" :value="opt.value">
-                            {{ opt.label }}
-                        </a-select-option>
+            </template>
+            <a-input v-model:value="profileESGStore.formData.addressCompany"
+                     placeholder="Địa chỉ đăng ký kinh doanh"/>
+        </a-form-item>
+
+        <a-form-item name="firstManufactureFactory"
+                     :rules="[{required: true, message: 'Hãy nhập Cơ sở sản xuất kinh doanh được đặt tại (các) địa phương'}]">
+            <template #label>
+                <div class="flex justify-center items-center gap-1 text-lg">
+                    Cơ sở sản xuất kinh doanh được đặt tại (các) địa phương:
+                </div>
+            </template>
+            <a-input v-model:value="profileESGStore.formData.firstManufactureFactory"
+
+                     placeholder="Cơ sở sản xuất kinh doanh được đặt tại (các) địa phương"/>
+        </a-form-item>
+
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <div class="md:basis-[48%] w-full">
+                <a-form-item name="registrationType"
+                             :rules="[{required: true, message: 'Hãy chọn Loại hình đăng ký kinh doanh'}]">
+                    <template #label>
+                        <div class="flex justify-center items-center gap-1 text-lg">
+                            Loại hình đăng ký kinh doanh:
+                        </div>
+                    </template>
+                    <a-select v-model:value="profileESGStore.formData.registrationType"
+                              :options="OPTIONS.REGISTRATION_TYPE_ESG_OPTS"
+                              placeholder="Loại hình đăng ký kinh doanh">
                     </a-select>
                 </a-form-item>
+                <a-form-item name="registrationTypeOtherInput"
+                             v-if="profileESGStore.formData.registrationType === 'other'"
+                             :rules="[{required: true, message: 'Hãy nhập loại hình đăng ký kinh doanh khác'}]">
+                    <a-input v-model:value="profileESGStore.formData.registrationTypeOtherInput"/>
+                </a-form-item>
             </div>
+            <a-form-item class="md:basis-[48%] w-full" name="businessType"
+                         :rules="[{required: true, message: 'Hãy chọn loại hình Doanh nghiệp'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Loại hình Doanh nghiệp:
+                    </div>
+                </template>
+                <a-select v-model:value="profileESGStore.formData.businessType"
+                          :options="OPTIONS.BUSINESS_TYPE_OPTS"
+                          placeholder="Loại hình Doanh nghiệp">
+                </a-select>
+            </a-form-item>
+        </div>
 
-            <div class="font-bold text-base py-5">Thông tin lao động</div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Tổng số nhân viên toàn thời gian:"
-                             name="fullTimeEmployees"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.fullTimeEmployees"
-                             placeholder="Tổng số nhân viên toàn thời gian"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="trong đó: tổng số nhân viên nữ:"
-                             name="femaleFullTimeEmployees"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.femaleFullTimeEmployees"
-                             placeholder="Tổng số nhân viên nữ"/>
-                </a-form-item>
-            </div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Tổng số nhân viên bán thời gian:"
-                             name="partTimeEmployees"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.partTimeEmployees"
-                             placeholder="Tổng số nhân viên bán thời gian"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="trong đó: tổng số nhân viên nữ:"
-                             name="femalePartTimeEmployees"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.femalePartTimeEmployees"
-                             placeholder="Tổng số nhân viên nữ"/>
-                </a-form-item>
-            </div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Tổng số nhân viên thời vụ:"
-                             name="seasonalEmployees"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.seasonalEmployees"
-                             placeholder="Tổng số nhân viên thời vụ"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="trong đó: tổng số nhân viên nữ:"
-                             name="femaleSeasonalEmployees"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.femaleSeasonalEmployees"
-                             placeholder="Tổng số nhân viên nữ"/>
-                </a-form-item>
-            </div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Tổng số cán bộ cấp quản lý (từ trưởng phòng trở lên):"
-                             name="numberManagers"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.numberManagers"
-                             placeholder="Tổng số cán bộ cấp quản lý (từ trưởng phòng trở lên)"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="trong đó: Tổng số cán bộ cấp quản lý là nữ:"
-                             name="numberFemaleManagers"
-                             :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.numberFemaleManagers"
-                             placeholder="Tổng số cán bộ cấp quản lý là nữ"/>
-                </a-form-item>
-            </div>
-            <a-form-item label="Tổng số lao động vị thành niên (nếu có) - từ đủ 15 tuối đến dưới 18 tuổi:"
-                         name="equalFifteenAndUnderEighteenEmployees"
+        <div class="font-bold text-xl py-5">Thông tin lao động</div>
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="fullTimeEmployees"
                          :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Tổng số nhân viên toàn thời gian:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.fullTimeEmployees"
+                         placeholder="Tổng số nhân viên toàn thời gian"/>
+            </a-form-item>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="femaleFullTimeEmployees"
+                         :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        trong đó: tổng số nhân viên nữ:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.femaleFullTimeEmployees"
+                         placeholder="Tổng số nhân viên nữ"/>
+            </a-form-item>
+        </div>
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="partTimeEmployees"
+                         :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Tổng số nhân viên bán thời gian:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.partTimeEmployees"
+                         placeholder="Tổng số nhân viên bán thời gian"/>
+            </a-form-item>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="femalePartTimeEmployees"
+                         :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        trong đó: tổng số nhân viên nữ:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.femalePartTimeEmployees"
+                         placeholder="Tổng số nhân viên nữ"/>
+            </a-form-item>
+        </div>
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="seasonalEmployees"
+                         :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Tổng số nhân viên thời vụ:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.seasonalEmployees"
+                         placeholder="Tổng số nhân viên thời vụ"/>
+            </a-form-item>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="femaleSeasonalEmployees"
+                         :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        trong đó: tổng số nhân viên nữ:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.femaleSeasonalEmployees"
+                         placeholder="Tổng số nhân viên nữ"/>
+            </a-form-item>
+        </div>
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="numberManagers"
+                         :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Tổng số cán bộ cấp quản lý (từ trưởng phòng trở lên):
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.numberManagers"
+                         placeholder="Tổng số cán bộ cấp quản lý (từ trưởng phòng trở lên)"/>
+            </a-form-item>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="numberFemaleManagers"
+                         :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        trong đó: Tổng số cán bộ cấp quản lý là nữ:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.numberFemaleManagers"
+                         placeholder="Tổng số cán bộ cấp quản lý là nữ"/>
+            </a-form-item>
+        </div>
+        <a-form-item name="equalFifteenAndUnderEighteenEmployees"
+                     :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
                                   {required: true, message: 'Hãy nhập thông tin'}]">
-                <a-input v-model:value="profileESGStore.formData.equalFifteenAndUnderEighteenEmployees"
-                         placeholder="Tổng số lao động vị thành niên (nếu có) - từ đủ 15 tuối đến dưới 18 tuổi"/>
-            </a-form-item>
-
-            <a-form-item
-                    label="Doanh nghiệp có phải là doanh nghiệp do phụ nữ làm chủ không (có một hoặc nhiều phụ nữ sở hữu từ 51% vốn điều lệ trở lên, trong đó có ít nhất một người cấp quản lý điều hành doanh nghiệp)?"
-                    name="b6Value"
-                    :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]">
-                <a-select v-model:value="profileESGStore.formData.b6Value" placeholder="Có/Không">
-                    <a-select-option v-for="opt in yesOrNoOptions" :value="opt.value">{{ opt.label }}</a-select-option>
-                </a-select>
-            </a-form-item>
-
-            <a-form-item
-                    label="Doanh nghiệp có phải là doanh nghiệp do phụ nữ điều hành (vị trí giám đốc, tổng giám đốc, chủ tịch Hội Đồng Quản Trị) không?"
-                    name="b7Value"
-                    :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]">
-                <a-select v-model:value="profileESGStore.formData.b7Value" placeholder="Có/Không">
-                    <a-select-option v-for="opt in yesOrNoOptions" :value="opt.value">{{ opt.label }}</a-select-option>
-                </a-select>
-            </a-form-item>
-
-            <a-form-item label="Mô hình kinh doanh thuộc Lĩnh vực kinh doanh nào:" name="businessModel"
-                         :rules="[{required: true, message: 'Hãy chọn Lĩnh vực kinh doanh'}]">
-                <div class="space-y-2">
-                    <a-select v-model:value="profileESGStore.formData.businessModel"
-                              :options="businessModels"
-                              placeholder="Mô hình kinh doanh thuộc Lĩnh vực kinh doanh nào"/>
+            <template #label>
+                <div class="flex justify-center items-center gap-1 text-lg">
+                    Tổng số lao động vị thành niên:
+                    <a-tooltip>
+                        <template #title>
+                            <span>Lao động vị thành niên là lao động từ đủ 15 tuối đến dưới 18 tuổi</span>
+                        </template>
+                        <QuestionCircleOutlined/>
+                    </a-tooltip>
                 </div>
+            </template>
+            <a-input v-model:value="profileESGStore.formData.equalFifteenAndUnderEighteenEmployees"
+                     placeholder="Tổng số lao động vị thành niên"/>
+        </a-form-item>
+
+        <a-form-item name="b6Value"
+                     :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]">
+            <template #label>
+                <div class="flex justify-center items-center gap-1 text-lg">
+                    Doanh nghiệp có phải là doanh nghiệp do phụ nữ làm chủ không?
+                    <a-tooltip>
+                        <template #title>
+                            <span>
+                                Doanh nghiệp do phụ nữ làm chủ là doanh nghiệp có tổng số vốn điều lệ do (các) phụ nữ sở hữu chiếm 51% trở lên và trong đó có ít nhất một người thuộc cấp quản lý điều hành doanh nghiệp
+                            </span>
+                        </template>
+                        <QuestionCircleOutlined/>
+                    </a-tooltip>
+                </div>
+            </template>
+            <a-select v-model:value="profileESGStore.formData.b6Value" placeholder="Có/Không"
+                      :options="OPTIONS.YES_NO_OPTS"/>
+        </a-form-item>
+
+        <a-form-item name="b7Value"
+                     :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]">
+            <template #label>
+                <div class="flex justify-center items-center gap-1 text-lg">
+                    Doanh nghiệp có phải là doanh nghiệp do phụ nữ điều hành không?
+                    <a-tooltip>
+                        <template #title>
+                            <span>
+                                Doanh nghiệp do phụ nữ điều hành là doanh nghiệp có một trong các vị trí sau do phụ nữ đảm nhận: Tổng Giám đốc /Giám đốc doanh nghiệp, Chủ tịch Hội đồng quản trị
+                            </span>
+                        </template>
+                        <QuestionCircleOutlined/>
+                    </a-tooltip>
+                </div>
+            </template>
+            <a-select v-model:value="profileESGStore.formData.b7Value" placeholder="Có/Không"
+                      :options="OPTIONS.YES_NO_OPTS"/>
+        </a-form-item>
+
+        <a-form-item name="businessModel"
+                     :rules="[{required: true, message: 'Hãy chọn Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp'}]">
+            <template #label>
+                <div class="flex justify-center items-center gap-1 text-lg">
+                    Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp thuộc nhóm:
+                </div>
+            </template>
+            <a-select v-model:value="profileESGStore.formData.businessModel"
+                      :options="businessModels"
+                      placeholder="Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp thuộc nhóm"/>
+        </a-form-item>
+
+        <a-form-item name="businessModelOtherInput" v-if="profileESGStore.formData.businessModel === 'other'"
+                     :rules="[{required: true, message: 'Hãy nhập Lĩnh vực hoạt động sản xuất, kinh doanh khác'}]">
+            <a-input placeholder="Nhập thông tin khác"
+                     v-model:value="profileESGStore.formData.businessModelOtherInput"/>
+        </a-form-item>
+
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="startedESGYear">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Năm bắt đầu triển khai ESG (nếu đã triển khai):
+                    </div>
+                </template>
+                <a-date-picker class="w-full" v-model:value="profileESGStore.formData.startedESGYear" picker="year"
+                               placeholder="Năm bắt đầu triển khai ESG"/>
             </a-form-item>
-
-            <a-form-item name="businessModelOtherInput" v-if="profileESGStore.formData.businessModel === 'other'"
-                         :rules="[{required: true, message: 'Hãy nhập Lĩnh vực kinh doanh'}]">
-                <a-input placeholder="Nhập thông tin khác"
-                         v-model:value="profileESGStore.formData.businessModelOtherInput"/>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="websiteCompany">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Địa chỉ website:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.websiteCompany"
+                         placeholder="Địa chỉ website"/>
             </a-form-item>
+        </div>
 
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Năm bắt đầu triển khai ESG (nếu đã triển khai):"
-                             name="startedESGYear">
-                    <a-date-picker class="w-full" v-model:value="profileESGStore.formData.startedESGYear" picker="year"
-                                   placeholder="Năm bắt đầu triển khai ESG"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="Địa chỉ website:"
-                             name="websiteCompany"
-                             :rules="[{required: true, message: 'Hãy nhập địa chỉ website công ty'}]">
-                    <a-input v-model:value="profileESGStore.formData.websiteCompany"
-                             placeholder="Địa chỉ website"/>
-                </a-form-item>
-            </div>
-
-            <div class="font-bold text-base py-5">Thông tin 01 lãnh đạo doanh nghiệp (để liên hệ)</div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Họ và tên:"
-                             name="fullNameManager"
-                             :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.fullNameManager"
-                             placeholder="Họ và tên"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="Giới tính:"
-                             name="sexManager"
-                             :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]">
-                    <a-select v-model:value="profileESGStore.formData.sexManager" :options="sexOpts"
-                              placeholder="Giới tính"/>
-                </a-form-item>
-            </div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Dân tộc:"
-                             name="nationManager"
-                             :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.nationManager"
-                             placeholder="Dân tộc"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="Vị trí công tác:"
-                             name="workPlaceManager"
-                             :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.workPlaceManager"
-                             placeholder="Vị trí công tác"/>
-                </a-form-item>
-            </div>
-            <div class="flex flex-wrap xl:gap-5 lg:gap-3 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Email:"
-                             name="emailManager"
-                             :rules="[{pattern: new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.emailManager"
-                             placeholder="Email"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="Điện thoại:"
-                             name="phoneNumberManager"
-                             :rules="[{pattern: new RegExp(/([+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/), message: 'Số điện thoại không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.phoneNumberManager"
-                             placeholder="Điện thoại"/>
-                </a-form-item>
-            </div>
-
-            <div class="font-bold text-base py-5">Người thực hiện đánh giá</div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Họ và tên:"
-                             name="fullName"
-                             :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.fullName"
-                             placeholder="Họ và tên"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="Ngày thực hiện đánh giá:" name="evaluatedDate"
-                             :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-date-picker class="w-full" v-model:value="profileESGStore.formData.evaluatedDate"
-                                   :format="dateFormat"/>
-                </a-form-item>
-            </div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Vị trí công tác:"
-                             name="workPlace"
-                             :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.workPlace"
-                             placeholder="Vị trí công tác"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="Đơn vị công tác:"
-                             name="workUnit"
-                             :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.workUnit"
-                             placeholder="Đơn vị công tác"/>
-                </a-form-item>
-            </div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-                <a-form-item class="md:basis-[48%] w-full" label="Email:"
-                             name="email"
-                             :rules="[{pattern: new RegExp(/^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.email"
-                             placeholder="Email"/>
-                </a-form-item>
-                <a-form-item class="md:basis-[48%] w-full" label="Điện thoại:"
-                             name="phoneNumber"
-                             :rules="[{pattern: new RegExp(/([+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/), message: 'Số điện thoại không đúng'},
-                                      {required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="profileESGStore.formData.phoneNumber"
-                             placeholder="Điện thoại"/>
-                </a-form-item>
-            </div>
-
-            <a-form-item>
-                <a-button type="primary" class="bg-[#1677ff] min-h-[50px]" html-type="submit">Xác nhận</a-button>
+        <div class="font-bold text-xl py-5">Thông tin 01 lãnh đạo doanh nghiệp (để liên hệ)</div>
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="fullNameManager"
+                         :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Họ và tên:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.fullNameManager"
+                         placeholder="Họ và tên"/>
             </a-form-item>
-        </a-form>
-    </div>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="sexManager"
+                         :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Giới tính:
+                    </div>
+                </template>
+                <a-select v-model:value="profileESGStore.formData.sexManager" :options="OPTIONS.SEX_OPTS"
+                          placeholder="Giới tính"/>
+            </a-form-item>
+        </div>
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="nationManager"
+                         :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Dân tộc:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.nationManager"
+                         placeholder="Dân tộc"/>
+            </a-form-item>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="workPlaceManager"
+                         :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Vị trí công tác:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.workPlaceManager"
+                         placeholder="Vị trí công tác"/>
+            </a-form-item>
+        </div>
+        <div class="flex flex-wrap xl:gap-5 lg:gap-3 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="emailManager"
+                         :rules="[{pattern: new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Email:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.emailManager"
+                         placeholder="Email"/>
+            </a-form-item>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="phoneNumberManager"
+                         :rules="[{pattern: new RegExp(/([+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/), message: 'Số điện thoại không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Điện thoại:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.phoneNumberManager"
+                         placeholder="Điện thoại"/>
+            </a-form-item>
+        </div>
+
+        <div class="flex gap-2 items-center">
+            <div class="font-bold text-xl py-5">Người thực hiện đánh giá</div>
+            <div class="py-5">
+                <a-checkbox v-model:checked="isPeopleMakeEvaluate"
+                            @change="handlePeopleMakeEvaluate">
+                    <span class="text-lg">đồng bộ với thông tin trên</span>
+                </a-checkbox>
+            </div>
+        </div>
+        <a-form-item class="w-full"
+                     name="fullName"
+                     :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
+            <template #label>
+                <div class="flex justify-center items-center gap-1 text-lg">
+                    Họ và tên:
+                </div>
+            </template>
+            <a-input v-model:value="profileESGStore.formData.fullName"
+                     placeholder="Họ và tên"/>
+        </a-form-item>
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="workPlace"
+                         :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Vị trí công tác:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.workPlace"
+                         placeholder="Vị trí công tác"/>
+            </a-form-item>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="workUnit"
+                         :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Bộ phận công tác:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.workUnit"
+                         placeholder="Bộ phận công tác"/>
+            </a-form-item>
+        </div>
+        <div class="flex flex-wrap md:gap-5 justify-between">
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="email"
+                         :rules="[{pattern: new RegExp(/^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Email:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.email"
+                         placeholder="Email"/>
+            </a-form-item>
+            <a-form-item class="md:basis-[48%] w-full"
+                         name="phoneNumber"
+                         :rules="[{pattern: new RegExp(/([+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/), message: 'Số điện thoại không đúng'},
+                                      {required: true, message: 'Hãy nhập thông tin'}]">
+                <template #label>
+                    <div class="flex justify-center items-center gap-1 text-lg">
+                        Điện thoại:
+                    </div>
+                </template>
+                <a-input v-model:value="profileESGStore.formData.phoneNumber"
+                         placeholder="Điện thoại"/>
+            </a-form-item>
+        </div>
+
+        <a-form-item>
+            <a-button type="primary" class="bg-[#1677ff] min-h-[50px]" html-type="submit">Xác nhận</a-button>
+        </a-form-item>
+    </a-form>
 </template>
 
 <style scoped>

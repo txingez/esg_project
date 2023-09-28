@@ -13,12 +13,12 @@ const router = createRouter({
         {
             path: '/',
             name: 'Default',
-            redirect: '/home',
+            redirect: '/',
             component: Default,
             children: [
                 {
                     id: 1,
-                    path: '/home',
+                    path: '/',
                     name: 'Home',
                     component: () => import('./pages/HomePage.vue')
                 },
@@ -87,6 +87,30 @@ const router = createRouter({
                     path: '/reset-password',
                     name: 'ResetPassword',
                     component: () => import('./pages/ResetPasswordPage.vue')
+                },
+                {
+                    id: 13,
+                    path: '/contact',
+                    name: 'Contact',
+                    component: () => import('./pages/ContactPage.vue')
+                },
+                {
+                    id: 14,
+                    path: '/user-info',
+                    name: 'UserInfo',
+                    component: () => import('./pages/UserInfoPage.vue')
+                },
+                {
+                    id: 15,
+                    path: '/history',
+                    name: 'HistoryEvaluated',
+                    component: () => import('./pages/HistoryEvaluatedPage.vue')
+                },
+                {
+                    id: 16,
+                    path: '/result-evaluated/:id',
+                    name: 'ResultEvaluatedDetail',
+                    component: () => import('./pages/ResultDetailPage.vue')
                 }
             ]
         }
@@ -102,14 +126,18 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
     if (((from.name === 'EvaluateESGForm' || from.name === undefined) && to.name === 'EvaluateESGForm') ||
-        ((from.name === 'EvaluateNECForm' || from.name === undefined) && to.name === 'EvaluateNECForm')) {
+        ((from.name === 'EvaluateNECForm' || from.name === undefined) && to.name === 'EvaluateNECForm') ||
+        (to.name === 'UserInfo')) {
         const router = useRouter()
         const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
-        const callbackOk = () => router.push('/login')
+        const callbackOk = () => {
+            localStorage.clear()
+            router.push('/login')
+        }
         const callbackCancel = () => router.push('/')
 
         if (token === null || token === undefined) {
-            ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
+            ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để thực hiện đánh giá', 'Đăng nhập', callbackOk, callbackCancel)
             return false
         } else {
             return true

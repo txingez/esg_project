@@ -4,8 +4,12 @@ import {useEvaluatedResultStore} from "../stores/useEvaluatedResultStore.js";
 import RadarChart from "./RadarChart.vue";
 import {useRouter} from "vue-router";
 import {ENUM} from "../constants/enumValues.js";
+import {useProfileESGStore} from "../stores/useProfileESGStore.js";
+import {useProfileNECStore} from "../stores/useProfileNECStore.js";
 
 const evaluatedResultStore = useEvaluatedResultStore()
+const profileESGStore = useProfileESGStore()
+const profileNECStore = useProfileNECStore()
 const router = useRouter()
 const routeName = computed(() => router.currentRoute.value.name)
 
@@ -13,6 +17,7 @@ const config = computed(() => {
     switch (routeName.value) {
         case ENUM.FORM_NAME.EvaluateESGForm:
             return {
+                profile: profileESGStore.formData,
                 columns: [
                     {
                         title: '',
@@ -29,7 +34,8 @@ const config = computed(() => {
                         title: 'Phân bố tỷ trọng theo ngành',
                         dataIndex: 'distribution',
                         key: 'distribution',
-                        align: 'right'
+                        align: 'right',
+                        width: {md: 200}
                     }
                 ],
                 dataSource: [
@@ -59,6 +65,7 @@ const config = computed(() => {
             }
         case ENUM.FORM_NAME.EvaluateNECForm:
             return {
+                profile: profileNECStore.formData,
                 columns: [
                     {
                         title: '',
@@ -118,51 +125,86 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
 </script>
 
 <template>
-    <a-table :data-source="config.dataSource" :columns="config.columns" :pagination="false" :bordered="true">
-        <template #headerCell="{title, column}" class="bg-green-400">
-            <div class="text-center">{{ title }}</div>
-        </template>
-        <template #bodyCell="{column, text}">
-            <template v-if="column.key === 'name'">
-                <div class="font-bold">{{ text }}</div>
+    <div class="my-3 space-y-2.5">
+        <div class="md:text-xl text-base flex lg:flex-row flex-col">
+            <div class="basis-2/3 space-x-2">
+                <span class="font-bold">Tên doanh nghiệp:</span>
+                <span>{{ config.profile.companyName }}</span>
+            </div>
+            <div class="basis-1/3 space-x-2">
+                <span class="font-bold">Mã số doanh nghiệp:</span>
+                <span>{{ config.profile.taxCode }}</span>
+            </div>
+        </div>
+        <div>
+            <div class="flex gap-2">
+                <span>Thời gian đánh giá:</span>
+                <span>{{ config.profile.evaluatedDate.format('DD/MM/YYYY HH:mm:ss') }}</span>
+            </div>
+            <!--    todo: cap nhat lai domain -->
+            <div class="italic">
+                (Đánh giá trên Cổng thông tin Chương trình tại địa chỉ: https://domain.gov.vn)
+            </div>
+        </div>
+    </div>
+    <div class="xl:px-28 lg:px-16">
+        <a-table :data-source="config.dataSource"
+                 :columns="config.columns"
+                 size="middle"
+                 :pagination="false"
+                 class="text-xl"
+                 :bordered="true">
+            <template #headerCell="{title, column}" class="bg-green-400">
+                <div class="text-center md:text-xl text-sm">{{ title }}</div>
             </template>
-            <template v-else-if="column.key === 'distribution'">
-                <div>{{ `${text}%` }}</div>
+            <template #bodyCell="{column, text}">
+                <template v-if="column.key === 'name'">
+                    <div class="font-bold md:text-xl text-sm">{{ text }}</div>
+                </template>
+                <template v-else-if="column.key === 'distribution'">
+                    <div class="md:text-xl text-sm">{{ `${text.toLocaleString('vi')}%` }}</div>
+                </template>
+                <template v-else>
+                    <div class="md:text-xl text-sm">{{ text.toLocaleString('vi') }}</div>
+                </template>
             </template>
-            <template v-else>
-                <div>{{ text }}</div>
+            <template #summary>
+                <a-table-summary-row class="bg-[#FAFAFA]">
+                    <a-table-summary-cell :col-span="config.summaryTableConfig.title"
+                                          class="font-bold md:text-xl text-sm">
+                        Tổng điểm
+                    </a-table-summary-cell>
+                    <a-table-summary-cell :col-span="config.summaryTableConfig.value"
+                                          class="text-right font-bold md:text-xl text-sm">
+                        {{ config.summaryPoint.toString().replace('.', ',') }}
+                    </a-table-summary-cell>
+                </a-table-summary-row>
+                <a-table-summary-row class="bg-[#FAFAFA]">
+                    <a-table-summary-cell :col-span="config.summaryTableConfig.title"
+                                          class="font-bold md:text-xl text-sm">
+                        Xếp hạng
+                    </a-table-summary-cell>
+                    <a-table-summary-cell :col-span="config.summaryTableConfig.value"
+                                          class="text-right font-bold md:text-xl text-sm">
+                        {{ config.rateInfo.rate }}
+                    </a-table-summary-cell>
+                </a-table-summary-row>
+                <a-table-summary-row v-if="config.showConclude" class="bg-[#FAFAFA]">
+                    <a-table-summary-cell :col-span="config.summaryTableConfig.title"
+                                          class="font-bold md:text-xl text-sm">
+                        Doanh nghiệp có tiềm năng đạt tiêu chuẩn nhận
+                        hỗ trợ của CP Doanh nghiệp đủ điều kiện tiếp cận các hỗ trợ chính sách theo Quyết định số
+                        167/QĐ-TTg ngày 8/2/2022 về Chương trình hỗ trợ doanh nghiệp khu vực tư nhân kinh doanh bền vững
+                        giai đoạn 2022-2025 hay không?
+                    </a-table-summary-cell>
+                    <a-table-summary-cell :col-span="config.summaryTableConfig.value"
+                                          class="text-right font-bold md:text-xl text-sm">
+                        {{ config.summaryPoint < 50 ? 'Không đạt' : 'Có tiềm năng đạt' }}
+                    </a-table-summary-cell>
+                </a-table-summary-row>
             </template>
-        </template>
-        <template #summary>
-            <a-table-summary-row class="bg-[#FAFAFA]">
-                <a-table-summary-cell :col-span="config.summaryTableConfig.title" class="font-bold">
-                    Tổng điểm
-                </a-table-summary-cell>
-                <a-table-summary-cell :col-span="config.summaryTableConfig.value" class="text-right font-bold">
-                    {{ config.summaryPoint }}
-                </a-table-summary-cell>
-            </a-table-summary-row>
-            <a-table-summary-row class="bg-[#FAFAFA]">
-                <a-table-summary-cell :col-span="config.summaryTableConfig.title" class="font-bold">
-                    Xếp hạng
-                </a-table-summary-cell>
-                <a-table-summary-cell :col-span="config.summaryTableConfig.value" class="text-right font-bold">
-                    {{ config.rateInfo.rate }}
-                </a-table-summary-cell>
-            </a-table-summary-row>
-            <a-table-summary-row v-if="config.showConclude" class="bg-[#FAFAFA]">
-                <a-table-summary-cell :col-span="config.summaryTableConfig.title" class="font-bold">
-                    Doanh nghiệp có tiềm năng đạt tiêu chuẩn nhận
-                    hỗ trợ của CP Doanh nghiệp đủ điều kiện tiếp cận các hỗ trợ chính sách theo Quyết định số
-                    167/QĐ-TTg ngày 8/2/2022 về Chương trình hỗ trợ doanh nghiệp khu vực tư nhân kinh doanh bền vững
-                    giai đoạn 2022-2025 hay không?
-                </a-table-summary-cell>
-                <a-table-summary-cell :col-span="config.summaryTableConfig.value" class="text-right font-bold">
-                    {{ config.summaryPoint < 50 ? 'Không đạt' : 'Có tiềm năng đạt' }}
-                </a-table-summary-cell>
-            </a-table-summary-row>
-        </template>
-    </a-table>
+        </a-table>
+    </div>
 
     <div class="flex xl:flex-row flex-col-reverse justify-between items-center">
         <div class="flex gap-5 flex-col py-5 xl:basis-1/2">

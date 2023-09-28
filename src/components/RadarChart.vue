@@ -39,6 +39,7 @@ const props = defineProps({
         default: false
     }
 })
+Chart.defaults.font.size = 20;
 
 onMounted(() => {
     const ctx = document.getElementById(props.id)
@@ -57,6 +58,8 @@ onMounted(() => {
                         pointBorderColor: '#FFF',
                         pointHoverBackgroundColor: '#FFF',
                         pointHoverBorderColor: props.color,
+                        pointRadius: 7,
+                        pointBorderWidth: 3,
                         tension: props.tension
                     }
                 ]
@@ -82,6 +85,11 @@ onMounted(() => {
                         alignToPixels: true,
                         grid: {
                             circular: props.circular
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 18
+                            }
                         }
                     }
                 }

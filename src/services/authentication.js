@@ -1,4 +1,5 @@
 import axios from "axios";
+import {commonConfig} from "./common.js";
 
 const URL = import.meta.env.ENV_BACKEND_URL
 
@@ -24,4 +25,8 @@ export const getResetCode = body => {
 
 export const verifyCode = body => {
     return axios.post(`${URL}/auth/password_reset/verify_code`, body)
+}
+
+export const updatePassword = body => {
+    return axios.post(`${URL}/auth/reset_password`, body, commonConfig())
 }

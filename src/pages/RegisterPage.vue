@@ -16,8 +16,7 @@ const ROLE = 'USER'
 const handleSubmit = () => {
     loading.value = true
     const body = {
-        first_name: formState.firstName,
-        last_name: formState.lastName,
+        user_name: formState.fullName,
         email: formState.email,
         password: formState.password,
         role: ROLE
@@ -28,7 +27,7 @@ const handleSubmit = () => {
             const user = response.data.data.user
             localStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
             localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
-            localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.first_name} ${user.last_name}`)
+            localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.user_name}`)
             localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
             Notification('success', 'Thành công', 'Bạn đã đăng ký tài khoản thành công!')
             router.push('/')
@@ -65,11 +64,8 @@ const compareTwoPassword = (rule, value) => {
             <a-form layout="vertical"
                     v-model:model="formState"
                     @finish="handleSubmit">
-                <a-form-item label="Họ" name="firstName" :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="formState.firstName" placeholder="Họ"/>
-                </a-form-item>
-                <a-form-item label="Tên" name="lastName" :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
-                    <a-input v-model:value="formState.lastName" placeholder="Tên"/>
+                <a-form-item label="Họ và tên" name="fullName" :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
+                    <a-input v-model:value="formState.fullName" placeholder="Họ và tên"/>
                 </a-form-item>
                 <a-form-item label="Email"
                              name="email"

@@ -23,9 +23,10 @@ const signIn = () => {
 
     login(body).then((response) => {
         const user = response.data.data.user
+        console.log(user)
         localStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
         localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
-        localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.first_name} ${user.last_name}`)
+        localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.user_name}`)
         localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
         Notification('success', 'Thành công', 'Bạn đã đăng nhập thành công!')
         const routeBack = router.options.history.state.back
