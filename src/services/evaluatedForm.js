@@ -18,3 +18,7 @@ export const getHistories = body => {
 export const getDetailForm = id => {
     return axios.get(`${URL}/form_detail?id=${id}`, commonConfig())
 }
+
+export const downloadDocument = formId => {
+    return axios.get(`${URL}/download_file?type=${formId}`, {responseType: 'blob'})
+}

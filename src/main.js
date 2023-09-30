@@ -25,6 +25,7 @@ import {faFacebookSquare, faXTwitter, faYoutube} from '@fortawesome/free-brands-
 import {faBuilding} from "@fortawesome/free-regular-svg-icons";
 import {createPinia} from 'pinia'
 import 'aos/dist/aos.css'
+import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
 const pinia = createPinia()
 library.add(faLocationDot,

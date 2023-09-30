@@ -13,3 +13,7 @@ export const searchPosts = body => {
 export const getPost = postId => {
     return axios.get(`${URL}/post_detail?id=${postId}`)
 }
+
+export const getHotNews = limit => {
+    return axios.get(`${URL}/hot_news?limit=${limit}`)
+}
