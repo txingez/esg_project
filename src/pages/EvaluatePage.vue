@@ -1,74 +1,74 @@
 <script setup>
 
 import Banner from "../components/Banner.vue";
-import {computed, onMounted, reactive, ref} from "vue";
-import {handleAccessForm} from "../utils/handleClickEvaluate.js";
+import { computed, onMounted, reactive, ref } from "vue";
+import { handleAccessForm } from "../utils/handleClickEvaluate.js";
 import BreadCrumb from "../components/BreadCrumb.vue";
 import AOS from 'aos'
-import {DownloadOutlined} from '@ant-design/icons-vue'
-import {getPosts} from "../services/posts.js";
-import {useJwt} from "@vueuse/integrations/useJwt";
-import {downloadDocument} from "../services/evaluatedForm.js";
+import { DownloadOutlined } from '@ant-design/icons-vue'
+import { getPosts } from "../services/posts.js";
+import { useJwt } from "@vueuse/integrations/useJwt";
+import { downloadDocument } from "../services/evaluatedForm.js";
 import FileSaver from 'file-saver'
-import {Notification} from "../components/Notification.js";
+import { Notification } from "../components/Notification.js";
 
 const pageData = reactive({
-    introduction: '',
-    esg: {
-        title: '', image: [], document: []
-    },
-    nec: {
-        title: '', image: [], document: []
-    }
+	introduction: '',
+	esg: {
+		title: '', image: [], document: []
+	},
+	nec: {
+		title: '', image: [], document: []
+	}
 })
 const loading = ref(false)
 const downloadLoading = ref(false)
 
 const isAuth = computed(() => {
-    const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
-    return !!token
+	const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
+	return !!token
 })
 
 const routes = [
-    {name: 'Home', to: '/'},
-    {name: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
+	{name: 'Home', to: '/'},
+	{name: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
 ]
 
 onMounted(() => {
-    AOS.init()
-    getPageData()
+	AOS.init()
+	getPageData()
 })
 
 const getPageData = () => {
-    loading.value = true
-    getPosts('EVALUATE', 10, 0)
-        .then((response) => {
-            const dataDecoded = useJwt(response.data[0].content).payload.value
-            pageData.introduction = dataDecoded.data.introduction
-            pageData.esg = dataDecoded.data.esg
-            pageData.nec = dataDecoded.data.nec
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-        .finally(() => {
-            loading.value = false
-        })
+	loading.value = true
+	getPosts('EVALUATE', 10, 0)
+		.then((response) => {
+			const dataDecoded = useJwt(response.data[0].content).payload.value
+			pageData.introduction = dataDecoded.data.introduction
+			pageData.esg = dataDecoded.data.esg
+			pageData.nec = dataDecoded.data.nec
+		})
+		.catch((err) => {
+			console.log(err)
+		})
+		.finally(() => {
+			loading.value = false
+		})
 }
 
 const downloadFile = (formId, fileName) => {
-    downloadLoading.value = true
-    downloadDocument(formId)
-        .then(response => {
-            FileSaver.saveAs(response.data, fileName)
-        })
-        .catch(err => {
-            console.log(err)
-            Notification('error', 'Tải thất bại', 'Hệ thống đang bận, vui lòng thử lại sau')
-        })
-        .finally(() => {
-            downloadLoading.value = false
-        })
+	downloadLoading.value = true
+	downloadDocument(formId)
+		.then(response => {
+			FileSaver.saveAs(response.data, fileName)
+		})
+		.catch(err => {
+			console.log(err)
+			Notification('error', 'Tải thất bại', 'Hệ thống đang bận, vui lòng thử lại sau')
+		})
+		.finally(() => {
+			downloadLoading.value = false
+		})
 }
 </script>
 
@@ -89,17 +89,17 @@ const downloadFile = (formId, fileName) => {
             <div class="grid grid-cols-4 gap-10">
                 <div class="lg:col-span-2 col-span-4 border rounded-[10px] max-h-[340px]"
                      data-aos="fade-down"
-                     data-aos-easing="ease-in-out"
-                     data-aos-duration="500">
-                    <img class="rounded-[10px] w-full h-full"
-                         loading="lazy"
-                         :src="pageData.esg.image[0]?.url"
-                         alt="business7">
+                     data-aos-duration="500"
+                     data-aos-easing="ease-in-out">
+                    <img :src="pageData.esg.image[0]?.url"
+                         alt="business7"
+                         class="rounded-[10px] w-full h-full"
+                         loading="lazy">
                 </div>
                 <div class="flex flex-col gap-3 lg:col-span-2 col-span-4 justify-center"
                      data-aos="fade-up"
-                     data-aos-easing="ease-in-out"
-                     data-aos-duration="500">
+                     data-aos-duration="500"
+                     data-aos-easing="ease-in-out">
                     <div class="md:text-xl xl:text-2xl text-xl font-bold">
                         {{ pageData.esg.title }}
                     </div>
@@ -123,17 +123,17 @@ const downloadFile = (formId, fileName) => {
             <div class="grid grid-cols-4 gap-10">
                 <div class="lg:col-span-2 col-span-4 lg:order-last border rounded-[10px] max-h-[340px]"
                      data-aos="fade-left"
-                     data-aos-easing="ease-in-out"
-                     data-aos-duration="500">
-                    <img class="rounded-[10px] w-full h-full"
-                         loading="lazy"
-                         :src="pageData.nec.image[0]?.url"
-                         alt="manufacture_evaluate">
+                     data-aos-duration="500"
+                     data-aos-easing="ease-in-out">
+                    <img :src="pageData.nec.image[0]?.url"
+                         alt="manufacture_evaluate"
+                         class="rounded-[10px] w-full h-full"
+                         loading="lazy">
                 </div>
                 <div class="flex flex-col gap-3 lg:col-span-2 col-span-4 justify-center"
                      data-aos="fade-right"
-                     data-aos-easing="ease-in-out"
-                     data-aos-duration="500">
+                     data-aos-duration="500"
+                     data-aos-easing="ease-in-out">
                     <div class="md:text-xl xl:text-2xl text-xl font-bold">
                         {{ pageData.nec.title }}
                     </div>

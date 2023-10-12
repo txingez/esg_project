@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
-    label: String,
-    imgSrc: String
+	label: String,
+	imgSrc: String
 })
 
 </script>
@@ -14,9 +14,9 @@ defineProps({
                 <slot/>
             </div>
         </div>
-        <img class="object-cover aspect-auto h-full w-full"
-             loading="eager"
-             :src="imgSrc"
-             alt="banner">
+        <img :src="imgSrc"
+             alt="banner"
+             class="object-cover aspect-auto h-full w-full"
+             loading="eager">
     </div>
 </template>

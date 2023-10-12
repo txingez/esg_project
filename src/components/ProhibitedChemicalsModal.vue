@@ -1,13 +1,13 @@
 <script setup>
-import {useModalStore} from "../stores/useModalStore.js";
+import { useModalStore } from "../stores/useModalStore.js";
 
 const modalStore = useModalStore()
 </script>
 
 <template>
     <a-modal v-model:open="modalStore.prohibitedChemicalsOpen"
-             title="DANH MỤC HÓA CHẤT CẤM"
              :footer="null"
+             title="DANH MỤC HÓA CHẤT CẤM"
              width="100%">
         <div class="italic md:text-sm text-[10px]">
             (Kèm theo Nghị định số 113/2017/NĐ-CP ngày 09 tháng 10 năm 2017 của Chính phủ)
@@ -26,7 +26,7 @@ const modalStore = useModalStore()
 
                 <tbody>
                 <tr>
-                    <td rowspan="4" class="border text-center align-top">1</td>
+                    <td class="border text-center align-top" rowspan="4">1</td>
                     <td class="border-r px-2 align-top">
                         Các hợp chất O-Alkyl (&lt;C10, gồm cả cycloalkyl) alkyl (Me, Et, n-Pr hoặc i-Pr)-
                         phosphonofloridat
@@ -71,7 +71,7 @@ const modalStore = useModalStore()
                 </tr>
 
                 <tr>
-                    <td rowspan="3" class="border text-center align-top">2</td>
+                    <td class="border text-center align-top" rowspan="3">2</td>
                     <td class="border-r px-2 align-top">
                         Các hợp chất O-Alkyl (&lt;C10, gồm cả cycloalkyl) N,N-dialkyl(Me, Et, n-Pr hoặc i-Pr)-
                         phosphoramidocyanidat
@@ -106,7 +106,7 @@ const modalStore = useModalStore()
                 </tr>
 
                 <tr>
-                    <td rowspan="3" class="border text-center align-top">3</td>
+                    <td class="border text-center align-top" rowspan="3">3</td>
                     <td class="border-r px-2 align-top">
                         Các hợp chất O-Alkyl (H hoặc&lt;C10, gồm cả cycloalkyl) S-2- dialkyl (Me, Et, n-Pr hoặc i-Pr)-
                         aminoetyl alkyl (Me, Et, n-Pr hoặc i-Pr) phosphonothiolat và các muối alkyl hóa hoặc proton hóa
@@ -144,7 +144,7 @@ const modalStore = useModalStore()
                 </tr>
 
                 <tr>
-                    <td rowspan="10" class="border text-center align-top">4</td>
+                    <td class="border text-center align-top" rowspan="10">4</td>
                     <td class="border-r px-2 align-top">
                         Các chất khí gây bỏng chứa Lưu huỳnh:
                     </td>
@@ -247,7 +247,7 @@ const modalStore = useModalStore()
                 </tr>
 
                 <tr>
-                    <td rowspan="4" class="border text-center align-top">5</td>
+                    <td class="border text-center align-top" rowspan="4">5</td>
                     <td class="border-r px-2 align-top">
                         Các hợp chất Lewisit:
                     </td>
@@ -290,7 +290,7 @@ const modalStore = useModalStore()
                 </tr>
 
                 <tr>
-                    <td rowspan="4" class="border text-center align-top">6</td>
+                    <td class="border text-center align-top" rowspan="4">6</td>
                     <td class="border-r px-2 align-top">
                         Hơi cay Nitơ:
                     </td>
@@ -357,7 +357,7 @@ const modalStore = useModalStore()
                 </tr>
 
                 <tr>
-                    <td rowspan="3" class="border text-center align-top">9</td>
+                    <td class="border text-center align-top" rowspan="3">9</td>
                     <td class="border-r px-2 align-top">
                         Các hợp chất Alkyl (Me, Et, n- Pr or i-Pr) phosphonyldiflorit
                     </td>
@@ -389,7 +389,7 @@ const modalStore = useModalStore()
                 </tr>
 
                 <tr>
-                    <td rowspan="3" class="border text-center align-top">10</td>
+                    <td class="border text-center align-top" rowspan="3">10</td>
                     <td class="border-r px-2 align-top">
                         Các hợp chất O-Alkyl (H hoặc&lt;C10, gồm cả cycloalkyl) O-2- dialkyl(Me, Et, n-Pr hoặc i-Pr)-
                         aminoetyl alkyl(Me, Et, n-Pr hoặc i-Pr) phosphonit và các muối alkyl hóa hoặc proton hóa tương

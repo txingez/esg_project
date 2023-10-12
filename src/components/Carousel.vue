@@ -1,18 +1,18 @@
 <script setup>
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter()
 defineProps({
-    slides: Array
+	slides: Array
 })
 
 const handleClickBtn = target => {
-    window.open(target, target.includes('esg-demo.web.app') ? '_self' : '_blank')
+	window.open(target, target.includes('esg-demo.web.app') ? '_self' : '_blank')
 }
 </script>
 
 <template>
-    <a-carousel arrows class="h-full">
+    <a-carousel :autoplay-speed="3000" arrows autoplay class="h-full">
         <template #prevArrow>
             <div class="custom-slick-arrow" style="left: 10px">
                 <font-awesome-icon icon="fa-solid fa-chevron-left"/>
@@ -23,30 +23,30 @@ const handleClickBtn = target => {
                 <font-awesome-icon icon="fa-solid fa-chevron-right"/>
             </div>
         </template>
-        <div v-for="banner in slides" class="relative h-full">
+        <div v-for="banner in slides" class="relative h-full rounded-[20px]">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
             flex flex-col lg:gap-5 md:gap-2.5 gap-2 w-full h-full justify-end items-start lg:p-14 md:p-8 p-5">
-                <div class="p-1.5 break-after-auto font-bold whitespace-pre-wrap
-                text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full"
-                     :class="banner.placeTitle === 'center' ? 'text-center md:-translate-y-1/3 xl:text-8xl lg:text-7xl md:text-5xl text-4xl' : 'md:text-5xl lg:text-6xl xl:text-7xl text-2xl'">
+                <div :class="banner.placeTitle === 'center' ? 'text-center md:-translate-y-1/3 xl:text-8xl lg:text-7xl md:text-5xl text-4xl' : 'md:text-5xl lg:text-6xl xl:text-7xl text-2xl'"
+                     class="p-1.5 break-after-auto font-bold whitespace-pre-wrap
+                text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">
                     {{ banner.title }}
                 </div>
                 <div class="whitespace-pre-wrap xl:text-2xl lg:text-lg md:text-base text-xs italic xl:pr-72 lg:pr-32 md:pr-28 pr-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500">
                     {{ banner.description }}
                 </div>
-                <div style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
+                <div :class="banner.labelBtn ? '' : 'invisible'"
                      class="md:px-6 px-3 md:py-2 lg:py-3 md:text-base xl:text-2xl md:min-h-[50px] min-h-[30px] flex justify-center items-center border rounded border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer
                      text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white"
-                     :class="banner.labelBtn ? '' : 'invisible'"
+                     style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
                      @click.prevent="handleClickBtn(banner.target)">
                     {{ banner.labelBtn }}
                 </div>
             </div>
-            <div class="h-full">
-                <img class="w-full h-full"
-                     loading="lazy"
-                     :src="banner.image[0]?.url"
-                     alt="carousel">
+            <div class="h-full rounded-[20px]">
+                <img :src="banner.image[0]?.url"
+                     alt="carousel"
+                     class="w-full h-full rounded-[20px]"
+                     loading="lazy">
             </div>
         </div>
     </a-carousel>
@@ -54,7 +54,7 @@ const handleClickBtn = target => {
 
 <style scoped>
 :deep(.slick-slide) {
-    height: calc(100vh - 152px);
+    height: calc(100vh - 205px);
 }
 
 :deep(.slick-slide>div) {

@@ -1,11 +1,11 @@
 <script setup>
-import {computed} from "vue";
-import {useEvaluatedResultStore} from "../stores/useEvaluatedResultStore.js";
+import { computed } from "vue";
+import { useEvaluatedResultStore } from "../stores/useEvaluatedResultStore.js";
 import RadarChart from "./RadarChart.vue";
-import {useRouter} from "vue-router";
-import {ENUM} from "../constants/enumValues.js";
-import {useProfileESGStore} from "../stores/useProfileESGStore.js";
-import {useProfileNECStore} from "../stores/useProfileNECStore.js";
+import { useRouter } from "vue-router";
+import { ENUM } from "../constants/enumValues.js";
+import { useProfileESGStore } from "../stores/useProfileESGStore.js";
+import { useProfileNECStore } from "../stores/useProfileNECStore.js";
 
 const evaluatedResultStore = useEvaluatedResultStore()
 const profileESGStore = useProfileESGStore()
@@ -14,112 +14,112 @@ const router = useRouter()
 const routeName = computed(() => router.currentRoute.value.name)
 
 const config = computed(() => {
-    switch (routeName.value) {
-        case ENUM.FORM_NAME.EvaluateESGForm:
-            return {
-                profile: profileESGStore.formData,
-                columns: [
-                    {
-                        title: '',
-                        dataIndex: 'name',
-                        key: 'name'
-                    },
-                    {
-                        title: 'Tổng điểm trên thang điểm 100',
-                        dataIndex: 'point',
-                        key: 'point',
-                        align: 'right'
-                    },
-                    {
-                        title: 'Phân bố tỷ trọng theo ngành',
-                        dataIndex: 'distribution',
-                        key: 'distribution',
-                        align: 'right',
-                        width: {md: 200}
-                    }
-                ],
-                dataSource: [
-                    {
-                        name: 'E - Môi trường',
-                        point: evaluatedResultStore.resultPoint.environment.point,
-                        distribution: industryWeighting.value.E
-                    },
-                    {
-                        name: 'S - Xã hội',
-                        point: evaluatedResultStore.resultPoint.social.point,
-                        distribution: industryWeighting.value.S
-                    },
-                    {
-                        name: 'G - Quản trị',
-                        point: evaluatedResultStore.resultPoint.governance.point,
-                        distribution: industryWeighting.value.G
-                    }
-                ],
-                summaryPoint: evaluatedResultStore.getSummaryESG(),
-                rateInfo: evaluatedResultStore.getRateInfoESG(),
-                showConclude: true,
-                summaryTableConfig: {title: 2, value: 1},
-                chartLabels: ['E-Môi trường', 'S-Xã hội', 'G-Quản trị'],
-                chartData: [evaluatedResultStore.resultPoint.environment.point, evaluatedResultStore.resultPoint.social.point, evaluatedResultStore.resultPoint.governance.point],
-                chartTitle: 'ĐÁNH GIÁ THỰC HÀNH ESG'
-            }
-        case ENUM.FORM_NAME.EvaluateNECForm:
-            return {
-                profile: profileNECStore.formData,
-                columns: [
-                    {
-                        title: '',
-                        dataIndex: 'name',
-                        key: 'name'
-                    },
-                    {
-                        title: 'Điểm tối đa',
-                        dataIndex: 'max',
-                        key: 'max',
-                        align: 'right'
-                    },
-                    {
-                        title: 'Điểm trên thang điểm 100',
-                        dataIndex: 'point',
-                        key: 'point',
-                        align: 'right'
-                    },
-                    {
-                        title: 'Điểm tự đánh giá',
-                        dataIndex: 'sum',
-                        key: 'sum',
-                        align: 'right'
-                    }
-                ],
-                dataSource: [
-                    {
-                        name: 'Nhóm tiêu chí 1: Tầm nhìn và chiến lược của doanh nghiệp',
-                        max: evaluatedResultStore.resultPoint.firstCriteria.max,
-                        sum: evaluatedResultStore.resultPoint.firstCriteria.sum,
-                        point: evaluatedResultStore.resultPoint.firstCriteria.point
-                    },
-                    {
-                        name: 'Nhóm tiêu chí 2: Áp dụng nguyên tắc tuần hoàn trong công đoạn sản xuất và tiền sản xuất',
-                        max: evaluatedResultStore.resultPoint.secondCriteria.max,
-                        sum: evaluatedResultStore.resultPoint.secondCriteria.sum,
-                        point: evaluatedResultStore.resultPoint.secondCriteria.point
-                    },
-                    {
-                        name: 'Nhóm tiêu chí 3: Áp dụng nguyên tắc tuần hoàn trong công đoạn sau bán hàng',
-                        max: evaluatedResultStore.resultPoint.thirdCriteria.max,
-                        sum: evaluatedResultStore.resultPoint.thirdCriteria.sum,
-                        point: evaluatedResultStore.resultPoint.thirdCriteria.point
-                    }
-                ],
-                summaryPoint: evaluatedResultStore.getSummaryNEC(),
-                rateInfo: evaluatedResultStore.getRateInfoNEC(),
-                showConclude: false,
-                summaryTableConfig: {title: 3, value: 1},
-                chartLabels: ['Nhóm tiêu chí 1', 'Nhóm tiêu chí 2', 'Nhóm tiêu chí 3'],
-                chartData: [evaluatedResultStore.resultPoint.firstCriteria.sum, evaluatedResultStore.resultPoint.secondCriteria.sum, evaluatedResultStore.resultPoint.thirdCriteria.sum],
-                chartTitle: 'ĐÁNH GIÁ MỨC ĐỘ ÁP DỤNG NGUYÊN TẮC KINH TẾ TUẦN HOÀN CỦA DOANH NGHIỆP TẠI VIỆT NAM'
-            }
-    }
+	switch (routeName.value) {
+		case ENUM.FORM_NAME.EvaluateESGForm:
+			return {
+				profile: profileESGStore.formData,
+				columns: [
+					{
+						title: '',
+						dataIndex: 'name',
+						key: 'name'
+					},
+					{
+						title: 'Tổng điểm trên thang điểm 100',
+						dataIndex: 'point',
+						key: 'point',
+						align: 'right'
+					},
+					{
+						title: 'Phân bố tỷ trọng theo ngành',
+						dataIndex: 'distribution',
+						key: 'distribution',
+						align: 'right',
+						width: {md: 200}
+					}
+				],
+				dataSource: [
+					{
+						name: 'E - Môi trường',
+						point: evaluatedResultStore.resultPoint.environment.point,
+						distribution: industryWeighting.value.E
+					},
+					{
+						name: 'S - Xã hội',
+						point: evaluatedResultStore.resultPoint.social.point,
+						distribution: industryWeighting.value.S
+					},
+					{
+						name: 'G - Quản trị',
+						point: evaluatedResultStore.resultPoint.governance.point,
+						distribution: industryWeighting.value.G
+					}
+				],
+				summaryPoint: evaluatedResultStore.getSummaryESG(),
+				rateInfo: evaluatedResultStore.getRateInfoESG(),
+				showConclude: true,
+				summaryTableConfig: {title: 2, value: 1},
+				chartLabels: ['E-Môi trường', 'S-Xã hội', 'G-Quản trị'],
+				chartData: [evaluatedResultStore.resultPoint.environment.point, evaluatedResultStore.resultPoint.social.point, evaluatedResultStore.resultPoint.governance.point],
+				chartTitle: 'ĐÁNH GIÁ THỰC HÀNH ESG'
+			}
+		case ENUM.FORM_NAME.EvaluateNECForm:
+			return {
+				profile: profileNECStore.formData,
+				columns: [
+					{
+						title: '',
+						dataIndex: 'name',
+						key: 'name'
+					},
+					{
+						title: 'Điểm tối đa',
+						dataIndex: 'max',
+						key: 'max',
+						align: 'right'
+					},
+					{
+						title: 'Điểm trên thang điểm 100',
+						dataIndex: 'point',
+						key: 'point',
+						align: 'right'
+					},
+					{
+						title: 'Điểm tự đánh giá',
+						dataIndex: 'sum',
+						key: 'sum',
+						align: 'right'
+					}
+				],
+				dataSource: [
+					{
+						name: 'Nhóm tiêu chí 1: Tầm nhìn và chiến lược của doanh nghiệp',
+						max: evaluatedResultStore.resultPoint.firstCriteria.max,
+						sum: evaluatedResultStore.resultPoint.firstCriteria.sum,
+						point: evaluatedResultStore.resultPoint.firstCriteria.point
+					},
+					{
+						name: 'Nhóm tiêu chí 2: Áp dụng nguyên tắc tuần hoàn trong công đoạn sản xuất và tiền sản xuất',
+						max: evaluatedResultStore.resultPoint.secondCriteria.max,
+						sum: evaluatedResultStore.resultPoint.secondCriteria.sum,
+						point: evaluatedResultStore.resultPoint.secondCriteria.point
+					},
+					{
+						name: 'Nhóm tiêu chí 3: Áp dụng nguyên tắc tuần hoàn trong công đoạn sau bán hàng',
+						max: evaluatedResultStore.resultPoint.thirdCriteria.max,
+						sum: evaluatedResultStore.resultPoint.thirdCriteria.sum,
+						point: evaluatedResultStore.resultPoint.thirdCriteria.point
+					}
+				],
+				summaryPoint: evaluatedResultStore.getSummaryNEC(),
+				rateInfo: evaluatedResultStore.getRateInfoNEC(),
+				showConclude: false,
+				summaryTableConfig: {title: 3, value: 1},
+				chartLabels: ['Nhóm tiêu chí 1', 'Nhóm tiêu chí 2', 'Nhóm tiêu chí 3'],
+				chartData: [evaluatedResultStore.resultPoint.firstCriteria.sum, evaluatedResultStore.resultPoint.secondCriteria.sum, evaluatedResultStore.resultPoint.thirdCriteria.sum],
+				chartTitle: 'ĐÁNH GIÁ MỨC ĐỘ ÁP DỤNG NGUYÊN TẮC KINH TẾ TUẦN HOÀN CỦA DOANH NGHIỆP TẠI VIỆT NAM'
+			}
+	}
 })
 const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighting())
 </script>
@@ -148,12 +148,12 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
         </div>
     </div>
     <div class="xl:px-28 lg:px-16">
-        <a-table :data-source="config.dataSource"
+        <a-table :bordered="true"
                  :columns="config.columns"
-                 size="middle"
+                 :data-source="config.dataSource"
                  :pagination="false"
                  class="text-xl"
-                 :bordered="true">
+                 size="middle">
             <template #headerCell="{title, column}" class="bg-green-400">
                 <div class="text-center md:text-xl text-sm">{{ title }}</div>
             </template>
@@ -213,11 +213,11 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
         </div>
         <div class="xl:basis-1/2 xl:w-1/2 xl:h-1/2 md:w-2/3 md:h-2/3 w-full h-full flex justify-end">
             <RadarChart id="chart_result"
-                        :labels="config.chartLabels"
+                        :circular="true"
                         :data="config.chartData"
+                        :labels="config.chartLabels"
                         :title-display="true"
-                        :title-label="config.chartTitle"
-                        :circular="true"/>
+                        :title-label="config.chartTitle"/>
         </div>
     </div>
 </template>

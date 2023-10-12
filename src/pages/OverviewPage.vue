@@ -1,30 +1,30 @@
 <script setup>
 
 import Banner from "../components/Banner.vue";
-import {onMounted, ref} from "vue";
-import {useRouter} from "vue-router";
+import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
 import BreadCrumb from "../components/BreadCrumb.vue";
-import {getPosts} from "../services/posts.js";
+import { getPosts } from "../services/posts.js";
 
 const router = useRouter()
 const content = ref(false)
 const loading = ref(false)
 
 const routes = [
-    {name: 'Home', to: '/'},
-    {name: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
+	{name: 'Home', to: '/'},
+	{name: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
 ]
 
 onMounted(() => {
-    loading.value = true
-    getPosts('ESG', 10, 0)
-        .then((response) => {
-            content.value = response.data[0].content
-            loading.value = false
-        }).catch((err) => {
-        console.log(err)
-        loading.value = false
-    })
+	loading.value = true
+	getPosts('ESG', 10, 0)
+		.then((response) => {
+			content.value = response.data[0].content
+			loading.value = false
+		}).catch((err) => {
+		console.log(err)
+		loading.value = false
+	})
 })
 </script>
 
@@ -37,10 +37,10 @@ onMounted(() => {
     <div class="md:px-10 lg:px-[100px] px-5 my-5">
         <BreadCrumb :routes="routes"/>
     </div>
-    <a-skeleton class="md:px-10 lg:px-[100px] px-5"
+    <a-skeleton :loading="loading"
+                :paragraph="{rows: 10}"
                 active
-                :loading="loading"
-                :paragraph="{rows: 10}"/>
+                class="md:px-10 lg:px-[100px] px-5"/>
     <div v-if="!loading" class="md:px-10 lg:px-[100px] px-5 text-justify">
         <div v-html="content"/>
     </div>

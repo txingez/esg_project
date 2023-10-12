@@ -1,11 +1,11 @@
 <script setup>
-import {reactive, ref} from "vue";
-import {QuestionCircleOutlined} from "@ant-design/icons-vue";
-import {register} from "../services/authentication.js";
-import {ModalError} from "../components/ModalError.js";
-import {passwordCheck} from "../utils/validator.js";
-import {handleRegisterFailed} from "../utils/handleErrorMessage.js";
-import {Notification} from "../components/Notification.js";
+import { reactive, ref } from "vue";
+import { QuestionCircleOutlined } from "@ant-design/icons-vue";
+import { register } from "../services/authentication.js";
+import { ModalError } from "../components/ModalError.js";
+import { passwordCheck } from "../utils/validator.js";
+import { handleRegisterFailed } from "../utils/handleErrorMessage.js";
+import { Notification } from "../components/Notification.js";
 import router from "../router.js";
 
 const formState = reactive({})
@@ -14,41 +14,41 @@ const loading = ref(false)
 const ROLE = 'USER'
 
 const handleSubmit = () => {
-    loading.value = true
-    const body = {
-        user_name: formState.fullName,
-        email: formState.email,
-        password: formState.password,
-        role: ROLE
-    }
+	loading.value = true
+	const body = {
+		user_name: formState.fullName,
+		email: formState.email,
+		password: formState.password,
+		role: ROLE
+	}
 
-    register(body)
-        .then((response) => {
-            const user = response.data.data.user
-            localStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
-            localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
-            localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.user_name}`)
-            localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
-            Notification('success', 'Thành công', 'Bạn đã đăng ký tài khoản thành công!')
-            router.push('/')
-        })
-        .catch((err) => {
-            console.log(err)
-            const data = err.response.data
-            const message = data.message
-            ModalError('Đăng ký không thành công', handleRegisterFailed(message))
-        })
-        .finally(() => {
-            loading.value = false
-        })
+	register(body)
+		.then((response) => {
+			const user = response.data.data.user
+			localStorage.setItem(import.meta.env.ENV_USER_ID_KEY, user.id)
+			localStorage.setItem(import.meta.env.ENV_EMAIL_KEY, user.email)
+			localStorage.setItem(import.meta.env.ENV_FULL_NAME_KEY, `${user.user_name}`)
+			localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
+			Notification('success', 'Thành công', 'Bạn đã đăng ký tài khoản thành công!')
+			router.push('/')
+		})
+		.catch((err) => {
+			console.log(err)
+			const data = err.response.data
+			const message = data.message
+			ModalError('Đăng ký không thành công', handleRegisterFailed(message))
+		})
+		.finally(() => {
+			loading.value = false
+		})
 }
 
 const compareTwoPassword = (rule, value) => {
-    if (value && value !== formState.password) {
-        return Promise.reject('Mật khẩu xác nhận không khớp')
-    } else {
-        return Promise.resolve()
-    }
+	if (value && value !== formState.password) {
+		return Promise.reject('Mật khẩu xác nhận không khớp')
+	} else {
+		return Promise.resolve()
+	}
 }
 </script>
 
@@ -61,22 +61,23 @@ const compareTwoPassword = (rule, value) => {
                 <div class="font-bold text-3xl text-[#2563eb]">Đăng ký tài khoản</div>
                 <div>Đăng ký là thành viên để trải nghiệm đầy đủ tính năng của sản phẩm</div>
             </div>
-            <a-form layout="vertical"
-                    v-model:model="formState"
+            <a-form v-model:model="formState"
+                    layout="vertical"
                     @finish="handleSubmit">
-                <a-form-item label="Họ và tên" name="fullName" :rules="[{required: true, message: 'Hãy nhập thông tin'}]">
+                <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]" label="Họ và tên"
+                             name="fullName">
                     <a-input v-model:value="formState.fullName" placeholder="Họ và tên"/>
                 </a-form-item>
-                <a-form-item label="Email"
-                             name="email"
-                             :rules="[{required: true, message: 'Hãy nhập thông tin'},
-                                      {pattern: new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'}]">
+                <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'},
+                                      {pattern: new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'}]"
+                             label="Email"
+                             name="email">
                     <a-input v-model:value="formState.email" placeholder="Email"/>
                 </a-form-item>
-                <a-form-item name="password"
-                             :rules="[{required: true, message: 'Bạn chưa nhập mật khẩu'},
+                <a-form-item :rules="[{required: true, message: 'Bạn chưa nhập mật khẩu'},
                              {min: 6, message: 'Mật khẩu phải ít nhất 6 kí tự'},
-                             {validator: passwordCheck}]">
+                             {validator: passwordCheck}]"
+                             name="password">
                     <template #label>
                         <div class="flex justify-center items-center gap-1">
                             <span>Mật khẩu</span>
@@ -94,24 +95,24 @@ const compareTwoPassword = (rule, value) => {
                     </template>
                     <a-input-password v-model:value="formState.password" placeholder="Mật khẩu"/>
                 </a-form-item>
-                <a-form-item label="Nhập lại mật khẩu" name="repeatPassword"
-                             :rules="[{required: true, message: 'Nhập lại mật khẩu'},
-                                      {validator: compareTwoPassword}]">
+                <a-form-item :rules="[{required: true, message: 'Nhập lại mật khẩu'},
+                                      {validator: compareTwoPassword}]" label="Nhập lại mật khẩu"
+                             name="repeatPassword">
                     <a-input-password v-model:value="formState.repeatPassword" placeholder="Nhập lại mật khẩu"/>
                 </a-form-item>
 
                 <a-form-item>
-                    <a-button html-type="submit"
-                              type="primary"
+                    <a-button :loading="loading"
                               class="bg-[#2563eb] text-white w-full"
-                              :loading="loading">
+                              html-type="submit"
+                              type="primary">
                         Đăng ký tài khoản
                     </a-button>
                 </a-form-item>
             </a-form>
             <div class="space-x-2.5">
                 <span>Bạn đã có tài khoản?</span>
-                <router-link to="/login" class="text-[#60a5fa] underline">Đăng nhập</router-link>
+                <router-link class="text-[#60a5fa] underline" to="/login">Đăng nhập</router-link>
             </div>
         </div>
     </div>

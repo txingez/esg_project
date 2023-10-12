@@ -1,58 +1,58 @@
 <script setup>
-import {computed, defineAsyncComponent, onMounted, ref} from "vue";
-import {useStepStore} from "../stores/useStepStore.js";
-import {ModalWarning} from "../components/ModalWarning.js";
-import {useRouter} from "vue-router";
-import {exportHTMLToPDF} from "../utils/exportHTMLToPDF.js";
-import {ENUM} from "../constants/enumValues.js";
-import {PrinterOutlined} from "@ant-design/icons-vue"
+import { computed, defineAsyncComponent, onMounted, ref } from "vue";
+import { useStepStore } from "../stores/useStepStore.js";
+import { ModalWarning } from "../components/ModalWarning.js";
+import { useRouter } from "vue-router";
+import { exportHTMLToPDF } from "../utils/exportHTMLToPDF.js";
+import { ENUM } from "../constants/enumValues.js";
+import { PrinterOutlined } from "@ant-design/icons-vue"
 
 const router = useRouter()
 const stepStore = useStepStore()
 
 const isAuth = computed(() => {
-    const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
-    return !!token
+	const token = localStorage.getItem(import.meta.env.ENV_TOKEN_KEY)
+	return !!token
 })
 
 const screenWidth = ref(0)
 
 const stepItems = [
-    {key: 'first', title: 'Thông tin doanh nghiệp', disabled: true},
-    {key: 'second', title: 'Tầm nhìn của doanh nghiệp', disabled: true},
-    {key: 'third', title: 'Sản xuất và tiền sản xuất', disabled: true},
-    {key: 'forth', title: 'Sau sản xuất', disabled: true},
-    {key: 'fifth', title: 'Kết quả đánh giá', disabled: true}
+	{key: 'first', title: 'Thông tin doanh nghiệp', disabled: true},
+	{key: 'second', title: 'Tầm nhìn của doanh nghiệp', disabled: true},
+	{key: 'third', title: 'Sản xuất và tiền sản xuất', disabled: true},
+	{key: 'forth', title: 'Sau sản xuất', disabled: true},
+	{key: 'fifth', title: 'Kết quả đánh giá', disabled: true}
 ];
 
 const steps = [
-    {title: 'Hồ sơ doanh nghiệp', content: 'OrganizationProfileNECForm'},
-    {title: 'Tầm nhìn của doanh nghiệp', content: 'EvaluatedForm'},
-    {title: 'Sản xuất và tiền sản xuất', content: 'EvaluatedForm'},
-    {title: 'Sau sản xuất', content: 'EvaluatedForm'},
-    {title: 'Kết quả và đánh giá', content: 'ResultEvaluated'}
+	{title: 'Hồ sơ doanh nghiệp', content: 'OrganizationProfileNECForm'},
+	{title: 'Tầm nhìn của doanh nghiệp', content: 'EvaluatedForm'},
+	{title: 'Sản xuất và tiền sản xuất', content: 'EvaluatedForm'},
+	{title: 'Sau sản xuất', content: 'EvaluatedForm'},
+	{title: 'Kết quả và đánh giá', content: 'ResultEvaluated'}
 ];
 
 const updateScreenWidth = () => {
-    screenWidth.value = window.innerWidth;
+	screenWidth.value = window.innerWidth;
 }
 const onScreenResize = () => {
-    window.addEventListener("resize", () => {
-        updateScreenWidth();
-    });
+	window.addEventListener("resize", () => {
+		updateScreenWidth();
+	});
 }
 
 onMounted(() => {
-    updateScreenWidth()
-    onScreenResize()
-    if (!isAuth.value) {
-        const callbackOk = () => {
-            localStorage.clear()
-            router.push('/login')
-        }
-        const callbackCancel = () => router.push('/')
-        ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
-    }
+	updateScreenWidth()
+	onScreenResize()
+	if (!isAuth.value) {
+		const callbackOk = () => {
+			localStorage.clear()
+			router.push('/login')
+		}
+		const callbackCancel = () => router.push('/')
+		ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
+	}
 })
 </script>
 
@@ -66,8 +66,8 @@ onMounted(() => {
 
             <div class="md:px-10 lg:px-[50px] xl:px-[100px] px-5 space-y-5">
                 <a-steps :current="stepStore.currentStepState"
-                         :items="stepItems"
-                         :direction="screenWidth <= 1024 ? 'vertical' : 'horizontal'"/>
+                         :direction="screenWidth <= 1024 ? 'vertical' : 'horizontal'"
+                         :items="stepItems"/>
                 <div class="steps-content">
                     <component
                             :is="defineAsyncComponent(() => import(`../components/${steps[stepStore.currentStepState].content}.vue`))"/>
@@ -77,8 +77,8 @@ onMounted(() => {
 
         <div v-if="stepStore.currentStepState === stepItems.length - 1"
              class="md:px-10 lg:px-[50px] xl:px-[100px] px-5">
-            <a-button type="primary"
-                      class="bg-[#1677ff] h-[50px] w-[150px] flex items-center justify-center"
+            <a-button class="bg-[#1677ff] h-[50px] w-[150px] flex items-center justify-center"
+                      type="primary"
                       @click.prevent="exportHTMLToPDF(ENUM.FORM_NAME.EvaluateNECForm)">
                 <PrinterOutlined/>
                 In kết quả

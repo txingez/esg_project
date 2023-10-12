@@ -1,5 +1,5 @@
 <template>
-    <a-breadcrumb :routes="routes" separator=">" class="md:text-sm xl:text-base text-xs">
+    <a-breadcrumb :routes="routes" class="md:text-sm xl:text-base text-xs" separator=">">
         <template #itemRender="{ route, path }">
             <span v-if="routes.indexOf(route) === routes.length - 1">
                 {{ route.name }}
@@ -17,9 +17,9 @@
 <script setup>
 
 defineProps({
-    routes: {
-        default: []
-    }
+	routes: {
+		default: []
+	}
 })
 </script>
 

@@ -1,14 +1,14 @@
-import {defineStore} from "pinia";
-import {ref} from "vue";
+import { defineStore } from "pinia";
+import { ref } from "vue";
 
 export const useBusinessTypeStore = defineStore('businessType', () => {
-    const businessType = ref('')
+	const businessType = ref('')
 
-    const update = newBusinessType => {
-        businessType.value = newBusinessType
-    }
+	const update = newBusinessType => {
+		businessType.value = newBusinessType
+	}
 
-    const reset = () => businessType.value = ''
+	const reset = () => businessType.value = ''
 
-    return {businessType, update, reset}
+	return {businessType, update, reset}
 })

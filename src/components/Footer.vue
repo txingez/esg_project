@@ -1,53 +1,46 @@
 <script setup>
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {useRouter} from "vue-router";
-import {onMounted, ref, watch} from "vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { useRouter } from "vue-router";
 
 const router = useRouter()
-const isRenderDivider = ref(true)
 
 const links = [
-    {label: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
-    {label: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
-    {label: 'Thư viện', to: '/library'},
-    {label: 'Hoạt động', to: '/events'}
+	{label: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
+	{label: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
+	{label: 'Sáng kiến ESG Việt Nam', to: '/esg-vietnam'},
+	{label: 'Thư viện', to: '/library'},
+	{label: 'Hoạt động', to: '/events'}
 ]
 
-watch(router.currentRoute, (currentValue) => {
-    isRenderDivider.value = !(currentValue.name === 'Register' || currentValue.name === 'Login');
-})
-
-onMounted(() => {
-    isRenderDivider.value = !(router.currentRoute.value.name === 'Register' || router.currentRoute.value.name === 'Login');
-})
 </script>
 
 <template>
-    <div class="xl:text-xl flex flex-col gap-5">
-        <div v-if="isRenderDivider"
-             class="lg:w-[70%] w-[90%] m-[0_auto]">
-            <a-divider class="bg-black"/>
-        </div>
-        <div class="flex md:flex-row flex-col justify-between gap-5 md:p-[20px_40px] lg:p-[50px_100px] p-[15px_30px]">
-            <div class="md:w-1/4 flex justify-center">
-                <router-link to="/" class="flex justify-center">
-                    <img class="xl:h-[120px] xl:w-[220px] lg:h-[60%] lg:w-[70%] md:h-[50%] md:w-[80%] w-1/2"
-                         src="../assets/logo.png" alt="logo_footer">
+    <div class="xl:text-xl flex flex-col gap-5 bg-[#e6e6e6] text-[#263238]">
+        <div class="flex md:flex-row flex-col justify-between gap-5 md:px-[40px] lg:px-[100px] px-[30px] py-20">
+            <div class="flex justify-center">
+                <router-link to="/home" class="flex justify-center">
+                    <div class="flex flex-row xl:gap-5 gap-3">
+                        <div class="flex justify-center">
+                            <img alt="MPI_logo"
+                                 class="xl:w-[130px] lg:w-[80px] w-[100px] xl:h-[130px] lg:h-[80px] h-[100px]"
+                                 src="../assets/MPI_logo.png"/>
+                        </div>
+                        <div class="">
+                            <img alt="NED_logo"
+                                 class="xl:h-[90px] lg:h-[55px] h-[70px] xl:translate-y-6 lg:translate-y-4 md:translate-y-3 translate-y-4"
+                                 src="../assets/ned_vertical_logo.png">
+                        </div>
+                    </div>
                 </router-link>
             </div>
-            <div class="flex flex-col md:items-start gap-5">
+            <div class="flex flex-col md:items-start gap-5 md:basis-1/4">
                 <div class="flex gap-5 items-center">
                     <font-awesome-icon icon="fa-solid fa-location-dot"/>
                     <span>Số 6B, Hoàng Diệu, Ba Đình, Hà Nội</span>
                 </div>
                 <div class="flex gap-5 items-center">
-                    <font-awesome-icon icon="fa-solid fa-phone"/>
-                    <span>(123) 456-7890</span>
-
-                </div>
-                <div class="flex gap-5 items-center">
-                    <font-awesome-icon icon="fa-solid fa-envelope"/>
-                    <span>https://business.gov.vn/</span>
+                    <font-awesome-icon icon="fa-solid fa-globe" />
+                    <span>esg.business.gov.vn</span>
                 </div>
                 <div class="flex gap-5 text-4xl">
                     <a href="https://www.facebook.com/CongThongTinDoanhNghiep" target="_blank">
@@ -58,14 +51,23 @@ onMounted(() => {
                     </a>
                 </div>
             </div>
-            <ul class="flex flex-col md:items-start gap-5 m-0">
+            <ul class="flex flex-col md:items-start gap-5 m-0 list-none md:basis-1/4">
                 <li v-for="link in links">
                     <router-link :to="link.to">{{ link.label }}</router-link>
                 </li>
             </ul>
         </div>
-        <div class="md:p-[20px_40px] lg:p-[20px_100px] p-[20px_30px] bg-[#072608] text-white md:text-base text-xs">
-            <span><font-awesome-icon icon="fa-solid fa-copyright"/> 2023, Bản quyền thuộc về Cục phát triển doanh nghiệp, Bộ Kế hoạch và đầu tư</span>
-        </div>
     </div>
 </template>
+
+<style scoped>
+:deep(.subscribe-input.ant-input-affix-wrapper >input.ant-input) {
+    background: transparent !important;
+}
+
+:deep(.subscribe-input.ant-input-affix-wrapper >input.ant-input)::placeholder {
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+}
+</style>
