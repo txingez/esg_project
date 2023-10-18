@@ -15,8 +15,8 @@ const links = [
 </script>
 
 <template>
-    <div class="xl:text-xl flex flex-col gap-5 bg-[#e6e6e6] text-[#263238]">
-        <div class="flex md:flex-row flex-col justify-between gap-5 md:px-[40px] lg:px-[100px] px-[30px] py-20">
+    <div class="md:text-[15px] text-[13px] flex flex-col gap-5 bg-[#e6e6e6] text-[#263238] items-center">
+        <div class="flex md:flex-row flex-col justify-between gap-5 xl:px-[145px] px-5 w-full max-w-[1440px] py-20">
             <div class="flex justify-center">
                 <router-link to="/home" class="flex justify-center">
                     <div class="flex flex-row xl:gap-5 gap-3">
