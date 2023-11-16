@@ -73,7 +73,8 @@ export const ThirdCriteria = [
 				key: 'TC6',
 				question: 'Doanh nghiệp có giải pháp để khách hàng tiếp tục tái sử dụng sản phẩm đó sau khi được doanh nghiệp tái chế không?',
 				answers: [
-					c
+					{key: 'A', answer: 'Không', point: 0},
+					{key: 'B', answer: 'Có', point: 2}
 				]
 			},
 			{

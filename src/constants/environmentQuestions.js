@@ -6,7 +6,7 @@ export const EnvironmentQuestions = [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có - chính sách được xây dựng theo các quy định và tiêu chuẩn Việt Nam', point: 1},
 			{key: 'C', answer: 'Có - chính sách được xây dựng theo các quy định và tiêu chuẩn Việt Nam và được công bố ra bên ngoài', point: 2},
-			{key: 'D', answer: 'Có - Có -  chính sách được xây dựng theo các quy định, tiêu chuẩn Việt Nam và chuẩn mực quốc tế', point: 2},
+			{key: 'D', answer: 'Có - chính sách được xây dựng theo các quy định, tiêu chuẩn Việt Nam và chuẩn mực quốc tế', point: 2},
 			{key: 'E', answer: 'Có - chính sách được xây dựng theo các quy định, tiêu chuẩn Việt Nam và chuẩn mực quốc tế và được công bố ra bên ngoài', point: 3}
 		]
 	},
@@ -75,7 +75,7 @@ export const EnvironmentQuestions = [
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1},
-			{key: 'C', answer: 'Không áp dụng do hoạt động của doanh nghiệp không tạo ra nguyên vật liệu dư thừa, nguyên vật liệu phế thải ', point: 'N/A'}
+			{key: 'C', answer: 'Không áp dụng do hoạt động của doanh nghiệp không tạo ra nguyên vật liệu dư thừa, nguyên vật liệu phế thải', point: 'N/A'}
 		]
 	},
 	{

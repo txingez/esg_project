@@ -28,7 +28,7 @@ export const SocialQuestions = [
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có thực hiện đầy đủ các chế độ phúc lợi cho người lao động toàn thời gian không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
-			{key: 'B', answer: 'Có -  theo pháp luật Việt Nam', point: 1},
+			{key: 'B', answer: 'Có - theo pháp luật Việt Nam', point: 1},
 			{
 				key: 'C',
 				answer: 'Có - theo pháp luật Việt Nam và cung cấp thêm các phúc lợi khác để thu hút nguồn lao động',

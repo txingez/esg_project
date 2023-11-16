@@ -237,7 +237,7 @@ export const GovernanceQuestions = [
 		question: 'Trong 12 tháng gần nhất, tài liệu họp Đại Hội Đồng Cổ Đông có cung cấp thông tin về các ứng viên Hội đồng quản trị và Ban Kiểm Soát (nếu có) tối thiểu 10 ngày trước ngày khai mạc đại hội không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
-			{key: 'B', answer: 'Có - trước khai mai 10-20 ngày', point: 1},
+			{key: 'B', answer: 'Có - trước khai mạc 10-20 ngày', point: 1},
 			{key: 'C', answer: 'Có - trước khai mạc 21 ngày', point: 2}
 		]
 	},

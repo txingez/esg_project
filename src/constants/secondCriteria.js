@@ -131,9 +131,9 @@ export const SecondCriteria = [
 				question: 'Tỷ trọng thành phần bao bì từ các nguồn vật liệu tái chế hoặc tái sử dụng',
 				answers: [
 					{key: 'A', answer: 'Dưới 25%', point: 0},
-					{key: 'B', answer: '25% - dưới 50%', point: 2},
-					{key: 'C', answer: '50% - dưới 75%', point: 4},
-					{key: 'D', answer: '75% trở lên', point: 6}
+					{key: 'B', answer: '25% - dưới 50%', point: 1},
+					{key: 'C', answer: '50% - dưới 75%', point: 2},
+					{key: 'D', answer: '75% trở lên', point: 3}
 				]
 			},
 			{
