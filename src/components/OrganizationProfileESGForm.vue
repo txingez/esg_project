@@ -79,7 +79,7 @@ const handlePeopleMakeEvaluate = () => {
                 </div>
             </template>
             <a-input v-model:value="profileESGStore.formData.companyName"
-                     placeholder="Tên doanh nghiệp"/>
+                     placeholder="Tên doanh nghiệp (theo Giấy chứng nhận đăng ký doanh nghiệp):"/>
         </a-form-item>
 
         <div class="flex flex-wrap md:gap-5 justify-between">
@@ -120,16 +120,16 @@ const handlePeopleMakeEvaluate = () => {
                      placeholder="Địa chỉ đăng ký kinh doanh"/>
         </a-form-item>
 
-        <a-form-item :rules="[{required: true, message: 'Hãy nhập Cơ sở sản xuất kinh doanh được đặt tại (các) địa phương'}]"
+        <a-form-item :rules="[{required: true, message: 'Hãy nhập Tên các tỉnh/thành phố có cơ sở sản xuất, kinh doanh của doanh nghiệp mà khác với địa chỉ đăng ký kinh doanh (nếu có):'}]"
                      name="firstManufactureFactory">
             <template #label>
                 <div class="flex justify-center items-center gap-1 text-lg">
-                    Cơ sở sản xuất kinh doanh được đặt tại (các) địa phương:
+                    Tên các tỉnh/thành phố có cơ sở sản xuất, kinh doanh của doanh nghiệp mà khác với địa chỉ đăng ký kinh doanh (nếu có):
                 </div>
             </template>
             <a-input v-model:value="profileESGStore.formData.firstManufactureFactory"
 
-                     placeholder="Cơ sở sản xuất kinh doanh được đặt tại (các) địa phương"/>
+                     placeholder="Tên các tỉnh/thành phố có cơ sở sản xuất, kinh doanh của doanh nghiệp mà khác với địa chỉ đăng ký kinh doanh (nếu có):"/>
         </a-form-item>
 
         <div class="flex flex-wrap md:gap-5 justify-between">
@@ -138,7 +138,7 @@ const handlePeopleMakeEvaluate = () => {
                              name="registrationType">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
-                            Loại hình đăng ký kinh doanh:
+                            Doanh nghiệp đăng ký loại hình kinh doanh nào dưới đây:
                         </div>
                     </template>
                     <a-select v-model:value="profileESGStore.formData.registrationType"
@@ -152,21 +152,21 @@ const handlePeopleMakeEvaluate = () => {
                     <a-input v-model:value="profileESGStore.formData.registrationTypeOtherInput"/>
                 </a-form-item>
             </div>
-            <a-form-item :rules="[{required: true, message: 'Hãy chọn loại hình Doanh nghiệp'}]" class="md:basis-[48%] w-full"
-                         name="businessType">
-                <template #label>
-                    <div class="flex justify-center items-center gap-1 text-lg">
-                        Loại hình Doanh nghiệp:
-                    </div>
-                </template>
-                <a-select v-model:value="profileESGStore.formData.businessType"
-                          :options="OPTIONS.BUSINESS_TYPE_OPTS"
-                          placeholder="Loại hình Doanh nghiệp">
-                </a-select>
-            </a-form-item>
+<!--            <a-form-item :rules="[{required: true, message: 'Hãy chọn loại hình Doanh nghiệp'}]" class="md:basis-[48%] w-full"-->
+<!--                         name="businessType">-->
+<!--                <template #label>-->
+<!--                    <div class="flex justify-center items-center gap-1 text-lg">-->
+<!--                        Loại hình Doanh nghiệp:-->
+<!--                    </div>-->
+<!--                </template>-->
+<!--                <a-select v-model:value="profileESGStore.formData.businessType"-->
+<!--                          :options="OPTIONS.BUSINESS_TYPE_OPTS"-->
+<!--                          placeholder="Loại hình Doanh nghiệp">-->
+<!--                </a-select>-->
+<!--            </a-form-item>-->
         </div>
 
-        <div class="font-bold text-xl py-5">Thông tin lao động</div>
+        <div class="font-bold text-xl py-5">Thông tin người lao động của doanh nghiệp:</div>
         <div class="flex flex-wrap md:gap-5 justify-between">
             <a-form-item :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
                                       {required: true, message: 'Hãy nhập thông tin'}]"
@@ -174,7 +174,7 @@ const handlePeopleMakeEvaluate = () => {
                          name="fullTimeEmployees">
                 <template #label>
                     <div class="flex justify-center items-center gap-1 text-lg">
-                        Tổng số nhân viên toàn thời gian:
+                        Tổng số nhân viên toàn thời gian (bao gồm tất cả hợp đồng lao động không thời hạn, hợp đồng lao động có thời hạn, hợp đồng lao động thử việc):
                     </div>
                 </template>
                 <a-input v-model:value="profileESGStore.formData.fullTimeEmployees"
@@ -252,11 +252,11 @@ const handlePeopleMakeEvaluate = () => {
                          name="numberManagers">
                 <template #label>
                     <div class="flex justify-center items-center gap-1 text-lg">
-                        Tổng số cán bộ cấp quản lý (từ trưởng phòng trở lên):
+                        Tổng số cán bộ cấp quản lý (từ cấp trưởng phòng/ trưởng bộ phận trở lên):
                     </div>
                 </template>
                 <a-input v-model:value="profileESGStore.formData.numberManagers"
-                         placeholder="Tổng số cán bộ cấp quản lý (từ trưởng phòng trở lên)"/>
+                         placeholder="Tổng số cán bộ cấp quản lý (từ cấp trưởng phòng/ trưởng bộ phận trở lên):"/>
             </a-form-item>
             <a-form-item :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
                                       {required: true, message: 'Hãy nhập thông tin'}]"
@@ -331,7 +331,7 @@ const handlePeopleMakeEvaluate = () => {
                      name="businessModel">
             <template #label>
                 <div class="flex justify-center items-center gap-1 text-lg">
-                    Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp thuộc nhóm:
+                    Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp thuộc nhóm ngành nào dưới đây:
                 </div>
             </template>
             <a-select v-model:value="profileESGStore.formData.businessModel"
@@ -350,7 +350,7 @@ const handlePeopleMakeEvaluate = () => {
                          name="startedESGYear">
                 <template #label>
                     <div class="flex justify-center items-center gap-1 text-lg">
-                        Năm bắt đầu triển khai ESG (nếu đã triển khai):
+                        Năm doanh nghiệp bắt đầu triển khai áp dụng ESG (nếu đã triển khai):
                     </div>
                 </template>
                 <a-date-picker v-model:value="profileESGStore.formData.startedESGYear" class="w-full" picker="year"
@@ -364,7 +364,7 @@ const handlePeopleMakeEvaluate = () => {
                     </div>
                 </template>
                 <a-input v-model:value="profileESGStore.formData.websiteCompany"
-                         placeholder="Địa chỉ website"/>
+                         placeholder="Địa chỉ website (nếu có): "/>
             </a-form-item>
         </div>
 
@@ -381,30 +381,30 @@ const handlePeopleMakeEvaluate = () => {
                 <a-input v-model:value="profileESGStore.formData.fullNameManager"
                          placeholder="Họ và tên"/>
             </a-form-item>
-            <a-form-item :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]"
-                         class="md:basis-[48%] w-full"
-                         name="sexManager">
-                <template #label>
-                    <div class="flex justify-center items-center gap-1 text-lg">
-                        Giới tính:
-                    </div>
-                </template>
-                <a-select v-model:value="profileESGStore.formData.sexManager" :options="OPTIONS.SEX_OPTS"
-                          placeholder="Giới tính"/>
-            </a-form-item>
+<!--            <a-form-item :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]"-->
+<!--                         class="md:basis-[48%] w-full"-->
+<!--                         name="sexManager">-->
+<!--                <template #label>-->
+<!--                    <div class="flex justify-center items-center gap-1 text-lg">-->
+<!--                        Giới tính:-->
+<!--                    </div>-->
+<!--                </template>-->
+<!--                <a-select v-model:value="profileESGStore.formData.sexManager" :options="OPTIONS.SEX_OPTS"-->
+<!--                          placeholder="Giới tính"/>-->
+<!--            </a-form-item>-->
         </div>
         <div class="flex flex-wrap md:gap-5 justify-between">
-            <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"
-                         class="md:basis-[48%] w-full"
-                         name="nationManager">
-                <template #label>
-                    <div class="flex justify-center items-center gap-1 text-lg">
-                        Dân tộc:
-                    </div>
-                </template>
-                <a-input v-model:value="profileESGStore.formData.nationManager"
-                         placeholder="Dân tộc"/>
-            </a-form-item>
+<!--            <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"-->
+<!--                         class="md:basis-[48%] w-full"-->
+<!--                         name="nationManager">-->
+<!--                <template #label>-->
+<!--                    <div class="flex justify-center items-center gap-1 text-lg">-->
+<!--                        Dân tộc:-->
+<!--                    </div>-->
+<!--                </template>-->
+<!--                <a-input v-model:value="profileESGStore.formData.nationManager"-->
+<!--                         placeholder="Dân tộc"/>-->
+<!--            </a-form-item>-->
             <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"
                          class="md:basis-[48%] w-full"
                          name="workPlaceManager">
@@ -470,23 +470,23 @@ const handlePeopleMakeEvaluate = () => {
                          name="workPlace">
                 <template #label>
                     <div class="flex justify-center items-center gap-1 text-lg">
-                        Vị trí công tác:
+                        Vị trí và bộ phận công tác:
                     </div>
                 </template>
                 <a-input v-model:value="profileESGStore.formData.workPlace"
                          placeholder="Vị trí công tác"/>
             </a-form-item>
-            <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"
-                         class="md:basis-[48%] w-full"
-                         name="workUnit">
-                <template #label>
-                    <div class="flex justify-center items-center gap-1 text-lg">
-                        Bộ phận công tác:
-                    </div>
-                </template>
-                <a-input v-model:value="profileESGStore.formData.workUnit"
-                         placeholder="Bộ phận công tác"/>
-            </a-form-item>
+<!--            <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"-->
+<!--                         class="md:basis-[48%] w-full"-->
+<!--                         name="workUnit">-->
+<!--                <template #label>-->
+<!--                    <div class="flex justify-center items-center gap-1 text-lg">-->
+<!--                        Bộ phận công tác:-->
+<!--                    </div>-->
+<!--                </template>-->
+<!--                <a-input v-model:value="profileESGStore.formData.workUnit"-->
+<!--                         placeholder="Bộ phận công tác"/>-->
+<!--            </a-form-item>-->
         </div>
         <div class="flex flex-wrap md:gap-5 justify-between">
             <a-form-item :rules="[{pattern: new RegExp(/^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'},
