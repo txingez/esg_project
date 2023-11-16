@@ -9,7 +9,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G2',
-		question: 'Cơ cấu HĐQT hoặc HĐTV hoặc ban Giám đốc có đa dạng về kiến thức và kinh nghiệm về pháp luật, tài chính, lĩnh vực hoạt động kinh doanh của doanh nghiệp không?',
+		question: 'Cơ cấu Hội đồng quản trị hoặc Hội đồng thành viên hoặc Ban giám đốc có đa dạng về kiến thức và kinh nghiệm về pháp luật, tài chính, lĩnh vực hoạt động kinh doanh của doanh nghiệp không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -17,7 +17,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G3',
-		question: 'Cơ cấu HĐQT hoặc HĐTV hoặc Ban Giám đốc có đa dạng về giới không?',
+		question: 'Cơ cấu Hội đồng quản trị hoặc Hội đồng thành viên hoặc Ban Giám đốc có đa dạng về giới không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -25,7 +25,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G4',
-		question: 'Trong 12 tháng gần nhất, HĐQT hoặc HĐTV hoặc Ban Giám đốc có ban hành quy trình theo dõi, đánh giá công tác quản trị doanh nghiệp và việc tuân thủ pháp luật về quản trị doanh nghiệp không?',
+		question: 'Trong 12 tháng gần nhất, Hội đồng quản trị hoặc Hội đồng thành viên hoặc Ban Giám đốc có ban hành quy trình theo dõi, đánh giá công tác quản trị doanh nghiệp và việc tuân thủ pháp luật về quản trị doanh nghiệp không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -33,7 +33,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G5',
-		question: 'Doanh nghiệp có chính sách giới hạn về số năm đương nhiệm của thành viên HĐQT hoặc HĐTV hoặc Ban Giám đốc không?',
+		question: 'Doanh nghiệp có chính sách giới hạn về số năm đương nhiệm của thành viên Hội đồng quản trị hoặc Hội đồng thành viên hoặc Ban Giám đốc không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -44,7 +44,8 @@ export const GovernanceQuestions = [
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có thiết lập các tiêu chí lựa chọn công ty kiểm toán độc lập, có thực hiện đánh giá chất lượng công việc của kiểm toán độc lập, và có thiết lập quy trình để theo dõi việc thực hiện các khuyến nghị mà kiểm toán độc lập đưa ra không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
-			{key: 'B', answer: 'Có', point: 1}
+			{key: 'B', answer: 'Có', point: 1},
+			{key: 'C', answer: 'Không áp dụng', point: 'N/A'},
 		]
 	},
 	{
@@ -97,7 +98,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G13',
-		question: 'Báo cáo thường niên có quy chế rõ rảng về lương, thưởng, các khoản thu nhập khác, quỹ phúc lợi và chi phí mà doanh nghiệp chi trả, thanh toán cho từng thành viên trong HĐQT hoặc HĐTV hoặc Ban Giám đốc không?',
+		question: 'Báo cáo thường niên có quy chế rõ rảng về lương, thưởng, các khoản thu nhập khác, quỹ phúc lợi và chi phí mà doanh nghiệp chi trả, thanh toán cho từng thành viên trong Hội đồng quản trị hoặc Hội đồng thành viên hoặc Ban Giám đốc không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -105,7 +106,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G14',
-		question: 'Báo cáo thường niên có công bố phát biểu, tuyên bố khẳng định sự tuân thủ đầy đủ của doanh nghiệp với các quy tắc quản trị doanh nghiệp và trong trường hợp có việc không tuân thủ, báo cáo có nếu rõ và giải thích lý do cho mỗi vấn đề đó không?',
+		question: 'Báo cáo thường niên có công bố phát biểu, tuyên bố khẳng định sự tuân thủ đầy đủ của doanh nghiệp với các quy tắc quản trị doanh nghiệp và trong trường hợp có việc không tuân thủ, báo cáo có nêu rõ và giải thích lý do cho mỗi vấn đề đó không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -114,7 +115,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G15',
 		forListingCompany: true,
-		question: 'Doanh nghiệp niêm yết có thành lập các tiểu ban sau: tiểu ban chính sách phát triển, tiểu ban nhân sự, tiểu ban lương thưởng hay các đơn vị tương đương không?',
+		question: 'Doanh nghiệp có thành lập ít nhất một trong các tiểu ban sau: tiểu ban chính sách phát triển, tiểu ban nhân sự, tiểu ban lương thưởng hay các đơn vị tương đương không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -132,7 +133,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G17',
 		forListingCompany: true,
-		question: 'Doanh nghiệp có đảm bảo tối thiểu 20% tổng số thành viên của HĐQT là thành viên độc lập không?',
+		question: 'Doanh nghiệp có đảm bảo tối thiểu 20% tổng số thành viên của Hội đồng quản trị là thành viên độc lập không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -141,7 +142,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G18',
 		forListingCompany: true,
-		question: 'Trong 12 tháng gần nhất, báo cáo đánh giá về hoạt động của HĐQT có phải do thành viên độc lập đánh giá không?',
+		question: 'Trong 12 tháng gần nhất, báo cáo đánh giá về hoạt động của Hội đồng quản trị có phải do thành viên độc lập đánh giá không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -163,7 +164,7 @@ export const GovernanceQuestions = [
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1},
-			{key: 'C', answer: 'Không áp dụng do pháp luật Việt Nam không yêu cầu', point: 'N/A'},
+			{key: 'C', answer: 'Không áp dụng do pháp luật Việt Nam không yêu cầu (N/A)', point: 'N/A'},
 		]
 	},
 	{
@@ -173,13 +174,13 @@ export const GovernanceQuestions = [
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1},
-			{key: 'C', answer: 'Không áp dụng do pháp luật Việt Nam không yêu cầu', point: 'N/A'}
+			{key: 'C', answer: 'Không áp dụng do pháp luật Việt Nam không yêu cầu (N/A)', point: 'N/A'}
 		]
 	},
 	{
 		key: 'G22',
 		forListingCompany: true,
-		question: 'Trong năm qua, chủ tịch Ủy ban kiểm toán có phải là Thành viên HĐQT không?',
+		question: 'Trong năm qua, chủ tịch Ủy ban kiểm toán (hoặc Ban Kiểm toán nội bộ) có phải là Thành viên độc lập Hội đồng quản trị không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -197,7 +198,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G24',
 		forListingCompany: true,
-		question: 'Chủ tịch Ủy ban Quản lý rủi ro có phải là thành viên độc lập HĐQT không?',
+		question: 'Chủ tịch Ủy ban Quản lý rủi ro có phải là thành viên độc lập Hội đồng quản trị không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -215,7 +216,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G26',
 		forListingCompany: true,
-		question: 'Trong 12 tháng gần nhất, doanh nghiệp có công bố tính độc lập của thành viên HĐQT không?',
+		question: 'Trong 12 tháng gần nhất, doanh nghiệp có công bố tính độc lập của thành viên Hội đồng quản trị không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -224,7 +225,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G27',
 		forListingCompany: true,
-		question: 'Trong 12 tháng gần nhất, doanh nghiệp có áp dụng công nghệ thông tin để cổ đông có thể tham dự và phát biểu ý kiến tại cuộc họp Đại hội đồng cổ đông một cách thuận lợi nhất, bao gồm hướng dẫn cổ đông biểu quyết thông qua họp Đại hội đồng cổ đông trực tuyến, bỏ phiếu điện tử hoặc hình thức điện tử khác?',
+		question: 'Trong 12 tháng gần nhất, doanh nghiệp có ứng dụng công nghệ thông tin để cổ đông có thể tham dự và phát biểu ý kiến tại cuộc họp Đại hội đồng cổ đông một cách thuận lợi nhất, bao gồm hướng dẫn cổ đông biểu quyết thông qua họp Đại hội đồng cổ đông trực tuyến, bỏ phiếu điện tử hoặc hình thức điện tử khác?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -243,7 +244,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G29',
 		forListingCompany: true,
-		question: 'Trong thư mời tham dự Đại Hội Đồng Cổ Đông, cổ đông có được hướng dẫn để đóng góp ý kiến trong thời gian trước ngày tham dự đại hội về (các) vấn đề thảo luận trong chương trình nghị sự của Đại Hội Đồng Cổ Đông không?',
+		question: 'Trong thư mời tham dự Đại Hội Đồng Cổ Đông, cổ đông có được hướng dẫn để đóng góp ý kiến trong thời gian trước ngày tham dự đại hội về các vấn đề thảo luận trong chương trình nghị sự của Đại Hội Đồng Cổ Đông không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -252,7 +253,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G30',
 		forListingCompany: true,
-		question: 'Trong 12 tháng gần nhất, doanh nghiệp có công bố và sử dụng tài liệu họp, biên bản họp, nghị quyết Đại Hội Đồng Cổ Đông bằng tiếng Việt và tiếng Anh?',
+		question: 'Trong 12 tháng gần nhất, doanh nghiệp có công bố và sử dụng tài liệu họp, biên bản họp, nghị quyết Đại Hội Đồng Cổ Đông bằng tiếng Việt và tiếng Anh không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -261,11 +262,11 @@ export const GovernanceQuestions = [
 	{
 		key: 'G31',
 		forListingCompany: true,
-		question: 'Trong trường hợp doanh nghiệp bắt buộc phải có Kiểm toán độc lập theo pháp luật Việt Nam, doanh nghiệp có công bố đã bổ nhiệm một bên độc lập (kiểm tra, giám sát viên) là Kiểm toán độc lập?',
+		question: 'Trong trường hợp doanh nghiệp bắt buộc phải có Kiểm toán độc lập theo pháp luật Việt Nam, doanh nghiệp có công bố đã bổ nhiệm một bên độc lập (kiểm tra, giám sát viên) là Kiểm toán độc lập không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1},
-			{key: 'C', answer: 'Không áp dụng do pháp luật Việt Nam không yêu cầu', point: 'N/A'}
+			{key: 'C', answer: 'Không áp dụng do pháp luật Việt Nam không yêu cầu (N/A)', point: 'N/A'}
 		]
 	},
 	{
@@ -280,7 +281,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G33',
 		forListingCompany: true,
-		question: 'Trong 12 tháng gần nhất, đại hội đồng cổ đông có thông qua thù lao hoặc lương thưởng, chi phí, các khoản lợi ích do doanh nghiệp thanh toán cho từng thành viên Hội đồng Quản trị không?',
+		question: 'Trong 12 tháng gần nhất, Đại hội đồng cổ đông có thông qua thù lao hoặc lương thưởng, chi phí, các khoản lợi ích do doanh nghiệp thanh toán cho từng thành viên Hội đồng quản trị không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
@@ -289,7 +290,7 @@ export const GovernanceQuestions = [
 	{
 		key: 'G34',
 		forListingCompany: true,
-		question: 'Doanh nghiệp có thực hiện chi trả cổ tức đầy đủ trong thời hạn 06 tháng, kể từ ngày kết thúc họp Đại hội đồng cổ đông thường niên?',
+		question: 'Doanh nghiệp có thực hiện chi trả cổ tức đầy đủ trong thời hạn 06 tháng, kể từ ngày kết thúc họp Đại hội đồng cổ đông thường niên không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
