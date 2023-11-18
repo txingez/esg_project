@@ -312,11 +312,11 @@ const handlePeopleMakeEvaluate = () => {
                      name="b7Value">
             <template #label>
                 <div class="flex justify-center items-center gap-1 text-lg">
-                    Doanh nghiệp có phải là doanh nghiệp do phụ nữ điều hành không?
+                    Doanh nghiệp có phải là doanh nghiệp do phụ nữ trực tiếp điều hành không?
                     <a-tooltip>
                         <template #title>
                             <span>
-                                Doanh nghiệp do phụ nữ điều hành là doanh nghiệp có một trong các vị trí sau do phụ nữ đảm nhận: Tổng Giám đốc /Giám đốc doanh nghiệp, Chủ tịch Hội đồng quản trị
+                                Doanh nghiệp do phụ nữ điều hành là việc phụ nữ đảm nhận vị trí điều hành cao nhất trong Ban giám đốc, có thể là vị trí Tổng Giám đốc/ Giám đốc điều hành
                             </span>
                         </template>
                         <QuestionCircleOutlined/>
