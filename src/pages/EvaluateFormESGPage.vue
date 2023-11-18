@@ -6,9 +6,12 @@ import { useRouter } from "vue-router";
 import { exportHTMLToPDF } from "../utils/exportHTMLToPDF.js";
 import { ENUM } from "../constants/enumValues.js";
 import { PrinterOutlined } from "@ant-design/icons-vue";
+import { useModalStore } from "../stores/useModalStore.js";
+import HistoryAnswersModal from "../components/HistoryAnswersModal.vue";
 
 const router = useRouter()
 const stepStore = useStepStore()
+const modalStore = useModalStore()
 
 const screenWidth = ref(0)
 
@@ -56,6 +59,10 @@ onMounted(() => {
 		ModalWarning('Bạn chưa đăng nhập', 'Vui lòng đăng nhập để sử dụng tính năng này', 'Đăng nhập', callbackOk, callbackCancel)
 	}
 })
+
+const openYourAnswers = () => {
+    modalStore.openAnswerChosen()
+}
 </script>
 
 <template>
@@ -84,7 +91,11 @@ onMounted(() => {
         </div>
 
         <div v-if="stepStore.currentStepState === stepItems.length - 1"
-             class="md:px-10 lg:px-[50px] xl:px-[100px] px-5">
+             class="md:px-10 lg:px-[50px] xl:px-[100px] px-5 space-y-2.5">
+            <div>
+                Doanh nghiệp có thể xem lại câu trả lời của doanh nghiệp cho từng tiêu chí
+                <span class="text-blue-500 hover:text-blue-400 hover:cursor-pointer" @click.prevent="openYourAnswers">tại đây</span>.
+            </div>
             <a-button class="bg-[#1677ff] h-[50px] w-[150px] flex items-center justify-center"
                       type="primary"
                       @click.prevent="exportHTMLToPDF(ENUM.FORM_NAME.EvaluateESGForm)">
@@ -92,5 +103,7 @@ onMounted(() => {
                 In kết quả
             </a-button>
         </div>
+
+        <HistoryAnswersModal />
     </div>
 </template>

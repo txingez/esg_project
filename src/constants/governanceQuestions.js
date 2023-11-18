@@ -114,7 +114,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G15',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Doanh nghiệp có thành lập ít nhất một trong các tiểu ban sau: tiểu ban chính sách phát triển, tiểu ban nhân sự, tiểu ban lương thưởng hay các đơn vị tương đương không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -123,7 +123,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G16',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong 12 tháng gần nhất, các tiểu ban trực thuộc Hội đồng quản trị có phải do Thành viên độc lập làm trưởng ban không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -132,7 +132,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G17',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Doanh nghiệp có đảm bảo tối thiểu 20% tổng số thành viên của Hội đồng quản trị là thành viên độc lập không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -141,7 +141,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G18',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong 12 tháng gần nhất, báo cáo đánh giá về hoạt động của Hội đồng quản trị có phải do thành viên độc lập đánh giá không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -150,7 +150,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G19',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Doanh nghiệp có thành lập bộ phận Kiểm toán nội bộ không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -159,7 +159,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G20',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong trường hợp doanh nghiệp bắt buộc phải có Kiểm toán nội bộ theo pháp luật Việt Nam, danh sách các ứng viên kiểm toán có được công bố công khai không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -169,7 +169,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G21',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong trường hợp doanh nghiệp bắt buộc phải có Ban Kiểm soát theo pháp luật Việt Nam, doanh nghiệp có thành lập Ban Kiểm soát không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -179,7 +179,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G22',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong năm qua, chủ tịch Ủy ban kiểm toán (hoặc Ban Kiểm toán nội bộ) có phải là Thành viên độc lập Hội đồng quản trị không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -188,7 +188,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G23',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Doanh nghiệp có thành lập Ủy ban Quản lý rủi ro không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -197,7 +197,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G24',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Chủ tịch Ủy ban Quản lý rủi ro có phải là thành viên độc lập Hội đồng quản trị không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -206,7 +206,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G25',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Doanh nghiệp có bộ phận chịu trách nhiệm giám sát truyền thông ra bên ngoài và lưu trữ thông tin theo quy định của pháp luật không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -215,7 +215,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G26',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có công bố tính độc lập của thành viên Hội đồng quản trị không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -224,7 +224,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G27',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có ứng dụng công nghệ thông tin để cổ đông có thể tham dự và phát biểu ý kiến tại cuộc họp Đại hội đồng cổ đông một cách thuận lợi nhất, bao gồm hướng dẫn cổ đông biểu quyết thông qua họp Đại hội đồng cổ đông trực tuyến, bỏ phiếu điện tử hoặc hình thức điện tử khác?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -233,7 +233,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G28',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong 12 tháng gần nhất, tài liệu họp Đại Hội Đồng Cổ Đông có cung cấp thông tin về các ứng viên Hội đồng quản trị và Ban Kiểm Soát (nếu có) tối thiểu 10 ngày trước ngày khai mạc đại hội không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -243,7 +243,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G29',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong thư mời tham dự Đại Hội Đồng Cổ Đông, cổ đông có được hướng dẫn để đóng góp ý kiến trong thời gian trước ngày tham dự đại hội về các vấn đề thảo luận trong chương trình nghị sự của Đại Hội Đồng Cổ Đông không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -252,7 +252,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G30',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có công bố và sử dụng tài liệu họp, biên bản họp, nghị quyết Đại Hội Đồng Cổ Đông bằng tiếng Việt và tiếng Anh không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -261,7 +261,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G31',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong trường hợp doanh nghiệp bắt buộc phải có Kiểm toán độc lập theo pháp luật Việt Nam, doanh nghiệp có công bố đã bổ nhiệm một bên độc lập (kiểm tra, giám sát viên) là Kiểm toán độc lập không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -271,7 +271,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G32',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Doanh nghiệp có xây dựng và công bố chính sách liên quan đến việc khiếu nại của cổ đông không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -280,7 +280,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G33',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Trong 12 tháng gần nhất, Đại hội đồng cổ đông có thông qua thù lao hoặc lương thưởng, chi phí, các khoản lợi ích do doanh nghiệp thanh toán cho từng thành viên Hội đồng quản trị không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -289,7 +289,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G34',
-		forListingCompany: true,
+		// forListingCompany: true,
 		question: 'Doanh nghiệp có thực hiện chi trả cổ tức đầy đủ trong thời hạn 06 tháng, kể từ ngày kết thúc họp Đại hội đồng cổ đông thường niên không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},

@@ -143,7 +143,7 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
             </div>
             <!--    todo: cap nhat lai domain -->
             <div class="italic">
-                (Đánh giá trên Cổng thông tin Chương trình tại địa chỉ: https://domain.gov.vn)
+                (Đánh giá trên Cổng thông tin Chương trình tại địa chỉ: https://esg.business.gov.vn)
             </div>
         </div>
     </div>

@@ -6,10 +6,13 @@ export const useModalStore = defineStore('modal', () => {
 
 	const prohibitedChemicalsOpen = ref(initialState)
 	const rareMaterialsOpen = ref(initialState)
+	const answersChosenOpen = ref(initialState)
 
 	const openProhibitedChemicals = () => prohibitedChemicalsOpen.value = true
 
 	const openRareMaterials = () => rareMaterialsOpen.value = true
 
-	return {prohibitedChemicalsOpen, rareMaterialsOpen, openProhibitedChemicals, openRareMaterials}
+	const openAnswerChosen = () => answersChosenOpen.value = true
+
+	return {prohibitedChemicalsOpen, rareMaterialsOpen, answersChosenOpen, openProhibitedChemicals, openRareMaterials, openAnswerChosen}
 })

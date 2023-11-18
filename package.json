@@ -32,7 +32,8 @@
     "prettier-plugin-tailwindcss": "^0.5.2",
     "tailwindcss": "^3.3.3",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "vue-router": "^4.2.4",
+    "vue3-html2pdf": "^1.1.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

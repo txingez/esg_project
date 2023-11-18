@@ -57,7 +57,8 @@ const questions = computed(() => {
 		}
 	})()
 })
-const finalQuestions = businessTypeStore.businessType === 'Doanh nghiệp niêm yết' ? questions.value : questions.value.filter(q => q.forListingCompany === undefined || !q.forListingCompany)
+// const finalQuestions = businessTypeStore.businessType === 'Doanh nghiệp niêm yết' ? questions.value : questions.value.filter(q => q.forListingCompany === undefined || !q.forListingCompany)
+const finalQuestions = questions.value
 const questionKeys = renderWithGroup.value
 	? finalQuestions.flatMap(qs => qs.questions.map(q => q.key))
 	: finalQuestions.map(q => q.key)

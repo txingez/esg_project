@@ -27,7 +27,7 @@ const disabledDate = (current) => {
 const yearFormat = 'YYYY'
 
 const handleFinishProfile = () => {
-	businessTypeStore.update(profileNECStore.formData.businessType)
+	// businessTypeStore.update(profileNECStore.formData.businessType)
 	evaluatedResultStore.updateIndustryCode(profileNECStore.formData.businessModel)
 	stepStore.updateCurrentStep(1)
 }
@@ -39,7 +39,7 @@ onMounted(() => {
 			console.log(response)
 			if (response.data.organization !== null) {
 				const {header, payload} = useJwt(response.data.organization)
-				profileNECStore.update(payload.organization)
+				profileNECStore.update(payload.value.organization)
 			}
 		})
 		.catch((err) => {
@@ -84,7 +84,8 @@ const handlePeopleMakeEvaluate = () => {
 
             <div class="flex flex-wrap md:gap-5 justify-between">
                 <a-form-item :rules="[{pattern: new RegExp(/^\d+$/), message: 'Mã số doanh nghiệp không đúng'},
-                                      {required: true, message: 'Hãy nhập Mã số doanh nghiệp'}]" class="md:basis-[48%] w-full"
+                                      {required: true, message: 'Hãy nhập Mã số doanh nghiệp'}]"
+                             class="md:basis-[48%] w-full"
                              name="taxCode">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
@@ -93,7 +94,8 @@ const handlePeopleMakeEvaluate = () => {
                     </template>
                     <a-input v-model:value="profileNECStore.formData.taxCode" placeholder="Mã số doanh nghiệp"/>
                 </a-form-item>
-                <a-form-item :rules="[{required: true, message: 'Hãy chọn năm thành lập'}]" class="md:basis-[48%] w-full"
+                <a-form-item :rules="[{required: true, message: 'Hãy chọn năm thành lập'}]"
+                             class="md:basis-[48%] w-full"
                              name="foundedYear">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
@@ -120,15 +122,14 @@ const handlePeopleMakeEvaluate = () => {
                          placeholder="Địa chỉ đăng ký kinh doanh"/>
             </a-form-item>
 
-            <a-form-item :rules="[{required: true, message: 'Hãy nhập Tên các tỉnh/thành phố có cơ sở sản xuất, kinh doanh của doanh nghiệp mà khác với địa chỉ đăng ký kinh doanh (nếu có):'}]"
-                         name="firstManufactureFactory">
+            <a-form-item name="firstManufactureFactory">
                 <template #label>
                     <div class="flex justify-center items-center gap-1 text-lg">
-                        Tên các tỉnh/thành phố có cơ sở sản xuất, kinh doanh của doanh nghiệp mà khác với địa chỉ đăng ký kinh doanh (nếu có):
+                        Tên các tỉnh/thành phố có cơ sở sản xuất, kinh doanh của doanh nghiệp mà khác với địa chỉ đăng
+                        ký kinh doanh (nếu có):
                     </div>
                 </template>
                 <a-input v-model:value="profileNECStore.formData.firstManufactureFactory"
-
                          placeholder="Tên các tỉnh/thành phố có cơ sở sản xuất, kinh doanh của doanh nghiệp mà khác với địa chỉ đăng ký kinh doanh (nếu có):"/>
             </a-form-item>
 
@@ -142,7 +143,7 @@ const handlePeopleMakeEvaluate = () => {
                             </div>
                         </template>
                         <a-select v-model:value="profileNECStore.formData.registrationType"
-                                  :options="OPTIONS.REGISTRATION_TYPE_NEC_OPTS"
+                                  :options="OPTIONS.REGISTRATION_TYPE_OPTS"
                                   placeholder="Loại hình đăng ký kinh doanh">
                         </a-select>
                     </a-form-item>
@@ -152,21 +153,21 @@ const handlePeopleMakeEvaluate = () => {
                         <a-input v-model:value="profileNECStore.formData.registrationTypeOtherInput"/>
                     </a-form-item>
                 </div>
-<!--                <a-form-item :rules="[{required: true, message: 'Hãy chọn loại hình Doanh nghiệp'}]" class="md:basis-[48%] w-full"-->
-<!--                             name="businessType">-->
-<!--                    <template #label>-->
-<!--                        <div class="flex justify-center items-center gap-1 text-lg">-->
-<!--                            Loại hình Doanh nghiệp:-->
-<!--                        </div>-->
-<!--                    </template>-->
-<!--                    <a-select v-model:value="profileNECStore.formData.businessType"-->
-<!--                              :options="OPTIONS.BUSINESS_TYPE_OPTS"-->
-<!--                              placeholder="Loại hình Doanh nghiệp">-->
-<!--                    </a-select>-->
-<!--                </a-form-item>-->
+                <!--                <a-form-item :rules="[{required: true, message: 'Hãy chọn loại hình Doanh nghiệp'}]" class="md:basis-[48%] w-full"-->
+                <!--                             name="businessType">-->
+                <!--                    <template #label>-->
+                <!--                        <div class="flex justify-center items-center gap-1 text-lg">-->
+                <!--                            Loại hình Doanh nghiệp:-->
+                <!--                        </div>-->
+                <!--                    </template>-->
+                <!--                    <a-select v-model:value="profileNECStore.formData.businessType"-->
+                <!--                              :options="OPTIONS.BUSINESS_TYPE_OPTS"-->
+                <!--                              placeholder="Loại hình Doanh nghiệp">-->
+                <!--                    </a-select>-->
+                <!--                </a-form-item>-->
             </div>
 
-            <div class="font-bold text-xl py-5">Thông tin lao động</div>
+            <div class="font-bold text-xl py-5">Thông tin người lao động của doanh nghiệp</div>
             <div class="flex flex-wrap md:gap-5 justify-between">
                 <a-form-item :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
                                       {required: true, message: 'Hãy nhập thông tin'}]"
@@ -174,7 +175,8 @@ const handlePeopleMakeEvaluate = () => {
                              name="fullTimeEmployees">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
-                            Tổng số nhân viên toàn thời gian (bao gồm tất cả hợp đồng lao động không thời hạn, hợp đồng lao động có thời hạn, hợp đồng lao động thử việc):
+                            Tổng số nhân viên toàn thời gian (bao gồm tất cả hợp đồng lao động không thời hạn, hợp đồng
+                            lao động có thời hạn, hợp đồng lao động thử việc):
                         </div>
                     </template>
                     <a-input v-model:value="profileNECStore.formData.fullTimeEmployees"
@@ -186,7 +188,7 @@ const handlePeopleMakeEvaluate = () => {
                              name="femaleFullTimeEmployees">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
-                            trong đó: tổng số nhân viên nữ:
+                            trong đó, tổng số nhân viên nữ:
                         </div>
                     </template>
                     <a-input v-model:value="profileNECStore.formData.femaleFullTimeEmployees"
@@ -212,7 +214,7 @@ const handlePeopleMakeEvaluate = () => {
                              name="femalePartTimeEmployees">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
-                            trong đó: tổng số nhân viên nữ:
+                            trong đó, tổng số nhân viên nữ:
                         </div>
                     </template>
                     <a-input v-model:value="profileNECStore.formData.femalePartTimeEmployees"
@@ -238,7 +240,7 @@ const handlePeopleMakeEvaluate = () => {
                              name="femaleSeasonalEmployees">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
-                            trong đó: tổng số nhân viên nữ:
+                            trong đó, tổng số nhân viên nữ:
                         </div>
                     </template>
                     <a-input v-model:value="profileNECStore.formData.femaleSeasonalEmployees"
@@ -264,19 +266,18 @@ const handlePeopleMakeEvaluate = () => {
                              name="numberFemaleManagers">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
-                            trong đó: Tổng số cán bộ cấp quản lý là nữ:
+                            trong đó, tổng số cán bộ cấp quản lý là nữ:
                         </div>
                     </template>
                     <a-input v-model:value="profileNECStore.formData.numberFemaleManagers"
                              placeholder="Tổng số cán bộ cấp quản lý là nữ"/>
                 </a-form-item>
             </div>
-            <a-form-item :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'},
-                                  {required: true, message: 'Hãy nhập thông tin'}]"
+            <a-form-item :rules="[{pattern: new RegExp(/^\d+$/), message: 'Số liệu có định dạng không đúng'}]"
                          name="equalFifteenAndUnderEighteenEmployees">
                 <template #label>
                     <div class="flex justify-center items-center gap-1 text-lg">
-                        Tổng số lao động vị thành niên:
+                        Tổng số lao động vị thành niên (nếu có):
                         <a-tooltip>
                             <template #title>
                                 <span>Lao động vị thành niên là lao động từ đủ 15 tuối đến dưới 18 tuổi</span>
@@ -312,7 +313,7 @@ const handlePeopleMakeEvaluate = () => {
                          name="b7Value">
                 <template #label>
                     <div class="flex justify-center items-center gap-1 text-lg">
-                        Doanh nghiệp có phải là doanh nghiệp do phụ nữ điều hành không?
+                        Doanh nghiệp có phải là doanh nghiệp do phụ nữ trực tiếp điều hành không?
                         <a-tooltip>
                             <template #title>
                             <span>
@@ -327,8 +328,9 @@ const handlePeopleMakeEvaluate = () => {
                           placeholder="Có/Không"/>
             </a-form-item>
 
-            <a-form-item :rules="[{required: true, message: 'Hãy chọn Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp'}]"
-                         name="businessModel">
+            <a-form-item
+                    :rules="[{required: true, message: 'Hãy chọn Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp'}]"
+                    name="businessModel">
                 <template #label>
                     <div class="flex justify-center items-center gap-1 text-lg">
                         Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp thuộc nhóm ngành nào dưới đây:
@@ -339,7 +341,8 @@ const handlePeopleMakeEvaluate = () => {
                           placeholder="Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp thuộc nhóm"/>
             </a-form-item>
 
-            <a-form-item v-if="profileNECStore.formData.businessModel === 'other'" :rules="[{required: true, message: 'Hãy nhập Lĩnh vực kinh doanh'}]"
+            <a-form-item v-if="profileNECStore.formData.businessModel === 'other'"
+                         :rules="[{required: true, message: 'Hãy nhập Lĩnh vực kinh doanh'}]"
                          name="businessModelOtherInput">
                 <a-input v-model:value="profileNECStore.formData.businessModelOtherInput"
                          placeholder="Nhập thông tin khác"/>
@@ -381,30 +384,6 @@ const handlePeopleMakeEvaluate = () => {
                     <a-input v-model:value="profileNECStore.formData.fullNameManager"
                              placeholder="Họ và tên"/>
                 </a-form-item>
-<!--                <a-form-item :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]"-->
-<!--                             class="md:basis-[48%] w-full"-->
-<!--                             name="sexManager">-->
-<!--                    <template #label>-->
-<!--                        <div class="flex justify-center items-center gap-1 text-lg">-->
-<!--                            Giới tính:-->
-<!--                        </div>-->
-<!--                    </template>-->
-<!--                    <a-select v-model:value="profileNECStore.formData.sexManager" :options="OPTIONS.SEX_OPTS"-->
-<!--                              placeholder="Giới tính"/>-->
-<!--                </a-form-item>-->
-            </div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
-<!--                <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"-->
-<!--                             class="md:basis-[48%] w-full"-->
-<!--                             name="nationManager">-->
-<!--                    <template #label>-->
-<!--                        <div class="flex justify-center items-center gap-1 text-lg">-->
-<!--                            Dân tộc:-->
-<!--                        </div>-->
-<!--                    </template>-->
-<!--                    <a-input v-model:value="profileNECStore.formData.nationManager"-->
-<!--                             placeholder="Dân tộc"/>-->
-<!--                </a-form-item>-->
                 <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"
                              class="md:basis-[48%] w-full"
                              name="workPlaceManager">
@@ -416,7 +395,31 @@ const handlePeopleMakeEvaluate = () => {
                     <a-input v-model:value="profileNECStore.formData.workPlaceManager"
                              placeholder="Vị trí công tác"/>
                 </a-form-item>
+                <!--                <a-form-item :rules="[{required: true, message: 'Hãy chọn câu trả lời'}]"-->
+                <!--                             class="md:basis-[48%] w-full"-->
+                <!--                             name="sexManager">-->
+                <!--                    <template #label>-->
+                <!--                        <div class="flex justify-center items-center gap-1 text-lg">-->
+                <!--                            Giới tính:-->
+                <!--                        </div>-->
+                <!--                    </template>-->
+                <!--                    <a-select v-model:value="profileNECStore.formData.sexManager" :options="OPTIONS.SEX_OPTS"-->
+                <!--                              placeholder="Giới tính"/>-->
+                <!--                </a-form-item>-->
             </div>
+            <!--            <div class="flex flex-wrap md:gap-5 justify-between">-->
+            <!--                <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"-->
+            <!--                             class="md:basis-[48%] w-full"-->
+            <!--                             name="nationManager">-->
+            <!--                    <template #label>-->
+            <!--                        <div class="flex justify-center items-center gap-1 text-lg">-->
+            <!--                            Dân tộc:-->
+            <!--                        </div>-->
+            <!--                    </template>-->
+            <!--                    <a-input v-model:value="profileNECStore.formData.nationManager"-->
+            <!--                             placeholder="Dân tộc"/>-->
+            <!--                </a-form-item>-->
+            <!--            </div>-->
             <div class="flex flex-wrap xl:gap-5 lg:gap-3 justify-between">
                 <a-form-item :rules="[{pattern: new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'},
                                       {required: true, message: 'Hãy nhập thông tin'}]"
@@ -466,7 +469,7 @@ const handlePeopleMakeEvaluate = () => {
             </a-form-item>
             <div class="flex flex-wrap md:gap-5 justify-between">
                 <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"
-                             class="md:basis-[48%] w-full"
+                             class="md:basis-[31%] w-full"
                              name="workPlace">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
@@ -476,22 +479,9 @@ const handlePeopleMakeEvaluate = () => {
                     <a-input v-model:value="profileNECStore.formData.workPlace"
                              placeholder="Vị trí công tác"/>
                 </a-form-item>
-<!--                <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"-->
-<!--                             class="md:basis-[48%] w-full"-->
-<!--                             name="workUnit">-->
-<!--                    <template #label>-->
-<!--                        <div class="flex justify-center items-center gap-1 text-lg">-->
-<!--                            Bộ phận công tác:-->
-<!--                        </div>-->
-<!--                    </template>-->
-<!--                    <a-input v-model:value="profileNECStore.formData.workUnit"-->
-<!--                             placeholder="Bộ phận công tác"/>-->
-<!--                </a-form-item>-->
-            </div>
-            <div class="flex flex-wrap md:gap-5 justify-between">
                 <a-form-item :rules="[{pattern: new RegExp(/^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/), message: 'Email không dúng định dạng'},
                                       {required: true, message: 'Hãy nhập thông tin'}]"
-                             class="md:basis-[48%] w-full"
+                             class="md:basis-[31%] w-full"
                              name="email">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
@@ -503,7 +493,7 @@ const handlePeopleMakeEvaluate = () => {
                 </a-form-item>
                 <a-form-item :rules="[{pattern: new RegExp(/([+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/), message: 'Số điện thoại không đúng'},
                                       {required: true, message: 'Hãy nhập thông tin'}]"
-                             class="md:basis-[48%] w-full"
+                             class="md:basis-[31%] w-full"
                              name="phoneNumber">
                     <template #label>
                         <div class="flex justify-center items-center gap-1 text-lg">
@@ -513,6 +503,17 @@ const handlePeopleMakeEvaluate = () => {
                     <a-input v-model:value="profileNECStore.formData.phoneNumber"
                              placeholder="Điện thoại"/>
                 </a-form-item>
+                <!--                <a-form-item :rules="[{required: true, message: 'Hãy nhập thông tin'}]"-->
+                <!--                             class="md:basis-[48%] w-full"-->
+                <!--                             name="workUnit">-->
+                <!--                    <template #label>-->
+                <!--                        <div class="flex justify-center items-center gap-1 text-lg">-->
+                <!--                            Bộ phận công tác:-->
+                <!--                        </div>-->
+                <!--                    </template>-->
+                <!--                    <a-input v-model:value="profileNECStore.formData.workUnit"-->
+                <!--                             placeholder="Bộ phận công tác"/>-->
+                <!--                </a-form-item>-->
             </div>
 
             <a-form-item>

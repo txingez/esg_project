@@ -19,7 +19,7 @@ export const useEvaluatedResultStore = defineStore('evaluatedResult', () => {
 
 	const update = (key, newVal) => resultPoint[key] = newVal
 
-	const updateIndustryCode = businessModel => industryCode.value = IndustryCode[businessModel]
+	const updateIndustryCode = businessModel => industryCode.value = IndustryCode[businessModel] ? IndustryCode[businessModel] : IndustryCode["Sản xuất, chế biến (ra các sản phẩm hữu hình)"]
 
 	const getIndustryWeighting = () => {
 		return {
