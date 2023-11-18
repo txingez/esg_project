@@ -58,11 +58,11 @@ export const FirstCriteria = [
 	},
 	{
 		key: 'FC7',
-		// (cho dấu ? vào câu này và hiện ra như sau: “Cán bộ chuyên trách phải ít nhất tốt nghiệp bậc cử nhân trở lên chuyên ngành môi trường”)
 		question: 'Doanh nghiệp có cán bộ chuyên trách về môi trường không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}
-		]
+		],
+		tooltip: 'Cán bộ chuyên trách phải ít nhất tốt nghiệp bậc cử nhân trở lên chuyên ngành môi trường'
 	}
 ]

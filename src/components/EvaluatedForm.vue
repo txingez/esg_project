@@ -20,6 +20,7 @@ import { useProfileNECStore } from "../stores/useProfileNECStore.js";
 import { saveResult } from "../services/evaluatedForm.js";
 import { ENUM } from "../constants/enumValues.js";
 import { ModalWarning } from "./ModalWarning.js";
+import { QuestionCircleOutlined } from "@ant-design/icons-vue";
 
 const businessTypeStore = useBusinessTypeStore()
 const stepStore = useStepStore()
@@ -219,6 +220,12 @@ const openAppendix4 = () => {
             <template #label>
                 <div class="flex justify-center items-center gap-1 text-lg">
                     <span>{{ `Câu ${question.key}: ${question.question}` }}</span>
+                    <a-tooltip v-if="question.tooltip">
+                        <template #title>
+                            <span>{{ question.tooltip }}</span>
+                        </template>
+                        <QuestionCircleOutlined/>
+                    </a-tooltip>
                 </div>
             </template>
             <a-select v-model:value="evaluatedFormStore.evaluatedFormState[question.key]"
