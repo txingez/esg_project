@@ -3,7 +3,7 @@ export const FirstCriteria = [
 		key: 'FC1',
 		question: 'Chiến lược kinh doanh của doanh nghiệp có đề cập đến áp dụng KTTH không?',
 		answers: [
-			{key: 'A', answer: 'Chưa đề cập', point: 0},
+			{key: 'A', answer: 'Không', point: 0},
 			{
 				key: 'B',
 				answer: 'Có – chỉ đề cập một số khái niệm liên quan (ví dụ: tuần hoàn nhiên liệu, tái sử dụng sản phẩm thải bỏ, tái chế rác thải, dùng nguyên liệu tái sinh, có cam kết mức độ cải thiện sử dụng hiệu quả tài nguyên trong kinh doanh…)',
@@ -16,7 +16,7 @@ export const FirstCriteria = [
 		key: 'FC2',
 		question: 'Doanh nghiệp có đề ra các mục tiêu cụ thể về KTTH trong hoạt động sản xuất, kinh doanh không?',
 		answers: [
-			{key: 'A', answer: 'Chưa có', point: 0},
+			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Đang tìm hiểu, nghiên cứu để xây dựng', point: 1},
 			{key: 'C', answer: 'Có - mang tính mục tiêu chung, mang tính định tính', point: 2},
 			{key: 'D', answer: 'Có - mục tiêu cụ thể, có tính định lượng', point: 3}

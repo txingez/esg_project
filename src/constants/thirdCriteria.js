@@ -123,8 +123,8 @@ export const ThirdCriteria = [
 				key: 'TC12',
 				question: 'Sản phẩm và bao bì sản phẩm có chứa vi nhựa hoặc nhựa không tự phân hủy không?',
 				answers: [
-					{key: 'A', answer: 'Không', point: 0},
-					{key: 'B', answer: 'Có', point: 2}
+					{key: 'A', answer: 'Có', point: 0},
+					{key: 'B', answer: 'Không', point: 2}
 				]
 			},
 			{

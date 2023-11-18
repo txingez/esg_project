@@ -98,7 +98,7 @@ export const GovernanceQuestions = [
 	},
 	{
 		key: 'G13',
-		question: 'Báo cáo thường niên có quy chế rõ rảng về lương, thưởng, các khoản thu nhập khác, quỹ phúc lợi và chi phí mà doanh nghiệp chi trả, thanh toán cho từng thành viên trong Hội đồng quản trị hoặc Hội đồng thành viên hoặc Ban Giám đốc không?',
+		question: 'Báo cáo thường niên có quy chế rõ ràng về lương, thưởng, các khoản thu nhập khác, quỹ phúc lợi và chi phí mà doanh nghiệp chi trả, thanh toán cho từng thành viên trong Hội đồng quản trị hoặc Hội đồng thành viên hoặc Ban Giám đốc không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
 			{key: 'B', answer: 'Có', point: 1}

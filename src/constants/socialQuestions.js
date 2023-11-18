@@ -197,8 +197,8 @@ export const SocialQuestions = [
 		key: 'S22',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có sử dụng lao động từ đủ 13 đến dưới 15 tuổi làm các loại việc không thuộc danh mục cho phép (được quy định tại Phụ lục II, Thông tư 09/2020/TT-BLĐTBXH) không?',
 		answers: [
-			{key: 'A', answer: 'Không', point: 0},
-			{key: 'B', answer: 'Có', point: 1}
+			{key: 'A', answer: 'Có', point: 0},
+			{key: 'B', answer: 'Không', point: 1}
 		]
 	},
 	{
