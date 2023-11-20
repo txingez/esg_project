@@ -31,7 +31,7 @@ const config = computed(() => {
 						align: 'right'
 					},
 					{
-						title: 'Phân bố tỷ trọng theo ngành',
+						title: 'Phân bố tỷ trọng theo nhóm doanh nghiệp',
 						dataIndex: 'distribution',
 						key: 'distribution',
 						align: 'right',
@@ -57,7 +57,6 @@ const config = computed(() => {
 				],
 				summaryPoint: evaluatedResultStore.getSummaryESG(),
 				rateInfo: evaluatedResultStore.getRateInfoESG(),
-				showConclude: true,
 				summaryTableConfig: {title: 2, value: 1},
 				chartLabels: ['E-Môi trường', 'S-Xã hội', 'G-Quản trị'],
 				chartData: [evaluatedResultStore.resultPoint.environment.point, evaluatedResultStore.resultPoint.social.point, evaluatedResultStore.resultPoint.governance.point],
@@ -93,19 +92,19 @@ const config = computed(() => {
 				],
 				dataSource: [
 					{
-						name: 'Nhóm tiêu chí 1: Tầm nhìn và chiến lược của doanh nghiệp',
+						name: 'Nhóm câu hỏi về tầm nhìn và chiến lược áp dụng nguyên tắc Kinh tế tuần hoàn (KTTH) của doanh nghiệp',
 						max: evaluatedResultStore.resultPoint.firstCriteria.max,
 						sum: evaluatedResultStore.resultPoint.firstCriteria.sum,
 						point: evaluatedResultStore.resultPoint.firstCriteria.point
 					},
 					{
-						name: 'Nhóm tiêu chí 2: Áp dụng nguyên tắc tuần hoàn trong công đoạn sản xuất và tiền sản xuất',
+						name: 'Nhóm câu hỏi về áp dụng nguyên tắc KTTH trong sản xuất và tiền sản xuất',
 						max: evaluatedResultStore.resultPoint.secondCriteria.max,
 						sum: evaluatedResultStore.resultPoint.secondCriteria.sum,
 						point: evaluatedResultStore.resultPoint.secondCriteria.point
 					},
 					{
-						name: 'Nhóm tiêu chí 3: Áp dụng nguyên tắc tuần hoàn trong công đoạn sau bán hàng',
+						name: 'Nhóm câu hỏi về áp dụng nguyên tắc KTTH trong công đoạn sau bán hàng',
 						max: evaluatedResultStore.resultPoint.thirdCriteria.max,
 						sum: evaluatedResultStore.resultPoint.thirdCriteria.sum,
 						point: evaluatedResultStore.resultPoint.thirdCriteria.point
@@ -113,7 +112,6 @@ const config = computed(() => {
 				],
 				summaryPoint: evaluatedResultStore.getSummaryNEC(),
 				rateInfo: evaluatedResultStore.getRateInfoNEC(),
-				showConclude: false,
 				summaryTableConfig: {title: 3, value: 1},
 				chartLabels: ['Nhóm tiêu chí 1', 'Nhóm tiêu chí 2', 'Nhóm tiêu chí 3'],
 				chartData: [evaluatedResultStore.resultPoint.firstCriteria.sum, evaluatedResultStore.resultPoint.secondCriteria.sum, evaluatedResultStore.resultPoint.thirdCriteria.sum],
@@ -147,35 +145,35 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
             </div>
         </div>
     </div>
-    <div class="xl:px-28 lg:px-16">
+    <div class="xl:px-28 lg:px-16 flex justify-center">
         <a-table :bordered="true"
                  :columns="config.columns"
                  :data-source="config.dataSource"
                  :pagination="false"
-                 class="text-xl"
+                 class="text-xl max-w-[2000px]"
                  size="middle">
             <template #headerCell="{title, column}" class="bg-green-400">
-                <div class="text-center md:text-xl text-sm">{{ title }}</div>
+                <div class="text-center md:text-xl text-sm px-5">{{ title }}</div>
             </template>
             <template #bodyCell="{column, text}">
                 <template v-if="column.key === 'name'">
                     <div class="font-bold md:text-xl text-sm">{{ text }}</div>
                 </template>
                 <template v-else-if="column.key === 'distribution'">
-                    <div class="md:text-xl text-sm">{{ `${text.toLocaleString('vi')}%` }}</div>
+                    <div class="md:text-xl text-sm text-center">{{ `${text.toLocaleString('vi')}%` }}</div>
                 </template>
                 <template v-else>
-                    <div class="md:text-xl text-sm">{{ text.toLocaleString('vi') }}</div>
+                    <div class="md:text-xl text-sm text-center">{{ text.toLocaleString('vi') }}</div>
                 </template>
             </template>
             <template #summary>
                 <a-table-summary-row class="bg-[#FAFAFA]">
                     <a-table-summary-cell :col-span="config.summaryTableConfig.title"
-                                          class="font-bold md:text-xl text-sm">
+                                          class="font-bold md:text-xl text-sm px-2.5">
                         Tổng điểm
                     </a-table-summary-cell>
                     <a-table-summary-cell :col-span="config.summaryTableConfig.value"
-                                          class="text-right font-bold md:text-xl text-sm">
+                                          class="font-bold md:text-xl text-sm px-2.5 text-center">
                         {{ config.summaryPoint.toString().replace('.', ',') }}
                     </a-table-summary-cell>
                 </a-table-summary-row>
@@ -185,21 +183,8 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
                         Xếp hạng
                     </a-table-summary-cell>
                     <a-table-summary-cell :col-span="config.summaryTableConfig.value"
-                                          class="text-right font-bold md:text-xl text-sm">
+                                          class="font-bold md:text-xl text-sm text-center">
                         {{ config.rateInfo.rate }}
-                    </a-table-summary-cell>
-                </a-table-summary-row>
-                <a-table-summary-row v-if="config.showConclude" class="bg-[#FAFAFA]">
-                    <a-table-summary-cell :col-span="config.summaryTableConfig.title"
-                                          class="font-bold md:text-xl text-sm">
-                        Doanh nghiệp có tiềm năng đạt tiêu chuẩn nhận
-                        hỗ trợ của CP Doanh nghiệp đủ điều kiện tiếp cận các hỗ trợ chính sách theo Quyết định số
-                        167/QĐ-TTg ngày 8/2/2022 về Chương trình hỗ trợ doanh nghiệp khu vực tư nhân kinh doanh bền vững
-                        giai đoạn 2022-2025 hay không?
-                    </a-table-summary-cell>
-                    <a-table-summary-cell :col-span="config.summaryTableConfig.value"
-                                          class="text-right font-bold md:text-xl text-sm">
-                        {{ config.summaryPoint < 50 ? 'Không đạt' : 'Có tiềm năng đạt' }}
                     </a-table-summary-cell>
                 </a-table-summary-row>
             </template>

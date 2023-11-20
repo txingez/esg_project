@@ -24,7 +24,7 @@ const stepItems = [
 	{key: 'first', title: 'Thông tin doanh nghiệp', disabled: true},
 	{key: 'second', title: 'Tầm nhìn của doanh nghiệp', disabled: true},
 	{key: 'third', title: 'Sản xuất và tiền sản xuất', disabled: true},
-	{key: 'forth', title: 'Sau sản xuất', disabled: true},
+	{key: 'forth', title: 'Sau bán hàng', disabled: true},
 	{key: 'fifth', title: 'Kết quả đánh giá', disabled: true}
 ];
 

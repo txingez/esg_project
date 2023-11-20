@@ -34,10 +34,6 @@ const routeName = router.currentRoute.value.name
 
 const loading = ref(false)
 
-const renderWithGroup = computed(() => {
-	return routeName === ENUM.FORM_NAME.EvaluateNECForm && [2, 3].includes(stepStore.currentStepState)
-})
-
 const questions = computed(() => {
 	return (() => {
 		switch (true) {
@@ -60,9 +56,7 @@ const questions = computed(() => {
 })
 // const finalQuestions = businessTypeStore.businessType === 'Doanh nghiệp niêm yết' ? questions.value : questions.value.filter(q => q.forListingCompany === undefined || !q.forListingCompany)
 const finalQuestions = questions.value
-const questionKeys = renderWithGroup.value
-	? finalQuestions.flatMap(qs => qs.questions.map(q => q.key))
-	: finalQuestions.map(q => q.key)
+const questionKeys = finalQuestions.map(q => q.key)
 
 const rules = [{required: true, message: 'Hãy chọn 1 đáp án'}]
 const mapStepAndName = {
@@ -212,14 +206,13 @@ const openAppendix4 = () => {
             label-align="left"
             layout="vertical"
             @finish="finishEvaluated">
-        <a-form-item v-for="question in finalQuestions"
-                     v-if="!renderWithGroup"
+        <a-form-item v-for="(question, index) in finalQuestions"
                      :key="question.key"
                      :name="question.key"
                      :rules="rules">
             <template #label>
                 <div class="flex justify-center items-center gap-1 text-lg">
-                    <span>{{ `Câu ${question.key}: ${question.question}` }}</span>
+                    <span>{{ `Câu ${question.label}: ${question.question}` }}</span>
                     <a-tooltip v-if="question.tooltip">
                         <template #title>
                             <span>{{ question.tooltip }}</span>
@@ -238,32 +231,6 @@ const openAppendix4 = () => {
                 </a-select-option>
             </a-select>
         </a-form-item>
-
-        <div v-for="criteria in finalQuestions"
-             v-else
-             :key="criteria.label"
-             class="space-y-5 mb-5">
-            <div class="font-bold text-xl">{{ criteria.label }}</div>
-            <a-form-item v-for="question in criteria.questions"
-                         :key="question.key"
-                         :name="question.key"
-                         :rules="rules">
-                <template #label>
-                    <div class="flex justify-center items-center gap-1 text-lg">
-                        <span>{{ `Câu ${question.key}: ${question.question}` }}</span>
-                    </div>
-                </template>
-                <a-select v-model:value="evaluatedFormStore.evaluatedFormState[question.key]"
-                          placeholder="Hãy chọn 1 đáp án"
-                          size="large"
-                          @change="e => handleChooseAnswer(e, question.key)">
-                    <a-select-option v-for="answer in question.answers" :key="answer.key"
-                                     :value="`${answer.key}-${answer.point}`">
-                        {{ `${answer.key}. ${answer.answer}` }}
-                    </a-select-option>
-                </a-select>
-            </a-form-item>
-        </div>
 
         <div class="flex gap-5">
             <a-form-item v-if="stepStore.currentStepState === 2 || stepStore.currentStepState === 3">

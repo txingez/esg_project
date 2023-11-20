@@ -1,6 +1,7 @@
 export const EnvironmentQuestions = [
 	{
 		key: 'E1',
+		label: 'E1',
 		question: 'Doanh nghiệp có chính sách quản lý, giám sát và đánh giá tác động môi trường và công bố ra bên ngoài không? (ví dụ trên website của doanh nghiệp)',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -12,6 +13,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E2',
+		label: 'E2',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có bị xử phạt vi phạm liên quan tới môi trường không?',
 		answers: [
 			{key: 'A', answer: 'Có', point: 0},
@@ -20,6 +22,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E3',
+		label: 'E3',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có thực hiện báo cáo và công bố thông tin về công tác quản lý môi trường không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -34,6 +37,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E4',
+		label: 'E4',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có thực hiện kiểm toán các báo cáo môi trường không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -44,6 +48,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E5',
+		label: 'E5',
 		question: 'Doanh nghiệp có nhân sự phụ trách về vấn đề môi trường không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -53,6 +58,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E6',
+		label: 'E6',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có tập huấn nội bộ chính sách môi trường của doanh nghiệp không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -62,6 +68,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E7',
+		label: 'E7',
 		question: 'Doanh nghiệp có tiêu chí/ tiêu chuẩn môi trường cho nhà cung ứng không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -71,6 +78,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E8',
+		label: 'E8',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có tái chế, tái sử dụng nguyên vật liệu đầu vào dư thừa hoặc nguyên vật liệu phế thải từ quá trình sản xuất không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -80,6 +88,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E9',
+		label: 'E9',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có theo dõi và thống kê năng lượng tiêu thụ, năng lượng tái tạo không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -89,6 +98,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E10',
+		label: 'E10',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có theo dõi và thống kê lượng nước đầu vào (nước mặt, nước sâu), nước tuần hoàn và nước tái sử dụng không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -106,6 +116,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E11',
+		label: 'E11',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có đánh giá và giám sát các hoạt động của doanh nghiệp mà có tác động đáng kể đến đa dạng sinh học không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -120,6 +131,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E12',
+		label: 'E12',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có báo cáo chi tiết về lượng khí phát thải nhà kính không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -129,6 +141,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E13',
+		label: 'E13',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có báo cáo chi tiết về lượng nước thải không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -139,6 +152,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E14',
+		label: 'E14',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có báo cáo đầy đủ về lượng chất thải, bao gồm chất thải nguy hại, chất thải không nguy hại, và phương pháp xử lý chất thải không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -149,6 +163,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E15',
+		label: 'E15',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có báo cáo đầy đủ việc vận chuyển chất thải nguy hại, bao gồm cách thức vận chuyển, loại chất thải nguy hại và tổng trọng lượng được vận chuyển theo từng địa điểm phát sinh không?',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
@@ -159,6 +174,7 @@ export const EnvironmentQuestions = [
 	},
 	{
 		key: 'E16',
+		label: 'E16',
 		question: 'Trong 12 tháng gần nhất, doanh nghiệp có theo dõi và báo cáo về tỷ trọng các loại nguyên vật liệu có thể tái chế trong cơ cấu sản phẩm không? (bao gồm cả nguyên liệu đóng gói trong quá trình phân phối)',
 		answers: [
 			{key: 'A', answer: 'Không', point: 0},
