@@ -133,7 +133,7 @@ const closeImageViewer = () => {
       <div v-for="(tlc, index) in pageData.timelines" class="demo-card-block flex border-1 border-[#bdbdbd] lg:py-5 md:p-0 lg:static lg:m-0 lg:after:hidden
             relative m-auto after:content-[''] after:absolute after:top-0 after:bottom-0 after:left-1/2 after:border-l after:border-[#bdbdbd]">
         <div class="demo-card h-fit md:!max-w-[60%] lg:!max-w-[450px] shadow-md">
-          <div class="head border-none flex-col gap-1 h-[160px] p-2 !items-start"
+          <div class="head border-none flex-col gap-1 h-[180px] p-2 !items-start"
                :class="`bg-[${tlc.bgColor}] after:border-[${tlc.bgColor}]`">
             <div class="bg-black bg-opacity-10 p-2.5">
               <span class="text-xl font-semibold">{{ tlc.datetime }}</span>
