@@ -196,7 +196,7 @@ export const SecondCriteria = [
 	{
 		key: 'SC19',
 		label: '19',
-		question: 'Trong năm ngay trước năm đánh giá, doanh nghiệp đã sử dụng bao nhiêu % năng lượng từ năng lượng tái trong sản xuất ra sản phẩm/dịch vụ?',
+		question: 'Trong năm ngay trước năm đánh giá, doanh nghiệp đã sử dụng bao nhiêu % năng lượng là năng lượng tái tạo cho hoạt động sản xuất?',
 		answers: [
 			{key: 'A', answer: 'Dưới 25%', point: 0},
 			{key: 'B', answer: '25% - dưới 50%', point: 1},

@@ -195,11 +195,11 @@ const openAppendix4 = () => {
 </script>
 
 <template>
-    <div v-if="routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 2"
-         class="text-right space-x-2.5 mb-2.5">
-        <a-button @click="openAppendix3">Phụ lục 3</a-button>
-        <a-button @click="openAppendix4">Phụ lục 4</a-button>
-    </div>
+<!--    <div v-if="routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 2"-->
+<!--         class="text-right space-x-2.5 mb-2.5">-->
+<!--        <a-button @click="openAppendix3">Phụ lục 3</a-button>-->
+<!--        <a-button @click="openAppendix4">Phụ lục 4</a-button>-->
+<!--    </div>-->
     <a-form v-model:model="evaluatedFormStore.evaluatedFormState"
             :colon="false"
             :labelWrap="true"

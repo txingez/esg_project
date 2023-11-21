@@ -92,19 +92,19 @@ const config = computed(() => {
 				],
 				dataSource: [
 					{
-						name: 'Nhóm câu hỏi về tầm nhìn và chiến lược áp dụng nguyên tắc Kinh tế tuần hoàn (KTTH) của doanh nghiệp',
+						name: 'Nhóm tiêu chí về tầm nhìn và chiến lược áp dụng nguyên tắc Kinh tế tuần hoàn (KTTH) của doanh nghiệp',
 						max: evaluatedResultStore.resultPoint.firstCriteria.max,
 						sum: evaluatedResultStore.resultPoint.firstCriteria.sum,
 						point: evaluatedResultStore.resultPoint.firstCriteria.point
 					},
 					{
-						name: 'Nhóm câu hỏi về áp dụng nguyên tắc KTTH trong sản xuất và tiền sản xuất',
+						name: 'Nhóm tiêu chí về áp dụng nguyên tắc KTTH trong sản xuất và tiền sản xuất',
 						max: evaluatedResultStore.resultPoint.secondCriteria.max,
 						sum: evaluatedResultStore.resultPoint.secondCriteria.sum,
 						point: evaluatedResultStore.resultPoint.secondCriteria.point
 					},
 					{
-						name: 'Nhóm câu hỏi về áp dụng nguyên tắc KTTH trong công đoạn sau bán hàng',
+						name: 'Nhóm tiêu chí về áp dụng nguyên tắc KTTH trong công đoạn sau bán hàng',
 						max: evaluatedResultStore.resultPoint.thirdCriteria.max,
 						sum: evaluatedResultStore.resultPoint.thirdCriteria.sum,
 						point: evaluatedResultStore.resultPoint.thirdCriteria.point

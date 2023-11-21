@@ -69,7 +69,7 @@ const generateReport = () => {
     <template v-slot:pdf-content>
       <div class="py-5">
         <div class="font-bold">
-          1. Nhóm câu hỏi về tầm nhìn và chiến lược áp dụng nguyên tắc Kinh tế tuần hoàn (KTTH) của doanh nghiệp
+          1. Nhóm tiêu chí về tầm nhìn và chiến lược áp dụng nguyên tắc Kinh tế tuần hoàn (KTTH) của doanh nghiệp
         </div>
         <div v-for="firstCriteriaQuestionObject in firstCriteriaAnswers">
           <div>
@@ -79,7 +79,7 @@ const generateReport = () => {
           <div>{{ firstCriteriaQuestionObject.answer }}</div>
         </div>
         <div class="html2pdf__page-break"/>
-        <div class="font-bold">2. Nhóm câu hỏi về áp dụng nguyên tắc KTTH trong sản xuất và tiền sản xuất</div>
+        <div class="font-bold">2. Nhóm tiêu chí về áp dụng nguyên tắc KTTH trong sản xuất và tiền sản xuất</div>
         <div v-for="secondCriteriaQuestionObject in secondCriteriaAnswers">
           <div>
             <span class="font-semibold">Câu {{ secondCriteriaQuestionObject.label }}</span>:
@@ -88,7 +88,7 @@ const generateReport = () => {
           <div>{{ secondCriteriaQuestionObject.answer }}</div>
         </div>
         <div class="html2pdf__page-break"/>
-        <div class="font-bold">3. Nhóm câu hỏi về áp dụng nguyên tắc KTTH trong công đoạn sau bán hàng</div>
+        <div class="font-bold">3. Nhóm tiêu chí về áp dụng nguyên tắc KTTH trong công đoạn sau bán hàng</div>
         <div v-for="thirdCriteriaQuestionObject in thirdCriteriaAnswers">
           <div>
             <span class="font-semibold">Câu {{ thirdCriteriaQuestionObject.label }}</span>:
