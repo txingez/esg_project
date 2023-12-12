@@ -102,7 +102,7 @@ const closeImageViewer = () => {
       <div class="ql-editor" v-html="pageData.contentIntroduction"/>
     </div>
   </div>
-  <div class="bg-[url(https://main.ipsc.vn/hubfs/raw_assets/public/IPSC%20v2/css/images/graphics/bg-support-project.png)]
+  <div class="bg-[url(https://lh3.googleusercontent.com/pw/ABLVV87lgnRMUdkVrj0NutH9xwbeil2GSIXbBu-JaiMS4B7TV3zvrejYwnnBx5QXIxI2AX2escv88fM6eApZtGZG-O643MNRJGthQTvn36aObvOyk6bA6DS3FZ3z7Y6uPqNJWhq3Fj92SKG3EXh9tW_I2fRp=w1920-h722-s-no-gm?authuser=0)]
     text-white md:px-10 lg:px-[100px] xl:px-[150px] px-5 pb-20">
     <div class="xl:text-[40px] lg:text-[34px] md:text-[28px] text-2xl leading-none text-center py-10 font-bold">
       <span>{{ pageData.titleBenefit }}</span>
@@ -117,8 +117,7 @@ const closeImageViewer = () => {
     </div>
   </div>
 
-  <div class="bg-[url(https://main.ipsc.vn/hubfs/raw_assets/public/IPSC%20v2/css/images/graphics/bg-support-enterprise.png)]
-    md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10">
+  <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10">
     <div class="text-[#004990] xl:text-3xl md:text-2xl text-lg text-center mb-10">
       {{ pageData.titleCondition }}
     </div>
