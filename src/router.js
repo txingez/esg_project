@@ -55,7 +55,7 @@ const router = createRouter({
 				{
 					id: 7,
 					path: '/library/detail/:id',
-					name: 'Detail',
+					name: 'LibraryDetail',
 					component: () => import('./pages/DetailPage.vue')
 				},
 				{
@@ -117,6 +117,12 @@ const router = createRouter({
 					path: '/esg-vietnam',
 					name: 'ESGVietNam',
 					component: () => import('./pages/ESGPage.vue')
+				},
+				{
+					id: 18,
+					path: '/news/detail/:id',
+					name: 'NewsDetail',
+					component: () => import('./pages/DetailPage.vue')
 				},
 			]
 		}

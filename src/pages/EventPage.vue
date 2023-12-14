@@ -68,7 +68,7 @@ const getNewsData = (offset, limit = 8) => {
 }
 
 const handleSeeDetail = document => {
-  router.push(`/library/detail/${document.id}`)
+  router.push(`/news/detail/${document.id}`)
 }
 </script>
 

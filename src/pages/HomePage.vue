@@ -125,7 +125,7 @@ const closeImageViewer = () => {
 }
 
 const handleSeeDetail = document => {
-  router.push(`/library/detail/${document.id}`)
+  router.push(`/news/detail/${document.id}`)
 }
 </script>
 
