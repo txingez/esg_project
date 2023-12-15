@@ -2,7 +2,7 @@
 
 import Banner from "../components/Banner.vue";
 import BreadCrumb from "../components/BreadCrumb.vue";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { getPost, getPosts } from "../services/posts.js";
 import axios from "axios";
 import { useRouter } from "vue-router";
@@ -34,6 +34,10 @@ const routes = computed(() => {
 
 onMounted(() => {
   const id = router.currentRoute.value.params.id
+  getData(id)
+})
+
+const getData = (id) => {
   getPost(id).then((response) => {
     const pageId = response.data.page_id
     detailContent.value = response.data
@@ -48,10 +52,24 @@ onMounted(() => {
   }).catch((err) => {
     console.log(err)
   })
+}
+
+watch(router.currentRoute, (newRoute) => {
+  const id = newRoute.params.id
+  getData(id)
 })
 
 const handleSeeDetail = document => {
-  router.push(`/library/detail/${document.id}`)
+  let type = (() => {
+    switch (document.category) {
+      case 'EVENT':
+      case 'NEWS':
+        return 'news'
+      default:
+        return 'library'
+    }
+  })()
+  router.push(`/${type}/detail/${document.id}`)
 }
 </script>
 
