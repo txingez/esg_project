@@ -124,7 +124,7 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
 
 <template>
     <div class="my-3 space-y-2.5">
-        <div class="md:text-xl text-base flex lg:flex-row flex-col">
+        <div class="md:text-xl text-base flex lg:flex-row flex-col text-gray-600">
             <div class="basis-2/3 space-x-2">
                 <span class="font-bold">Tên doanh nghiệp:</span>
                 <span>{{ config.profile.companyName }}</span>
@@ -135,12 +135,12 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
             </div>
         </div>
         <div>
-            <div class="flex gap-2">
+            <div class="flex gap-2 text-gray-600">
                 <span>Thời gian đánh giá:</span>
                 <span>{{ config.profile.evaluatedDate.format('DD/MM/YYYY HH:mm:ss') }}</span>
             </div>
             <!--    todo: cap nhat lai domain -->
-            <div class="italic">
+            <div class="italic text-gray-600">
                 (Đánh giá trên Cổng thông tin Chương trình tại địa chỉ: https://esg.business.gov.vn)
             </div>
         </div>
@@ -191,7 +191,7 @@ const industryWeighting = computed(() => evaluatedResultStore.getIndustryWeighti
         </a-table>
     </div>
 
-    <div class="flex xl:flex-row flex-col-reverse justify-between items-center">
+    <div class="flex xl:flex-row flex-col-reverse justify-between items-center text-gray-600">
         <div class="flex gap-5 flex-col py-5 xl:basis-1/2">
             <div class="font-bold text-xl">Đề xuất cho doanh nghiệp</div>
             <div v-html="config.rateInfo.suggest"/>

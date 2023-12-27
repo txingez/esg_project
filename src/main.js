@@ -27,6 +27,10 @@ import { faBuilding, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { createPinia } from 'pinia'
 import 'aos/dist/aos.css'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
+import PrimeVue from 'primevue/config';
+import 'primevue/resources/themes/lara-dark-blue/theme.css'
+import vue3PhotoPreview from 'vue3-photo-preview';
+import 'vue3-photo-preview/dist/index.css';
 
 const pinia = createPinia()
 library.add(faLocationDot,
@@ -52,5 +56,7 @@ createApp(App)
 	.use(pinia)
 	.use(router)
 	.use(Antd)
+	.use(vue3PhotoPreview)
+	.use(PrimeVue)
 	.component('font-awesome-icon', FontAwesomeIcon)
 	.mount('#app');

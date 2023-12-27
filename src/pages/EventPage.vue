@@ -82,7 +82,7 @@ const handleSeeDetail = document => {
       <BreadCrumb :routes="routes"/>
     </div>
     <div class="flex flex-col gap-10">
-      <div class="font-bold md:text-4xl xl:text-5xl text-3xl">
+      <div class="font-bold md:text-4xl xl:text-5xl text-3xl text-gray-600">
         Tin tức
       </div>
       <a-spin :spinning="loadingNews">
@@ -137,7 +137,7 @@ const handleSeeDetail = document => {
 
   <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10">
     <div class="flex flex-col gap-10">
-      <div class="font-bold md:text-4xl xl:text-5xl text-3xl">
+      <div class="font-bold md:text-4xl xl:text-5xl text-3xl text-gray-600">
         Sự kiện
       </div>
       <a-spin :spinning="loadingEvent">

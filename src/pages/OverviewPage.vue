@@ -41,7 +41,7 @@ onMounted(() => {
                 :paragraph="{rows: 10}"
                 active
                 class="md:px-10 lg:px-[100px] px-5"/>
-    <div v-if="!loading" class="md:px-10 lg:px-[100px] px-5 text-justify">
-        <div v-html="content"/>
+    <div v-if="!loading" class="md:px-10 lg:px-[100px] px-5 text-justify pb-10">
+        <div class="ql-editor text-gray-600" v-html="content"/>
     </div>
 </template>

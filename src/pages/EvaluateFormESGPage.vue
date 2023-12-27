@@ -68,7 +68,7 @@ const openYourAnswers = () => {
 <template>
     <div v-if="isAuth" class="flex gap-10 flex-col py-5">
         <div class="result-container">
-            <div class="text-center font-bold md:text-xl lg:text-2xl xl:text-3xl text-base mb-5">
+            <div class="text-center font-bold md:text-xl lg:text-2xl xl:text-3xl text-base mb-5 text-gray-600">
                 <div v-if="screenWidth <= 430">
                     <div>CÔNG CỤ ĐÁNH GIÁ MỨC ĐỘ THỰC HÀNH</div>
                     <div>KINH DOANH BỀN VỮNG</div>
@@ -92,7 +92,7 @@ const openYourAnswers = () => {
 
         <div v-if="stepStore.currentStepState === stepItems.length - 1"
              class="md:px-10 lg:px-[50px] xl:px-[100px] px-5 space-y-2.5">
-            <div>
+            <div class="text-gray-600">
                 Doanh nghiệp có thể xem lại câu trả lời của doanh nghiệp cho từng tiêu chí
                 <span class="text-blue-500 hover:text-blue-400 hover:cursor-pointer" @click.prevent="openYourAnswers">tại đây</span>.
             </div>

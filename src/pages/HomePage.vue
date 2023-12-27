@@ -12,6 +12,7 @@ import "@egjs/flicking-plugins/dist/arrow.css";
 import "@egjs/flicking-plugins/dist/pagination.css";
 import { Arrow, AutoPlay, Fade, Pagination } from "@egjs/flicking-plugins";
 import { useRouter } from "vue-router";
+import { handleOpenLink } from "../utils/handleOpenLink.js";
 
 const router = useRouter()
 
@@ -33,7 +34,6 @@ const loading = ref(false)
 const isAllStories = ref(false)
 const storiesToShow = ref([])
 const isVisible = ref(false)
-const srcViewer = ref('')
 const plugins = ref([
   new AutoPlay({duration: 3000, direction: "NEXT", stopOnHover: true}),
   new Fade(),
@@ -84,7 +84,7 @@ onMounted(() => {
             pageData.videoESGPart = getPostDataDecoded.data.introduction.videoURL
 
             pageData.stories = SUCCESS_STORIES
-            storiesToShow.value = SUCCESS_STORIES.slice(0, 6)
+            storiesToShow.value = SUCCESS_STORIES.slice(0, 3)
 
             pageData.hotNews = getHotNewsResponse.data.data.map(hotNews => ({
               id: hotNews.id,
@@ -109,19 +109,9 @@ const titleESGPart = 'Giới thiệu'
 const titleStories = 'Câu chuyện điển hình về \nkinh doanh bền vững'
 
 const showMore = () => {
-  const newStoriesToShow = pageData.stories.slice(0, storiesToShow.value.length + 6)
+  const newStoriesToShow = pageData.stories.slice(0, storiesToShow.value.length + 3)
   storiesToShow.value = newStoriesToShow
   isAllStories.value = newStoriesToShow.length === pageData.stories.length
-}
-
-const setVisible = (story) => {
-  isVisible.value = true
-  srcViewer.value = story.content
-}
-
-const closeImageViewer = () => {
-  isVisible.value = false
-  srcViewer.value = ''
 }
 
 const handleSeeDetail = document => {
@@ -130,15 +120,6 @@ const handleSeeDetail = document => {
 </script>
 
 <template>
-  <div v-if="isVisible"
-       class="fixed z-[1000] p-1 left-0 top-0 w-screen h-screen overflow-auto bg-black bg-opacity-70 flex justify-center items-center">
-    <font-awesome-icon
-        class="absolute top-0 right-0 -translate-x-6 translate-y-6 text-4xl text-white hover:cursor-pointer"
-        icon="fa-solid fa-xmark"
-        @click.prevent="closeImageViewer"/>
-    <img :src="srcViewer" alt="">
-  </div>
-
   <Carousel v-if="pageData.carouselData.length !== 0" :slides="pageData.carouselData"/>
 
   <div class="relative">
@@ -149,40 +130,40 @@ const handleSeeDetail = document => {
           {{ pageData.pageTitle }}
         </div>
         <div
-            class="text-[#757575] whitespace-pre-wrap font-medium lg:text-[14px]/[26.25px] text-[8px]/[20px] text-center md:tracking-[.20em] tracking-[.1em] md:mt-[35px] mt-[15px]">
+            class="text-[#757575] whitespace-pre-wrap font-medium lg:text-[14px]/[26.25px] text-[8px]/[20px] text-center md:tracking-[.20em] tracking-[.1em] lg:mt-[35px] mt-[20px]">
           {{ pageData.pageDescription.toUpperCase() }}
         </div>
-        <div class="flex justify-center md:mt-[85px] mt-[45px]">
+        <div class="flex justify-center md:mt-[20px] mt-[20px]">
           <div class="h-[3px] md:w-[310px] w-[150px] bg-[#FF7437]"></div>
         </div>
 
         <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] text-center
-            lg:text-[40px] md:text-[28px] text-[15px] md:leading-[89.03px] leading-[40px] md:mt-[50px] mt-[25px] font-medium">
+            lg:text-[40px] md:text-[28px] text-[15px] md:leading-[89.03px] leading-[40px] font-medium">
           Mục tiêu
         </div>
       </div>
       <div
-          class="circle-wrapper lg:h-[2200px] md:h-[1900px] h-[1350px] lg:w-[2200px] md:w-[1900px] w-[1350px] !border-none">
-        <div class="circle-wrapper lg:h-[1800px] md:h-[1550px] h-[1120px] lg:w-[1800px] md:w-[1550px] w-[1120px]">
-          <div class="circle-wrapper lg:h-[1400px] md:h-[1250px] h-[890px] lg:w-[1400px] md:w-[1250px] w-[890px]">
-            <div class="circle-wrapper lg:h-[1000px] md:h-[900px] h-[660px] lg:w-[1000px] md:w-[900px] w-[660px]">
-              <div class="circle-wrapper lg:h-[600px] md:h-[550px] h-[430px] lg:w-[600px] md:w-[550px] w-[430px]">
+          class="circle-wrapper lg:h-[1800px] md:h-[1500px] h-[1200px] lg:w-[1800px] md:w-[1500px] w-[1200px] !border-none">
+        <div class="circle-wrapper lg:h-[1480px] md:h-[1240px] h-[1000px] lg:w-[1480px] md:w-[1240px] w-[1000px]">
+          <div class="circle-wrapper lg:h-[1160px] md:h-[980px] h-[800px] lg:w-[1160px] md:w-[980px] w-[800px]">
+            <div class="circle-wrapper lg:h-[840px] md:h-[720px] h-[600px] lg:w-[840px] md:w-[720px] w-[600px]">
+              <div class="circle-wrapper lg:h-[520px] md:h-[460px] h-[400px] lg:w-[520px] md:w-[460px] w-[400px]">
                 <div class="circle-wrapper h-[200px] w-[200px]">
                   <div v-for="(mission, index) in pageData.missions"
-                       class="absolute left-[-20%] lg:h-[345.27px] md:h-[250px] h-[180px] lg:w-[345.27px] md:w-[250px] w-[180px] md:py-5 md:px-8 py-3 px-5 bg-[#edf2f1] border border-[#64DB86] rounded-full text-center whitespace-pre-wrap"
+                       class="absolute left-[-20%] lg:h-[300px] md:h-[250px] h-[180px] lg:w-[300px] md:w-[250px] w-[180px] md:py-5 md:px-8 py-3 px-5 bg-[#edf2f1] border border-[#64DB86] rounded-full text-center whitespace-pre-wrap"
                        :class="`deg-${index*(360/pageData.missions.length)}`">
                     <div class="h-full flex justify-center flex-col items-center relative md:gap-3.5 gap-1">
                       <div
-                          class="absolute lg:w-[148.33px] md:w-[100px] w-[70px] lg:h-[148.33px] md:h-[100px] h-[70px] -top-1/3 rounded-full border border-[#64DB86] bg-[#edf2f1] flex justify-center items-center">
-                        <img class="lg:w-fit md:w-[50px] w-[30px] lg:h-fit md:h-[50px] h-[30px]"
+                          class="absolute lg:w-[120px] md:w-[100px] w-[70px] lg:h-[120px] md:h-[100px] h-[70px] -top-1/3 rounded-full border border-[#64DB86] bg-[#edf2f1] flex justify-center items-center">
+                        <img class="lg:w-[70px] md:w-[50px] w-[30px] lg:h-[70px] md:h-[50px] h-[30px]"
                              :src="mission.icon"
                              :alt="mission.icon">
                       </div>
                       <div
-                          class="lg:text-[37.39px]/[45px] md:text-[24px]/[28px] text-[15px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] font-medium">
+                          class="lg:text-[32px]/[45px] md:text-[24px]/[28px] text-[15px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] font-medium">
                         {{ mission.title }}
                       </div>
-                      <div class="lg:text-base md:text-sm text-[10px]">
+                      <div class="lg:text-base md:text-sm text-[10px] text-gray-600">
                         {{ mission.content }}
                       </div>
                     </div>
@@ -197,9 +178,9 @@ const handleSeeDetail = document => {
 
     <div class="flex justify-center">
       <div
-          class="py-5 lg:px-10 md:px-5 px-2 w-full max-w-[1440px] max-h-[1500px] h-full absolute xl:top-[75%] lg:top-[73%] md:top-[68%] top-[75%] z-10">
+          class="py-5 lg:px-10 md:px-5 px-2 w-full max-w-[1440px] max-h-[1500px] h-full absolute xl:top-[70%] lg:top-[68%] md:top-[68%] top-[75%] z-10">
         <div
-            class="rounded-[20px] bg-gradient-to-br from-[#f8fafa] to-[#fbf6f0] border border-[#c1da73] flex flex-col h-fit xl:pt-[80px] lg:pt-[50px] md:pt-[20px] pt-5">
+            class="rounded-[20px] bg-gradient-to-br from-[#f8fafa] to-[#fbf6f0] border border-[#c1da73] flex flex-col h-fit xl:pt-[80px] lg:py-[50px] md:py-[20px] py-5">
           <div class="xl:px-[95px] lg:px-[50px] md:px-[20px] px-5">
             <div>
               <img class="w-full max-h-[550px]" src="../assets/evaluate_top.png" alt="evaluate_top">
@@ -213,7 +194,7 @@ const handleSeeDetail = document => {
                     class="whitespace-pre-wrap font-medium xl:text-[50px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[20px]/[30px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258]">
                   {{ titleEvaluatePart }}
                 </div>
-                <div class="ql-editor !p-0 !text-left" v-html="pageData.descriptionEvaluate"/>
+                <div class="ql-editor !p-0 !text-left text-gray-600" v-html="pageData.descriptionEvaluate"/>
               </div>
               <div data-aos="fade-up"
                    data-aos-duration="500"
@@ -253,25 +234,21 @@ const handleSeeDetail = document => {
               </div>
             </div>
           </div>
-          <div class="flex justify-center h-fit">
-            <img class="max-w-full h-full max-h-[650px] object-cover" src="../assets/evaluate_bottom.png"
-                 alt="evaluate_bottom">
-          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="flex justify-center">
-    <div class="2xl:mt-[960px] xl:mt-[950px] lg:mt-[630px] md:mt-[400px] mt-[530px] w-full max-w-[1440px]">
+    <div class="xl:mt-[330px] lg:mt-[230px] md:mt-[100px] mt-[320px] w-full max-w-[1440px]">
       <div class="py-5 lg:px-10 md:px-5 px-2">
         <div class="rounded-[20px] bg-[#E7E6DF] border border-[#c1da73]">
-          <div>
-            <img src="../assets/esg_top.png"
+          <div class="rounded-t-[20px] overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/pw/ABLVV8770J8YWUY9Gvint59mxO4vsFdaOEPxrbraglLED4n7j394Rxdcq1o5l7Zum8jibI2E5H3KReZHH0WKAGZo_7Xb8wYfRJxlJhMQ4Z9R-UlnnLxY5W0qPEjztCUV8HYaVH6m5DXF-pujz9lQEO5zHVMF=w1047-h968-s-no-gm?authuser=0"
                  class="w-full"
                  alt="esg_homepage_top">
           </div>
-          <div class="xl:px-[95px] lg:p-[50px] xl:py-[80px] md:p-[20px] p-5">
+          <div class="xl:px-[95px] lg:p-[50px] xl:pt-0 xl:pb-[80px] md:p-[20px] p-5 pt-0">
             <div class="flex lg:flex-row flex-col gap-5 md:mt-[50px] mt-[25px]">
               <div class="space-y-5 basis-1/2"
                    data-aos="fade-down"
@@ -283,6 +260,12 @@ const handleSeeDetail = document => {
                 </div>
                 <div class="text-base/[26.5px] font-normal text-[#659D51]">
                   {{ pageData.descriptionESGPart }}
+                </div>
+                <div class="md:px-6 px-3 md:py-2 lg:py-3 md:text-base xl:text-xl md:min-h-[50px] min-h-[30px] flex justify-center items-center border border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer
+                                         text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white w-fit"
+                     style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
+                     @click.prevent="router.push('/esg-vietnam')">
+                  ĐĂNG KÝ THAM GIA NGAY
                 </div>
               </div>
               <div class="rounded-[10px] flex justify-end items-center basis-1/2"
@@ -305,7 +288,7 @@ const handleSeeDetail = document => {
               </div>
               <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-11 gap-y-24 mt-[45px]">
                 <div class="relative hover:cursor-pointer" v-for="story in storiesToShow"
-                     @click.prevent="setVisible(story)">
+                     @click.prevent="handleOpenLink(story.content)">
                   <div
                       class="aspect-[1.56] w-full max-w-[350px] border border-[#c1da73] rounded-[10px] overflow-hidden">
                     <img class="rounded-[10px] h-full w-full hover:scale-110 transition-all duration-500 ease-in-out"
@@ -314,7 +297,7 @@ const handleSeeDetail = document => {
                   </div>
                   <div
                       class="bg-white rounded-[10px] p-2.5 flex justify-between max-w-[295px] 2xl:w-[88%] xl:w-[85%] lg:w-[80%] w-[83%] border-b-4 border-[#659D51] absolute -bottom-[15%] left-[29px] hover:cursor-pointer"
-                      @click.prevent="setVisible(story)">
+                      @click.prevent="handleOpenLink(story.content)">
                     <div class="flex justify-between gap-2 h-[70px]">
                       <div
                           class="font-medium xl:text-lg/[22px] lg:text-[13px]/[20px] text-base/[22px] tracking-wider text-[#263238] flex items-end">
@@ -426,17 +409,17 @@ const handleSeeDetail = document => {
 }
 
 .deg-90 {
-  left: -40%;
-  transform: rotate(90deg) translate(270px) rotate(-90deg);
+  left: -25%;
+  transform: rotate(90deg) translate(170px) rotate(-90deg);
 }
 
 .deg-180 {
-  transform: rotate(180deg) translate(330px) rotate(-180deg);
+  transform: rotate(180deg) translate(280px) rotate(-180deg);
 }
 
 .deg-270 {
-  left: -40%;
-  transform: rotate(270deg) translate(270px) rotate(-270deg);
+  left: -25%;
+  transform: rotate(270deg) translate(210px) rotate(-270deg);
 }
 
 iframe {
@@ -474,14 +457,14 @@ iframe {
 @media only screen and (min-width: 431px) and (max-width: 768px) {
   .deg-90 {
     left: -10%;
-    transform: rotate(90deg) translate(175px) rotate(-90deg);
+    transform: rotate(90deg) translate(150px) rotate(-90deg);
   }
   .deg-180 {
     transform: rotate(180deg) translate(230px) rotate(-180deg);
   }
   .deg-270 {
     left: -10%;
-    transform: rotate(270deg) translate(180px) rotate(-270deg);
+    transform: rotate(270deg) translate(160px) rotate(-270deg);
   }
   :deep(.carousel-container .slick-slide) {
     height: 200px;

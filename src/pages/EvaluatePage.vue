@@ -84,7 +84,7 @@ const downloadFile = (formId, fileName) => {
 
     <a-spin :spinning="loading">
         <div class="md:px-10 lg:px-[100px] px-5 py-10 flex md:gap-10 gap-5 flex-col">
-            <div class="ql-editor !p-0" v-html="pageData.introduction"/>
+            <div class="ql-editor text-gray-600" v-html="pageData.introduction"/>
 
             <div class="grid grid-cols-4 gap-10">
                 <div class="lg:col-span-2 col-span-4 border rounded-[10px] max-h-[340px]"
@@ -100,7 +100,7 @@ const downloadFile = (formId, fileName) => {
                      data-aos="fade-up"
                      data-aos-duration="500"
                      data-aos-easing="ease-in-out">
-                    <div class="md:text-xl xl:text-2xl text-xl font-bold">
+                    <div class="md:text-xl xl:text-2xl text-xl font-bold text-gray-600">
                         {{ pageData.esg.title }}
                     </div>
                     <div class="flex gap-2.5 xl:flex-row flex-col">
@@ -134,7 +134,7 @@ const downloadFile = (formId, fileName) => {
                      data-aos="fade-right"
                      data-aos-duration="500"
                      data-aos-easing="ease-in-out">
-                    <div class="md:text-xl xl:text-2xl text-xl font-bold">
+                    <div class="md:text-xl xl:text-2xl text-xl font-bold text-gray-600">
                         {{ pageData.nec.title }}
                     </div>
                     <div class="flex gap-2.5 xl:flex-row flex-col">

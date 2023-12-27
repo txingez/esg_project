@@ -86,12 +86,12 @@ const handleSeeDetail = document => {
           <div>Nguồn: <span>{{ detailContent.source }}</span></div>
           <div>Ngày phát hành: <span>{{ detailContent.release_date }}</span></div>
         </div>
-        <div v-html="detailContent.content"/>
+        <div class="text-gray-600" v-html="detailContent.content"/>
       </div>
 
       <div>
         <a-divider/>
-        <div class="xl:text-4xl md:text-3xl text-xl mb-10 font-bold">Bài viết phổ biến</div>
+        <div class="xl:text-4xl md:text-3xl text-xl mb-10 font-bold text-gray-600">Bài viết phổ biến</div>
         <div class="space-y-5">
           <div v-for="popularArticle in popularArticles"
                class="flex gap-5 md:flex-row flex-col">

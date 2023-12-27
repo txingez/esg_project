@@ -102,9 +102,9 @@ const handleFormName = form_id => {
     <div class="md:px-10 lg:px-[100px] px-5 mt-2.5 xl:min-h-[calc(100vh_-_154px_-_437px
     )] lg:min-h-[calc(100vh_-_115px_-_425px)] md:min-h-[calc(100vh_-_120px_-_389px)]">
         <BreadCrumb :routes="routes"/>
-        <div class="md:text-3xl text-2xl my-5">Lịch sử đánh giá</div>
+        <div class="md:text-3xl text-2xl my-5 text-gray-600">Lịch sử đánh giá</div>
 
-        <div>
+        <div class="pb-10">
             <a-list :data-source="list"
                     :loading="initLoading"
                     bordered
