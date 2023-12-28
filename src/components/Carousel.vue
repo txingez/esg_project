@@ -38,7 +38,7 @@ const handleClickBtn = target => {
             <img src="../assets/aed.png" alt="aed" class="md:h-[90px] h-[55px]" id="aed">
           </div>
           <div class="space-y-5">
-            <div class="p-1.5 break-after-auto font-bold whitespace-pre-wrap text-center xl:text-[6vh] lg:text-5xl lg:py-1 md:text-4xl text-base
+            <div class="p-1.5 break-after-auto font-bold whitespace-pre-wrap text-center xl:text-[6vh]/[7vh] lg:text-5xl/[4vh] lg:py-1 md:text-4xl/[4vh] text-base
                       text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">
               {{ banner.title }}
             </div>

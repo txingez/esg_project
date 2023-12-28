@@ -67,6 +67,7 @@ const routes = [
   {name: 'Sáng kiến ESG Việt Nam', to: '/esg-vietnam'},
 ]
 
+const bannerTitle = "SÁNG KIẾN ESG VIỆT NAM 2024\nĐÓN ĐẦU CƠ HỘI CHUYỂN ĐỔI XANH"
 const titleStories = 'Câu chuyện điển hình về kinh doanh bền vững'
 const timelineColors = ['#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1']
 const titleSupport = 'Các hạng mục hỗ trợ kỹ thuật nổi bật'
@@ -272,17 +273,15 @@ const imageClick = (index) => {
 <template>
   <div class="relative">
     <div class="absolute flex flex-col justify-center items-center w-full h-full lg:p-14 md:p-8 p-5">
-      <div class="text-center xl:text-6xl lg:text-5xl lg:py-1 md:text-4xl text-base break-after-auto font-bold whitespace-pre-wrap
+      <div class="flex flex-col gap-5">
+        <div class="text-center h-fit xl:text-[7vh]/[8vh] lg:text-5xl/[4vh] lg:py-1 md:text-4xl/[4vh] text-base break-after-auto font-bold whitespace-pre-wrap
                   text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">
-        SÁNG KIẾN ESG VIỆT NAM 2024
-      </div>
-      <div class="text-center xl:text-6xl lg:text-5xl lg:py-1 md:text-4xl text-base break-after-auto font-bold whitespace-pre-wrap
-                  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">
-        ĐÓN ĐẦU CƠ HỘI CHUYỂN ĐỔI XANH
+          {{ bannerTitle }}
+        </div>
       </div>
       <div class="md:mt-5 flex flex-col justify-center items-center gap-2">
         <div class="md:px-6 px-2 md:py-2 lg:py-3 md:text-base xl:text-2xl md:min-h-[50px] min-h-[30px] flex justify-center items-center border rounded border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer
-                    text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white w-fit"
+                    text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white w-fit whitespace-pre-wrap"
              style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
              @click.prevent="handleOpenLink('https://bit.ly/dangki-esg-2024')">
           Tham gia ngay
