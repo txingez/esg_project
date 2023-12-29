@@ -523,11 +523,7 @@ const imageClick = (index) => {
         <div>
           <div class="xl:text-4xl lg:text-2xl md:text-xl text-base break-after-auto font-bold whitespace-pre-wrap
                   text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 w-full">
-            SÁNG KIẾN ESG VIỆT NAM 2024
-          </div>
-          <div class="xl:text-4xl lg:text-2xl md:text-xl text-base break-after-auto font-bold whitespace-pre-wrap
-                  text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 w-full">
-            ĐÓN ĐẦU CƠ HỘI CHUYỂN ĐỔI XANH
+            {{ bannerTitle }}
           </div>
         </div>
         <div class="flex flex-col justify-center gap-1">
