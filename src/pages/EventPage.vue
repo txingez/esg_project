@@ -6,6 +6,7 @@ import { getPosts } from "../services/posts.js";
 import BreadCrumb from "../components/BreadCrumb.vue";
 import AOS from 'aos'
 import { useRouter } from "vue-router";
+import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
 
 const router = useRouter()
 
@@ -97,7 +98,7 @@ const handleSeeDetail = document => {
                  class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                  target="_blank">
                 <img :alt="news.image"
-                     :src="news.image"
+                     :src="handleGoogleImageLink(news.image)"
                      class="h-[200px] w-full hover:scale-110 transition-all"
                      loading="lazy">
               </a>
@@ -105,7 +106,7 @@ const handleSeeDetail = document => {
                  class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                  @click.prevent="handleSeeDetail(news)">
                 <img :alt="news.image"
-                     :src="news.image"
+                     :src="handleGoogleImageLink(news.image)"
                      class="h-[200px] w-full hover:scale-110 transition-all"
                      loading="lazy">
               </a>
@@ -151,7 +152,7 @@ const handleSeeDetail = document => {
                  class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                  target="_blank">
                 <img :alt="event.image"
-                     :src="event.image"
+                     :src="handleGoogleImageLink(event.image)"
                      class="h-[200px] w-full hover:scale-110 transition-all"
                      loading="lazy">
               </a>

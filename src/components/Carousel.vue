@@ -6,6 +6,7 @@ import "@egjs/flicking-plugins/dist/arrow.css";
 import "@egjs/flicking-plugins/dist/pagination.css";
 import { Arrow, Fade, Pagination, AutoPlay } from "@egjs/flicking-plugins";
 import { ref } from "vue";
+import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
 
 const router = useRouter()
 defineProps({
@@ -82,7 +83,7 @@ const handleClickBtn = target => {
           </div>
         </div>
         <div class="h-full">
-          <img :src="banner.image[0]?.url"
+          <img :src="handleGoogleImageLink(banner.image[0]?.url)"
                class="h-full w-full"
                :class="index === 0 ? '' : 'object-cover'"
                alt="carousel"

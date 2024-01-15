@@ -13,6 +13,7 @@ import "@egjs/flicking-plugins/dist/pagination.css";
 import { Arrow, AutoPlay, Fade, Pagination } from "@egjs/flicking-plugins";
 import { useRouter } from "vue-router";
 import { handleOpenLink } from "../utils/handleOpenLink.js";
+import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
 
 const router = useRouter()
 
@@ -53,6 +54,9 @@ const missionsIcon = [
   'https://lh3.googleusercontent.com/pw/ADCreHckVYPWmR1sdx7blvN_t8CLhRPktUDnq-E1tqZ6SKvISe9NqoFtUEFFNeD4uPP4HUS2EhkY82jFgmfQzrT4YYw6tMSHoFOm0K0AfqvVoBvnL3wj4QzGR9ZIMIKWddVdlZgmyTYzGOKB88r5GR8aAvWJ=w73-h78-s-no?authuser=0',
   'https://lh3.googleusercontent.com/pw/ADCreHfOCK2qtO1eGyP-oj1XINRT-ikEqt72P1R4avNg76nN3ThXISajc8syUjFoxMoQNloSZx0jvNw7Xa2ZtmVkEXKZaCNoHYbqij-xO7Djc8GS8k4GB2SnjQdkhWbwQpSZ5x6bpi_-ZaEl0Z5T3xJ3GVsl=w78-h93-s-no?authuser=0'
 ]
+
+const driveDefaultURL = "https://drive.google.com/uc?export=view&id=";
+const driveExpectedURL = "https://lh3.google.com/u/0/d/"
 
 const updateScreenWidth = () => {
   screenWidth.value = window.innerWidth;
@@ -207,7 +211,7 @@ const handleSeeDetail = document => {
                        class="w-full h-full relative">
                     <div class="h-full rounded-[20px]">
                       <img :alt="slide.image[0]?.url"
-                           :src="slide.image[0]?.url"
+                           :src="handleGoogleImageLink(slide.image[0]?.url)"
                            class="object-cover rounded-[20px]"
                            loading="lazy">
                     </div>
@@ -341,7 +345,7 @@ const handleSeeDetail = document => {
                  class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                  target="_blank">
                 <img :alt="news.thumbnail"
-                     :src="news.thumbnail"
+                     :src="handleGoogleImageLink(news.thumbnail)"
                      class="aspect-[16/11] w-full hover:scale-110 transition-all object-cover"
                      loading="lazy">
               </a>
@@ -349,7 +353,7 @@ const handleSeeDetail = document => {
                  class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                  @click.prevent="handleSeeDetail(news)">
                 <img :alt="news.thumbnail"
-                     :src="news.thumbnail"
+                     :src="handleGoogleImageLink(news.thumbnail)"
                      class="aspect-[16/11] w-full hover:scale-110 transition-all object-cover"
                      loading="lazy">
               </a>

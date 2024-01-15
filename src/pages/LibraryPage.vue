@@ -5,6 +5,7 @@ import { getPosts } from "../services/posts.js";
 import { useRouter } from "vue-router";
 import BreadCrumb from "../components/BreadCrumb.vue";
 import AOS from 'aos'
+import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
 
 const router = useRouter()
 
@@ -67,14 +68,14 @@ const handleSeeDetail = document => {
                            :href="document.content"
                            class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all" target="_blank">
                             <img :alt="document.image"
-                                 :src="document.image"
+                                 :src="handleGoogleImageLink(document.image)"
                                  class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
                                  loading="lazy">
                         </a>
                         <a v-else
                            class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all" @click.prevent="handleSeeDetail(document)">
                             <img :alt="document.image"
-                                 :src="document.image"
+                                 :src="handleGoogleImageLink(document.image)"
                                  class="lg:h-[200px] md:h-[150px] h-[200px] w-full hover:scale-110 transition-all"
                                  loading="lazy">
                         </a>
