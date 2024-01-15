@@ -365,7 +365,7 @@ const handleSeeDetail = document => {
                 {{ news.title }}
               </a>
               <a v-else
-                 class="font-bold line-clamp-2 text-ellipsis text-base"
+                 class="h-[60px] font-medium line-clamp-2 text-ellipsis text-lg text-[#263238] tracking-wide"
                  @click.prevent="handleSeeDetail(news)">
                 {{ news.title }}
               </a>
