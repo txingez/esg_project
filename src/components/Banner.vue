@@ -1,4 +1,6 @@
 <script setup>
+import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
+
 defineProps({
 	label: String,
 	imgSrc: String
@@ -14,7 +16,7 @@ defineProps({
                 <slot/>
             </div>
         </div>
-        <img :src="imgSrc"
+        <img :src="handleGoogleImageLink(imgSrc)"
              alt="banner"
              class="object-cover aspect-auto h-full w-full"
              loading="eager">

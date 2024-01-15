@@ -19,7 +19,7 @@ onMounted(() => {
   loading.value = true
   getPosts('ESG', 10, 0)
       .then((response) => {
-        content.value = response.data[0].content
+        content.value = response.data[0].content.replaceAll('https://drive.google.com/uc?export=view&id=', 'https://lh3.google.com/u/0/d/')
         loading.value = false
       }).catch((err) => {
     console.log(err)

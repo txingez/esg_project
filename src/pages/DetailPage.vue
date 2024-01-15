@@ -6,6 +6,7 @@ import { computed, onMounted, ref, watch } from "vue";
 import { getPost, getPosts } from "../services/posts.js";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
 
 const router = useRouter()
 
@@ -40,7 +41,14 @@ onMounted(() => {
 const getData = (id) => {
   getPost(id).then((response) => {
     const pageId = response.data.page_id
-    detailContent.value = response.data
+    let containerDiv = document.createElement('div')
+    containerDiv.innerHTML = response.data.content
+    let imgTags = containerDiv.getElementsByTagName('img');
+    for (const img of imgTags) {
+      img.src = handleGoogleImageLink(img.src)
+    }
+    detailContent.value = {...response.data, ...{content: containerDiv.innerHTML.toString()}}
+
     const getPopularArticles = getPosts(pageId, 5, 0)
     const getRelatedNews = getPosts(pageId, 5, 5)
     axios.all([getPopularArticles, getRelatedNews]).then((responses) => {
@@ -75,7 +83,7 @@ const handleSeeDetail = document => {
 
 <template>
   <div class="flex xl:gap-16 lg:gap-10 md:gap-5 md:flex-row flex-col md:px-10 lg:px-[50px] xl:px-[50px] px-5 py-10">
-    <div class="basis-2/3">
+    <div class="basis-2/3 max-w-[1150px]">
       <div v-if="detailContent" class="space-y-5">
         <Banner :img-src="detailContent.image" label=""/>
         <BreadCrumb :routes="routes"/>
@@ -98,11 +106,11 @@ const handleSeeDetail = document => {
             <div class="xl:basis-1/3 md:basis-1/2">
               <a v-if="popularArticle.content_type === 'LINK'" :href="popularArticle.content"
                  target="_blank">
-                <img :src="popularArticle.image" alt=""
+                <img :src="handleGoogleImageLink(popularArticle.image)" alt=""
                      class="lg:h-[200px] md:h-[150px] h-[200px] w-full">
               </a>
               <a v-else @click.prevent="handleSeeDetail(popularArticle)">
-                <img :src="popularArticle.image" alt=""
+                <img :src="handleGoogleImageLink(popularArticle.image)" alt=""
                      class="lg:h-[200px] md:h-[150px] h-[200px] w-full">
               </a>
             </div>
@@ -136,10 +144,10 @@ const handleSeeDetail = document => {
           <div class="xl:basis-1/3 md:basis-1/2">
             <a v-if="news.content_type === 'LINK'" :href="news.content"
                target="_blank">
-              <img :src="news.image" alt="" class="xl:h-[100px] md:h-[150px] h-[200px] w-full">
+              <img :src="handleGoogleImageLink(news.image)" alt="" class="xl:h-[100px] md:h-[150px] h-[200px] w-full">
             </a>
             <a v-else @click.prevent="handleSeeDetail(news)">
-              <img :src="news.image" alt="" class="xl:h-[100px] md:h-[150px] h-[200px] w-full">
+              <img :src="handleGoogleImageLink(news.image)" alt="" class="xl:h-[100px] md:h-[150px] h-[200px] w-full">
             </a>
           </div>
           <div class="xl:basis-2/3 md:basis-1/2">
