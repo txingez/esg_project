@@ -277,7 +277,7 @@ const scrollToLeft = () => {
   const scrollContainer = document.querySelector("#timelines");
   const timeline = document.querySelector("#timelineElement")
   const currentScrollLeft = scrollContainer.scrollLeft;
-  const targetScrollLeft = currentScrollLeft - timeline.clientWidth - 40; // Điều chỉnh giá trị cuộn trái
+  const targetScrollLeft = currentScrollLeft - timeline.clientWidth - 42; // Điều chỉnh giá trị cuộn trái
   scrollToSmooth(scrollContainer, targetScrollLeft);
 }
 
@@ -285,7 +285,7 @@ const scrollToRight = () => {
   const scrollContainer = document.querySelector("#timelines");
   const timeline = document.querySelector("#timelineElement")
   const currentScrollLeft = scrollContainer.scrollLeft;
-  const targetScrollLeft = currentScrollLeft + timeline.clientWidth + 40; // Điều chỉnh giá trị cuộn phải
+  const targetScrollLeft = currentScrollLeft + timeline.clientWidth + 42; // Điều chỉnh giá trị cuộn phải
   scrollToSmooth(scrollContainer, targetScrollLeft);
 }
 </script>
@@ -432,12 +432,12 @@ const scrollToRight = () => {
       <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-10 tracking-wide">
         {{ pageData.titleTimeline }}
       </div>
-      <div class="lg:px-14 px-16 flex gap-2 items-center">
+      <div class="lg:px-14 px-1 flex gap-2 items-center">
         <div class="text-black hover:cursor-pointer"
              @click.prevent="scrollToLeft">
-          <LeftOutlined class="text-[40px] text-[#93ca5c]"/>
+          <LeftOutlined class="md:text-[40px] text-[30px] text-[#93ca5c]"/>
         </div>
-        <div class="flex gap-10 overflow-hidden" id="timelines">
+        <div class="lg:px-0 md:px-3 px-5 flex gap-10 overflow-hidden" id="timelines">
           <div v-for="(tlc, index) in pageData.timelines"
                id="timelineElement"
                class="snap-always snap-center border border-[#004990] bg-white rounded-[25px] lg:h-[400px] h-[370px] w-full lg:max-w-[380px] max-w-[300px] lg:p-[30px] p-5 shrink-0">
@@ -452,7 +452,7 @@ const scrollToRight = () => {
         </div>
         <div class="text-black hover:cursor-pointer"
              @click.prevent="scrollToRight">
-          <RightOutlined class="text-[40px] text-[#93ca5c]"/>
+          <RightOutlined class="md:text-[40px] text-[30px] text-[#93ca5c]"/>
         </div>
       </div>
     </div>
