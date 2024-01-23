@@ -10,13 +10,9 @@ import "@egjs/vue3-flicking/dist/flicking.css";
 import "@egjs/flicking-plugins/dist/arrow.css";
 import "@egjs/flicking-plugins/dist/pagination.css";
 import { Arrow, Fade, Pagination } from "@egjs/flicking-plugins";
-import { UserOutlined } from "@ant-design/icons-vue"
 import Galleria from 'primevue/galleria';
 import { handleOpenLink } from "../utils/handleOpenLink.js";
-import {
-  PhotoProvider,
-  PhotoConsumer
-} from 'vue3-photo-preview'
+import { CaretLeftOutlined, CaretRightOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons-vue"
 
 const screenWidth = ref(0)
 const isAllStories = ref(false)
@@ -68,7 +64,7 @@ const routes = [
 ]
 
 const bannerTitle = "SÁNG KIẾN ESG VIỆT NAM 2024\nĐÓN ĐẦU CƠ HỘI CHUYỂN ĐỔI XANH"
-const titleStories = 'Câu chuyện điển hình về kinh doanh bền vững'
+const titleStories = 'Câu chuyện điển hình: Top 10 doanh nghiệp tham gia vòng chung kết Sáng kiến ESG Việt Nam 2023'
 const timelineColors = ['#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1', '#46b8e9', '#4d92eb', '#72a3e1', '#4d92eb', '#72a3e1', '#46b8e9', '#3ee9d1', '#72a3e1', '#4d92eb', '#46b8e9', '#3ee9d1', '#3ee9d1', '#4d92eb', '#72a3e1', '#3ee9d1']
 const titleSupport = 'Các hạng mục hỗ trợ kỹ thuật nổi bật'
 const supports = [
@@ -119,7 +115,7 @@ const gallery = ref([
     index: 0,
     itemImageSrc: 'https://lh3.googleusercontent.com/pw/ABLVV87Khw4HpfWGrR86JSrqvz-V-rWM4ySnOUffzCY2pblWKXtRMD-B7a8e6u_BKM49As17nOfdj2QkFl-y7GgMg4_5BWxRpmDIQpVf7sGVdSWBHoAhF3iMAa2RV4YYIWZuNXYzxgepxKCvzeP8cJ53o3mQ=w1920-h763-s-no-gm?authuser=0',
     thumbnailImageSrc: 'https://lh3.googleusercontent.com/pw/ABLVV87Khw4HpfWGrR86JSrqvz-V-rWM4ySnOUffzCY2pblWKXtRMD-B7a8e6u_BKM49As17nOfdj2QkFl-y7GgMg4_5BWxRpmDIQpVf7sGVdSWBHoAhF3iMAa2RV4YYIWZuNXYzxgepxKCvzeP8cJ53o3mQ=w1920-h763-s-no-gm?authuser=0',
-    alt: '13/10/2023: Lễ vinh danh Top 10 doanh nghiệp tham gia Vòng  chung kết và Công bố Top 3 doanh nghiệp giành chiến thắng chung cuộc'
+    alt: '13/10/2023: Lễ vinh danh Top 10 doanh nghiệp tham gia Vòng  chung kết và Công bố Top 3 doanh nghiệp giành chiến thắng chung cuộc: \nHHP GLOBAL, VIETNAM FOOD và VINASAMEX'
   },
   {
     index: 1,
@@ -181,8 +177,8 @@ const faqs = [
   {
     key: 1,
     question: 'Doanh nghiệp có thể nộp hồ sơ đăng ký tham gia Sáng kiến ESG Việt Nam 2024 ở đâu?',
-    answer: 'Doanh nghiệp quan tâm nộp hồ sơ bản mềm trước 17h ngày 31/03/2024 qua địa chỉ: https://bit.ly/dangki-esg-2024.\n' +
-        '• Các thông tin cần cung cấp bao gồm:\n' +
+    answer: 'Doanh nghiệp quan tâm nộp hồ sơ bản mềm trước 17h ngày 31/03/2024 qua địa chỉ: https://bit.ly/dangki-esg-2024\n' +
+        'Các thông tin cần cung cấp bao gồm:\n' +
         '• Thông tin tổng quan về doanh nghiệp\n' +
         '• Thông tin liên lạc của cán bộ phụ trách hồ sơ\n' +
         '• Đánh giá về thực hành ESG và kinh doanh bền vững\n' +
@@ -200,16 +196,16 @@ const faqs = [
   {
     key: 3,
     question: 'Doanh nghiệp sẽ nhận được những hỗ trợ gì từ chương trình?',
-    answer: 'Sáng kiến ESG Việt Nam 2024 sẽ cung cấp các hỗ trợ kỹ thuật và tư vấn chuyên sâu với tổng trị giá lên tới 2 tỷ đồng cho Top 3 doanh nghiệp giành chiến thắng chung cuộc để triển khai hoặc nhân rộng các sáng kiến kinh doanh bền vững. Top 10 doanh nghiệp xuất sắc nhất sẽ được đào tạo và tư vấn chuyên sâu trong 2-3 tháng để điều chỉnh hoặc hoàn thiện mô hình kinh doanh lồng ghép các yếu tố ESG. Bên cạnh đó, tất cả các doanh nghiệp nộp hồ sơ tham gia và đáp ứng các tiêu chí của chương trình sẽ được đào tạo cơ bản nhằm nâng cao hiểu biết về ESG, chuyển đổi xanh và kinh doanh bền vững, đồng thời tiếp cận các đối tác trong và ngoài nước hỗ trợ hệ sinh thái kinh doanh bền vững.\n' +
-        'Gói hỗ trợ kĩ thuật dành cho Top 3 doanh nghiệp giành chiến thắng chung cuộc có thể gồm các hạng mục khác nhau, được xác định tùy thuộc vào nhu cầu cụ thể của mỗi doanh nghiệp, tuy nhiên cần đảm bảo mục tiêu giúp thí điểm, triển khai hoặc nhân rộng việc thực hành ESG hoặc mô hình kinh doanh bền vững. Một số hạng mục điển hình bao gồm:\n' +
-        '• Thuê chuyên gia đào tạo, tư vấn hoặc chuyên gia kỹ thuật đồng hành cùng doanh nghiệp, hỗ trợ doanh nghiệp lên chiến lược hoặc triển khai ESG, chuyển đổi xanh. (Ví dụ: Đào tạo, năng cao năng lực về ESG, chuyển đổi xanh; Thuê chuyên gia tư vấn chiến lược và xây dựng kế hoạch hành động về kinh doanh bền vững; Xây dựng Báo cáo Phát triển bền vững/Báo cáo ESG năm đầu tiên; Tiến hành kiểm kê khí nhà kính; Xây dựng kế hoạch giảm phát thải, v.v). Doanh nghiệp có thể đề xuất danh sách chuyên gia để Dự án USAID IPSC xem xét.\n' +
-        '• Tổ chức các sự kiện, tập huấn liên quan, hoạt động cho nội bộ doanh nghiệp và đối tác trong chuỗi sản xuất và cung ứng của doanh nghiệp, qua đó thúc đẩy chuyển đổi xanh, tính tuần hoàn trong chuỗi cung ứng, hoặc khuyến khích sự tham gia của người thu nhập thấp, nhóm yếu thế trong chuỗi giá trị hoặc mô hình kinh doanh của doanh nghiệp.\n' +
-        '• Mua sắm một số trang, thiết bị nhỏ (trị giá dưới 200 triệu đồng/thiết bị và đáp ứng các quy định mua sắm của dự án) nhằm thí điểm, triển khai hoặc nhân rộng các thực hành ESG, chuyển đổi xanh, mô hình kinh doanh bền vững của doanh nghiệp.\n' +
-        '• Các hạng mục khác sẽ được xác định tùy thuộc nhu cầu cụ thể của mỗi doanh nghiệp. Trong thời gian đào tạo và tư vấn trong phạm vi Vòng chung kết, Dự án sẽ đồng hành và hỗ trợ Quý doanh nghiệp hoàn thiện kế hoạch triển khai sáng kiến, đồng thời làm rõ và xác định nhu cầu cụ thể mà doanh nghiệp cần được hỗ trợ liên quan tới ESG, chuyển đổi xanh và kinh doanh bền vững.\n' +
+    answer: 'Sáng kiến ESG Việt Nam 2024 sẽ cung cấp các hỗ trợ kỹ thuật và tư vấn chuyên sâu với tổng trị giá lên tới 2 tỷ đồng cho Top 3 doanh nghiệp giành chiến thắng chung cuộc để triển khai hoặc nhân rộng các sáng kiến kinh doanh bền vững. Top 10 doanh nghiệp xuất sắc nhất sẽ được đào tạo và tư vấn chuyên sâu trong 2-3 tháng để điều chỉnh hoặc hoàn thiện mô hình kinh doanh lồng ghép các yếu tố ESG. Bên cạnh đó, tất cả các doanh nghiệp nộp hồ sơ tham gia và đáp ứng các tiêu chí của chương trình sẽ được đào tạo cơ bản nhằm nâng cao hiểu biết về ESG, chuyển đổi xanh và kinh doanh bền vững, đồng thời tiếp cận các đối tác trong và ngoài nước hỗ trợ hệ sinh thái kinh doanh bền vững.\n\n' +
+        'Gói hỗ trợ kĩ thuật dành cho Top 3 doanh nghiệp giành chiến thắng chung cuộc có thể gồm các hạng mục khác nhau, được xác định tùy thuộc vào nhu cầu cụ thể của mỗi doanh nghiệp, tuy nhiên cần đảm bảo mục tiêu giúp thí điểm, triển khai hoặc nhân rộng việc thực hành ESG hoặc mô hình kinh doanh bền vững. Một số hạng mục điển hình bao gồm:\n\n' +
+        '• Thuê chuyên gia đào tạo, tư vấn hoặc chuyên gia kỹ thuật đồng hành cùng doanh nghiệp, hỗ trợ doanh nghiệp lên chiến lược hoặc triển khai ESG, chuyển đổi xanh. (Ví dụ: Đào tạo, năng cao năng lực về ESG, chuyển đổi xanh; Thuê chuyên gia tư vấn chiến lược và xây dựng kế hoạch hành động về kinh doanh bền vững; Xây dựng Báo cáo Phát triển bền vững/Báo cáo ESG năm đầu tiên; Tiến hành kiểm kê khí nhà kính; Xây dựng kế hoạch giảm phát thải, v.v). Doanh nghiệp có thể đề xuất danh sách chuyên gia để Dự án USAID IPSC xem xét.\n\n' +
+        '• Tổ chức các sự kiện, tập huấn liên quan, hoạt động cho nội bộ doanh nghiệp và đối tác trong chuỗi sản xuất và cung ứng của doanh nghiệp, qua đó thúc đẩy chuyển đổi xanh, tính tuần hoàn trong chuỗi cung ứng, hoặc khuyến khích sự tham gia của người thu nhập thấp, nhóm yếu thế trong chuỗi giá trị hoặc mô hình kinh doanh của doanh nghiệp.\n\n' +
+        '• Mua sắm một số trang, thiết bị nhỏ (trị giá dưới 200 triệu đồng/thiết bị và đáp ứng các quy định mua sắm của dự án) nhằm thí điểm, triển khai hoặc nhân rộng các thực hành ESG, chuyển đổi xanh, mô hình kinh doanh bền vững của doanh nghiệp.\n\n' +
+        '• Các hạng mục khác sẽ được xác định tùy thuộc nhu cầu cụ thể của mỗi doanh nghiệp. Trong thời gian đào tạo và tư vấn trong phạm vi Vòng chung kết, Dự án sẽ đồng hành và hỗ trợ Quý doanh nghiệp hoàn thiện kế hoạch triển khai sáng kiến, đồng thời làm rõ và xác định nhu cầu cụ thể mà doanh nghiệp cần được hỗ trợ liên quan tới ESG, chuyển đổi xanh và kinh doanh bền vững.\n\n' +
         'Gói hỗ trợ kĩ thuật KHÔNG bao gồm các hạng mục sau:\n' +
         'a. Nghiên cứu và phát triển sản phẩm/dịch vụ ở giai đoạn đánh giá tính tiền khả thi cho dòng sản phẩm/dịch vụ mới.\n' +
-        'b. Cung cấp các học bổng cho lãnh đạo, cán bộ của doanh nghiệp không liên quan đến kế hoạch triển khai hoặc chuyển đổi sang kinh doanh bền vững hoặc mở rộng mô hình kinh doanh bền vững, cam kết hành động thí điểm để chuyển đổi/nhân rộng sáng kiến kinh doanh bền vững. \n' +
-        'c. Mua sắm phần mềm, các trang thiết bị giá trị lớn/không liên quan đến thí điểm, triển khai hoặc nhân rộng các sáng kiến/kế hoạch triển khai ​​ESG.\n' +
+        'b. Cung cấp các học bổng cho lãnh đạo, cán bộ của doanh nghiệp không liên quan đến kế hoạch triển khai hoặc chuyển đổi sang kinh doanh bền vững hoặc mở rộng mô hình kinh doanh bền vững, cam kết hành động thí điểm để chuyển đổi/nhân rộng sáng kiến kinh doanh bền vững.\n' +
+        'c. Mua sắm phần mềm, các trang thiết bị giá trị lớn/không liên quan đến thí điểm, triển khai hoặc nhân rộng các sáng kiến/kế hoạch triển khai ESG.\n' +
         'd. Chi phí truyền thông, quảng bá (marketing-PR) thông thường của doanh nghiệp.\n'
   },
   {
@@ -268,6 +264,30 @@ const imageClick = (index) => {
   activeIndex.value = index;
   showFullscreen.value = true;
 };
+
+
+function scrollToSmooth(scrollContainer, x) {
+  scrollContainer.scrollTo({
+    left: x,
+    behavior: 'smooth'
+  });
+}
+
+const scrollToLeft = () => {
+  const scrollContainer = document.querySelector("#timelines");
+  const timeline = document.querySelector("#timelineElement")
+  const currentScrollLeft = scrollContainer.scrollLeft;
+  const targetScrollLeft = currentScrollLeft - timeline.clientWidth - 40; // Điều chỉnh giá trị cuộn trái
+  scrollToSmooth(scrollContainer, targetScrollLeft);
+}
+
+const scrollToRight = () => {
+  const scrollContainer = document.querySelector("#timelines");
+  const timeline = document.querySelector("#timelineElement")
+  const currentScrollLeft = scrollContainer.scrollLeft;
+  const targetScrollLeft = currentScrollLeft + timeline.clientWidth + 40; // Điều chỉnh giá trị cuộn phải
+  scrollToSmooth(scrollContainer, targetScrollLeft);
+}
 </script>
 
 <template>
@@ -338,40 +358,129 @@ const imageClick = (index) => {
 
   <div class="flex justify-center">
     <div class="max-w-[1440px] md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10">
-      <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-10">
+      <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-10 tracking-wide">
         {{ pageData.titleCondition }}
       </div>
-      <div class="ql-editor text-gray-600" v-html="pageData.contentCondition"/>
+      <div class="flex gap-5 justify-between flex-col md:flex-row">
+        <div
+            class="text-black lg:text-[20px] text-base lg:leading-[30px] leading-[25px] basis-1/2 tracking-wide lg:px-14">
+          Để tham gia chương trình, các doanh nghiệp Việt Nam cần đáp ứng các tiêu chí sau đây:
+        </div>
+        <div class="basis-1/2 space-y-10">
+          <div class="flex gap-5">
+            <div class="flex gap-2">
+              <div
+                  class="text-[#004990] border border-[#004990] rounded-[50%] w-[20px] h-[20px] flex justify-center items-center">
+                1
+              </div>
+              <div class="w-[5px] bg-[#004990] rounded-[10px]"/>
+            </div>
+            <div class="text-[#263238] tracking-wide">
+              Là tổ chức/đơn vị kinh tế Việt Nam, bao gồm các doanh nghiệp tư nhân, hợp tác xã, và hộ kinh doanh, với
+              không quá 500 nhân viên toàn thời gian và đang không có tranh chấp pháp lý.
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex gap-2">
+              <div
+                  class="text-[#004990] border border-[#004990] rounded-[50%] w-[20px] h-[20px] flex justify-center items-center">
+                2
+              </div>
+              <div class="w-[5px] bg-[#004990] rounded-[10px]"/>
+            </div>
+            <div class="text-[#263238] tracking-wide">
+              Hoạt động trong các lĩnh vực ưu tiên của dự án USAID IPSC như nông-lâm-ngư nghiệp, công nghiệp chế biến và
+              chế tạo, công nghệ thông tin, logistics, du lịch và sản phẩm hỗ trợ.
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex gap-2">
+              <div
+                  class="text-[#004990] border border-[#004990] rounded-[50%] w-[20px] h-[20px] flex justify-center items-center">
+                3
+              </div>
+              <div class="w-[5px] bg-[#004990] rounded-[10px]"/>
+            </div>
+            <div class="text-[#263238] tracking-wide">
+              Có mô hình kinh doanh hiệu quả, tạo ra lợi nhuận.
+            </div>
+          </div>
+          <div class="flex gap-5">
+            <div class="flex gap-2">
+              <div
+                  class="text-[#004990] border border-[#004990] rounded-[50%] w-[20px] h-[20px] flex justify-center items-center">
+                4
+              </div>
+              <div class="w-[5px] bg-[#004990] rounded-[10px]"/>
+            </div>
+            <div class="text-[#263238] tracking-wide">
+              Có dự định và cam kết hành động để triển khai ESG tại doanh nghiệp, chuyển đổi hoặc mở rộng mô hình kinh
+              doanh bền vững.
+            </div>
+          </div>
+          <div class="text-[#263238] tracking-wide">
+            Tìm hiểu thêm về ESG <a href="https://esg.business.gov.vn/library/detail/22" class="font-bold">tại đây</a>.
+          </div>
+        </div>
+      </div>
+      <!--      <div class="ql-editor text-gray-600" v-html="pageData.contentCondition"/>-->
     </div>
   </div>
 
-  <section id=timeline class="py-16 bg-[#f7f7f7]">
-    <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-10">
-      {{ pageData.titleTimeline }}
-    </div>
-    <div class="lg:grid lg:grid-cols-2 grid-cols-1 relative">
-      <div v-for="(tlc, index) in pageData.timelines" class="demo-card-block flex border-1 border-[#bdbdbd] lg:py-5 md:p-0 lg:static lg:m-0 lg:after:hidden
-            relative m-auto after:content-[''] after:absolute after:top-0 after:bottom-0 after:left-1/2 after:border-l after:border-[#bdbdbd]">
-        <div class="demo-card h-fit md:!max-w-[60%] lg:!max-w-[450px] shadow-md">
-          <div class="head border-none flex-col gap-1 h-fit p-2 !items-start"
-               :class="`bg-[${tlc.bgColor}] after:border-[${tlc.bgColor}]`">
-            <div class="bg-black bg-opacity-10 p-2.5">
-              <span class="text-xl font-semibold">{{ tlc.datetime }}</span>
+  <section id=timeline class="py-16 bg-[#f7f7f7] flex flex-col items-center justify-center">
+    <div class="max-w-[1440px] w-full">
+      <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-10 tracking-wide">
+        {{ pageData.titleTimeline }}
+      </div>
+      <div class="lg:px-14 px-16 flex gap-2 items-center">
+        <div class="text-black hover:cursor-pointer"
+             @click.prevent="scrollToLeft">
+          <LeftOutlined class="text-[40px] text-[#93ca5c]"/>
+        </div>
+        <div class="flex gap-10 overflow-hidden" id="timelines">
+          <div v-for="(tlc, index) in pageData.timelines"
+               id="timelineElement"
+               class="snap-always snap-center border border-[#004990] bg-white rounded-[25px] lg:h-[400px] h-[370px] w-full lg:max-w-[380px] max-w-[300px] lg:p-[30px] p-5 shrink-0">
+            <div class="text-[#93ca5c] lg:text-[20px] text-[16px] tracking-wide">{{ tlc.datetime.toUpperCase() }}</div>
+            <div class="text-[#004990] lg:text-[25px] text-[20px] mt-[25px] leading-[30px] tracking-wide">
+              {{ tlc.title }}
             </div>
-            <div class="text-xl px-2">
-              {{ tlc.title.toUpperCase() }}
+            <div class="text-[#333333] mt-[20px] whitespace-pre-wrap tracking-wide">
+              {{ tlc.description }}
             </div>
-            <div class="whitespace-pre-wrap text-base px-2 text-black">{{ tlc.description }}</div>
           </div>
-          <!--          <div class="body">-->
-          <!--            <p class="whitespace-pre-wrap text-base">{{ tlc.description }}</p>-->
-          <!--            <div :class="tlc.image.length !== 0 ? '' :'h-[235px]' ">-->
-          <!--              <img v-if="tlc.image.length !== 0" :src="tlc.image[0]?.url" alt="Graphic">-->
-          <!--            </div>-->
-          <!--          </div>-->
+        </div>
+        <div class="text-black hover:cursor-pointer"
+             @click.prevent="scrollToRight">
+          <RightOutlined class="text-[40px] text-[#93ca5c]"/>
         </div>
       </div>
     </div>
+
+    <!--    <div class="lg:grid lg:grid-cols-2 grid-cols-1 relative">-->
+
+    <!--      <div v-for="(tlc, index) in pageData.timelines" class="demo-card-block flex border-1 border-[#bdbdbd] lg:py-5 md:p-0 lg:static lg:m-0 lg:after:hidden-->
+    <!--            relative m-auto after:content-[''] after:absolute after:top-0 after:bottom-0 after:left-1/2 after:border-l after:border-[#bdbdbd]">-->
+    <!--        <div class="demo-card h-fit md:!max-w-[60%] lg:!max-w-[450px] shadow-md">-->
+    <!--          <div class="head border-none flex-col gap-1 h-fit p-2 !items-start"-->
+    <!--               :class="`bg-[${tlc.bgColor}] after:border-[${tlc.bgColor}]`">-->
+    <!--            <div class="bg-black bg-opacity-10 p-2.5">-->
+    <!--              <span class="text-xl font-semibold">{{ tlc.datetime }}</span>-->
+    <!--            </div>-->
+    <!--            <div class="text-xl px-2">-->
+    <!--              {{ tlc.title.toUpperCase() }}-->
+    <!--            </div>-->
+    <!--            <div class="whitespace-pre-wrap text-base px-2 text-black">{{ tlc.description }}</div>-->
+    <!--          </div>-->
+    <!--          &lt;!&ndash;          <div class="body">&ndash;&gt;-->
+    <!--          &lt;!&ndash;            <p class="whitespace-pre-wrap text-base">{{ tlc.description }}</p>&ndash;&gt;-->
+    <!--          &lt;!&ndash;            <div :class="tlc.image.length !== 0 ? '' :'h-[235px]' ">&ndash;&gt;-->
+    <!--          &lt;!&ndash;              <img v-if="tlc.image.length !== 0" :src="tlc.image[0]?.url" alt="Graphic">&ndash;&gt;-->
+    <!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+    <!--          &lt;!&ndash;          </div>&ndash;&gt;-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
   </section>
 
   <div class="flex justify-center">
@@ -433,7 +542,50 @@ const imageClick = (index) => {
     </div>
   </div>
 
-  <div class="flex justify-center">
+  <div class="flex flex-col items-center justify-center py-5">
+    <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-5">
+      {{ titleGallery }}
+    </div>
+    <div class="max-w-[1440px] md:px-10 lg:px-[100px] xl:px-[150px] px-5">
+      <Galleria :value="gallery"
+                :responsiveOptions="responsiveOptions"
+                :numVisible="5">
+        <template #item="slotProps">
+          <div class="w-full relative">
+            <div
+                class="absolute bottom-0 text-white bg-black bg-opacity-50 w-full flex justify-center items-center min-h-[50px] whitespace-pre-wrap">
+              {{ slotProps.item.alt }}
+            </div>
+            <img class="w-full xl:h-[650px] lg:h-[450px] md:h-[400px] object-cover" :src="slotProps.item.itemImageSrc"
+                 :alt="slotProps.item.alt"
+                 @click.prevent="imageClick(slotProps.item.index)"/>
+          </div>
+        </template>
+        <template #thumbnail="slotProps">
+          <img class="lg:w-[200px] md:w-[180px] w-[100px] lg:h-[120px] md:h-[100px] h-[50px] object-cover"
+               :src="slotProps.item.thumbnailImageSrc" :alt="slotProps.item.alt"/>
+        </template>
+      </Galleria>
+    </div>
+  </div>
+
+  <Galleria v-model:activeIndex="activeIndex" v-model:visible="showFullscreen" :value="gallery"
+            :responsiveOptions="responsiveOptions" :numVisible="5"
+            containerStyle="max-width: 1440px" :circular="true" :fullScreen="true" :showItemNavigators="true"
+            :showThumbnails="false">
+    <template #item="slotProps">
+      <div class="w-full relative">
+        <div
+            class="absolute bottom-0 text-white bg-black bg-opacity-50 w-full flex justify-center items-center min-h-[50px]">
+          {{ slotProps.item.alt }}
+        </div>
+        <img class="w-full" :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt"
+             @click.prevent="imageClick(slotProps.item.index)"/>
+      </div>
+    </template>
+  </Galleria>
+
+  <div class="flex flex-col items-center justify-center bg-[#f7f7f7] py-5">
     <div class="max-w-[1440px] md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10">
       <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-10">
         {{ titleStories }}
@@ -474,48 +626,6 @@ const imageClick = (index) => {
     </div>
   </div>
 
-  <Galleria v-model:activeIndex="activeIndex" v-model:visible="showFullscreen" :value="gallery"
-            :responsiveOptions="responsiveOptions" :numVisible="5"
-            containerStyle="max-width: 1440px" :circular="true" :fullScreen="true" :showItemNavigators="true"
-            :showThumbnails="false">
-    <template #item="slotProps">
-      <div class="w-full relative">
-        <div
-            class="absolute bottom-0 text-white bg-black bg-opacity-50 w-full flex justify-center items-center min-h-[50px]">
-          {{ slotProps.item.alt }}
-        </div>
-        <img class="w-full" :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt"
-             @click.prevent="imageClick(slotProps.item.index)"/>
-      </div>
-    </template>
-  </Galleria>
-
-  <div class="flex flex-col items-center justify-center bg-[#f7f7f7] py-5">
-    <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-5">
-      {{ titleGallery }}
-    </div>
-    <div class="max-w-[1440px] md:px-10 lg:px-[100px] xl:px-[150px] px-5">
-      <Galleria :value="gallery"
-                :responsiveOptions="responsiveOptions"
-                :numVisible="5">
-        <template #item="slotProps">
-          <div class="w-full relative">
-            <div
-                class="absolute bottom-0 text-white bg-black bg-opacity-50 w-full flex justify-center items-center min-h-[50px]">
-              {{ slotProps.item.alt }}
-            </div>
-            <img class="w-full xl:h-[650px] lg:h-[450px] md:h-[400px] object-cover" :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt"
-                 @click.prevent="imageClick(slotProps.item.index)"/>
-          </div>
-        </template>
-        <template #thumbnail="slotProps">
-          <img class="lg:w-[200px] md:w-[180px] w-[100px] lg:h-[120px] md:h-[100px] h-[50px] object-cover"
-               :src="slotProps.item.thumbnailImageSrc" :alt="slotProps.item.alt"/>
-        </template>
-      </Galleria>
-    </div>
-  </div>
-
   <div class="flex justify-center">
     <div class="max-w-[1440px] w-full md:px-10 lg:px-[100px] xl:px-[150px] px-5 pt-5">
       <div
@@ -543,7 +653,8 @@ const imageClick = (index) => {
 
   <div class="flex justify-center py-10">
     <div class="max-w-[1440px] w-full flex flex-col justify-center items-center">
-      <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-10">FAQ</div>
+      <div class="text-[#004990] font-semibold xl:text-4xl md:text-3xl text-xl text-center mb-10">Câu hỏi thường gặp
+      </div>
       <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5">
         <a-collapse v-model:activeKey="collapseKey"
                     ghost
@@ -552,9 +663,12 @@ const imageClick = (index) => {
                     expand-icon-position="end">
           <a-collapse-panel v-for='faq in faqs' :key="faq.key" class="bg-white !rounded-[4px]">
             <template #header>
-              <div class="min-h-[50px] flex items-center tracking-wide">{{ faq.key }}. {{ faq.question }}</div>
+              <div class="min-h-[50px] flex items-center tracking-wide text-[#004990]"
+                   :class="collapseKey.includes(faq.key.toString()) ? 'font-semibold' : ''">{{ faq.key }}.
+                {{ faq.question }}
+              </div>
             </template>
-            <div class="whitespace-pre-wrap tracking-wide text-[#004990]">{{ faq.answer }}</div>
+            <div class="whitespace-pre-wrap tracking-wide text-black">{{ faq.answer }}</div>
           </a-collapse-panel>
         </a-collapse>
         <div class="mt-5 text-center">
@@ -570,105 +684,7 @@ const imageClick = (index) => {
 </template>
 
 <style>
-@media (min-width: 1000px) {
-  #timeline .demo-card:nth-child(even) .head::after, #timeline .demo-card:nth-child(odd) .head::after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-  }
 
-  #timeline .demo-card:nth-child(even) .head::before, #timeline .demo-card:nth-child(odd) .head::before {
-    position: absolute;
-    content: "";
-    width: 9px;
-    height: 9px;
-    background-color: #bdbdbd;
-    border-radius: 9px;
-    box-shadow: 0px 0px 2px 8px #f7f7f7;
-  }
-}
-
-/* Some Cool Stuff */
-
-#timeline .demo-card {
-  position: relative;
-  display: block;
-  margin: 10px auto 80px;
-  max-width: 94%;
-  z-index: 2;
-}
-
-#timeline .demo-card-block:nth-child(odd) {
-  justify-self: end;
-  border-right: 1px solid #000;
-}
-
-#timeline .demo-card-block:nth-child(even) {
-  justify-self: start;
-}
-
-@media only screen and (max-width: 768px) {
-  #timeline .demo-card-block:nth-child(odd) {
-    border-right: none;
-  }
-}
-
-@media (min-width: 1000px) {
-  #timeline .demo-card {
-    max-width: 450px;
-  }
-
-  #timeline .demo-card-block:nth-child(odd) .demo-card {
-    margin-right: 45px;
-  }
-
-  #timeline .demo-card-block:nth-child(odd) .demo-card .head::after {
-    border-left-width: 15px;
-    border-left-style: solid;
-    left: 100%;
-    top: 40%;
-  }
-
-  #timeline .demo-card-block:nth-child(odd) .demo-card .head::before {
-    left: 491.5px;
-    top: 47%;
-  }
-
-  #timeline .demo-card-block:nth-child(even) .demo-card {
-    margin-left: 45px;
-    transform: translateY(100px);
-  }
-
-  #timeline .demo-card-block:nth-child(even) .demo-card .head::after {
-    border-right-width: 15px;
-    border-right-style: solid;
-    left: -14px;
-    top: 40%;
-  }
-
-  #timeline .demo-card-block:nth-child(even) .demo-card .head::before {
-    right: 489.5px;
-    top: 47%;
-  }
-}
-
-#timeline .demo-card .head {
-  position: relative;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-weight: 400;
-}
-
-#timeline .demo-card .body {
-  background: #fff;
-  border: 1px solid rgba(191, 191, 191, 0.4);
-  border-top: 0;
-  padding: 15px;
-}
 
 .flicking-pagination-bullet-active {
   background-color: #fff;
@@ -681,5 +697,19 @@ const imageClick = (index) => {
 .ant-collapse-content-box {
   padding-top: 0 !important;
   padding-bottom: 10px !important;
+}
+
+.ant-steps-item-container {
+  margin-right: 10px;
+
+}
+
+.ant-steps-item-title {
+  white-space: nowrap;
+  font-size: 12px !important;
+}
+
+.ant-steps-item-description {
+  font-size: 13px !important;
 }
 </style>

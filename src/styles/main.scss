@@ -25,21 +25,40 @@ ul, ol {
 
 @media screen and (max-width: 430px) {
   .ql-editor .ql-video {
-    width: 100%;
-    height: 250px;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 250px !important;
   }
 }
 
 @media screen and (min-width: 431px) and (max-width: 768px) {
   .ql-editor .ql-video {
-    width: calc(100vw - 40%);
-    height: 300px;
+    width: calc(100vw - 40%) !important;
+    height: 300px !important;
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .ql-editor .ql-video {
-    width: calc(100vw - 50%);
-    height: 350px;
+    width: calc(100vw - 50%) !important;
+    height: 350px !important;
   }
+}
+
+#timelines {
+  -ms-overflow-style: none !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #ADCA5C #ECECEC !important;
+}
+
+#timelines::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+#timelines::-webkit-scrollbar-thumb {
+  height: 10px;
+  width: 10px;
+  border-radius: 5px !important;
+  background-color: #ADCA5C !important;
 }

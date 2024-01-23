@@ -169,10 +169,10 @@ const handleShowHistoryEvaluated = () => {
                 </div>
 
                 <MenuOutlined v-if="!open"
-                              class="absolute xl:hidden md:right-6 right-3 md:top-[110px] top-[130px] cursor-pointer text-3xl"
+                              class="absolute xl:hidden md:right-6 right-3 md:top-[110px] top-[130px] cursor-pointer text-3xl text-gray-600"
                               @click.prevent="handleClickMenu"/>
                 <CloseOutlined v-else
-                               class="absolute xl:hidden md:right-6 right-3 md:top-[110px] top-[130px] cursor-pointer text-3xl"
+                               class="absolute xl:hidden md:right-6 right-3 md:top-[110px] top-[130px] cursor-pointer text-3xl text-gray-600"
                                @click.prevent="handleClickMenu"/>
 
                 <ul :class="[open ? 'left-0' : 'left-[-100%]']"

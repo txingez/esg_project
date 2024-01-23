@@ -14,6 +14,7 @@ import { Arrow, AutoPlay, Fade, Pagination } from "@egjs/flicking-plugins";
 import { useRouter } from "vue-router";
 import { handleOpenLink } from "../utils/handleOpenLink.js";
 import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
+import { ArrowRightOutlined } from "@ant-design/icons-vue"
 
 const router = useRouter()
 
@@ -43,6 +44,38 @@ const plugins = ref([
     type: 'bullet',
   })
 ])
+const dataEvent = ref([
+  {
+    name: 'Buổi chia sẻ thông tin "Sáng kiến ESG Việt Nam 2024 - Đón đầu cơ hội chuyển đổi xanh"',
+    time: '25/01/2024',
+    location: 'Trực tuyến',
+    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/382831424401610?ref=embed_post'
+  },
+  {
+    name: 'Đào tạo chuyên sâu cho top 10 doanh nghiệp Sáng kiến ESG Việt Nam 2023: Báo cáo phát triển bền vững với bản cập nhật tiêu chuẩn GRI 2021',
+    time: '28/12/2023 - 29/12/2023',
+    location: 'Hồ Chí Minh',
+    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/376065181744901?ref=embed_post'
+  },
+  {
+    name: 'Nâng cao năng lực doanh nghiệp nhằm thích ứng yêu cầu chuyển đổi xanh, giảm phát thải và thực hành kiểm kê khí nhà kính',
+    time: '29/11/2023 - 30/11/2023',
+    location: 'Hà Nội',
+    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/356769460341140?ref=embed_post'
+  },
+  {
+    name: 'Diễn đàn “Tiên phong tinh thần doanh nhân, kiến tạo Việt Nam bền vững”',
+    time: '13/10/2023',
+    location: 'Hà Nội',
+    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/331198769564876?ref=embed_post'
+  },
+  {
+    name: 'Diễn đàn Doanh nhân nữ 2023: "Kinh doanh bền vững - Chìa khóa tạo lợi thế cạnh tranh cho doanh nghiệp do nữ làm chủ"',
+    time: '22/09/2023',
+    location: 'Hà Nội',
+    link: 'https://www.facebook.com/100080242674029/posts/pfbid033xMXUCnYEexs9mLuPMyBE7tqxLPCLqxR7XABbGinsd95Y9hPQtF5vYXkD25Qdfarl/?mibextid=cr9u03'
+  }
+])
 
 const routes = [
   {name: 'Home', to: '/'}
@@ -54,9 +87,6 @@ const missionsIcon = [
   'https://lh3.googleusercontent.com/pw/ADCreHckVYPWmR1sdx7blvN_t8CLhRPktUDnq-E1tqZ6SKvISe9NqoFtUEFFNeD4uPP4HUS2EhkY82jFgmfQzrT4YYw6tMSHoFOm0K0AfqvVoBvnL3wj4QzGR9ZIMIKWddVdlZgmyTYzGOKB88r5GR8aAvWJ=w73-h78-s-no?authuser=0',
   'https://lh3.googleusercontent.com/pw/ADCreHfOCK2qtO1eGyP-oj1XINRT-ikEqt72P1R4avNg76nN3ThXISajc8syUjFoxMoQNloSZx0jvNw7Xa2ZtmVkEXKZaCNoHYbqij-xO7Djc8GS8k4GB2SnjQdkhWbwQpSZ5x6bpi_-ZaEl0Z5T3xJ3GVsl=w78-h93-s-no?authuser=0'
 ]
-
-const driveDefaultURL = "https://drive.google.com/uc?export=view&id=";
-const driveExpectedURL = "https://lh3.google.com/u/0/d/"
 
 const updateScreenWidth = () => {
   screenWidth.value = window.innerWidth;
@@ -109,7 +139,7 @@ onMounted(() => {
 })
 
 const titleEvaluatePart = 'Bộ công cụ đánh giá \nKinh doanh bền vững'
-const titleESGPart = 'Giới thiệu'
+const titleESGPart = 'Sáng kiến ESG Việt Nam'
 const titleStories = 'Câu chuyện điển hình về \nkinh doanh bền vững'
 
 const showMore = () => {
@@ -121,6 +151,13 @@ const showMore = () => {
 const handleSeeDetail = document => {
   router.push(`/news/detail/${document.id}`)
 }
+
+const columnsEvent = [
+  {title: 'Tên chương trình', dataIndex: 'name', key: 'name'},
+  {title: 'Thời gian', dataIndex: 'time', key: 'time', width: 210},
+  {title: 'Địa điểm', dataIndex: 'location', key: 'location', width: 120},
+  {title: 'Thông tin chi tiết', dataIndex: 'link', key: 'link', width: 170},
+]
 </script>
 
 <template>
@@ -248,23 +285,23 @@ const handleSeeDetail = document => {
       <div class="py-5 lg:px-10 md:px-5 px-2">
         <div class="rounded-[20px] bg-[#E7E6DF] border border-[#c1da73]">
           <div class="rounded-t-[20px] overflow-hidden">
-            <img src="https://lh3.googleusercontent.com/pw/ABLVV8770J8YWUY9Gvint59mxO4vsFdaOEPxrbraglLED4n7j394Rxdcq1o5l7Zum8jibI2E5H3KReZHH0WKAGZo_7Xb8wYfRJxlJhMQ4Z9R-UlnnLxY5W0qPEjztCUV8HYaVH6m5DXF-pujz9lQEO5zHVMF=w1047-h968-s-no-gm?authuser=0"
-                 class="w-full"
-                 alt="esg_homepage_top">
+            <img
+                src="../assets/esg_home_top.png"
+                class="w-full"
+                alt="esg_homepage_top">
           </div>
-          <div class="xl:px-[95px] lg:p-[50px] xl:pt-0 xl:pb-[80px] md:p-[20px] p-5 pt-0">
-            <div class="flex lg:flex-row flex-col gap-5 md:mt-[50px] mt-[25px]">
+          <div class="xl:px-[95px] lg:p-[50px] xl:pt-0 xl:pb-[50px] md:p-[20px] p-5 pt-0">
+            <div class="flex lg:flex-row flex-col gap-5">
               <div class="space-y-5 basis-1/2"
                    data-aos="fade-down"
                    data-aos-duration="500"
                    data-aos-easing="ease-in-out">
                 <div
-                    class="whitespace-pre-wrap font-medium xl:text-[50px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[26px]/[32px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258]">
+                    class="whitespace-pre-wrap font-medium xl:text-[49px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[26px]/[32px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258]">
                   {{ titleESGPart }}
                 </div>
-                <div class="text-base/[26.5px] font-normal text-[#659D51]">
-                  {{ pageData.descriptionESGPart }}
-                </div>
+<!--                text-[#659D51]-->
+                <div class="text-base/[26.5px] font-normal text-black whitespace-pre-wrap quill-editor" v-html="pageData.descriptionESGPart"/>
                 <div class="md:px-6 px-3 md:py-2 lg:py-3 md:text-base xl:text-xl md:min-h-[50px] min-h-[30px] flex justify-center items-center border border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer
                                          text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white w-fit"
                      style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
@@ -272,7 +309,7 @@ const handleSeeDetail = document => {
                   ĐĂNG KÝ THAM GIA NGAY
                 </div>
               </div>
-              <div class="rounded-[10px] flex justify-end items-center basis-1/2"
+              <div class="rounded-[10px] flex justify-end basis-1/2"
                    data-aos="fade-up"
                    data-aos-duration="500"
                    data-aos-easing="ease-in-out">
@@ -317,7 +354,7 @@ const handleSeeDetail = document => {
                   </div>
                 </div>
               </div>
-              <div class="mt-[120px] text-center mb-[50px]" v-if="!isAllStories">
+              <div class="mt-[120px] text-center" v-if="!isAllStories">
                 <a-button
                     class="rounded-[88px] border-[#BABABA] h-[50px] lg:w-[300px] w-[220px] font-medium lg:text-2xl/[40px] text-xl/[40px] text-[#717171] tracking-[.2em]"
                     @click.prevent="showMore">
@@ -328,10 +365,40 @@ const handleSeeDetail = document => {
           </div>
         </div>
       </div>
-      <div class="space-y-5 xl:px-[145px] px-5 mb-10 xl:mt-[100px] md:mt-[80px] mt-[40px]">
+
+      <div class="space-y-5 xl:px-[145px] px-5 mb-10 xl:mt-[20px] md:mt-[80px] mt-[40px]">
         <div
             class="text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] font-medium xl:text-[50px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[26px]/[32px]">
-          Tin tức & Sự kiện
+          Sự kiện
+        </div>
+        <div>
+          <a-table :columns="columnsEvent"
+                   :data-source="dataEvent"
+                   :pagination="false"
+                   :scroll="{ x: 800 }"
+                   bordered>
+            <template #bodyCell="{text, record, column}">
+              <template v-if="column.key === 'name'">
+                <div class="flex gap-5">
+                  <div class="w-[3px] min-w-[3px] rounded-[5px] bg-gradient-to-b from-[#00BEF0] to-[#2A4258]"/>
+                  <div>{{ text }}</div>
+                </div>
+              </template>
+              <template v-else-if="column.key === 'link'">
+                <a :href="record.link" class="flex gap-1 items-center group">
+                  <span class="text-blue-400 group-hover:text-blue-500">Tìm hiểu thêm</span>
+                  <ArrowRightOutlined class="group-hover:text-blue-500"/>
+                </a>
+              </template>
+            </template>
+          </a-table>
+        </div>
+      </div>
+
+      <div class="space-y-5 xl:px-[145px] px-5 mb-10 xl:mt-[50px] md:mt-[80px] mt-[40px]">
+        <div
+            class="text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] font-medium xl:text-[50px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[26px]/[32px]">
+          Tin tức
         </div>
         <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
           <a-card v-for="news in pageData.hotNews"
