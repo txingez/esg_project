@@ -49,13 +49,13 @@ const dataEvent = ref([
     name: 'Tọa đàm tại Hà Nội với chủ đề: "Xây lợi thế, Vững tương lai cùng Sáng kiến ESG Việt Nam 2024"',
     time: '21/03/2024',
     location: 'Hà Nội',
-    link: ''
+    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/pfbid0YACS31AyZgLb5PkeeUKLimXPUBDz5B79szzebmqJu9Co3gPXc4h37s9Jgj1xc25Ml'
   },
   {
     name: 'Tọa đàm tại Tp. Hồ Chí Minh với chủ đề "Xây lợi thế, Vững tương lai cùng Sáng kiến ESG Việt Nam 2024"',
     time: '14/03/2024',
     location: 'Hồ Chí Minh',
-    link: ''
+    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/pfbid0YACS31AyZgLb5PkeeUKLimXPUBDz5B79szzebmqJu9Co3gPXc4h37s9Jgj1xc25Ml'
   },
   {
     name: 'Buổi chia sẻ thông tin "Sáng kiến ESG Việt Nam 2024 - Đón đầu cơ hội chuyển đổi xanh"',
