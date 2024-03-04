@@ -440,7 +440,7 @@ const scrollToRight = () => {
         <div class="lg:px-0 md:px-3 px-5 flex gap-10 overflow-hidden" id="timelines">
           <div v-for="(tlc, index) in pageData.timelines"
                id="timelineElement"
-               class="snap-always snap-center border border-[#004990] bg-white rounded-[25px] lg:h-[400px] h-[370px] w-full lg:max-w-[380px] max-w-[300px] lg:p-[30px] p-5 shrink-0">
+               class="snap-always snap-center border border-[#004990] bg-white rounded-[25px] lg:h-[400px] h-[470px] w-full lg:max-w-[380px] max-w-[300px] lg:p-[30px] p-5 shrink-0">
             <div class="text-[#93ca5c] lg:text-[20px] text-[16px] tracking-wide">{{ tlc.datetime.toUpperCase() }}</div>
             <div class="text-[#004990] lg:text-[25px] text-[20px] mt-[25px] leading-[30px] tracking-wide">
               {{ tlc.title }}
