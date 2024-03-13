@@ -9,6 +9,7 @@ export const ENUM = {
 	},
 	FILE_NAME_EXPORT: {
 		EvaluateESGForm: 'ket_qua_danh_gia_esg',
-		EvaluateNECForm: 'ket_qua_danh_gia_nec'
+		EvaluateNECForm: 'ket_qua_danh_gia_nec',
+		EvaluateAnswers: 'ket_qua_cua_ban'
 	}
 }

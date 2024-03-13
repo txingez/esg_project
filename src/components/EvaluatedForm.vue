@@ -148,6 +148,8 @@ const finishEvaluated = async () => {
 			}
 		}
 
+    console.log(body.data.answers)
+
 		saveResult(body).then((res) => {
 			console.log(res)
 			loading.value = false

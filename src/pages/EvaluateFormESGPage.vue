@@ -98,7 +98,7 @@ const openYourAnswers = () => {
             </div>
             <a-button class="bg-[#1677ff] h-[50px] w-[150px] flex items-center justify-center"
                       type="primary"
-                      @click.prevent="exportHTMLToPDF(ENUM.FORM_NAME.EvaluateESGForm)">
+                      @click.prevent="exportHTMLToPDF(ENUM.FORM_NAME.EvaluateESGForm, 'result-container')">
                 <PrinterOutlined/>
                 In kết quả
             </a-button>

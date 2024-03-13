@@ -20,6 +20,9 @@ const pageData = reactive({
   },
   nec: {
     title: '', image: [], document: []
+  },
+  kdbt: {
+    title: '', image: [], document: []
   }
 })
 const loading = ref(false)
@@ -45,9 +48,11 @@ const getPageData = () => {
   getPosts('EVALUATE', 10, 0)
       .then((response) => {
         const dataDecoded = useJwt(response.data[0].content).payload.value
+        console.log(handleGoogleImageLink(dataDecoded.data.kdbt.image[0].url))
         pageData.introduction = dataDecoded.data.introduction
         pageData.esg = {...dataDecoded.data.esg, ...{image: [{url: handleGoogleImageLink(dataDecoded.data.esg.image[0].url)}]}}
         pageData.nec = {...dataDecoded.data.nec, ...{image: [{url: handleGoogleImageLink(dataDecoded.data.nec.image[0].url)}]}}
+        pageData.kdbt = {...dataDecoded.data.kdbt, ...{image: [{url: handleGoogleImageLink(dataDecoded.data.kdbt.image[0].url)}]}}
       })
       .catch((err) => {
         console.log(err)
@@ -151,6 +156,49 @@ const downloadFile = (formId, fileName) => {
                 <DownloadOutlined/>
                 <span>Tài liệu giới thiệu và hướng dẫn</span>
               </a>
+            </a-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-4 gap-10">
+        <div class="lg:col-span-2 col-span-4 border rounded-[10px] max-h-[340px]"
+             data-aos="fade-down"
+             data-aos-duration="500"
+             data-aos-easing="ease-in-out">
+          <img :src="pageData.kdbt.image[0]?.url"
+               alt="business7"
+               class="rounded-[10px] w-full h-full"
+               loading="lazy">
+        </div>
+        <div class="flex flex-col gap-3 lg:col-span-2 col-span-4 justify-center"
+             data-aos="fade-up"
+             data-aos-duration="500"
+             data-aos-easing="ease-in-out">
+          <div class="md:text-xl xl:text-2xl text-xl font-bold text-gray-600">
+            {{ pageData.kdbt.title }}
+          </div>
+          <div class="flex gap-2.5 xl:flex-row flex-col">
+<!--            <a-button class="min-h-[50px] md:text-base xl:text-lg"-->
+<!--                      @click.prevent="handleAccessForm(isAuth, 'ESG')">-->
+<!--              Thực hiện đánh giá-->
+<!--            </a-button>-->
+            <a-button class="min-h-[50px] md:text-base xl:text-lg">
+              <a href="/Toolkit-IB%20Readiness%20Assessment.xlsx" download>
+                Thực hiện đánh giá
+              </a>
+            </a-button>
+            <a-button class="min-h-[50px] md:text-base xl:text-lg bg-blue-500"
+                      type="primary">
+<!--                      @click.prevent="downloadFile('esg', pageData.kdbt.document[0]?.name)">-->
+              <a href="https://esg.business.gov.vn/news/detail/100" target="_blank" class="flex items-center justify-center gap-2 w-full h-full">
+                <DownloadOutlined/>
+                <span>Tài liệu giới thiệu và hướng dẫn</span>
+              </a>
+                <!--              <a class="flex items-center justify-center gap-2 w-full h-full">-->
+<!--                <DownloadOutlined/>-->
+<!--                <span>Tài liệu giới thiệu và hướng dẫn</span>-->
+<!--              </a>-->
             </a-button>
           </div>
         </div>

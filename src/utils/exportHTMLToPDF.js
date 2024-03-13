@@ -2,7 +2,7 @@ import jsPDF from "jspdf";
 import { ENUM } from "../constants/enumValues.js";
 import * as htmlToImage from "html-to-image";
 
-export const exportHTMLToPDF = async formName => {
+export const exportHTMLToPDF = async (formName, className) => {
 	const doc = new jsPDF({
 		orientation: 'p',
 		unit: 'px',
@@ -10,7 +10,7 @@ export const exportHTMLToPDF = async formName => {
 		putOnlyUsedFonts: true,
 		floatPrecision: 16 // or "smart", default is 16
 	})
-	const elements = document.getElementsByClassName("result-container")
+	const elements = document.getElementsByClassName(className)
 	await createPdf({doc, elements})
 
 	doc.save(`${ENUM.FILE_NAME_EXPORT[formName]}.pdf`)

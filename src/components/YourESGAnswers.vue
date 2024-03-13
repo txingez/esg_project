@@ -7,6 +7,9 @@ import { GovernanceQuestions } from "../constants/governanceQuestions.js";
 import Vue3Html2pdf from 'vue3-html2pdf'
 import { PrinterOutlined } from "@ant-design/icons-vue";
 import { OPTIONS } from "../constants/options.js";
+import jsPDF from "jspdf";
+import { ENUM } from "../constants/enumValues.js";
+import { exportHTMLToPDF } from "../utils/exportHTMLToPDF.js";
 
 const evaluatedFormStore = useEvaluatedFormStore()
 const environmentAnswers = computed(() => {
@@ -56,50 +59,80 @@ const generateReport = () => {
 </script>
 
 <template>
-  <vue3-html2pdf
-      :show-layout="true"
-      :float-layout="false"
-      :enable-download="true"
-      :preview-modal="false"
-      :pdf-quality="2"
-      :manual-pagination="true"
-      pdf-content-width="100%"
-      :html-to-pdf-options="OPTIONS.OPTION_JS_PDF"
-      ref="html2Pdf">
-    <template v-slot:pdf-content>
-      <div class="py-5">
-        <div class="font-bold">1. Nhóm tiêu chí về Môi trường</div>
-        <div v-for="environmentObject in environmentAnswers">
-          <div>
-            <span class="font-semibold">Câu {{ environmentObject.label }}</span>:
-            {{ environmentObject.question }}
-          </div>
-          <div>{{ environmentObject.answer }}</div>
+  <div class="result-answers">
+    <div class="py-5">
+      <div class="font-bold">1. Nhóm tiêu chí về Môi trường</div>
+      <div v-for="environmentObject in environmentAnswers">
+        <div>
+          <span class="font-semibold">Câu {{ environmentObject.label }}</span>:
+          {{ environmentObject.question }}
         </div>
-        <div class="html2pdf__page-break"/>
-        <div class="font-bold">2. Nhóm tiêu chí về Xã hội</div>
-        <div v-for="socialObject in socialAnswers">
-          <div>
-            <span class="font-semibold">Câu {{ socialObject.label }}</span>: {{ socialObject.question }}
-          </div>
-          <div>{{ socialObject.answer }}</div>
-        </div>
-        <div class="html2pdf__page-break"/>
-        <div class="font-bold">3. Nhóm tiêu chí về Quản trị</div>
-        <div v-for="governanceObject in governanceAnswers">
-          <div>
-            <span class="font-semibold">Câu {{ governanceObject.label }}</span>: {{
-              governanceObject.question
-            }}
-          </div>
-          <div>{{ governanceObject.answer }}</div>
-        </div>
+        <div>{{ environmentObject.answer }}</div>
       </div>
-    </template>
-  </vue3-html2pdf>
+      <div class="html2pdf__page-break"/>
+      <div class="font-bold">2. Nhóm tiêu chí về Xã hội</div>
+      <div v-for="socialObject in socialAnswers">
+        <div>
+          <span class="font-semibold">Câu {{ socialObject.label }}</span>: {{ socialObject.question }}
+        </div>
+        <div>{{ socialObject.answer }}</div>
+      </div>
+      <div class="html2pdf__page-break"/>
+      <div class="font-bold">3. Nhóm tiêu chí về Quản trị</div>
+      <div v-for="governanceObject in governanceAnswers">
+        <div>
+          <span class="font-semibold">Câu {{ governanceObject.label }}</span>: {{
+            governanceObject.question
+          }}
+        </div>
+        <div>{{ governanceObject.answer }}</div>
+      </div>
+    </div>
+  </div>
+<!--  <vue3-html2pdf-->
+<!--      :show-layout="true"-->
+<!--      :float-layout="false"-->
+<!--      :enable-download="true"-->
+<!--      :preview-modal="true"-->
+<!--      :pdf-quality="1"-->
+<!--      :manual-pagination="true"-->
+<!--      pdf-content-width="100%"-->
+<!--      :html-to-pdf-options="OPTIONS.OPTION_JS_PDF"-->
+<!--      ref="html2Pdf">-->
+<!--    <template v-slot:pdf-content>-->
+<!--      <div class="py-5">-->
+<!--        <div class="font-bold">1. Nhóm tiêu chí về Môi trường</div>-->
+<!--        <div v-for="environmentObject in environmentAnswers">-->
+<!--          <div>-->
+<!--            <span class="font-semibold">Câu {{ environmentObject.label }}</span>:-->
+<!--            {{ environmentObject.question }}-->
+<!--          </div>-->
+<!--          <div>{{ environmentObject.answer }}</div>-->
+<!--        </div>-->
+<!--        <div class="html2pdf__page-break"/>-->
+<!--        <div class="font-bold">2. Nhóm tiêu chí về Xã hội</div>-->
+<!--        <div v-for="socialObject in socialAnswers">-->
+<!--          <div>-->
+<!--            <span class="font-semibold">Câu {{ socialObject.label }}</span>: {{ socialObject.question }}-->
+<!--          </div>-->
+<!--          <div>{{ socialObject.answer }}</div>-->
+<!--        </div>-->
+<!--        <div class="html2pdf__page-break"/>-->
+<!--        <div class="font-bold">3. Nhóm tiêu chí về Quản trị</div>-->
+<!--        <div v-for="governanceObject in governanceAnswers">-->
+<!--          <div>-->
+<!--            <span class="font-semibold">Câu {{ governanceObject.label }}</span>: {{-->
+<!--              governanceObject.question-->
+<!--            }}-->
+<!--          </div>-->
+<!--          <div>{{ governanceObject.answer }}</div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </template>-->
+<!--  </vue3-html2pdf>-->
   <a-button class="bg-[#1677ff] h-[50px] w-[120px] flex items-center justify-center"
             type="primary"
-            @click.prevent="generateReport">
+            @click.prevent="exportHTMLToPDF('EvaluateAnswers', 'result-answers')">
     <PrinterOutlined/>
     In đáp án
   </a-button>
