@@ -200,7 +200,7 @@ const faqs = [
         'Gói hỗ trợ kĩ thuật KHÔNG bao gồm các hạng mục sau:\n' +
         'a. Nghiên cứu và phát triển sản phẩm/dịch vụ ở giai đoạn đánh giá tính tiền khả thi cho dòng sản phẩm/dịch vụ mới.\n' +
         'b. Cung cấp các học bổng cho lãnh đạo, cán bộ của doanh nghiệp không liên quan đến kế hoạch triển khai hoặc chuyển đổi sang kinh doanh bền vững hoặc mở rộng mô hình kinh doanh bền vững, cam kết hành động thí điểm để chuyển đổi/nhân rộng sáng kiến kinh doanh bền vững.\n' +
-        'c. Mua sắm trang thiết bị, phần mềm giá trị lớn/không liên quan đến thí điểm, triển khai hoặc nhân rộng các sáng kiến/kế hoạch triển khai ESG.\n' +
+        'c. Mua sắm trang thiết bị, phần mềm.\n' +
         'd. Chi phí truyền thông, quảng bá (marketing-PR) thông thường của doanh nghiệp.\n'
   },
   {
