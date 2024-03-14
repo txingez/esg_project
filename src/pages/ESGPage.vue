@@ -87,11 +87,7 @@ const supports = [
   {
     number: '05',
     description: 'Tổ chức các sự kiện, tập huấn cho đối tác trong chuỗi cung ứng về kinh doanh bền vững'
-  },
-  {
-    number: '06 ',
-    description: 'Mua sắm một số trang thiết bị nhỏ phục vụ chuyển đổi xanh, kinh doanh bền vững, v.v.'
-  },
+  }
 ]
 
 const testimonials = [
@@ -200,12 +196,11 @@ const faqs = [
         'Gói hỗ trợ kĩ thuật dành cho Top 3 doanh nghiệp giành chiến thắng chung cuộc có thể gồm các hạng mục khác nhau, được xác định tùy thuộc vào nhu cầu cụ thể của mỗi doanh nghiệp, tuy nhiên cần đảm bảo mục tiêu giúp thí điểm, triển khai hoặc nhân rộng việc thực hành ESG hoặc mô hình kinh doanh bền vững. Một số hạng mục điển hình bao gồm:\n\n' +
         '• Thuê chuyên gia đào tạo, tư vấn hoặc chuyên gia kỹ thuật đồng hành cùng doanh nghiệp, hỗ trợ doanh nghiệp lên chiến lược hoặc triển khai ESG, chuyển đổi xanh. (Ví dụ: Đào tạo, năng cao năng lực về ESG, chuyển đổi xanh; Thuê chuyên gia tư vấn chiến lược và xây dựng kế hoạch hành động về kinh doanh bền vững; Xây dựng Báo cáo Phát triển bền vững/Báo cáo ESG năm đầu tiên; Tiến hành kiểm kê khí nhà kính; Xây dựng kế hoạch giảm phát thải, v.v). Doanh nghiệp có thể đề xuất danh sách chuyên gia để Dự án USAID IPSC xem xét.\n\n' +
         '• Tổ chức các sự kiện, tập huấn liên quan, hoạt động cho nội bộ doanh nghiệp và đối tác trong chuỗi sản xuất và cung ứng của doanh nghiệp, qua đó thúc đẩy chuyển đổi xanh, tính tuần hoàn trong chuỗi cung ứng, hoặc khuyến khích sự tham gia của người thu nhập thấp, nhóm yếu thế trong chuỗi giá trị hoặc mô hình kinh doanh của doanh nghiệp.\n\n' +
-        '• Mua sắm một số trang, thiết bị nhỏ (trị giá dưới 200 triệu đồng/thiết bị và đáp ứng các quy định mua sắm của dự án) nhằm thí điểm, triển khai hoặc nhân rộng các thực hành ESG, chuyển đổi xanh, mô hình kinh doanh bền vững của doanh nghiệp.\n\n' +
         '• Các hạng mục khác sẽ được xác định tùy thuộc nhu cầu cụ thể của mỗi doanh nghiệp. Trong thời gian đào tạo và tư vấn trong phạm vi Vòng chung kết, Dự án sẽ đồng hành và hỗ trợ Quý doanh nghiệp hoàn thiện kế hoạch triển khai sáng kiến, đồng thời làm rõ và xác định nhu cầu cụ thể mà doanh nghiệp cần được hỗ trợ liên quan tới ESG, chuyển đổi xanh và kinh doanh bền vững.\n\n' +
         'Gói hỗ trợ kĩ thuật KHÔNG bao gồm các hạng mục sau:\n' +
         'a. Nghiên cứu và phát triển sản phẩm/dịch vụ ở giai đoạn đánh giá tính tiền khả thi cho dòng sản phẩm/dịch vụ mới.\n' +
         'b. Cung cấp các học bổng cho lãnh đạo, cán bộ của doanh nghiệp không liên quan đến kế hoạch triển khai hoặc chuyển đổi sang kinh doanh bền vững hoặc mở rộng mô hình kinh doanh bền vững, cam kết hành động thí điểm để chuyển đổi/nhân rộng sáng kiến kinh doanh bền vững.\n' +
-        'c. Mua sắm phần mềm, các trang thiết bị giá trị lớn/không liên quan đến thí điểm, triển khai hoặc nhân rộng các sáng kiến/kế hoạch triển khai ESG.\n' +
+        'c. Mua sắm trang thiết bị, phần mềm giá trị lớn/không liên quan đến thí điểm, triển khai hoặc nhân rộng các sáng kiến/kế hoạch triển khai ESG.\n' +
         'd. Chi phí truyền thông, quảng bá (marketing-PR) thông thường của doanh nghiệp.\n'
   },
   {

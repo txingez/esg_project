@@ -30,7 +30,7 @@ const signIn = () => {
 		localStorage.setItem(import.meta.env.ENV_TOKEN_KEY, user.token)
 		Notification('success', 'Thành công', 'Bạn đã đăng nhập thành công!')
 		const routeBack = router.options.history.state.back
-		router.push(`${routeBack === '/register' || routeBack === '/reset-password' ? '/' : routeBack}`)
+		router.push(`${routeBack === '/register' || routeBack === '/reset-password' ? '/' : routeBack ? routeBack : '/'}`)
 	}).catch((err) => {
 		console.log(err)
 		const data = err.response.data

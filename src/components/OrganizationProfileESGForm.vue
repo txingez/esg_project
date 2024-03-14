@@ -362,7 +362,10 @@ const handlePeopleMakeEvaluate = () => {
             Năm doanh nghiệp bắt đầu triển khai áp dụng ESG (nếu đã triển khai):
           </div>
         </template>
-        <a-date-picker v-model:value="profileESGStore.formData.startedESGYear" class="w-full" picker="year"
+        <a-date-picker v-model:value="profileESGStore.formData.startedESGYear"
+                       class="w-full"
+                       :valueFormat="yearFormat"
+                       picker="year"
                        placeholder="Năm bắt đầu triển khai ESG"/>
       </a-form-item>
       <a-form-item class="md:basis-[48%] w-full"
