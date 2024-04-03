@@ -184,7 +184,7 @@ const downloadFile = (formId, fileName) => {
 <!--              Thực hiện đánh giá-->
 <!--            </a-button>-->
             <a-button class="min-h-[50px] md:text-base xl:text-lg">
-              <a href="/Toolkit-IB%20Readiness%20Assessment.xlsx" download>
+              <a href="/Bo Cong Cu Danh gia, Nhan dien Doanh nghiep Kinh doanh Bao trum.xlsx" download>
                 Thực hiện đánh giá
               </a>
             </a-button>

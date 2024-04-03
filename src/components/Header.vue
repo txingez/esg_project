@@ -27,7 +27,8 @@ const links = [
 		to: '/evaluate',
 		children: [
 			{label: 'Công cụ đánh giá ESG', to: '/evaluate/esg/form'},
-			{label: 'Công cụ đánh giá kinh tế tuần hoàn', to: '/evaluate/nec/form'}
+			{label: 'Công cụ đánh giá kinh tế tuần hoàn', to: '/evaluate/nec/form'},
+            {label: 'Công cụ đánh giá kinh doanh bao trùm', to: '/news/detail/100'}
 		]
 	},
 	{label: 'Sáng kiến \nESG Việt Nam', name: ['ESGVietNam'], to: '/esg-vietnam'},
