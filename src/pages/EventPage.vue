@@ -1,14 +1,16 @@
 <script setup>
 
 import Banner from "../components/Banner.vue";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { getPosts } from "../services/posts.js";
 import BreadCrumb from "../components/BreadCrumb.vue";
 import AOS from 'aos'
 import { useRouter } from "vue-router";
 import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter()
+const {t, locale} = useI18n()
 
 const eventsToShow = ref([])
 const newsToShow = ref([])
@@ -19,10 +21,17 @@ const isAllNews = ref(false)
 const loadingEvent = ref(false)
 const loadingNews = ref(false)
 
-const routes = [
+const routes = ref([
   {name: 'Home', to: '/'},
-  {name: 'Tin tức và sự kiện', to: '/event'},
-]
+  {name: t("event_page.route_name"), to: '/event'},
+])
+
+watch(locale, () => {
+  routes.value = [
+    {name: 'Home', to: '/'},
+    {name: t("event_page.route_name"), to: '/event'},
+  ]
+})
 
 onMounted(() => {
   AOS.init()
@@ -76,7 +85,7 @@ const handleSeeDetail = document => {
 <template>
   <Banner
       img-src="https://lh3.googleusercontent.com/pw/AIL4fc_hYi5ZP_Q3Uq-sw5CBb0c123bFv0FIn-bK8GLtWKiMtbmBWA3BxFS6HSgGNATY4wk6se2X_UfuwlpclwceK46GQFc431_bh2DRT1yNPVOIcP6kt1PECKl8L2cIXNYjr51qjncyRLpJF32ohX4oG0yY=w1280-h800-s-no?authuser=0"
-      label="tin tức và sự kiện"/>
+      :label="$t('event_page.banner_label')"/>
 
   <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10">
     <div class="mt-2.5">
@@ -84,7 +93,7 @@ const handleSeeDetail = document => {
     </div>
     <div class="flex flex-col gap-10">
       <div class="font-bold md:text-4xl xl:text-5xl text-3xl text-gray-600">
-        Tin tức
+        {{ $t("event_page.news_part_title") }}
       </div>
       <a-spin :spinning="loadingNews">
         <div class="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
@@ -115,23 +124,23 @@ const handleSeeDetail = document => {
               <a v-if="news.content_type === 'LINK'" :href="news.content"
                  class="font-bold line-clamp-2 text-ellipsis text-base"
                  target="_blank">
-                {{ news.title }}
+                {{ locale === 'en' && !!news.titleEn && news.titleEn !== '' ? news.titleEn : news.title }}
               </a>
               <a v-else
                  class="font-bold line-clamp-2 text-ellipsis text-base"
                  @click.prevent="handleSeeDetail(news)">
-                {{ news.title }}
+                {{ locale === 'en' && !!news.titleEn && news.titleEn !== '' ? news.titleEn : news.title }}
               </a>
               <div>
-                <div>Nguồn: <span>{{ news.source }}</span></div>
-                <div>Đăng ngày: <span>{{ news.release_date }}</span></div>
+                <div>{{ $t("event_page.resource_label") }} <span>{{ news.source }}</span></div>
+                <div>{{ $t("event_page.public_label") }} <span>{{ news.release_date }}</span></div>
               </div>
             </div>
           </a-card>
         </div>
       </a-spin>
       <div v-if="!isAllNews" class="text-center">
-        <a-button class="min-h-[50px] min-w-[150px]" @click.prevent="showMore(false)">Xem thêm</a-button>
+        <a-button class="min-h-[50px] min-w-[150px]" @click.prevent="showMore(false)">{{ $t("see_more_btn") }}</a-button>
       </div>
     </div>
   </div>
@@ -139,7 +148,7 @@ const handleSeeDetail = document => {
   <div class="md:px-10 lg:px-[100px] xl:px-[150px] px-5 py-10">
     <div class="flex flex-col gap-10">
       <div class="font-bold md:text-4xl xl:text-5xl text-3xl text-gray-600">
-        Sự kiện
+        {{ $t("event_page.event_part_title") }}
       </div>
       <a-spin :spinning="loadingEvent">
         <div class="grid xl:grid-cols-4 md:grid-cols-3 gap-5">
@@ -161,23 +170,23 @@ const handleSeeDetail = document => {
               <a v-if="event.content_type === 'LINK'" :href="event.content"
                  class="font-bold line-clamp-2 text-ellipsis text-base"
                  target="_blank">
-                {{ event.title }}
+                {{ locale === 'en' && !!event.titleEn && event.titleEn !== '' ? event.titleEn : event.title }}
               </a>
               <a v-else
                  class="font-bold line-clamp-2 text-ellipsis text-base"
                  @click.prevent="handleSeeDetail(event)">
-                {{ event.title }}
+                {{ locale === 'en' && !!event.titleEn && event.titleEn !== '' ? event.titleEn : event.title }}
               </a>
               <div>
-                <div>Nguồn: <span>{{ event.source }}</span></div>
-                <div>Đăng ngày: <span>{{ event.release_date }}</span></div>
+                <div>{{ $t("event_page.resource_label") }} <span>{{ event.source }}</span></div>
+                <div>{{ $t("event_page.public_label") }} <span>{{ event.release_date }}</span></div>
               </div>
             </div>
           </a-card>
         </div>
       </a-spin>
       <div v-if="!isAllEvent" class="text-center">
-        <a-button class="min-h-[50px] min-w-[150px]" @click.prevent="showMore(true)">Xem thêm</a-button>
+        <a-button class="min-h-[50px] min-w-[150px]" @click.prevent="showMore(true)">{{ $t("see_more_btn") }}</a-button>
       </div>
     </div>
   </div>

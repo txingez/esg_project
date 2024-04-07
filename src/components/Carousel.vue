@@ -7,8 +7,11 @@ import "@egjs/flicking-plugins/dist/pagination.css";
 import { Arrow, Fade, Pagination, AutoPlay } from "@egjs/flicking-plugins";
 import { ref } from "vue";
 import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
+import { useI18n } from 'vue-i18n';
 
 const router = useRouter()
+const {t, locale} = useI18n()
+
 defineProps({
   slides: Array
 })
@@ -41,11 +44,11 @@ const handleClickBtn = target => {
           <div class="space-y-5">
             <div class="p-1.5 break-after-auto font-bold whitespace-pre-wrap text-center xl:text-[6vh]/[7vh] lg:text-5xl/[4vh] lg:py-1 md:text-4xl/[4vh] text-base
                       text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">
-              {{ banner.title }}
+              {{ locale === 'en' && !!banner.titleEn && banner.titleEn !== '' ? banner.titleEn : banner.title }}
             </div>
             <div
                 class="whitespace-pre-wrap xl:text-2xl lg:text-lg md:text-base text-xs italic xl:pr-72 lg:pr-32 md:pr-28 pr-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500">
-              {{ banner.description }}
+              {{ locale === 'en' && !!banner.descriptionEn && banner.descriptionEn !== '' ? banner.descriptionEn : banner.description }}
             </div>
             <div class="flex flex-col gap-2 items-center">
               <div :class="banner.labelBtn ? '' : 'invisible'"
@@ -53,10 +56,10 @@ const handleClickBtn = target => {
                       text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white"
                    style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
                    @click.prevent="handleClickBtn(banner.target)">
-                {{ banner.labelBtn }}
+                {{ locale === 'en' && !!banner.labelBtnEn && banner.labelBtnEn !== '' ? banner.labelBtnEn : banner.labelBtn }}
               </div>
               <div class="text-gray-600 md:text-sm text-[12px] italic">
-                Hạn cuối: 17h 31/03/2024
+                {{ $t("carousel.banner_1") }}
               </div>
             </div>
           </div>
@@ -68,18 +71,18 @@ const handleClickBtn = target => {
               :class="banner.placeTitle === 'center' ? 'text-center md:-translate-y-[130%] xl:text-6xl lg:text-5xl lg:py-1 md:text-4xl text-base' : 'md:text-5xl lg:text-6xl xl:text-7xl text-2xl'"
               class="p-1.5 break-after-auto font-bold whitespace-pre-wrap
                                     text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">
-            {{ banner.title }}
+            {{ locale === 'en' && !!banner.titleEn && banner.titleEn !== '' ? banner.titleEn : banner.title }}
           </div>
           <div
               class="whitespace-pre-wrap xl:text-2xl lg:text-lg md:text-base text-xs italic xl:pr-72 lg:pr-32 md:pr-28 pr-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500">
-            {{ banner.description }}
+            {{ locale === 'en' && !!banner.descriptionEn && banner.descriptionEn !== '' ? banner.descriptionEn : banner.description }}
           </div>
           <div :class="banner.labelBtn ? '' : 'invisible'"
                class="md:px-6 px-3 md:py-2 lg:py-3 md:text-base xl:text-2xl md:min-h-[50px] min-h-[30px] flex justify-center items-center border rounded border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer
                                          text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white"
                style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
                @click.prevent="handleClickBtn(banner.target)">
-            {{ banner.labelBtn }}
+            {{ locale === 'en' && !!banner.labelBtnEn && banner.labelBtnEn !== '' ? banner.labelBtnEn : banner.labelBtn }}
           </div>
         </div>
         <div class="h-full">

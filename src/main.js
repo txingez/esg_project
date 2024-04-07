@@ -31,6 +31,9 @@ import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/lara-dark-blue/theme.css'
 import vue3PhotoPreview from 'vue3-photo-preview';
 import 'vue3-photo-preview/dist/index.css';
+import i18n from './i18n'
+
+window.Buffer;
 
 const pinia = createPinia()
 library.add(faLocationDot,
@@ -58,5 +61,6 @@ createApp(App)
 	.use(Antd)
 	.use(vue3PhotoPreview)
 	.use(PrimeVue)
+	.use(i18n)
 	.component('font-awesome-icon', FontAwesomeIcon)
 	.mount('#app');

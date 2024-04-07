@@ -1,0 +1,291 @@
+{
+  "home_page_route_name": "Home",
+  "header": {
+    "title": "OFFICIAL ELECTRONIC INFORMATION PAGE OF AGENCY FOR ENTERPRISE DEVELOPMENT, MINISTRY OF PLANNING AND INVESTMENT ON APPLICATION OF SUSTAINABLE BUSINESS",
+    "search": "SEARCH",
+    "register": "SIGN UP",
+    "login": "SIGN IN",
+    "account": "ACCOUNT",
+    "accountInfo": "Personal Info",
+    "accountActivity": "Activity",
+    "logout": "Sign out",
+    "navbar": {
+      "overview": "Overview\n sustainable business",
+      "evaluate": "Evaluate\n sustainable business",
+      "esg": "ESG assessment tool",
+      "nec": "Circular economy assessment tool",
+      "esg_page": "Initiative\n ESG Vietnam",
+      "event": "Activities",
+      "library": "Library",
+      "contact": "Contact"
+    }
+  },
+  "carousel": {
+    "banner_1": "Deadline: 17h 31/03/2024"
+  },
+  "homepage": {
+    "target": "Target",
+    "evaluate_part_title": "Evaluation toolkit\nSustainable business",
+    "evaluate_slide_btn": "Evaluate now",
+    "esg_part_title": "Vietnam ESG Initiative",
+    "esg_join_btn": "REGISTER TO JOIN NOW",
+    "story_part_title": "Typical story about\nsustainable business",
+    "event_part_title": "Event",
+    "event_part_column": {
+      "name": "Program name",
+      "time": "Time",
+      "location": "Location",
+      "detail": "Detail"
+    },
+    "hot_news_part_title": "Hot news"
+  },
+  "see_more_btn": "SEE MORE",
+  "find_out_btn": "Find out more",
+  "footer": {
+    "navbar": {
+      "overview": "Overview sustainable business",
+      "evaluate": "Evaluate sustainable business",
+      "esg_page": "Initiative ESG Vietnam",
+      "event": "Activities",
+      "library": "Library"
+    },
+    "address": "No. 6B, Hoang Dieu, Ba Dinh, Hanoi"
+  },
+  "overview_page": {
+    "banner_title_1": "OVERVIEW",
+    "banner_title_2": "SUSTAINABLE BUSINESS",
+    "route_name": "Overview sustainable business"
+  },
+  "evaluate_page": {
+    "banner_title_1": "EVALUATE",
+    "banner_title_2": "SUSTAINABLE BUSINESS",
+    "route_name": "Evaluate sustainable business",
+    "evaluate_btn": "Perform assessments",
+    "document_btn": "Introductory documents and instructions"
+  },
+  "esg_page": {
+    "banner_title": "VIETNAM ESG INITIATIVE 2024\nTHE OPPORTUNITY FOR GREEN TRANSITION",
+    "join_now_btn": "Join now",
+    "deadline": "Deadline: 17h 31/03/2024",
+    "route_name": "Initiative ESG Vietnam",
+    "condition": {
+      "introduction": "To participate in the program, Vietnamese businesses need to meet the following criteria:",
+      "condition_1": "Is a Vietnamese economic organization/unit, including private enterprises, cooperatives, and business households, with no more than 500 full-time employees and no legal disputes.",
+      "condition_2": "Operating in priority areas of the USAID IPSC project such as agriculture-forestry-fishery, processing and manufacturing industry, information technology, logistics, tourism and support products.",
+      "condition_3": "Have an effective, profitable business model.",
+      "condition_4": "Have intention and commitment to action to implement ESG at the enterprise, transform or expand the business model ustainable business.",
+      "learn_more_text": "Learn more about ESG",
+      "here_text": "here"
+    },
+    "support_title": "Outstanding technical support items",
+    "gallery_title": "Looking back at the 2023 journey",
+    "story_title": "Typical story: Top 10 businesses participating in the final round of Vietnam ESG Initiative 2023",
+    "register_btn": "Sign up",
+    "faq_title": "Frequently asked questions"
+  },
+  "event_page": {
+    "route_name": "News and events",
+    "banner_label": "news and events",
+    "news_part_title": "News",
+    "event_part_title": "Events",
+    "resource_label": "Source:",
+    "public_label": "Posted date:"
+  },
+  "library_page": {
+    "route_name": "Library",
+    "banner_label": "library",
+    "resource_label": "Source:",
+    "public_label": "Release date:"
+  },
+  "contact_page": {
+    "title": "Contact us",
+    "form": {
+      "full_name": "Full Name",
+      "email": "Email",
+      "phone_number": "Phone number",
+      "content": "Message"
+    },
+    "send_btn": "Send"
+  },
+  "login_page": {
+    "title": "Login your account",
+    "short_description": "Log in to experience full product features",
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "save_info": "Stayed in login"
+    },
+    "forgot_password": "Forgot password?",
+    "login_btn": "Sign in",
+    "is_have_account": "You don't have an account yet?",
+    "register_now": "Register now"
+  },
+  "validate": {
+    "email_format": "Email is not formatted correctly",
+    "empty": "Please enter your information",
+    "password_length": "Password must be at least 6 characters",
+    "compare_password": "Confirmation passwords do not match",
+    "code_empty": "Enter the code received in email",
+    "tax_format": "Incorrect business code",
+    "tax_empty": "Please enter your Tax Code",
+    "founded_year_empty": "Please select the year of establishment",
+    "address_company_empty": "Please enter Business Registration Address",
+    "registration_type_empty": "Please select the type of business registration",
+    "other_registration_type_empty": "Please enter another type of business registration",
+    "number_format": "The number is not in the correct format",
+    "answer_empty": "Please select an answer",
+    "business_model_empty": "Please select the main field of production and business activities of the enterprise",
+    "other_business_model_empty": "Please enter another field of production and business activities",
+    "phone_number_format": "Incorrect phone number",
+    "choose_answer_empty": "Please choose 1 answer"
+  },
+  "register_page": {
+    "title": "Register an account",
+    "short_description": "Register as a member to experience the full features of the product",
+    "form": {
+      "full_name": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "password_repeat": "Re-enter password"
+    },
+    "password_rules": {
+      "min_length": "At least 6 characters",
+      "character": "Password must contain numbers, lowercase letters, uppercase letters",
+      "special_character": "Password must have at least 1 special character"
+    },
+    "register_btn": "Register an account",
+    "is_have_account": "Do you already have an account?",
+    "login_btn": "Sign in"
+  },
+  "modal": {
+    "register_failed_title": "Registration failed",
+    "register_success_description": "'You have successfully registered your account!'",
+    "success_title": "Success",
+    "login_success_description": "You have successfully logged in!",
+    "login_failed_title": "Login failed",
+    "receive_code_failed_title": "Receive code failed",
+    "reset_password_success_title": "You have successfully reset your password",
+    "reset_password_failed_title": "Reset password failed",
+    "change_password_success_description": "Changed password successfully!",
+    "failed_title": "Failed",
+    "change_password_failed_description": "Change password failed",
+    "check_login_failed_title": "You are not logged in",
+    "check_login_failed_description": "Please log in to use this feature",
+    "check_login_failed_btn": "Log in",
+    "session_expired_title": "Login session expired",
+    "session_expired_description": "Your session has expired, please log in again",
+    "session_expired_btn": "Sign in"
+  },
+  "reset_password_page": {
+    "title": "Recover password",
+    "short_description": "Please enter full account information to find your password",
+    "form": {
+      "new_password": "New password",
+      "new_password_repeat": "Re-enter new password",
+      "code": "Confirmation code",
+      "email": "Email"
+    },
+    "password_rules": {
+      "min_length": "At least 6 characters",
+      "character": "Password must contain numbers, lowercase letters, uppercase letters",
+      "special_character": "Password must have at least 1 special character"
+    },
+    "reset_password_btn": "Create new password",
+    "receive_code_btn": "Receive code",
+    "is_have_account": "You don't have an account yet?",
+    "register_now": "Register now"
+  },
+  "user_info_page": {
+    "route_name": "Account information",
+    "tab_1": {
+      "name": "Account information",
+      "full_name": "Full name",
+      "email": "Email Address"
+    },
+    "tab_2": {
+      "name": "Change password",
+      "current_password": "Enter current password",
+      "new_password": "New password",
+      "new_password_repeat": "Re-enter new password",
+      "change_password_btn": "Change password"
+    }
+  },
+  "history_page": {
+    "route_name_1": "Sustainable Business Review",
+    "route_name_2": "Evaluate history",
+    "esg_form_name": "LEVEL OF ENTERPRISES' SUSTAINABLE BUSINESS PRACTICES ACCORDING TO THE ENVIRONMENTAL-SOCIAL-GOVERNANCE (ESG) FRAMEWORK",
+    "nec_form_name": "LEVEL OF APPLICATION OF CIRCULAR ECONOMY PRINCIPLES BY ENTERPRISES",
+    "title": "Evaluate history",
+    "result_btn": "Assessment results"
+  },
+  "esg_form_page": {
+    "step_1": "Business information",
+    "step_2": "E (Environment)",
+    "step_3": "S (Social)",
+    "step_4": "G (Governance)",
+    "step_5": "Evaluation results",
+    "mobile_title_1": "PRACTICE LEVEL ASSESSMENT TOOL",
+    "mobile_title_2": "SUSTAINABLE BUSINESS",
+    "mobile_title_3": "OF BUSINESS BY FRAME",
+    "mobile_title_4": "ENVIRONMENT-SOCIAL-GOVERNANCE (ESG)",
+    "title_1": "TOOL FOR ASSESSING THE LEVEL OF SUSTAINABLE BUSINESS PRACTICES",
+    "title_2": "OF ENTERPRISES UNDER ENVIRONMENT-SOCIAL-GOVERNANCE (ESG) FRAMEWORK"
+  },
+  "nec_form_page": {
+    "step_1": "Business information",
+    "step_2": "Business vision",
+    "step_3": "Production and pre-production",
+    "step_4": "After-sales",
+    "step_5": "Evaluation results",
+    "title_1": "PRACTICE LEVEL ASSESSMENT TOOL",
+    "title_2": "SUSTAINABLE BUSINESS OF ENTERPRISES UNDER CIRCULAR ECONOMY PRINCIPLES"
+  },
+  "form_page": {
+    "review_question": "Businesses can review their answers for each criterion",
+    "print_result_btn": "Print results",
+    "here": "here"
+  },
+  "organization_profile": {
+    "company_name": "Business name (according to Business Registration Certificate):",
+    "tax": "Business code:",
+    "founded_year": "Founded year:",
+    "address_company": "Business registration address:",
+    "first_manufacture_factory": "Names of provinces/cities with production and business facilities of the enterprise that are different from the business registration address (if any):",
+    "registration_type": "Type of business registration:",
+    "employee_info_title": "Enterprise employee information",
+    "full_time_employee": "Total number of full-time employees:",
+    "full_time_employee_tooltip": "Includes all indefinite labor contracts, fixed-term labor contracts, probationary labor contracts",
+    "full_time_female": "where, total number of female employees:",
+    "part_time_employee": "Total number of part-time employees:",
+    "part_time_female": "where, total number of female employees:",
+    "season_employee": "Total number of seasonal employees:",
+    "season_female": "where, total number of female employees:",
+    "manager_count": "Total number of management level staff (from department head/head of department and above):",
+    "manager_female": "in which, the total number of management level officers is female:",
+    "minor_workers": "Total number of minor workers (if any):",
+    "minor_workers_tooltip": "Minor workers are workers from 15 years old to under 18 years old",
+    "b6": "Is the business a woman-owned business?",
+    "b6_tooltip": "A woman-owned enterprise is an enterprise whose total charter capital is owned by women(s) accounting for 51% or more and in which there is at least one person at the management level running the enterprise ",
+    "yes_no": "Yes/No",
+    "b7": "Is the business run by women?",
+    "b7_tooltip": "A business run by women is where a woman holds the highest executive position on the Board of Directors, possibly the position of General Director/CEO",
+    "business_model": "The main production and business field of the enterprise belongs to which of the following industry groups:",
+    "other_field": "Enter other information",
+    "started_nec": "The year the KTTH implementation started (if deployed)",
+    "started_esg": "The year the business started applying ESG (if implemented):",
+    "website_company": "Website address:",
+    "manager_info_title": "Information of 01 business leader (to contact)",
+    "name": "Full name:",
+    "workplace": "Work position:",
+    "phone_number": "Phone:",
+    "evaluate_person_info": "Person performing the evaluation",
+    "synchronize_info": "synchronize with the above information",
+    "confirm_btn": "Confirm"
+  },
+  "evaluate_form": {
+    "placeholder_select": "Please choose 1 answer",
+    "next_step_btn": "Next",
+    "finish_btn": "Finish",
+    "back_btn": "Back"
+  }
+}

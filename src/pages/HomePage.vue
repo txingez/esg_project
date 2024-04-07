@@ -1,6 +1,6 @@
 <script setup>
 import Carousel from "../components/Carousel.vue";
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref, watch } from "vue";
 import AOS from 'aos'
 import { getHotNews, getPosts } from "../services/posts.js";
 import { useJwt } from "@vueuse/integrations/useJwt";
@@ -15,18 +15,25 @@ import { useRouter } from "vue-router";
 import { handleOpenLink } from "../utils/handleOpenLink.js";
 import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
 import { ArrowRightOutlined } from "@ant-design/icons-vue"
+import { useI18n } from 'vue-i18n'
+import { EVENTS } from "../constants/events.js";
+import { EVENTS_EN } from "../constants/eventsEn.js";
 
 const router = useRouter()
+const {t, locale} = useI18n()
 
 const pageData = reactive({
   carouselData: [],
   pageTitle: '',
+  pageTitleEn: '',
   pageDescription: '',
-  titleMission: '',
+  pageDescriptionEn: '',
   missions: [],
   descriptionEvaluate: '',
+  descriptionEvaluateEn: '',
   evaluateSlides: [],
   descriptionESGPart: '',
+  descriptionESGPartEn: '',
   videoESGPart: '',
   stories: [],
   hotNews: []
@@ -44,50 +51,7 @@ const plugins = ref([
     type: 'bullet',
   })
 ])
-const dataEvent = ref([
-  {
-    name: 'Tọa đàm tại Hà Nội với chủ đề: "Xây lợi thế, Vững tương lai cùng Sáng kiến ESG Việt Nam 2024"',
-    time: '21/03/2024',
-    location: 'Hà Nội',
-    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/pfbid0YACS31AyZgLb5PkeeUKLimXPUBDz5B79szzebmqJu9Co3gPXc4h37s9Jgj1xc25Ml'
-  },
-  {
-    name: 'Tọa đàm tại Tp. Hồ Chí Minh với chủ đề "Xây lợi thế, Vững tương lai cùng Sáng kiến ESG Việt Nam 2024"',
-    time: '14/03/2024',
-    location: 'Hồ Chí Minh',
-    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/pfbid0YACS31AyZgLb5PkeeUKLimXPUBDz5B79szzebmqJu9Co3gPXc4h37s9Jgj1xc25Ml'
-  },
-  {
-    name: 'Buổi chia sẻ thông tin "Sáng kiến ESG Việt Nam 2024 - Đón đầu cơ hội chuyển đổi xanh"',
-    time: '25/01/2024',
-    location: 'Trực tuyến',
-    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/382831424401610?ref=embed_post'
-  },
-  {
-    name: 'Đào tạo chuyên sâu cho top 10 doanh nghiệp Sáng kiến ESG Việt Nam 2023: Báo cáo phát triển bền vững với bản cập nhật tiêu chuẩn GRI 2021',
-    time: '28/12/2023 - 29/12/2023',
-    location: 'Hồ Chí Minh',
-    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/376065181744901?ref=embed_post'
-  },
-  {
-    name: 'Nâng cao năng lực doanh nghiệp nhằm thích ứng yêu cầu chuyển đổi xanh, giảm phát thải và thực hành kiểm kê khí nhà kính',
-    time: '29/11/2023 - 30/11/2023',
-    location: 'Hà Nội',
-    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/356769460341140?ref=embed_post'
-  },
-  {
-    name: 'Diễn đàn “Tiên phong tinh thần doanh nhân, kiến tạo Việt Nam bền vững”',
-    time: '13/10/2023',
-    location: 'Hà Nội',
-    link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/331198769564876?ref=embed_post'
-  },
-  {
-    name: 'Diễn đàn Doanh nhân nữ 2023: "Kinh doanh bền vững - Chìa khóa tạo lợi thế cạnh tranh cho doanh nghiệp do nữ làm chủ"',
-    time: '22/09/2023',
-    location: 'Hà Nội',
-    link: 'https://www.facebook.com/100080242674029/posts/pfbid033xMXUCnYEexs9mLuPMyBE7tqxLPCLqxR7XABbGinsd95Y9hPQtF5vYXkD25Qdfarl/?mibextid=cr9u03'
-  }
-])
+const dataEvent = ref()
 
 const routes = [
   {name: 'Home', to: '/'}
@@ -115,18 +79,22 @@ onMounted(() => {
   onScreenResize()
   AOS.init()
   loading.value = true
+  dataEvent.value = locale.value === 'vi' ? EVENTS : EVENTS_EN
   axios.all([getPosts('HOME', 10, 0), getHotNews(4)])
       .then(
           axios.spread((getPostResponse, getHotNewsResponse) => {
             const getPostDataDecoded = useJwt(getPostResponse.data[0].content).payload.value
             pageData.pageTitle = getPostDataDecoded.data.homePageTitle.title
+            pageData.pageTitleEn = getPostDataDecoded.data.homePageTitle.titleEn
             pageData.pageDescription = getPostDataDecoded.data.homePageTitle.description
-            pageData.titleMission = getPostDataDecoded.data.titleMission
+            pageData.pageDescriptionEn = getPostDataDecoded.data.homePageTitle.descriptionEn
             pageData.missions = getPostDataDecoded.data.missions.map((m, index) => ({...m, ...{icon: missionsIcon[index]}}))
             pageData.descriptionEvaluate = getPostDataDecoded.data.descriptionEvaluate
+            pageData.descriptionEvaluateEn = getPostDataDecoded.data.descriptionEvaluateEn
             pageData.evaluateSlides = getPostDataDecoded.data.evaluateSlides
             pageData.carouselData = getPostDataDecoded.data.bannerSlides
             pageData.descriptionESGPart = getPostDataDecoded.data.introduction.description
+            pageData.descriptionESGPartEn = getPostDataDecoded.data.introduction.descriptionEn
             pageData.videoESGPart = getPostDataDecoded.data.introduction.videoURL
 
             pageData.stories = SUCCESS_STORIES
@@ -135,9 +103,12 @@ onMounted(() => {
             pageData.hotNews = getHotNewsResponse.data.data.map(hotNews => ({
               id: hotNews.id,
               title: hotNews.title,
-              href: hotNews.content,
+              titleEn: hotNews.titleEn,
+              content: hotNews.content,
+              contentEn: hotNews.contentEn,
               contentType: hotNews.content_type,
               description: hotNews.description,
+              descriptionEn: hotNews.descriptionEn,
               thumbnail: hotNews.image
             }))
           })
@@ -150,10 +121,6 @@ onMounted(() => {
       })
 })
 
-const titleEvaluatePart = 'Bộ công cụ đánh giá \nKinh doanh bền vững'
-const titleESGPart = 'Sáng kiến ESG Việt Nam'
-const titleStories = 'Câu chuyện điển hình về \nkinh doanh bền vững'
-
 const showMore = () => {
   const newStoriesToShow = pageData.stories.slice(0, storiesToShow.value.length + 3)
   storiesToShow.value = newStoriesToShow
@@ -164,12 +131,23 @@ const handleSeeDetail = document => {
   router.push(`/news/detail/${document.id}`)
 }
 
-const columnsEvent = [
-  {title: 'Tên chương trình', dataIndex: 'name', key: 'name'},
-  {title: 'Thời gian', dataIndex: 'time', key: 'time', width: 210},
-  {title: 'Địa điểm', dataIndex: 'location', key: 'location', width: 120},
-  {title: 'Thông tin chi tiết', dataIndex: 'link', key: 'link', width: 170},
-]
+const columnsEvent = ref([
+  {title: t("homepage.event_part_column.name"), dataIndex: 'name', key: 'name'},
+  {title: t("homepage.event_part_column.time"), dataIndex: 'time', key: 'time', width: 210},
+  {title: t("homepage.event_part_column.location"), dataIndex: 'location', key: 'location', width: 120},
+  {title: t("homepage.event_part_column.detail"), dataIndex: 'link', key: 'link', width: 170},
+])
+
+watch(locale, (newLocale) => {
+  columnsEvent.value = [
+    {title: t("homepage.event_part_column.name"), dataIndex: 'name', key: 'name'},
+    {title: t("homepage.event_part_column.time"), dataIndex: 'time', key: 'time', width: 210},
+    {title: t("homepage.event_part_column.location"), dataIndex: 'location', key: 'location', width: 120},
+    {title: t("homepage.event_part_column.detail"), dataIndex: 'link', key: 'link', width: 170},
+  ]
+
+  dataEvent.value = newLocale === 'vi' ? EVENTS : EVENTS_EN
+})
 </script>
 
 <template>
@@ -180,11 +158,11 @@ const columnsEvent = [
       <div class="absolute top-0 z-10">
         <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] whitespace-pre-wrap
             text-center lg:text-[40px] md:text-[28px] text-[15px] md:leading-[48.59px] leading-[30px] md:mt-[80px] mt-[40px] font-medium">
-          {{ pageData.pageTitle }}
+          {{ locale === 'vi' ? pageData.pageTitle : pageData.pageTitleEn }}
         </div>
         <div
             class="text-[#757575] whitespace-pre-wrap font-medium lg:text-[14px]/[26.25px] text-[8px]/[20px] text-center md:tracking-[.20em] tracking-[.1em] lg:mt-[35px] mt-[20px]">
-          {{ pageData.pageDescription.toUpperCase() }}
+          {{ locale === 'vi' ? pageData.pageDescription.toUpperCase() : pageData.pageDescriptionEn.toUpperCase() }}
         </div>
         <div class="flex justify-center md:mt-[20px] mt-[20px]">
           <div class="h-[3px] md:w-[310px] w-[150px] bg-[#FF7437]"></div>
@@ -192,7 +170,7 @@ const columnsEvent = [
 
         <div class="text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] text-center
             lg:text-[40px] md:text-[28px] text-[15px] md:leading-[89.03px] leading-[40px] font-medium">
-          Mục tiêu
+          {{ $t("homepage.target") }}
         </div>
       </div>
       <div
@@ -214,10 +192,14 @@ const columnsEvent = [
                       </div>
                       <div
                           class="lg:text-[32px]/[45px] md:text-[24px]/[28px] text-[15px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] font-medium">
-                        {{ mission.title }}
+                        {{
+                          locale === 'en' && !!mission.titleEn && mission.titleEn !== '' ? mission.titleEn : mission.title
+                        }}
                       </div>
                       <div class="lg:text-base md:text-sm text-[10px] text-gray-600">
-                        {{ mission.content }}
+                        {{
+                          locale === 'en' && !!mission.contentEn && mission.contentEn !== '' ? mission.contentEn : mission.content
+                        }}
                       </div>
                     </div>
                   </div>
@@ -245,9 +227,10 @@ const columnsEvent = [
                    data-aos-easing="ease-in-out">
                 <div
                     class="whitespace-pre-wrap font-medium xl:text-[50px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[20px]/[30px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258]">
-                  {{ titleEvaluatePart }}
+                  {{ $t("homepage.evaluate_part_title") }}
                 </div>
-                <div class="ql-editor !p-0 !text-left text-gray-600" v-html="pageData.descriptionEvaluate"/>
+                <div class="ql-editor !p-0 !text-left text-gray-600"
+                     v-html="locale === 'en' && pageData.descriptionEvaluateEn !== '' ? pageData.descriptionEvaluateEn : pageData.descriptionEvaluate"/>
               </div>
               <div data-aos="fade-up"
                    data-aos-duration="500"
@@ -269,11 +252,11 @@ const columnsEvent = [
                         class="rounded-[10px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-full bg-black bg-opacity-50 flex flex-col gap-5 justify-center items-center">
                       <div class="text-white !h-fit">
                         <div class="ql-editor !p-0 !text-center font-semibold tracking-wide"
-                             v-html="slide.title"/>
+                             v-html="locale === 'en' && slide.titleEn !== '' ? slide.titleEn : slide.title"/>
                       </div>
                       <a-button class="text-white h-fit min-h-[50px] md:text-base xl:text-lg">
                         <a :href="slide.target" target="_blank">
-                          Đánh giá ngay
+                          {{ $t("homepage.evaluate_slide_btn") }}
                         </a>
                       </a-button>
                     </div>
@@ -310,15 +293,16 @@ const columnsEvent = [
                    data-aos-easing="ease-in-out">
                 <div
                     class="whitespace-pre-wrap font-medium xl:text-[49px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[26px]/[32px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258]">
-                  {{ titleESGPart }}
+                  {{ $t("homepage.esg_part_title") }}
                 </div>
-<!--                text-[#659D51]-->
-                <div class="text-base/[26.5px] font-normal text-black whitespace-pre-wrap quill-editor" v-html="pageData.descriptionESGPart"/>
+                <!--                text-[#659D51]-->
+                <div class="text-base/[26.5px] font-normal text-black whitespace-pre-wrap quill-editor"
+                     v-html="locale === 'en' && pageData.descriptionESGPartEn !== '' ? pageData.descriptionESGPartEn : pageData.descriptionESGPart"/>
                 <div class="md:px-6 px-3 md:py-2 lg:py-3 md:text-base xl:text-xl md:min-h-[50px] min-h-[30px] flex justify-center items-center border border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer
                                          text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white w-fit"
                      style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
                      @click.prevent="router.push('/esg-vietnam')">
-                  ĐĂNG KÝ THAM GIA NGAY
+                  {{ $t("homepage.esg_join_btn") }}
                 </div>
               </div>
               <div class="rounded-[10px] flex justify-end basis-1/2"
@@ -337,7 +321,7 @@ const columnsEvent = [
                  data-aos-easing="ease-in-out">
               <div
                   class="whitespace-pre-wrap py-1 font-medium xl:text-[50px]/[50px] lg:text-[34px]/[34px] md:text-[30px]/[30px] text-[26px]/[26px] text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258]">
-                {{ titleStories }}
+                {{ $t("homepage.story_part_title") }}
               </div>
               <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-11 gap-y-24 mt-[45px]">
                 <div class="relative hover:cursor-pointer" v-for="story in storiesToShow"
@@ -355,7 +339,7 @@ const columnsEvent = [
                       <div
                           class="font-medium xl:text-lg/[22px] lg:text-[13px]/[20px] text-base/[22px] tracking-wider text-[#263238] flex items-end">
                         <div class="line-clamp-3 text-ellipsis">
-                          {{ story.description }}
+                          {{ locale === 'vi' ? story.description : story.descriptionEn }}
                         </div>
                       </div>
                       <div class="w-[50px] self-end flex items-end min-h-[70px]">
@@ -370,7 +354,7 @@ const columnsEvent = [
                 <a-button
                     class="rounded-[88px] border-[#BABABA] h-[50px] lg:w-[300px] w-[220px] font-medium lg:text-2xl/[40px] text-xl/[40px] text-[#717171] tracking-[.2em]"
                     @click.prevent="showMore">
-                  XEM THÊM
+                  {{ $t("see_more_btn") }}
                 </a-button>
               </div>
             </div>
@@ -381,7 +365,7 @@ const columnsEvent = [
       <div class="space-y-5 xl:px-[145px] px-5 mb-10 xl:mt-[20px] md:mt-[80px] mt-[40px]">
         <div
             class="text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] font-medium xl:text-[50px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[26px]/[32px]">
-          Sự kiện
+          {{ $t("homepage.event_part_title") }}
         </div>
         <div>
           <a-table :columns="columnsEvent"
@@ -398,7 +382,7 @@ const columnsEvent = [
               </template>
               <template v-else-if="column.key === 'link'">
                 <a :href="record.link" class="flex gap-1 items-center group">
-                  <span class="text-blue-400 group-hover:text-blue-500">Tìm hiểu thêm</span>
+                  <span class="text-blue-400 group-hover:text-blue-500">{{ $t("find_out_btn") }}</span>
                   <ArrowRightOutlined class="group-hover:text-blue-500"/>
                 </a>
               </template>
@@ -410,7 +394,7 @@ const columnsEvent = [
       <div class="space-y-5 xl:px-[145px] px-5 mb-10 xl:mt-[50px] md:mt-[80px] mt-[40px]">
         <div
             class="text-transparent bg-clip-text bg-gradient-to-b from-[#00BEF0] to-[#2A4258] font-medium xl:text-[50px]/[64px] lg:text-[34px]/[46px] md:text-[30px]/[36px] text-[26px]/[32px]">
-          Tin tức
+          {{ $t("homepage.hot_news_part_title") }}
         </div>
         <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
           <a-card v-for="news in pageData.hotNews"
@@ -420,7 +404,7 @@ const columnsEvent = [
                   data-aos-easing="ease-in-out">
             <template #cover>
               <a v-if="news.contentType === 'LINK'"
-                 :href="news.href"
+                 :href="news.content"
                  class="overflow-hidden rounded-t-[10px] opacity-[0.85] hover:opacity-100 transition-all"
                  target="_blank">
                 <img :alt="news.thumbnail"
@@ -438,18 +422,19 @@ const columnsEvent = [
               </a>
             </template>
             <div class="space-y-2">
-              <a v-if="news.contentType === 'LINK'" :href="news.href"
+              <a v-if="news.contentType === 'LINK'" :href="news.content"
                  class="h-[60px] font-medium line-clamp-2 text-ellipsis text-lg text-[#263238] tracking-wide"
                  target="_blank">
-                {{ news.title }}
+                {{news.titleEn}}
+                {{ locale === 'en' && !!news.titleEn && news.titleEn !== '' ? news.titleEn : news.title }}
               </a>
               <a v-else
                  class="h-[60px] font-medium line-clamp-2 text-ellipsis text-lg text-[#263238] tracking-wide"
                  @click.prevent="handleSeeDetail(news)">
-                {{ news.title }}
+                {{ locale === 'en' && !!news.titleEn && news.titleEn !== '' ? news.titleEn : news.title }}
               </a>
               <div class="text-[12px] line-clamp-4 text-ellipsis text-justify">
-                {{ news.description }}
+                {{ locale === 'en' && !!news.descriptionEn && news.descriptionEn !== '' ? news.descriptionEn : news.description }}
               </div>
             </div>
           </a-card>

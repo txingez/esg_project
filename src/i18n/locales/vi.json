@@ -1,0 +1,291 @@
+{
+  "home_page_route_name": "Trang chủ",
+  "header": {
+    "title": "TRANG THÔNG TIN ĐIỆN TỬ CHÍNH THỨC CỦA CỤC PHÁT TRIỂN DOANH NGHIỆP, BỘ KẾ HOẠCH VÀ ĐẦU TƯ VỀ ÁP DỤNG KINH DOANH BỀN VỮNG",
+    "search": "TÌM KIẾM",
+    "register": "ĐĂNG KÝ",
+    "login": "ĐĂNG NHẬP",
+    "account": "TÀI KHOẢN",
+    "accountInfo": "Thông tin tài khoản",
+    "accountActivity": "Hoạt động",
+    "logout": "Đăng xuất",
+    "navbar": {
+      "overview": "Tổng quan về \nkinh doanh bền vững",
+      "evaluate": "Đánh giá \nkinh doanh bền vững",
+      "esg": "Công cụ đánh giá ESG",
+      "nec": "Công cụ đánh giá kinh tế tuần hoàn",
+      "esg_page": "Sáng kiến \nESG Việt Nam",
+      "event": "Hoạt động",
+      "library": "Thư viện",
+      "contact": "Liên hệ"
+    }
+  },
+  "carousel": {
+    "banner_1": "Hạn cuối: 17h 31/03/2024"
+  },
+  "homepage": {
+    "target": "Mục tiêu",
+    "evaluate_part_title": "Bộ công cụ đánh giá \nKinh doanh bền vững",
+    "evaluate_slide_btn": "Đánh giá ngay",
+    "esg_part_title": "Sáng kiến ESG Việt Nam",
+    "esg_join_btn": "ĐĂNG KÝ THAM GIA NGAY",
+    "story_part_title": "Câu chuyện điển hình về \nkinh doanh bền vững",
+    "event_part_title": "Sự kiện",
+    "event_part_column": {
+      "name": "Tên chương trình",
+      "time": "Thời gian",
+      "location": "Địa điểm",
+      "detail": "Thông tin chi tiết"
+    },
+    "hot_news_part_title": "Tin tức"
+  },
+  "see_more_btn": "XEM THÊM",
+  "find_out_btn": "Tìm hiểu thêm",
+  "footer": {
+    "navbar": {
+      "overview": "Tổng quan về kinh doanh bền vững",
+      "evaluate": "Đánh giá kinh doanh bền vững",
+      "esg_page": "Sáng kiến ESG Việt Nam",
+      "library": "Thư viện",
+      "event": "Hoạt động"
+    },
+    "address": "Số 6B, Hoàng Diệu, Ba Đình, Hà Nội"
+  },
+  "overview_page": {
+    "banner_title_1": "TỔNG QUAN VỀ",
+    "banner_title_2": "KINH DOANH BỀN VỮNG",
+    "route_name": "Tổng quan về kinh doanh bền vững"
+  },
+  "evaluate_page": {
+    "banner_title_1": "ĐÁNH GIÁ",
+    "banner_title_2": "KINH DOANH BỀN VỮNG",
+    "route_name": "Đánh giá kinh doanh bền vững",
+    "evaluate_btn": "Thực hiện đánh giá",
+    "document_btn": "Tài liệu giới thiệu và hướng dẫn"
+  },
+  "esg_page": {
+    "banner_title": "SÁNG KIẾN ESG VIỆT NAM 2024\nĐÓN ĐẦU CƠ HỘI CHUYỂN ĐỔI XANH",
+    "join_now_btn": "Tham gia ngay",
+    "deadline": "Hạn cuối: 17h 31/03/2024",
+    "route_name": "Sáng kiến ESG Việt Nam",
+    "condition": {
+      "introduction": "Để tham gia chương trình, các doanh nghiệp Việt Nam cần đáp ứng các tiêu chí sau đây:",
+      "condition_1": "Là tổ chức/đơn vị kinh tế Việt Nam, bao gồm các doanh nghiệp tư nhân, hợp tác xã, và hộ kinh doanh, với không quá 500 nhân viên toàn thời gian và đang không có tranh chấp pháp lý.",
+      "condition_2": "Hoạt động trong các lĩnh vực ưu tiên của dự án USAID IPSC như nông-lâm-ngư nghiệp, công nghiệp chế biến và chế tạo, công nghệ thông tin, logistics, du lịch và sản phẩm hỗ trợ.",
+      "condition_3": "Có mô hình kinh doanh hiệu quả, tạo ra lợi nhuận.",
+      "condition_4": "Có dự định và cam kết hành động để triển khai ESG tại doanh nghiệp, chuyển đổi hoặc mở rộng mô hình kinh doanh bền vững.",
+      "learn_more_text": "Tìm hiểu thêm về ESG",
+      "here_text": "tại đây"
+    },
+    "support_title": "Các hạng mục hỗ trợ kỹ thuật nổi bật",
+    "gallery_title": "Nhìn lại hành trình 2023",
+    "story_title": "Câu chuyện điển hình: Top 10 doanh nghiệp tham gia vòng chung kết Sáng kiến ESG Việt Nam 2023",
+    "register_btn": "Đăng ký tham gia",
+    "faq_title": "Câu hỏi thường gặp"
+  },
+  "event_page": {
+    "route_name": "Tin tức và sự kiện",
+    "banner_label": "tin tức và sự kiện",
+    "news_part_title": "Tin tức",
+    "event_part_title": "Sự kiện",
+    "resource_label": "Nguồn:",
+    "public_label": "Đăng ngày:"
+  },
+  "library_page": {
+    "route_name": "Thư viện",
+    "banner_label": "thư viện",
+    "resource_label": "Nguồn:",
+    "public_label": "Ngày phát hành:"
+  },
+  "contact_page": {
+    "title": "Liên hệ",
+    "form": {
+      "full_name": "Họ và tên",
+      "email": "Email",
+      "phone_number": "Số điện thoại",
+      "content": "Nội dung"
+    },
+    "send_btn": "Gửi đi"
+  },
+  "login_page": {
+    "title": "Đăng nhập tài khoản",
+    "short_description": "Đăng nhập để trải nghiệm đầy đủ tính năng của sản phẩm",
+    "form": {
+      "email": "Email",
+      "password": "Mật khẩu",
+      "save_info": "Lưu thông tin đăng nhập"
+    },
+    "forgot_password": "Quên mật khẩu?",
+    "login_btn": "Đăng nhập",
+    "is_have_account": "Bạn chưa có tài khoản?",
+    "register_now": "Đăng ký ngay"
+  },
+  "validate": {
+    "email_format": "Email không dúng định dạng",
+    "empty": "Hãy nhập thông tin",
+    "password_length": "Mật khẩu phải ít nhất 6 kí tự",
+    "compare_password": "Mật khẩu xác nhận không khớp",
+    "code_empty": "Nhập code nhận được trong email",
+    "tax_format": "Mã số doanh nghiệp không đúng",
+    "tax_empty": "Hãy nhập mã số doanh nghiệp",
+    "founded_year_empty": "Hãy chọn năm thành lập",
+    "address_company_empty": "Hãy nhập Địa chỉ đăng ký kinh doanh",
+    "registration_type_empty": "Hãy chọn loại hình đăng ký kinh doanh",
+    "other_registration_type_empty": "Hãy nhập loại hình đăng ký kinh doanh khác",
+    "number_format": "Số liệu có định dạng không đúng",
+    "answer_empty": "Hãy chọn câu trả lời",
+    "business_model_empty": "Hãy chọn Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp",
+    "other_business_model_empty": "Hãy nhập Lĩnh vực hoạt động sản xuất, kinh doanh khác",
+    "phone_number_format": "Số điện thoại không đúng",
+    "choose_answer_empty": "Hãy chọn 1 đáp án"
+  },
+  "register_page": {
+    "title": "Đăng ký tài khoản",
+    "short_description": "Đăng ký là thành viên để trải nghiệm đầy đủ tính năng của sản phẩm",
+    "form": {
+      "full_name": "Họ và tên",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "password_repeat": "Nhập lại mật khẩu"
+    },
+    "password_rules": {
+      "min_length": "Có ít nhất 6 ký tự",
+      "character": "Mật khẩu phải bao gồm số, chữ thường, chữ hoa",
+      "special_character": "Mật khẩu phải có ít nhất 1 ký tự đặc biệt"
+    },
+    "register_btn": "Đăng ký tài khoản",
+    "is_have_account": "Bạn đã có tài khoản?",
+    "login_btn": "Đăng nhập"
+  },
+  "modal": {
+    "register_failed_title": "Đăng ký không thành công",
+    "register_success_description": "'Bạn đã đăng ký tài khoản thành công!'",
+    "success_title": "Thành công",
+    "login_success_description": "Bạn đã đăng nhập thành công!",
+    "login_failed_title": "Đăng nhập thất bại",
+    "receive_code_failed_title": "Nhận code thất bại",
+    "reset_password_success_title": "Bạn đã cài đặt lại mật khẩu thành công",
+    "reset_password_failed_title": "Cài đặt lại mật khẩu thất bại",
+    "change_password_success_description": "Đổi mật khẩu thành công!",
+    "failed_title": "Thất bại",
+    "change_password_failed_description": "Đổi mật khẩu thất bại",
+    "check_login_failed_title": "Bạn chưa đăng nhập",
+    "check_login_failed_description": "Vui lòng đăng nhập để sử dụng tính năng này",
+    "check_login_failed_btn": "Đăng nhập",
+    "session_expired_title": "Hết phiên đăng nhập",
+    "session_expired_description": "Phiên đăng nhập của bạn đã hết, vui lòng đăng nhập lại",
+    "session_expired_btn": "Đăng nhập"
+  },
+  "reset_password_page": {
+    "title": "Tìm lại mật khẩu",
+    "short_description": "Hãy nhập đầy đủ thông tin tài khoản để tìm lại mật khẩu của bạn",
+    "form": {
+      "new_password": "Mật khẩu mới",
+      "new_password_repeat": "Nhập lại mật khẩu mới",
+      "code": "Code xác nhận",
+      "email": "Email"
+    },
+    "password_rules": {
+      "min_length": "Có ít nhất 6 ký tự",
+      "character": "Mật khẩu phải bao gồm số, chữ thường, chữ hoa",
+      "special_character": "Mật khẩu phải có ít nhất 1 ký tự đặc biệt"
+    },
+    "reset_password_btn": "Tạo mật khẩu mới",
+    "receive_code_btn": "Nhận code",
+    "is_have_account": "Bạn chưa có tài khoản?",
+    "register_now": "Đăng ký ngay"
+  },
+  "user_info_page": {
+    "route_name": "Thông tin tài khoản",
+    "tab_1": {
+      "name": "Thông tin tài khoản",
+      "full_name": "Họ và tên",
+      "email": "Địa chỉ Email"
+    },
+    "tab_2": {
+      "name": "Đổi mật khẩu",
+      "current_password": "Nhập mật khẩu hiện tại",
+      "new_password": "Mật khẩu mới",
+      "new_password_repeat": "Nhập lại mật khẩu mới",
+      "change_password_btn": "Thay đổi mật khẩu"
+    }
+  },
+  "history_page": {
+    "route_name_1": "Đánh giá kinh doanh bền vững",
+    "route_name_2": "Lịch sử đánh giá",
+    "esg_form_name": "MỨC ĐỘ THỰC HÀNH KINH DOANH BỀN VỮNG CỦA DOANH NGHIỆP THEO KHUNG MÔI TRƯỜNG-XÃ HỘI-QUẢN TRỊ (ESG)",
+    "nec_form_name": "MỨC ĐỘ ÁP DỤNG NGUYÊN TẮC KINH TẾ TUẦN HOÀN CỦA DOANH NGHIỆP",
+    "title": "Lịch sử đánh giá",
+    "result_btn": "Kết quả đánh giá"
+  },
+  "esg_form_page": {
+    "step_1": "Thông tin doanh nghiệp",
+    "step_2": "E (Môi trường)",
+    "step_3": "S (Xã hội)",
+    "step_4": "G (Quản trị)",
+    "step_5": "Kết quả đánh giá",
+    "mobile_title_1": "CÔNG CỤ ĐÁNH GIÁ MỨC ĐỘ THỰC HÀNH",
+    "mobile_title_2": "KINH DOANH BỀN VỮNG",
+    "mobile_title_3": "CỦA DOANH NGHIỆP THEO KHUNG",
+    "mobile_title_4": "MÔI TRƯỜNG-XÃ HỘI-QUẢN TRỊ (ESG)",
+    "title_1": "CÔNG CỤ ĐÁNH GIÁ MỨC ĐỘ THỰC HÀNH KINH DOANH BỀN VỮNG",
+    "title_2": "CỦA DOANH NGHIỆP THEO KHUNG MÔI TRƯỜNG-XÃ HỘI-QUẢN TRỊ (ESG)"
+  },
+  "nec_form_page": {
+    "step_1": "Thông tin doanh nghiệp",
+    "step_2": "Tầm nhìn của doanh nghiệp",
+    "step_3": "Sản xuất và tiền sản xuất",
+    "step_4": "Sau bán hàng",
+    "step_5": "Kết quả đánh giá",
+    "title_1": "CÔNG CỤ ĐÁNH GIÁ MỨC ĐỘ THỰC HÀNH",
+    "title_2": "KINH DOANH BỀN VỮNG CỦA DOANH NGHIỆP THEO NGUYÊN TẮC KINH TẾ TUẦN HOÀN"
+  },
+  "form_page": {
+    "review_question": "Doanh nghiệp có thể xem lại câu trả lời của doanh nghiệp cho từng tiêu chí",
+    "print_result_btn": "In kết quả",
+    "here": "tại đây"
+  },
+  "organization_profile": {
+    "company_name": "Tên doanh nghiệp (theo Giấy chứng nhận đăng ký doanh nghiệp):",
+    "tax": "Mã số doanh nghiệp:",
+    "founded_year": "Năm thành lập:",
+    "address_company": "Địa chỉ đăng ký kinh doanh:",
+    "first_manufacture_factory": "Tên các tỉnh/thành phố có cơ sở sản xuất, kinh doanh của doanh nghiệp mà khác với địa chỉ đăng ký kinh doanh (nếu có):",
+    "registration_type": "Loại hình đăng ký kinh doanh:",
+    "employee_info_title": "Thông tin người lao động của doanh nghiệp",
+    "full_time_employee": "Tổng số nhân viên toàn thời gian:",
+    "full_time_employee_tooltip": "Bao gồm tất cả hợp đồng lao động không thời hạn, hợp đồng lao động có thời hạn, hợp đồng lao động thử việc",
+    "full_time_female": "trong đó, tổng số nhân viên nữ:",
+    "part_time_employee": "Tổng số nhân viên bán thời gian:",
+    "part_time_female": "trong đó, tổng số nhân viên nữ:",
+    "season_employee": "Tổng số nhân viên thời vụ:",
+    "season_female": "trong đó, tổng số nhân viên nữ:",
+    "manager_count": "Tổng số cán bộ cấp quản lý (từ cấp trưởng phòng/ trưởng bộ phận trở lên):",
+    "manager_female": "trong đó, tổng số cán bộ cấp quản lý là nữ:",
+    "minor_workers": "Tổng số lao động vị thành niên (nếu có):",
+    "minor_workers_tooltip": "Lao động vị thành niên là lao động từ đủ 15 tuối đến dưới 18 tuổi",
+    "b6": "Doanh nghiệp có phải là doanh nghiệp do phụ nữ làm chủ không?",
+    "b6_tooltip": "Doanh nghiệp do phụ nữ làm chủ là doanh nghiệp có tổng số vốn điều lệ do (các) phụ nữ sở hữu chiếm 51% trở lên và trong đó có ít nhất một người thuộc cấp quản lý điều hành doanh nghiệp",
+    "yes_no": "Có/Không",
+    "b7": "Doanh nghiệp có phải là doanh nghiệp do phụ nữ trực tiếp điều hành không?",
+    "b7_tooltip": "Doanh nghiệp do phụ nữ điều hành là việc phụ nữ đảm nhận vị trí điều hành cao nhất trong Ban giám đốc, có thể là vị trí Tổng Giám đốc/ Giám đốc điều hành",
+    "business_model": "Lĩnh vực hoạt động sản xuất, kinh doanh chính của doanh nghiệp thuộc nhóm ngành nào dưới đây:",
+    "other_field": "Nhập thông tin khác",
+    "started_nec": "Năm bắt đầu triển khai KTTH (nếu đã triển khai)",
+    "started_esg": "Năm doanh nghiệp bắt đầu triển khai áp dụng ESG (nếu đã triển khai):",
+    "website_company": "Địa chỉ website:",
+    "manager_info_title": "Thông tin 01 lãnh đạo doanh nghiệp (để liên hệ)",
+    "name": "Họ và tên:",
+    "workplace": "Vị trí công tác:",
+    "phone_number": "Điện thoại:",
+    "evaluate_person_info": "Người thực hiện đánh giá",
+    "synchronize_info": "đồng bộ với thông tin trên",
+    "confirm_btn": "Xác nhận"
+  },
+  "evaluate_form": {
+    "placeholder_select": "Hãy chọn 1 đáp án",
+    "next_step_btn": "Đánh giá tiếp",
+    "finish_btn": "Hoàn thành",
+    "back_btn": "Trở lại"
+  }
+}

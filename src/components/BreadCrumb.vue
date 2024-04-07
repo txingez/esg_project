@@ -5,7 +5,7 @@
                 {{ route.name }}
             </span>
             <router-link v-else-if="route.name === 'Home'" :to="route.to">
-                Trang chủ
+              {{ $t("home_page_route_name") }}
             </router-link>
             <router-link v-else :to="route.to">
                 {{ route.name }}

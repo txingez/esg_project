@@ -8,3 +8,14 @@ export const businessModels = [
     value: 'Doanh nghiệp phi sản xuất (thương mại, dịch vụ…) hoặc sản xuất sản phẩm vô hình (như phần mềm, ứng dụng CNTT…)'
   }
 ]
+
+export const businessModelsEn = [
+  {
+    label: 'Doanh nghiệp sản xuất, chế biến, chế tạo (sản phẩm hàng hoá hữu hình) En',
+    value: 'Doanh nghiệp sản xuất, chế biến, chế tạo (sản phẩm hàng hoá hữu hình)'
+  },
+  {
+    label: 'Doanh nghiệp phi sản xuất (thương mại, dịch vụ…) hoặc sản xuất sản phẩm vô hình (như phần mềm, ứng dụng CNTT…) En',
+    value: 'Doanh nghiệp phi sản xuất (thương mại, dịch vụ…) hoặc sản xuất sản phẩm vô hình (như phần mềm, ứng dụng CNTT…)'
+  }
+]

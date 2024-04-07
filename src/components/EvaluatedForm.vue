@@ -21,7 +21,15 @@ import { saveResult } from "../services/evaluatedForm.js";
 import { ENUM } from "../constants/enumValues.js";
 import { ModalWarning } from "./ModalWarning.js";
 import { QuestionCircleOutlined } from "@ant-design/icons-vue";
+import { useI18n } from "vue-i18n";
+import { EnvironmentQuestionsEn } from "../constants/environmentQuestionsEn.js";
+import { SocialQuestionsEn } from "../constants/socialQuestionsEn.js";
+import { GovernanceQuestionsEn } from "../constants/governanceQuestionsEn.js";
+import { FirstCriteriaEn } from "../constants/firstCriteriaEn.js";
+import { SecondCriteriaEn } from "../constants/secondCriteriaEn.js";
+import { ThirdCriteriaEn } from "../constants/thirdCriteriaEn.js";
 
+const {t, locale} = useI18n()
 const businessTypeStore = useBusinessTypeStore()
 const stepStore = useStepStore()
 const evaluatedFormStore = useEvaluatedFormStore()
@@ -38,17 +46,17 @@ const questions = computed(() => {
 	return (() => {
 		switch (true) {
 			case (routeName === ENUM.FORM_NAME.EvaluateESGForm && stepStore.currentStepState === 1):
-				return EnvironmentQuestions
+				return locale === 'vi' ? EnvironmentQuestions : EnvironmentQuestionsEn
 			case (routeName === ENUM.FORM_NAME.EvaluateESGForm && stepStore.currentStepState === 2):
-				return SocialQuestions
+				return locale === 'vi' ? SocialQuestions : SocialQuestionsEn
 			case (routeName === ENUM.FORM_NAME.EvaluateESGForm && stepStore.currentStepState === 3):
-				return GovernanceQuestions
+				return locale === 'vi' ? GovernanceQuestions : GovernanceQuestionsEn
 			case (routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 1):
-				return FirstCriteria
+				return locale === 'vi' ? FirstCriteria : FirstCriteriaEn
 			case(routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 2):
-				return SecondCriteria
+				return locale === 'vi' ? SecondCriteria : SecondCriteriaEn
 			case(routeName === ENUM.FORM_NAME.EvaluateNECForm && stepStore.currentStepState === 3):
-				return ThirdCriteria
+				return locale === 'vi' ? ThirdCriteria : ThirdCriteriaEn
 			default:
 				return []
 		}
@@ -58,7 +66,7 @@ const questions = computed(() => {
 const finalQuestions = questions.value
 const questionKeys = finalQuestions.map(q => q.key)
 
-const rules = [{required: true, message: 'Hãy chọn 1 đáp án'}]
+const rules = [{required: true, message: t("validate.choose_answer_empty")}]
 const mapStepAndName = {
 	EvaluateESGForm: {
 		1: 'environment',
@@ -159,7 +167,7 @@ const finishEvaluated = async () => {
 			const callback = () => {
 				router.push('/login')
 			}
-			ModalWarning('Hết phiên đăng nhập', 'Phiên đăng nhập của bạn đã hết, vui lòng đăng nhập lại', 'Đăng nhập', callback)
+			ModalWarning(t('modal.session_expired_title'), t('modal.session_expired_description'), t('modal.session_expired_btn'), callback)
 		})
 	}
 
@@ -214,7 +222,7 @@ const openAppendix4 = () => {
                      :rules="rules">
             <template #label>
                 <div class="flex justify-center items-center gap-1 text-lg">
-                    <span>{{ `Câu ${question.label}: ${question.question}` }}</span>
+                    <span>{{ `${locale === 'vi' ? 'Câu' : 'Question'} ${question.label}: ${question.question}` }}</span>
                     <a-tooltip v-if="question.tooltip">
                         <template #title>
                             <span>{{ question.tooltip }}</span>
@@ -224,7 +232,7 @@ const openAppendix4 = () => {
                 </div>
             </template>
             <a-select v-model:value="evaluatedFormStore.evaluatedFormState[question.key]"
-                      placeholder="Hãy chọn 1 đáp án"
+                      :placeholder="$t('evaluate_form.placeholder_select')"
                       size="large"
                       @change="e => handleChooseAnswer(e, question.key)">
                 <a-select-option v-for="answer in question.answers" :key="answer.key"
@@ -236,12 +244,12 @@ const openAppendix4 = () => {
 
         <div class="flex gap-5">
             <a-form-item v-if="stepStore.currentStepState === 2 || stepStore.currentStepState === 3">
-                <a-button class="min-h-[50px]" @click.prevent="previousStep">Trở lại</a-button>
+                <a-button class="min-h-[50px]" @click.prevent="previousStep">{{ $t('evaluate_form.back_btn') }}</a-button>
             </a-form-item>
             <a-form-item>
                 <a-button :loading="loading" class="bg-[#1677ff] min-h-[50px]" html-type="submit" type="primary">
                     {{
-                    stepStore.currentStepState === 1 || stepStore.currentStepState === 2 ? 'Đánh giá tiếp' : 'Hoàn thành'
+                    stepStore.currentStepState === 1 || stepStore.currentStepState === 2 ? $t('evaluate_form.next_step_btn') : $t('evaluate_form.finish_btn')
                     }}
                 </a-button>
             </a-form-item>

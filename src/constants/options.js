@@ -10,6 +10,11 @@ export const OPTIONS = {
 		{label: 'Không', value: 'Không'}
 	],
 
+	YES_NO_OPTS_EN: [
+		{label: 'Yes', value: 'Có'},
+		{label: 'No', value: 'Không'}
+	],
+
 	SEX_OPTS: [
 		{label: 'Nam', value: 'Nam'},
 		{label: 'Nữ', value: 'Nữ'}
@@ -17,6 +22,19 @@ export const OPTIONS = {
 
 	REGISTRATION_TYPE_OPTS: [
 		{label: 'Doanh nghiệp tư nhân', value: 'Doanh nghiệp tư nhân'},
+		{label: 'Công ty trách nhiệm hữu hạn một thành viên', value: 'Công ty trách nhiệm hữu hạn một thành viên'},
+		{
+			label: 'Công ty trách nhiệm hữu hạn từ hai thành viên trở lên',
+			value: 'Công ty trách nhiệm hữu hạn từ hai thành viên trở lên'
+		},
+		{label: ' Công ty cổ phần, niêm yết', value: 'Công ty cổ phần, niêm yết'},
+		{label: ' Công ty cổ phần, không niêm yết', value: 'Công ty cổ phần, không niêm yết'},
+		{label: 'Công ty hợp danh', value: 'Công ty hợp danh'},
+		{label: 'Loại hình khác (ghi cụ thể tên loại hình)', value: 'other'}
+	],
+
+	REGISTRATION_TYPE_OPTS_EN: [
+		{label: 'Doanh nghiệp tư nhân en', value: 'Doanh nghiệp tư nhân'},
 		{label: 'Công ty trách nhiệm hữu hạn một thành viên', value: 'Công ty trách nhiệm hữu hạn một thành viên'},
 		{
 			label: 'Công ty trách nhiệm hữu hạn từ hai thành viên trở lên',

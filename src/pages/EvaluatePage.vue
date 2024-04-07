@@ -1,7 +1,7 @@
 <script setup>
 
 import Banner from "../components/Banner.vue";
-import { computed, onMounted, reactive, ref } from "vue";
+import { computed, onMounted, reactive, ref, watch } from "vue";
 import { handleAccessForm } from "../utils/handleClickEvaluate.js";
 import BreadCrumb from "../components/BreadCrumb.vue";
 import AOS from 'aos'
@@ -12,17 +12,21 @@ import { downloadDocument } from "../services/evaluatedForm.js";
 import FileSaver from 'file-saver'
 import { Notification } from "../components/Notification.js";
 import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
+import { useI18n } from 'vue-i18n'
+
+const {t, locale} = useI18n()
 
 const pageData = reactive({
   introduction: '',
+  introductionEn: '',
   esg: {
-    title: '', image: [], document: []
+    title: '', titleEn: '', image: [], document: []
   },
   nec: {
-    title: '', image: [], document: []
+    title: '', titleEn: '', image: [], document: []
   },
   kdbt: {
-    title: '', image: [], document: []
+    title: '', titleEn: '', image: [], document: []
   }
 })
 const loading = ref(false)
@@ -33,10 +37,17 @@ const isAuth = computed(() => {
   return !!token
 })
 
-const routes = [
+const routes = ref([
   {name: 'Home', to: '/'},
-  {name: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
-]
+  {name: t("evaluate_page.route_name"), to: '/evaluate'},
+])
+
+watch(locale, () => {
+  routes.value = [
+    {name: 'Home', to: '/'},
+    {name: t("evaluate_page.route_name"), to: '/evaluate'},
+  ]
+})
 
 onMounted(() => {
   AOS.init()
@@ -48,8 +59,9 @@ const getPageData = () => {
   getPosts('EVALUATE', 10, 0)
       .then((response) => {
         const dataDecoded = useJwt(response.data[0].content).payload.value
-        console.log(handleGoogleImageLink(dataDecoded.data.kdbt.image[0].url))
+        console.log(dataDecoded)
         pageData.introduction = dataDecoded.data.introduction
+        pageData.introductionEn = dataDecoded.data.introductionEn
         pageData.esg = {...dataDecoded.data.esg, ...{image: [{url: handleGoogleImageLink(dataDecoded.data.esg.image[0].url)}]}}
         pageData.nec = {...dataDecoded.data.nec, ...{image: [{url: handleGoogleImageLink(dataDecoded.data.nec.image[0].url)}]}}
         pageData.kdbt = {...dataDecoded.data.kdbt, ...{image: [{url: handleGoogleImageLink(dataDecoded.data.kdbt.image[0].url)}]}}
@@ -81,8 +93,8 @@ const downloadFile = (formId, fileName) => {
 <template>
   <Banner
       img-src="https://lh3.googleusercontent.com/pw/AIL4fc9ZceHAFiHOWTxrrxinjHqpovV6-fzGgEYNqFKy4ErwJfaUdekISojkjwx7QHwk-v5ylDXToGH7l5FXEuymJBxNgB1_XnE9JEW7-zYjE-XZcMVHPGScDdScSx6g2gbfTQpAEW24He_NGStitA4QCmun=w1600-h900-s-no?authuser=0">
-    <div>ĐÁNH GIÁ</div>
-    <div>KINH DOANH BỀN VỮNG</div>
+    <div>{{ $t("evaluate_page.banner_title_1") }}</div>
+    <div>{{ $t("evaluate_page.banner_title_2") }}</div>
   </Banner>
 
   <div class="md:px-10 lg:px-[100px] px-5 mt-2.5">
@@ -91,7 +103,8 @@ const downloadFile = (formId, fileName) => {
 
   <a-spin :spinning="loading">
     <div class="md:px-10 lg:px-[100px] px-5 py-10 flex md:gap-10 gap-5 flex-col">
-      <div class="ql-editor text-gray-600" v-html="pageData.introduction"/>
+      <div class="ql-editor text-gray-600"
+           v-html="locale === 'en' && !!pageData.introduction && pageData.introduction !== '' ? pageData.introductionEn : pageData.introduction"/>
 
       <div class="grid grid-cols-4 gap-10">
         <div class="lg:col-span-2 col-span-4 border rounded-[10px] max-h-[340px]"
@@ -108,19 +121,19 @@ const downloadFile = (formId, fileName) => {
              data-aos-duration="500"
              data-aos-easing="ease-in-out">
           <div class="md:text-xl xl:text-2xl text-xl font-bold text-gray-600">
-            {{ pageData.esg.title }}
+            {{ locale === 'en' && !!pageData.esg.titleEn && pageData.esg.titleEn !== '' ? pageData.esg.titleEn : pageData.esg.title }}
           </div>
           <div class="flex gap-2.5 xl:flex-row flex-col">
             <a-button class="min-h-[50px] md:text-base xl:text-lg"
                       @click.prevent="handleAccessForm(isAuth, 'ESG')">
-              Thực hiện đánh giá
+              {{ $t("evaluate_page.evaluate_btn") }}
             </a-button>
             <a-button class="min-h-[50px] md:text-base xl:text-lg bg-blue-500"
                       type="primary"
                       @click.prevent="downloadFile('esg', pageData.esg.document[0]?.name)">
               <a class="flex items-center justify-center gap-2 w-full h-full">
                 <DownloadOutlined/>
-                <span>Tài liệu giới thiệu và hướng dẫn</span>
+                <span>{{ $t("evaluate_page.document_btn") }}</span>
               </a>
             </a-button>
           </div>
@@ -142,19 +155,19 @@ const downloadFile = (formId, fileName) => {
              data-aos-duration="500"
              data-aos-easing="ease-in-out">
           <div class="md:text-xl xl:text-2xl text-xl font-bold text-gray-600">
-            {{ pageData.nec.title }}
+            {{ locale === 'en' && !!pageData.nec.titleEn && pageData.nec.titleEn !== '' ? pageData.nec.titleEn : pageData.nec.title }}
           </div>
           <div class="flex gap-2.5 xl:flex-row flex-col">
             <a-button class="min-h-[50px] md:text-base xl:text-lg"
                       @click.prevent="handleAccessForm(isAuth, 'NEC')">
-              Thực hiện đánh giá
+              {{ $t("evaluate_page.evaluate_btn") }}
             </a-button>
             <a-button class="min-h-[50px] md:text-base xl:text-lg bg-blue-500"
                       type="primary"
                       @click.prevent="downloadFile('nec', pageData.nec.document[0]?.name)">
               <a class="flex items-center justify-center gap-2 w-full h-full">
                 <DownloadOutlined/>
-                <span>Tài liệu giới thiệu và hướng dẫn</span>
+                <span>{{ $t("evaluate_page.document_btn") }}</span>
               </a>
             </a-button>
           </div>
@@ -176,7 +189,7 @@ const downloadFile = (formId, fileName) => {
              data-aos-duration="500"
              data-aos-easing="ease-in-out">
           <div class="md:text-xl xl:text-2xl text-xl font-bold text-gray-600">
-            {{ pageData.kdbt.title }}
+            {{ locale === 'en' && !!pageData.kdbt.titleEn && pageData.kdbt.titleEn !== '' ? pageData.kdbt.titleEn : pageData.kdbt.title }}
           </div>
           <div class="flex gap-2.5 xl:flex-row flex-col">
 <!--            <a-button class="min-h-[50px] md:text-base xl:text-lg"-->
@@ -185,7 +198,7 @@ const downloadFile = (formId, fileName) => {
 <!--            </a-button>-->
             <a-button class="min-h-[50px] md:text-base xl:text-lg">
               <a href="/Toolkit-IB%20Readiness%20Assessment.xlsx" download>
-                Thực hiện đánh giá
+                {{ $t("evaluate_page.evaluate_btn") }}
               </a>
             </a-button>
             <a-button class="min-h-[50px] md:text-base xl:text-lg bg-blue-500"
@@ -193,7 +206,7 @@ const downloadFile = (formId, fileName) => {
 <!--                      @click.prevent="downloadFile('esg', pageData.kdbt.document[0]?.name)">-->
               <a href="https://esg.business.gov.vn/news/detail/100" target="_blank" class="flex items-center justify-center gap-2 w-full h-full">
                 <DownloadOutlined/>
-                <span>Tài liệu giới thiệu và hướng dẫn</span>
+                <span>{{ $t("evaluate_page.document_btn") }}</span>
               </a>
                 <!--              <a class="flex items-center justify-center gap-2 w-full h-full">-->
 <!--                <DownloadOutlined/>-->

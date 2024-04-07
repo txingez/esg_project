@@ -1,16 +1,29 @@
 <script setup>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { useRouter } from "vue-router";
+import { useI18n } from 'vue-i18n'
+import { ref, watch } from "vue";
 
 const router = useRouter()
+const {t, locale} = useI18n()
 
-const links = [
-	{label: 'Tổng quan về kinh doanh bền vững', to: '/overview'},
-	{label: 'Đánh giá kinh doanh bền vững', to: '/evaluate'},
-	{label: 'Sáng kiến ESG Việt Nam', to: '/esg-vietnam'},
-	{label: 'Thư viện', to: '/library'},
-	{label: 'Hoạt động', to: '/events'}
-]
+const links = ref([
+	{label: t("footer.navbar.overview"), to: '/overview'},
+	{label: t("footer.navbar.evaluate"), to: '/evaluate'},
+	{label: t("footer.navbar.esg_page"), to: '/esg-vietnam'},
+	{label: t("footer.navbar.library"), to: '/library'},
+	{label: t("footer.navbar.event"), to: '/events'}
+])
+
+watch(locale, () => {
+  links.value = [
+    {label: t("footer.navbar.overview"), to: '/overview'},
+    {label: t("footer.navbar.evaluate"), to: '/evaluate'},
+    {label: t("footer.navbar.esg_page"), to: '/esg-vietnam'},
+    {label: t("footer.navbar.library"), to: '/library'},
+    {label: t("footer.navbar.event"), to: '/events'}
+  ]
+})
 
 </script>
 
@@ -36,7 +49,7 @@ const links = [
             <div class="flex flex-col md:items-start gap-5 md:basis-1/4">
                 <div class="flex gap-5 items-center">
                     <font-awesome-icon icon="fa-solid fa-location-dot"/>
-                    <span>Số 6B, Hoàng Diệu, Ba Đình, Hà Nội</span>
+                    <span>{{ $t("footer.address") }}</span>
                 </div>
                 <div class="flex gap-5 items-center">
                     <font-awesome-icon icon="fa-solid fa-globe" />
