@@ -28,7 +28,8 @@ const links = ref([
     to: '/evaluate',
     children: [
       {label: t("header.navbar.esg"), to: '/evaluate/esg/form'},
-      {label: t("header.navbar.nec"), to: '/evaluate/nec/form'}
+      {label: t("header.navbar.nec"), to: '/evaluate/nec/form'},
+      {label: t("header.navbar.ktbt"), to: '/news/detail/100'}
     ]
   },
   {label: t("header.navbar.esg_page"), name: ['ESGVietNam'], to: '/esg-vietnam'},

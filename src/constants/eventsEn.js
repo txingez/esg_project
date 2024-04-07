@@ -9,7 +9,7 @@ export const EVENTS_EN = [
 		name: 'Discussion in the city. Ho Chi Minh City with the theme "Building advantages, Securing the future with the Vietnam ESG Initiative 2024"',
 		time: '14/03/2024',
 		location: 'Ho Chi Minh',
-		link: 'https://www.facebook.com/CongThongTinDoanhNghiep/posts/pfbid0YACS31AyZgLb5PkeeUKLimXPUBDz5B79szzebmqJu9Co3gPXc4h37s9Jgj1xc25Ml'
+		link: 'https://www.facebook.com/usaid.ipsc/posts/370093449196884?ref=embed_post'
 	},
 	{
 		name: 'Information sharing session "Vietnam ESG Initiative 2024 - Seizing opportunities for green transformation"',
