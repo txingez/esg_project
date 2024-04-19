@@ -16,8 +16,6 @@ import { handleOpenLink } from "../utils/handleOpenLink.js";
 import { handleGoogleImageLink } from "../utils/handleGoogleImageLink.js";
 import { ArrowRightOutlined } from "@ant-design/icons-vue"
 import { useI18n } from 'vue-i18n'
-import { EVENTS } from "../constants/events.js";
-import { EVENTS_EN } from "../constants/eventsEn.js";
 
 const router = useRouter()
 const {t, locale} = useI18n()
@@ -79,7 +77,6 @@ onMounted(() => {
   onScreenResize()
   AOS.init()
   loading.value = true
-  dataEvent.value = locale.value === 'vi' ? EVENTS : EVENTS_EN
   axios.all([getPosts('HOME', 10, 0), getHotNews(4)])
       .then(
           axios.spread((getPostResponse, getHotNewsResponse) => {
@@ -96,6 +93,7 @@ onMounted(() => {
             pageData.descriptionESGPart = getPostDataDecoded.data.introduction.description
             pageData.descriptionESGPartEn = getPostDataDecoded.data.introduction.descriptionEn
             pageData.videoESGPart = getPostDataDecoded.data.introduction.videoURL
+            dataEvent.value = getPostDataDecoded.data.events
 
             pageData.stories = SUCCESS_STORIES
             storiesToShow.value = SUCCESS_STORIES.slice(0, 3)
@@ -145,8 +143,6 @@ watch(locale, (newLocale) => {
     {title: t("homepage.event_part_column.location"), dataIndex: 'location', key: 'location', width: 120},
     {title: t("homepage.event_part_column.detail"), dataIndex: 'link', key: 'link', width: 170},
   ]
-
-  dataEvent.value = newLocale === 'vi' ? EVENTS : EVENTS_EN
 })
 </script>
 
@@ -377,8 +373,11 @@ watch(locale, (newLocale) => {
               <template v-if="column.key === 'name'">
                 <div class="flex gap-5">
                   <div class="w-[3px] min-w-[3px] rounded-[5px] bg-gradient-to-b from-[#00BEF0] to-[#2A4258]"/>
-                  <div>{{ text }}</div>
+                  <div>{{ locale === 'vi' ? record.name : record.nameEn }}</div>
                 </div>
+              </template>
+              <template v-else-if="column.key === 'location'">
+                <span>{{ locale === 'vi' ? record.location : record.locationEn }}</span>
               </template>
               <template v-else-if="column.key === 'link'">
                 <a :href="record.link" class="flex gap-1 items-center group">
@@ -425,7 +424,7 @@ watch(locale, (newLocale) => {
               <a v-if="news.contentType === 'LINK'" :href="news.content"
                  class="h-[60px] font-medium line-clamp-2 text-ellipsis text-lg text-[#263238] tracking-wide"
                  target="_blank">
-                {{news.titleEn}}
+                {{ news.titleEn }}
                 {{ locale === 'en' && !!news.titleEn && news.titleEn !== '' ? news.titleEn : news.title }}
               </a>
               <a v-else
@@ -434,7 +433,9 @@ watch(locale, (newLocale) => {
                 {{ locale === 'en' && !!news.titleEn && news.titleEn !== '' ? news.titleEn : news.title }}
               </a>
               <div class="text-[12px] line-clamp-4 text-ellipsis text-justify">
-                {{ locale === 'en' && !!news.descriptionEn && news.descriptionEn !== '' ? news.descriptionEn : news.description }}
+                {{
+                  locale === 'en' && !!news.descriptionEn && news.descriptionEn !== '' ? news.descriptionEn : news.description
+                }}
               </div>
             </div>
           </a-card>
