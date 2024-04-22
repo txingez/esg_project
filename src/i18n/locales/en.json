@@ -10,9 +10,9 @@
     "accountActivity": "Activity",
     "logout": "Sign out",
     "navbar": {
-      "overview": "Overview\n sustainable business",
-      "evaluate": "Evaluate\n sustainable business",
-      "esg": "ESG assessment tool",
+      "overview": "SUSTAINABLE BUSINESS\nOVERVIEW",
+      "evaluate": "SUSTAINABLE BUSINESS\nASSESSMENT",
+      "esg": "VIETNAM ESG INITIATIVE",
       "nec": "Circular economy assessment tool",
       "ktbt": "Inclusive business assessment tool",
       "esg_page": "Initiative\n ESG Vietnam",
@@ -26,11 +26,11 @@
   },
   "homepage": {
     "target": "Target",
-    "evaluate_part_title": "Evaluation toolkit\nSustainable business",
-    "evaluate_slide_btn": "Evaluate now",
+    "evaluate_part_title": "Sustainable business \nAssessment toolkit",
+    "evaluate_slide_btn": "Assess now",
     "esg_part_title": "Vietnam ESG Initiative",
-    "esg_join_btn": "REGISTER TO JOIN NOW",
-    "story_part_title": "Typical story about\nsustainable business",
+    "esg_join_btn": "READ MORE",
+    "story_part_title": "Typical business stories",
     "event_part_title": "Event",
     "event_part_column": {
       "name": "Program name",
@@ -38,35 +38,35 @@
       "location": "Location",
       "detail": "Detail"
     },
-    "hot_news_part_title": "Hot news"
+    "hot_news_part_title": "News"
   },
-  "see_more_btn": "SEE MORE",
+  "see_more_btn": "READ MORE",
   "find_out_btn": "Find out more",
   "footer": {
     "navbar": {
-      "overview": "Overview sustainable business",
-      "evaluate": "Evaluate sustainable business",
-      "esg_page": "Initiative ESG Vietnam",
+      "overview": "Sustainable business overview",
+      "evaluate": "Sustainable business assessment",
+      "esg_page": "Vietnam ESG Initiative",
       "event": "Activities",
       "library": "Library"
     },
     "address": "No. 6B, Hoang Dieu, Ba Dinh, Hanoi"
   },
   "overview_page": {
-    "banner_title_1": "OVERVIEW",
-    "banner_title_2": "SUSTAINABLE BUSINESS",
-    "route_name": "Overview sustainable business"
+    "banner_title_1": "SUSTAINABLE BUSINESS",
+    "banner_title_2": "OVERVIEW",
+    "route_name": "Sustainable business overview"
   },
   "evaluate_page": {
-    "banner_title_1": "EVALUATE",
-    "banner_title_2": "SUSTAINABLE BUSINESS",
-    "route_name": "Evaluate sustainable business",
+    "banner_title_1": "SUSTAINABLE BUSINESS",
+    "banner_title_2": "ASSESSMENT",
+    "route_name": "Sustainable business assessment",
     "evaluate_btn": "Perform assessments",
     "document_btn": "Introductory documents and instructions"
   },
   "esg_page": {
-    "banner_title": "VIETNAM ESG INITIATIVE 2024\nTHE OPPORTUNITY FOR GREEN TRANSITION",
-    "join_now_btn": "Join now",
+    "banner_title": "VIETNAM ESG INITIATIVE 2024\nSEIZING GREEN TRANSFORMATION OPPORTUNITIES",
+    "join_now_btn": "Apply now",
     "deadline": "Deadline: 17h 31/03/2024",
     "route_name": "Initiative ESG Vietnam",
     "condition": {
@@ -74,13 +74,13 @@
       "condition_1": "Is a Vietnamese economic organization/unit, including private enterprises, cooperatives, and business households, with no more than 500 full-time employees and no legal disputes.",
       "condition_2": "Operating in priority areas of the USAID IPSC project such as agriculture-forestry-fishery, processing and manufacturing industry, information technology, logistics, tourism and support products.",
       "condition_3": "Have an effective, profitable business model.",
-      "condition_4": "Have intention and commitment to action to implement ESG at the enterprise, transform or expand the business model ustainable business.",
+      "condition_4": "Have intention and commitment to action to implement ESG at the enterprise, transform or expand the business model sustainable business.",
       "learn_more_text": "Learn more about ESG",
       "here_text": "here"
     },
-    "support_title": "Outstanding technical support items",
-    "gallery_title": "Looking back at the 2023 journey",
-    "story_title": "Typical story: Top 10 businesses participating in the final round of Vietnam ESG Initiative 2023",
+    "support_title": "Highlighted technical assistance activities",
+    "gallery_title": "Further explore the 2023 Vietnam ESG Initiative",
+    "story_title": "Typical business stories: Top 10 finalists of the 2023 Vietnam ESG Initiative",
     "register_btn": "Sign up",
     "faq_title": "Frequently asked questions"
   },
