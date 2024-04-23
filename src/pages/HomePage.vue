@@ -51,10 +51,6 @@ const plugins = ref([
 ])
 const dataEvent = ref()
 
-const routes = [
-  {name: 'Home', to: '/'}
-]
-
 const missionsIcon = [
   'https://lh3.googleusercontent.com/pw/ADCreHdjMApadQJ-1u4HJ5XPkPu8ZLb9yOBCkdbxg6qcdmm4ZFBlMBMNbC6A6O1DgozeJ46gRk2pt4A_qvqZgl96Qpbjl6Euju43-bg95t-2OXaFxVv20d-oWTFPDwKlmqRk_lM7xcI21O5XlSxCt5ctwaOC=w72-h72-s-no?authuser=0',
   'https://lh3.googleusercontent.com/pw/ADCreHcBuJY89kwhiwesqjGJVGbjyO-kxYpc0-jqL5OHY4RIJRxC5JERVMwHRYO70TAPG5pJz5kTrLB8q_Y7jp7IHcYqjwVAge8Rjz7RHKur0rCWFsFRDDuBJZ6L-3zJeuPeDInYtKSTwOKXi3ahpt33jopx=w77-h80-s-no?authuser=0',
@@ -93,7 +89,7 @@ onMounted(() => {
             pageData.descriptionESGPart = getPostDataDecoded.data.introduction.description
             pageData.descriptionESGPartEn = getPostDataDecoded.data.introduction.descriptionEn
             pageData.videoESGPart = getPostDataDecoded.data.introduction.videoURL
-            dataEvent.value = getPostDataDecoded.data.events
+            dataEvent.value = getPostDataDecoded.data.events.reverse()
 
             pageData.stories = SUCCESS_STORIES
             storiesToShow.value = SUCCESS_STORIES.slice(0, 3)
