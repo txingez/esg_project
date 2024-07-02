@@ -202,16 +202,16 @@ const downloadFile = (formId, fileName) => {
               </a>
             </a-button>
             <a-button class="min-h-[50px] md:text-base xl:text-lg bg-blue-500"
-                      type="primary">
-<!--                      @click.prevent="downloadFile('esg', pageData.kdbt.document[0]?.name)">-->
-              <a href="https://esg.business.gov.vn/news/detail/100" target="_blank" class="flex items-center justify-center gap-2 w-full h-full">
+                      type="primary"
+                      @click.prevent="downloadFile('kdbt', pageData.kdbt.document[0]?.name)">
+<!--              <a href="https://esg.business.gov.vn/news/detail/100" target="_blank" class="flex items-center justify-center gap-2 w-full h-full">-->
+                      <!--                <DownloadOutlined/>-->
+                      <!--                <span>{{ $t("evaluate_page.document_btn") }}</span>-->
+                      <!--              </a>-->
+              <a class="flex items-center justify-center gap-2 w-full h-full">
                 <DownloadOutlined/>
                 <span>{{ $t("evaluate_page.document_btn") }}</span>
               </a>
-                <!--              <a class="flex items-center justify-center gap-2 w-full h-full">-->
-<!--                <DownloadOutlined/>-->
-<!--                <span>Tài liệu giới thiệu và hướng dẫn</span>-->
-<!--              </a>-->
             </a-button>
           </div>
         </div>
