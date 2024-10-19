@@ -1,15 +1,15 @@
 export const FAQ = [
 	{
 		key: 1,
-		question: 'Doanh nghiệp có thể nộp hồ sơ đăng ký tham gia Sáng kiến ESG Việt Nam 2024 ở đâu?',
-		questionEn: 'Where can businesses submit applications to participate in the Vietnam ESG Initiative 2024?',
-		answer: 'Doanh nghiệp quan tâm nộp hồ sơ bản mềm trước 17h ngày 31/03/2024 qua địa chỉ: https://bit.ly/dangki-esg-2024\n' +
+		question: 'Doanh nghiệp có thể nộp hồ sơ đăng ký tham gia Sáng kiến ESG Việt Nam ở đâu?',
+		questionEn: 'Where can businesses submit applications to participate in the Vietnam ESG Initiative?',
+		answer: 'Doanh nghiệp quan tâm nộp hồ sơ bản mềm trước 17h ngày 30/11/2024 qua địa chỉ: https://bit.ly/dangki-esg-2024\n' +
 			'Các thông tin cần cung cấp bao gồm:\n' +
 			'• Thông tin tổng quan về doanh nghiệp\n' +
 			'• Thông tin liên lạc của cán bộ phụ trách hồ sơ\n' +
 			'• Đánh giá về thực hành ESG và kinh doanh bền vững\n' +
 			'• Đề xuất sáng kiến triển khai ESG tại doanh nghiệp nhằm đón đầu cơ hội chuyển đổi xanh\n',
-		answerEn: 'Interested businesses should submit soft copy applications before 5:00 p.m. on March 31, 2024 via address: https://bit.ly/dangki-esg-2024\n' +
+		answerEn: 'Interested businesses should submit soft copy applications before 5:00 p.m. on November 30, 2024 via address: https://bit.ly/dangki-esg-2024\n' +
 			'Information to be provided includes:\n' +
 			'• General information about the business\n' +
 			'• Contact information of case officer\n' +
@@ -18,8 +18,8 @@ export const FAQ = [
 	},
 	{
 		key: 2,
-		question: 'Sáng kiến ESG Việt Nam 2024 đánh giá và lựa chọn doanh nghiệp nhận hỗ trợ dựa trên những tiêu chí nào?',
-		questionEn: 'Based on what criteria does the Vietnam ESG 2024 Initiative evaluate and select businesses to receive support?',
+		question: 'Sáng kiến ESG Việt Nam đánh giá và lựa chọn doanh nghiệp nhận hỗ trợ dựa trên những tiêu chí nào?',
+		questionEn: 'Based on what criteria does the Vietnam ESG Initiative evaluate and select businesses to receive support?',
 		answer: 'Hội đồng đánh giá sẽ căn cứ vào các tiêu chí sau đây để đánh giá và lựa chọn các doanh nghiệp được nhận hỗ trợ từ Sáng kiến ESG Việt Nam 2024:\n' +
 			'• Mô hình và hoạt động kinh doanh\n' +
 			'• Tác động xã hội – môi trường\n' +
@@ -36,7 +36,7 @@ export const FAQ = [
 		key: 3,
 		question: 'Doanh nghiệp sẽ nhận được những hỗ trợ gì từ chương trình?',
 		questionEn: 'What support will businesses receive from the program?',
-		answer: 'Sáng kiến ESG Việt Nam 2024 sẽ cung cấp các hỗ trợ kỹ thuật và tư vấn chuyên sâu với tổng trị giá lên tới 2 tỷ đồng cho Top 3 doanh nghiệp giành chiến thắng chung cuộc để triển khai hoặc nhân rộng các sáng kiến kinh doanh bền vững. Top 10 doanh nghiệp xuất sắc nhất sẽ được đào tạo và tư vấn chuyên sâu trong 2-3 tháng để điều chỉnh hoặc hoàn thiện mô hình kinh doanh lồng ghép các yếu tố ESG. Bên cạnh đó, tất cả các doanh nghiệp nộp hồ sơ tham gia và đáp ứng các tiêu chí của chương trình sẽ được đào tạo cơ bản nhằm nâng cao hiểu biết về ESG, chuyển đổi xanh và kinh doanh bền vững, đồng thời tiếp cận các đối tác trong và ngoài nước hỗ trợ hệ sinh thái kinh doanh bền vững.\n\n' +
+		answer: 'Sáng kiến ESG Việt Nam sẽ cung cấp các hỗ trợ kỹ thuật và tư vấn chuyên sâu với tổng trị giá lên tới 2 tỷ đồng cho Top 3 doanh nghiệp giành chiến thắng chung cuộc để triển khai hoặc nhân rộng các sáng kiến kinh doanh bền vững. Top 10 doanh nghiệp xuất sắc nhất sẽ được đào tạo và tư vấn chuyên sâu trong 2-3 tháng để điều chỉnh hoặc hoàn thiện mô hình kinh doanh lồng ghép các yếu tố ESG. Bên cạnh đó, tất cả các doanh nghiệp nộp hồ sơ tham gia và đáp ứng các tiêu chí của chương trình sẽ được đào tạo cơ bản nhằm nâng cao hiểu biết về ESG, chuyển đổi xanh và kinh doanh bền vững, đồng thời tiếp cận các đối tác trong và ngoài nước hỗ trợ hệ sinh thái kinh doanh bền vững.\n\n' +
 			'Gói hỗ trợ kĩ thuật dành cho Top 3 doanh nghiệp giành chiến thắng chung cuộc có thể gồm các hạng mục khác nhau, được xác định tùy thuộc vào nhu cầu cụ thể của mỗi doanh nghiệp, tuy nhiên cần đảm bảo mục tiêu giúp thí điểm, triển khai hoặc nhân rộng việc thực hành ESG hoặc mô hình kinh doanh bền vững. Một số hạng mục điển hình bao gồm:\n\n' +
 			'• Thuê chuyên gia đào tạo, tư vấn hoặc chuyên gia kỹ thuật đồng hành cùng doanh nghiệp, hỗ trợ doanh nghiệp lên chiến lược hoặc triển khai ESG, chuyển đổi xanh. (Ví dụ: Đào tạo, năng cao năng lực về ESG, chuyển đổi xanh; Thuê chuyên gia tư vấn chiến lược và xây dựng kế hoạch hành động về kinh doanh bền vững; Xây dựng Báo cáo Phát triển bền vững/Báo cáo ESG năm đầu tiên; Tiến hành kiểm kê khí nhà kính; Xây dựng kế hoạch giảm phát thải, v.v). Doanh nghiệp có thể đề xuất danh sách chuyên gia để Dự án USAID IPSC xem xét.\n\n' +
 			'• Tổ chức các sự kiện, tập huấn liên quan, hoạt động cho nội bộ doanh nghiệp và đối tác trong chuỗi sản xuất và cung ứng của doanh nghiệp, qua đó thúc đẩy chuyển đổi xanh, tính tuần hoàn trong chuỗi cung ứng, hoặc khuyến khích sự tham gia của người thu nhập thấp, nhóm yếu thế trong chuỗi giá trị hoặc mô hình kinh doanh của doanh nghiệp.\n\n' +
@@ -46,7 +46,7 @@ export const FAQ = [
 			'b. Cung cấp các học bổng cho lãnh đạo, cán bộ của doanh nghiệp không liên quan đến kế hoạch triển khai hoặc chuyển đổi sang kinh doanh bền vững hoặc mở rộng mô hình kinh doanh bền vững, cam kết hành động thí điểm để chuyển đổi/nhân rộng sáng kiến kinh doanh bền vững.\n' +
 			'c. Mua sắm trang thiết bị, phần mềm.\n' +
 			'd. Chi phí truyền thông, quảng bá (marketing-PR) thông thường của doanh nghiệp.\n',
-		answerEn: 'The Vietnam ESG 2024 initiative will provide technical support and in-depth consulting with a total value of up to 2 billion VND for the Top 3 businesses' +
+		answerEn: 'The Vietnam ESG initiative will provide technical support and in-depth consulting with a total value of up to 2 billion VND for the Top 3 businesses' +
 			' overall winning business to implement or scale sustainable business initiatives. The Top 10 best businesses will receive in-depth training' +
 			' and consulting for 2-3 months to adjust or perfect their business models integrating ESG factors. In addition, all businesses that apply to participate and meet the program\'s criteria will receive basic training to improve their understanding of ESG, green transformation and sustainable business, and access domestic and foreign partners support a sustainable business ecosystem.\n\n' +
 			'The technical support package for the Top 3 final winning businesses may include different items, determined depending on the specific needs of each business, but it must ensure the goal of helping the contestants win. Identify, implement or scale up ESG practices or sustainable business models. Some typical categories include:\n\n' +

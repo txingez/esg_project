@@ -35,30 +35,35 @@ const handleClickBtn = target => {
     <Flicking :options="{ align: 'center', circular: true, adaptive: true }" :plugins="plugins"
               class="rounded-[20px] !h-full">
       <div v-for="(banner, index) in slides" class="w-full h-full relative" :key="index">
-        <div v-if="index === 0" class="absolute h-full w-full flex flex-col items-center justify-center gap-4">
-          <div class="flex gap-10 md:-translate-y-[60%] logo-banner">
-            <img src="../assets/usaid.png" class="md:h-[90px] h-[50px]" alt="usaid" id="usaid">
-            <img src="../assets/mpi.png" class="md:h-[80px] h-[42px]" alt="mpi" id="mpi">
-            <img src="../assets/aed.png" alt="aed" class="md:h-[90px] h-[55px]" id="aed">
-          </div>
+        <div v-if="index === 0" class="absolute h-full w-full flex flex-col items-center justify-center gap-4 xl:top-[24%] md:top-[27%] top-[29%]">
+<!--          <div class="flex gap-10 md:-translate-y-[60%] logo-banner">-->
+<!--            <img src="../assets/usaid.png" class="md:h-[90px] h-[50px]" alt="usaid" id="usaid">-->
+<!--            <img src="../assets/mpi.png" class="md:h-[80px] h-[42px]" alt="mpi" id="mpi">-->
+<!--            <img src="../assets/aed.png" alt="aed" class="md:h-[90px] h-[55px]" id="aed">-->
+<!--          </div>-->
           <div class="space-y-5">
-            <div class="p-1.5 break-after-auto font-bold whitespace-pre-wrap text-center xl:text-[6vh]/[7vh] lg:text-5xl/[4vh] lg:py-1 md:text-4xl/[4vh] text-base
-                      text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">
-              {{ locale === 'en' && !!banner.titleEn && banner.titleEn !== '' ? banner.titleEn : banner.title }}
-            </div>
-            <div
-                class="whitespace-pre-wrap xl:text-2xl lg:text-lg md:text-base text-xs italic xl:pr-72 lg:pr-32 md:pr-28 pr-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500">
-              {{ locale === 'en' && !!banner.descriptionEn && banner.descriptionEn !== '' ? banner.descriptionEn : banner.description }}
-            </div>
+<!--            <div class="p-1.5 break-after-auto font-bold whitespace-pre-wrap text-center xl:text-[6vh]/[7vh] lg:text-5xl/[4vh] lg:py-1 md:text-4xl/[4vh] text-base-->
+<!--                      text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">-->
+<!--              {{ locale === 'en' && !!banner.titleEn && banner.titleEn !== '' ? banner.titleEn : banner.title }}-->
+<!--            </div>-->
+<!--            <div-->
+<!--                class="whitespace-pre-wrap xl:text-2xl lg:text-lg md:text-base text-xs italic xl:pr-72 lg:pr-32 md:pr-28 pr-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500">-->
+<!--              {{ locale === 'en' && !!banner.descriptionEn && banner.descriptionEn !== '' ? banner.descriptionEn : banner.description }}-->
+<!--            </div>-->
             <div class="flex flex-col gap-2 items-center">
+<!--              <div :class="banner.labelBtn ? '' : 'invisible'"-->
+<!--                   class="w-fit md:px-6 px-3 md:py-2 lg:py-3 md:text-base xl:text-lg md:min-h-[50px] min-h-[30px] flex justify-center items-center border rounded border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer-->
+<!--                      text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white"-->
+<!--                   style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"-->
+<!--                   @click.prevent="handleClickBtn(banner.target)">-->
+<!--                {{ locale === 'en' && !!banner.labelBtnEn && banner.labelBtnEn !== '' ? banner.labelBtnEn : banner.labelBtn }}-->
+<!--              </div>-->
               <div :class="banner.labelBtn ? '' : 'invisible'"
-                   class="w-fit md:px-6 px-3 md:py-2 lg:py-3 md:text-base xl:text-lg md:min-h-[50px] min-h-[30px] flex justify-center items-center border rounded border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer
-                      text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white"
-                   style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
+                   class="w-fit md:px-6 px-3 md:py-3 lg:py-3 py-2 md:text-base xl:text-lg text-[10px] md:min-h-[50px] min-h-[30px] font-bold bg-[#0e8369] rounded-[30px] hover:cursor-pointer"
                    @click.prevent="handleClickBtn(banner.target)">
                 {{ locale === 'en' && !!banner.labelBtnEn && banner.labelBtnEn !== '' ? banner.labelBtnEn : banner.labelBtn }}
               </div>
-              <div class="text-gray-600 md:text-sm text-[12px] italic">
+              <div class="text-[#35426e] md:text-[16px] text-[10px] font-bold">
                 {{ $t("carousel.banner_1") }}
               </div>
             </div>

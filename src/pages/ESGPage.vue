@@ -101,8 +101,8 @@ onMounted(() => {
   onScreenResize()
   getPosts('IDEA', 10, 0).then(response => {
     const getPostDatDecoded = useJwt(response.data[0].content).payload.value
-    // pageData.banner = getPostDatDecoded.data.banner[0]?.url
-    pageData.banner = 'https://lh3.googleusercontent.com/pw/ABLVV84zelMNQpIziyRnTV5bb0Xd9KvAagiM7OMEiZIh9GgRixdJsZO1lsYHBNlhHTQuCZO6dnhYeAv96QLhC9fsAM6qQyCezpD6esOy9ow_2q12tB35l_SHu9wn1JQukuFo9N3bZ84ivpfV5p72OI_Ao-3A=w1600-h900-s-no-gm?authuser=0'
+    pageData.banner = getPostDatDecoded.data.banner[0]?.url
+    // pageData.banner = 'https://lh3.googleusercontent.com/pw/ABLVV84zelMNQpIziyRnTV5bb0Xd9KvAagiM7OMEiZIh9GgRixdJsZO1lsYHBNlhHTQuCZO6dnhYeAv96QLhC9fsAM6qQyCezpD6esOy9ow_2q12tB35l_SHu9wn1JQukuFo9N3bZ84ivpfV5p72OI_Ao-3A=w1600-h900-s-no-gm?authuser=0'
     pageData.titleIntroduction = getPostDatDecoded.data.introduction.title
     pageData.titleIntroductionEn = getPostDatDecoded.data.introduction.titleEn
     pageData.contentIntroduction = getPostDatDecoded.data.introduction.content
@@ -161,21 +161,25 @@ const scrollToRight = () => {
 
 <template>
   <div class="relative">
-    <div class="absolute flex flex-col justify-center items-center w-full h-full lg:p-14 md:p-8 p-5">
-      <div class="flex flex-col gap-5">
-        <div class="text-center h-fit xl:text-[7vh]/[8vh] lg:text-5xl/[4vh] lg:py-1 md:text-4xl/[4vh] text-base break-after-auto font-bold whitespace-pre-wrap
-                  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">
-          {{ $t("esg_page.banner_title") }}
-        </div>
-      </div>
+    <div class="absolute flex flex-col justify-center items-center w-full h-full lg:p-14 md:p-8 p-5 xl:top-[23%] md:top-[25%] top-[31%]">
+<!--      <div class="flex flex-col gap-5">-->
+<!--        <div class="text-center h-fit xl:text-[7vh]/[8vh] lg:text-5xl/[4vh] lg:py-1 md:text-4xl/[4vh] text-base break-after-auto font-bold whitespace-pre-wrap-->
+<!--                  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 w-full">-->
+<!--          {{ $t("esg_page.banner_title") }}-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="md:mt-5 flex flex-col justify-center items-center gap-2">
-        <div class="md:px-6 px-2 md:py-2 lg:py-3 md:text-base xl:text-2xl md:min-h-[50px] min-h-[30px] flex justify-center items-center border rounded border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer
-                    text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white w-fit whitespace-pre-wrap"
-             style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"
+<!--        <div class="md:px-6 px-2 md:py-2 lg:py-3 md:text-base xl:text-2xl md:min-h-[50px] min-h-[30px] flex justify-center items-center border rounded border-image hover:bg-gradient-to-r hover:from-blue-400 hover:to-green-500 hover:cursor-pointer-->
+<!--                    text-transparent bg-gradient-to-r bg-clip-text from-blue-400 to-green-500 hover:bg-clip-padding hover:text-white w-fit whitespace-pre-wrap"-->
+<!--             style="border-image: linear-gradient(45deg, #60a5fa, #22c55e) 1"-->
+<!--             @click.prevent="handleOpenLink('https://bit.ly/dangki-esg-2024')">-->
+<!--          {{ $t("esg_page.join_now_btn") }}-->
+<!--        </div>-->
+        <div class="md:px-6 px-3 md:py-3 py-2 md:text-base xl:text-2xl text-[10px] md:min-h-[50px] min-h-[30px] font-bold bg-[#0e8369] rounded-[30px] hover:cursor-pointer whitespace-pre-wrap"
              @click.prevent="handleOpenLink('https://bit.ly/dangki-esg-2024')">
           {{ $t("esg_page.join_now_btn") }}
         </div>
-        <div class="text-gray-600 md:text-base text-[10px] italic">
+        <div class="text-[#35426e] md:text-[16px] text-[10px] font-bold">
           {{ $t("esg_page.deadline") }}
         </div>
       </div>
@@ -482,7 +486,7 @@ const scrollToRight = () => {
       <div
           class="min-h-[150px] flex md:flex-row flex-col md:gap-0 gap-5 justify-between md:items-center items-start rounded-[5px] bg-gradient-to-r from-green-300 to-emerald-200 xl:p-10 p-5 shadow-md">
         <div>
-          <div class="xl:text-4xl lg:text-2xl md:text-xl text-base break-after-auto font-bold whitespace-pre-wrap
+          <div class="xl:!leading-[4rem] xl:text-4xl lg:text-2xl md:text-xl text-base break-after-auto font-bold whitespace-pre-wrap
                   text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 w-full">
             {{ $t("esg_page.banner_title") }}
           </div>
